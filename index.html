@@ -8,7 +8,7 @@
   <meta name="description" content="http://zhaozhongshu.github.io/first|xxx.com">
 <meta property="og:type" content="website">
 <meta property="og:title" content="技术人生">
-<meta property="og:url" content="http://blog.uxfork.cn/index.html">
+<meta property="og:url" content="http://localhost:4000/index.html">
 <meta property="og:site_name" content="技术人生">
 <meta property="og:description" content="http://zhaozhongshu.github.io/first|xxx.com">
 <meta name="twitter:card" content="summary">
@@ -150,575 +150,164 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-asio-softwares" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/07/03/asio-softwares/" class="article-date">
-  	<time datetime="2015-07-03T11:44:52.000Z" itemprop="datePublished">2015-07-03</time>
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/07/03/asio-softwares/" class="archive-article-date">
+  	<time datetime="2015-07-03T11:44:52.000Z" itemprop="datePublished">7月 3</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/03/asio-softwares/">使用asio的常用软件(不定期更新)</a>
+      <a class="archive-article-title" href="/2015/07/03/asio-softwares/">使用asio的常用软件(不定期更新)</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有如下著名软件在使用asio(不定期更新)</p>
-<h1 id="Restbed_-">Restbed -</h1><p>RESTful C++ embedded framework<br>restful是一种编程风格<br>Corvusoft’s Restbed framework brings asynchronous RESTful functionality to C++11 applications.</p>
-<h1 id="reTurn_Server_-">reTurn Server -</h1><p>high-performance ICE/STUN/TURN server for SIP, XMPP and WebRTC? media stream relay(防火墙、NAT穿透)<br>SIP, XMPP and WebRTC? require a TURN server to relay media streams for users on private IP networks. reTurn Server is an open source project that implements the TURN standard.<br>asio is used for all low-level networking, providing support for UDP, TCP and TLS transports for TURN.</p>
-<h1 id="WebSocket?_++">WebSocket? ++</h1><p>(WebSocketPP? ) - WebSocket? framework<br>WebSockets? provide a mechanism for messaging passing between JavaScript? clients in a web browser and server side code.<br>WebSocketPP is a C++ library implementing both WebSocket? client and server functionality. It is an asynchronous application built on top of asio.</p>
-<h1 id="Loggly_-">Loggly -</h1><p>high-performance cloud-based log aggregation and analytics<br><a href="http://www.loggly.com" target="_blank" rel="external">http://www.loggly.com</a><br>At Loggly we built our high-performance Collectors using the Boost ASIO framework. We found its event-driven model to perform very well, and the framework itself was a joy to code with. You can more details from our blog post.</p>
-<h1 id="Remobo_—">Remobo —</h1><p>create your own Instant Private Network (IPN 类似VPN)<br><a href="http://www.remobo.com/" target="_blank" rel="external">http://www.remobo.com/</a><br>Remobo allows you to easily creates an Instant Private Network (IPN) between your computers and your friends. It’s a COMPUTER network based on your social network circle. With IPN service, you and your friends can work or play together over Internet as if you were sitting on the same office or home LAN (Local Area Network).<br>Remobo uses Boost and asio libraries for multi-threading, asynchronous socket I/O, and timer. which are the building blocks for our large-scale, fault-tolerant distributed systems. Boost and asio are chosen over other alternative libraries for its portability across multiple platforms like Linux, Mac OSX, and Windows NT/2000/XP/Vista. The simplicity of asio’s header-only implementation is also highly appreciated.</p>
-<h1 id="OpenTibia_-">OpenTibia -</h1><p>Open Source Emulation of the MMORPG Tibia<br><a href="http://opentibia.sourceforge.net/" target="_blank" rel="external">http://opentibia.sourceforge.net/</a><br>OpenTibia is an open source emulation of the massively multiplayer online RPG; Tibia.<br>OpenTibia now uses the boost.asio library for asynchronous socket I/O. As with Osiris, it is to allow a single thread to manage many connections simultaneously.</p>
-<h1 id="Osiris_-">Osiris -</h1><p>Serverless Portal System<br><a href="http://osiris.kodeware.net" target="_blank" rel="external">http://osiris.kodeware.net</a><br>Osiris is a free portal creation software. The portals created with osiris don’t need a central server, they are safe, indestructible and anonymous. In those portals, all users have the same rights, so the standard hierarchys (administrators, moderators, members) of regular forums are not present, even if they are supported.<br>Osiris uses the Boost and asio libraries for multi-threading and asynchronous I/O. Multi-threading allows the use of multiple CPUs or processing cores to process HTTP requests simultaneously. Asynchronous I/O allows each thread to handle many connections simultaneously (otherwise, a single thread would be required for every connection to the server).</p>
-<h1 id="Jet_Infosystems,">Jet Infosystems,</h1><p>SKVT “Dozor-Jet” 网页防火墙<br>Jet Infosystems, Moscow - one of the leading Russian integrator and manufacturer of network security software. SKVT “Dozor-Jet” is web traffic filtering system, that act as a proxy and perform bidirectional filtering of web traffic - by URL, mime-type, words, time, etc. Description (in Russian) available here.<br>Software implement process per connection strategy, perform pre-forking of handlers. Asio used both in sync and async mode. Sync mode use for http connections, and async - for https.</p>
-<h1 id="libtorrent_-">libtorrent -</h1><p>BitTorrent library<br><a href="http://www.rasterbar.com/products/libtorrent" target="_blank" rel="external">http://www.rasterbar.com/products/libtorrent</a><br>libtorrent is a library that implements a bittorrent client. Asio is used as the main message loop to process, typically, up to 200 tcp connections. It handles all connections in one thread as asynchronous operations.</p>
-<h1 id="libbitcoin_-">libbitcoin -</h1><p>Bitcoin library<br><a href="http://libbitcoin.org/" target="_blank" rel="external">http://libbitcoin.org/</a><br><a href="https://gitorious.org/libbitcoin" target="_blank" rel="external">https://gitorious.org/libbitcoin</a><br><a href="https://bitcointalk.org/index.php?topic=30646.0" target="_blank" rel="external">https://bitcointalk.org/index.php?topic=30646.0</a><br>rewrite bitcoin, make it super-pluggable, very easy to do and hack everything at every level, and very configurable</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/asio/">asio</a></li></ul>
 	</div>
 
-      
+          
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
   
-    <article id="post-asio-http-server" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/03/asio-http-server/" class="article-date">
-  	<time datetime="2015-07-03T10:52:46.000Z" itemprop="datePublished">2015-07-03</time>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/07/03/asio-http-server/" class="archive-article-date">
+  	<time datetime="2015-07-03T10:52:46.000Z" itemprop="datePublished">7月 3</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/03/asio-http-server/">使用asio实现异步http server</a>
+      <a class="archive-article-title" href="/2015/07/03/asio-http-server/">使用asio实现异步http server</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="asio基础">asio基础</h1><p>asio是一个跨平台的C++网络库，通过它，可以方便的进行异步I/O编程。</p>
-<h2 id="io_service">io_service</h2><p>io_service类是asio库的核心框架类，为以下这些异步IO对象提供支持<br><code>asio::ip::tcp::socket</code><br><code>asio::ip::tcp::acceptor</code><br><code>asio::ip::udp::socket</code><br><code>asio::deadline_timer</code><br>通过io_service类的run/run_once/poll/poll_once函数，可以让调用线程进入异步IO循环。当有异步IO任务完成时，会在run中调用完成handler函数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">asio::io_service io_service;</span><br><span class="line"> ...</span><br><span class="line"> <span class="keyword">for</span> (;;)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">try</span></span><br><span class="line">   &#123;</span><br><span class="line">     io_service.run();</span><br><span class="line">     <span class="keyword">break</span>; <span class="comment">// run() exited normally</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">catch</span> (my_exception&amp; e)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="comment">// Deal with exception as appropriate.</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>类定义如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> io_service : <span class="keyword">private</span> noncopyable</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">typedef</span> detail::io_service_impl <span class="keyword">impl_t</span>ype;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">class</span> detail::win_iocp_overlapped_ptr;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">class</span> work;</span><br><span class="line">  <span class="keyword">friend</span> <span class="keyword">class</span> work;</span><br><span class="line">  <span class="keyword">class</span> id;</span><br><span class="line">  <span class="keyword">class</span> service;</span><br><span class="line">  <span class="keyword">class</span> strand;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//io_service上并发调用run的线程数</span></span><br><span class="line">  <span class="function">ASIO_DECL <span class="keyword">explicit</span> <span class="title">io_service</span><span class="params">(<span class="built_in">std</span>::size_t concurrency_hint)</span></span>;</span><br><span class="line">  ASIO_DECL ~io_service();</span><br><span class="line"></span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> run();  <span class="comment">//抛异常版本</span></span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> run(asio::error_code&amp; ec);<span class="comment">//不抛异常版本</span></span><br><span class="line"></span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> run_one();</span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> run_one(asio::error_code&amp; ec);</span><br><span class="line"></span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> poll();</span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> poll(asio::error_code&amp; ec);</span><br><span class="line"></span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> poll_one();</span><br><span class="line">  ASIO_DECL <span class="built_in">std</span>::<span class="keyword">size_t</span> poll_one(asio::error_code&amp; ec);</span><br><span class="line"></span><br><span class="line">  <span class="function">ASIO_DECL <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">ASIO_DECL <span class="keyword">bool</span> <span class="title">stopped</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">  <span class="function">ASIO_DECL <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//post一个handler到asio，由工作线程执行，等待handler执行完成</span></span><br><span class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> CompletionHandler&gt;</span><br><span class="line">  ASIO_INITFN_RESULT_TYPE(CompletionHandler, <span class="keyword">void</span> ())</span><br><span class="line">  dispatch(ASIO_MOVE_ARG(CompletionHandler) handler);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//post一个handler到asio，由工作线程执行，马上返回</span></span><br><span class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> CompletionHandler&gt;</span><br><span class="line">  ASIO_INITFN_RESULT_TYPE(CompletionHandler, <span class="keyword">void</span> ())</span><br><span class="line">  post(ASIO_MOVE_ARG(CompletionHandler) handler);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    detail::winsock_init&lt;&gt; init_;</span><br><span class="line">  <span class="comment">// The service registry.</span></span><br><span class="line">  asio::detail::service_registry* service_registry_;</span><br><span class="line">  <span class="comment">// The implementation.</span></span><br><span class="line">  <span class="keyword">impl_t</span>ype&amp; impl_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="asio::io_service::work">asio::io_service::work</h2><p>io_service的辅助类，解决io_service::run函数在没有pending的任务时，就返回的问题<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">asio::io_service svc;</span><br><span class="line">asio::io_service::<span class="function">work <span class="title">work</span><span class="params">(svc)</span></span>;  </span><br><span class="line">asio::error_code err;</span><br><span class="line">svc.run(err);       因为有work对象，run函数没有任务时也不会返回，只有显示svc.stop时才返回</span><br></pre></td></tr></table></figure></p>
-<h1 id="使用asio创建一个基本TCP_server">使用asio创建一个基本TCP server</h1><h2 id="asio初始化+创建侦听任务">asio初始化+创建侦听任务</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> asio::ip::tcp::socket       tcp_socket;</span><br><span class="line"><span class="keyword">typedef</span> asio::ip::tcp::acceptor     tcp_acceptor;</span><br><span class="line"><span class="keyword">typedef</span> asio::ip::tcp::endpoint     tcp_endpoint;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TCP连接上下文</span></span><br><span class="line"><span class="keyword">struct</span> CONNECTION</span><br><span class="line">&#123;</span><br><span class="line">    tcp_socket  sock;</span><br><span class="line">    <span class="keyword">char</span>        recv_buf[<span class="number">1500</span>];</span><br><span class="line">    CONNECTION(asio::io_service&amp; io_service):sock(io_service)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">asio::io_service* svc = NULL;</span><br><span class="line">tcp_acceptor*  acceptor = NULL;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">//创建io_service</span></span><br><span class="line">    svc = <span class="keyword">new</span> asio::io_service;</span><br><span class="line">    acceptor = <span class="keyword">new</span> tcp_acceptor(*svc);</span><br><span class="line">    tcp_endpoint address =tcp_endpoint(ip::address_v4::from_string(<span class="string">"127.0.0.1"</span>, <span class="number">80</span>);    </span><br><span class="line">    error_code err;</span><br><span class="line">    acceptor-&gt;open(address.protocol(),err);</span><br><span class="line">    acceptor-&gt;set_option(tcp_acceptor::reuse_address(<span class="keyword">true</span>), err);<span class="comment">//端口复用</span></span><br><span class="line">    acceptor-&gt;bind(address, err);</span><br><span class="line">    acceptor-&gt;listen(<span class="number">64</span>, err);</span><br><span class="line"></span><br><span class="line">    do_accept();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="提交异步accept请求">提交异步accept请求</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">do_accept</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    CONNECTION* cnn = <span class="keyword">new</span> CONNECTION(*svc);</span><br><span class="line">    acceptor-&gt;async_accept(cnn-&gt;sock, boost::bind(on_accept, cnn, _1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="异步accept完成回调">异步accept完成回调</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_accept</span><span class="params">(CONNECTION* cnn, error_code err)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( err )   <span class="comment">//accept错误? 一般没发现过</span></span><br><span class="line">    &#123;</span><br><span class="line">        error_code err1;</span><br><span class="line">        cnn-&gt;sock.shutdown(asio::socket_base::shutdown_both, err1);</span><br><span class="line">        <span class="keyword">delete</span> cnn;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">//accept连接成功 接收数据</span></span><br><span class="line">    &#123;</span><br><span class="line">        cnn-&gt;sock.async_read_some(asio::buffer((<span class="keyword">void</span>*)cnn-&gt;recv_buf, <span class="keyword">sizeof</span>(cnn-&gt;recv_buf)),bind(on_recv, cnn, _1, _2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    do_accept(); <span class="comment">//提交下一个accept请求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="处理client端发送过来的数据">处理client端发送过来的数据</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_recv</span><span class="params">(CONNECTION* cnn, error_code err, size_t bytes)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( err )   <span class="comment">//recv错误? </span></span><br><span class="line">    &#123;</span><br><span class="line">        error_code err1;</span><br><span class="line">        cnn-&gt;sock.shutdown(asio::socket_base::shutdown_both, err1);</span><br><span class="line">        <span class="keyword">delete</span> cnn;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//<span class="doctag"><span class="keyword">TODO</span></span>("解析读取到的数据");</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//需要向client发送数据时</span></span><br><span class="line">    asio::async_write(cnn-&gt;sock, asio::buffer((<span class="keyword">void</span>*)buf-&gt;buffer, buf-&gt;len), bind(on_send, cnn, buf, _1, _2));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="进入异步asio循环">进入异步asio循环</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">start_loop</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    asio::io_service::<span class="function">work <span class="title">work</span><span class="params">(*svc)</span></span>;  </span><br><span class="line">    asio::error_code err;</span><br><span class="line">    svc-&gt;run(err);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>至此，一个基本的TCP server已经成型了，http server也是一个TCP服务器，只不过在其基础上增加了HTTP协议。HTTP协议解析不需要我们自己实现了，因为现在开源HTTP协议解析库一大堆，这里我选择<a href="https://github.com/joyent/http-parser" target="_blank" rel="external">http_parser</a>协议库,为什么选择http_parser，是因为它相当轻量级，功能完善，它一个解析上下文不到50字节，内部使用状态机模型，解决了组包解析等问题。大名鼎鼎的Node.js就是使用它做http协议解析。</p>
-<h2 id="http_parser使用">http_parser使用</h2><p>首先需要填充http_parser_settings结构体，主要是为了向http_parser传入一组回调函数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*http_data_cb)</span> <span class="params">(http_parser*, <span class="keyword">const</span> <span class="keyword">char</span> *at, size_t length)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*http_cb)</span> <span class="params">(http_parser*)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> http_parser_settings &#123;</span><br><span class="line">  http_cb      on_message_begin;    <span class="comment">//http消息开始回调</span></span><br><span class="line">  http_data_cb on_url;              <span class="comment">//接收url</span></span><br><span class="line">  http_data_cb on_status;           <span class="comment">//接收状态码</span></span><br><span class="line">  http_data_cb on_header_field;     <span class="comment">//接收HTTP头key</span></span><br><span class="line">  http_data_cb on_header_value;     <span class="comment">//接收HTTP头value</span></span><br><span class="line">  http_cb      on_headers_complete; <span class="comment">//header结束</span></span><br><span class="line">  http_data_cb on_body;             <span class="comment">//body数据</span></span><br><span class="line">  http_cb      on_message_complete; <span class="comment">//http消息结束</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>我们在init函数中添加如下代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g_Options.on_body               = on_req_body;</span><br><span class="line">g_Options.on_header_field       = on_req_header_filed;</span><br><span class="line">g_Options.on_header_value       = on_req_header_value;</span><br><span class="line">g_Options.on_headers_complete   = on_req_header_complete;</span><br><span class="line">g_Options.on_message_begin      = on_req_message_begin;</span><br><span class="line">g_Options.on_message_complete   = on_req_message_complete;</span><br><span class="line">g_Options.on_url                = on_req_url;</span><br><span class="line">g_Options.on_status             = NULL;</span><br></pre></td></tr></table></figure></p>
-<p>http_parser结构体是http解析时的上下文</p>
-<p>我们向CONNECTION结构体添加http_parser状态<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> CONNECTION</span><br><span class="line">&#123;</span><br><span class="line">    tcp_socket  sock;</span><br><span class="line">    http_parser parser;         <span class="comment">//HTTP协议解析上下文</span></span><br><span class="line">    <span class="built_in">string</span>      uri;            <span class="comment">//保存client请求的URI</span></span><br><span class="line">    <span class="keyword">char</span>        recv_buf[<span class="number">1500</span>];</span><br><span class="line">    CONNECTION(asio::io_service&amp; io_service):sock(io_service)</span><br><span class="line">    &#123;</span><br><span class="line">        http_parser_init(&amp;parser, HTTP_REQUEST);    <span class="comment">//初始化parser</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>在on_recv函数中，我们增加http_parser对接收数据的处理<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_recv</span><span class="params">(CONNECTION* cnn, error_code err, size_t bytes)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( err )   <span class="comment">//recv错误? </span></span><br><span class="line">    &#123;</span><br><span class="line">        error_code err1;</span><br><span class="line">        cnn-&gt;sock.shutdown(asio::socket_base::shutdown_both, err1);</span><br><span class="line">        <span class="keyword">delete</span> cnn;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//调用http_parser解析recv buffer</span></span><br><span class="line">    <span class="keyword">int</span> tmpparsed = http_parser_execute(&amp;cnn-&gt;parser, &amp;g_Options, cnn-&gt;recv_buf, bytes);</span><br><span class="line">    <span class="comment">//不支持upgrade/非HTTP协议</span></span><br><span class="line">    <span class="keyword">if</span> (cnn-&gt;parser.upgrade || bytes != tmpparsed) </span><br><span class="line">    &#123;</span><br><span class="line">        error_code err1;</span><br><span class="line">        cnn-&gt;sock.shutdown(asio::socket_base::shutdown_both, err1);</span><br><span class="line">        <span class="keyword">delete</span> cnn;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="comment">//继续post read请求，从client端读取数据</span></span><br><span class="line">    &#123;</span><br><span class="line">        cnn-&gt;sock.async_read_some(asio::buffer((<span class="keyword">void</span>*)cnn-&gt;recv_buf, <span class="keyword">sizeof</span>(cnn-&gt;recv_buf)),bind(on_recv, cnn, _1, _2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>http_parser_execute传入cnn-&gt;parser(解析上下文)、g_Options(一组回调函数), recv_buf+bytes(接收缓冲区)</p>
-<p>在on_req_url回调函数中,保存request uri<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">on_req_url</span><span class="params">(http_parser* parser, <span class="keyword">const</span> <span class="keyword">char</span> *at, size_t length)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    CONNECTION* cnn = CONTAINING_RECORD(parser ,CONNECTION, parser);</span><br><span class="line">    cnn-&gt;uri.append(at, length);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>当on_req_message_complete回调函数被调用时，说明已经接收到一个完整的http请求了，可以处理这个request了.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">on_req_message_complete</span><span class="params">(http_parser* parser)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    CONNECTION* cnn = CONTAINING_RECORD(parser ,CONNECTION, parser);</span><br><span class="line">    on_new_request(cnn);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>on_new_request决定服务器应该相应client端什么内容<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_new_request</span><span class="params">(CONNECTION* cnn)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    transform(cnn-&gt;uri.begin(), cnn-&gt;uri.end(), cnn-&gt;uri.begin(), <span class="built_in">tolower</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">char</span> szHelloMessage[] = </span><br><span class="line">        <span class="string">"HTTP/1.1 200 OK\r\n"</span></span><br><span class="line">        <span class="string">"Connection: keep-alive\r\n"</span></span><br><span class="line">        <span class="string">"Server: uxfork\r\n"</span></span><br><span class="line">        <span class="string">"Content-Length: 18\r\n"</span></span><br><span class="line">        <span class="string">"\r\n"</span></span><br><span class="line">        <span class="string">"hello http server!"</span>;</span><br><span class="line">    </span><br><span class="line">    asio::async_write(cnn-&gt;sock, asio::buffer((<span class="keyword">void</span>*)szHelloMessage, <span class="built_in">strlen</span>(szHelloMessage)), bind(on_send, cnn, buf, _1, _2));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>一个精简的http服务器就完成了，是不是很简单？ 使用asio库，可以同时处理大量TCP连接，简单高效。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/asio/">asio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
 	</div>
 
-      
+          
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
   
-    <article id="post-Markdown-CheatSheet" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/11/Markdown-CheatSheet/" class="article-date">
-  	<time datetime="2015-06-11T06:16:51.000Z" itemprop="datePublished">2015-06-11</time>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/06/11/Markdown-CheatSheet/" class="archive-article-date">
+  	<time datetime="2015-06-11T06:16:51.000Z" itemprop="datePublished">6月 11</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/11/Markdown-CheatSheet/">Markdown-Cheat-sheet</a>
+      <a class="archive-article-title" href="/2015/06/11/Markdown-CheatSheet/">Markdown-Cheat-sheet</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Sample_Markdown_Cheat_Sheet">Sample Markdown Cheat Sheet</h1><p>This is a sample markdown file to help you write Markdown quickly :)</p>
-<p>If you use the fabulous <a href="http://sublimetext.com" target="_blank" rel="external">Sublime Text 2/3 editor</a> along with the <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">Markdown Preview plugin</a>, open your ST2 Palette with <code>CMD+⇧+P</code> then choose <code>Markdown Preview in browser</code> to see the result in your browser.</p>
-<h2 id="Text_basics">Text basics</h2><p>this is <em>italic</em> and this is <strong>bold</strong> .  another <em>italic</em> and another <strong>bold</strong></p>
-<p>this is <code>important</code> text. and percentage signs : % and <code>%</code></p>
-<p>This is a paragraph with a footnote (builtin parser only). [^note-id]</p>
-<p>Insert <code>[ TOC ]</code> without spaces to generate a table of contents (builtin parsers only).</p>
-<h2 id="Indentation">Indentation</h2><blockquote>
-<p>Here is some indented text</p>
-<blockquote>
-<p>even more indented</p>
-</blockquote>
-</blockquote>
-<h2 id="Titles">Titles</h2><h1 id="Big_title_(h1)">Big title (h1)</h1><h2 id="Middle_title_(h2)">Middle title (h2)</h2><h3 id="Smaller_title_(h3)">Smaller title (h3)</h3><h4 id="and_so_on_(hX)">and so on (hX)</h4><h5 id="and_so_on_(hX)-1">and so on (hX)</h5><h6 id="and_so_on_(hX)-2">and so on (hX)</h6><h2 id="Example_lists_(1)">Example lists (1)</h2><ul>
-<li>bullets can be <code>-</code>, <code>+</code>, or <code>*</code></li>
-<li>bullet list 1</li>
-<li><p>bullet list 2</p>
-<ul>
-<li>sub item 1</li>
-<li><p>sub item 2</p>
-<p>  with indented text inside</p>
-</li>
-</ul>
-</li>
-<li><p>bullet list 3</p>
-</li>
-</ul>
-<ul>
-<li>bullet list 4</li>
-</ul>
-<ul>
-<li>bullet list 5</li>
-</ul>
-<h2 id="Links">Links</h2><p>This is an <a href="http://lmgtfy.com/" target="_blank" rel="external">example inline link</a> and <a href="http://lmgtfy.com/" title="Hello, world" target="_blank" rel="external">another one with a title</a>.</p>
-<p>Links can also be reference based : <a href="http://revolunet.com" target="_blank" rel="external">reference 1</a> or <a href="http://revolunet.com" title="rich web apps" target="_blank" rel="external">reference 2 with title</a>.</p>
-<p>References are usually placed at the bottom of the document</p>
-<h2 id="Images">Images</h2><p>A sample image :</p>
-<p><img src="http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg" alt="revolunet logo" title="revolunet logo"></p>
-<p>As links, images can also use references instead of inline links :</p>
-<p><img src="http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg" alt="revolunet logo" title="revolunet logo"></p>
-<h2 id="Code">Code</h2><p>It’s quite easy to show code in markdown files.</p>
-<p>Backticks can be used to <code>highlight</code> some words.</p>
-<p>Also, any indented block is considered a code block.  If <code>enable_highlight</code> is <code>true</code>, syntax highlighting will be included (for the builtin parser - the github parser does this automatically).</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="coffeescript">
-    <span class="built_in">document</span>.location = <span class="string">'http://lmgtfy.com/?q=markdown+cheat+sheet'</span>;
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><h2 id="Math">Math</h2><p>When <code>enable_mathjax</code> is <code>true</code>, inline math can be included \(\frac{\pi}{2}\) $\pi$</p>
-<p>Alternatively, math can be written on its own line:</p>
-<p>$$F(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(t) \, e^{ - i \omega t}dt$$</p>
-<p>\[\int_0^1 f(t) \mathrm{d}t\]</p>
-<p>\[\sum_j \gamma_j^2/d_j\]</p>
-<h2 id="GitHub_Flavored_Markdown">GitHub Flavored Markdown</h2><p>If you use the Github parser, you can use some of <a href="http://github.github.com/github-flavored-markdown/" target="_blank" rel="external">Github Flavored Markdown</a> syntax :</p>
-<ul>
-<li>User/Project@SHA: revolunet/sublimetext-markdown-preview@7da61badeda468b5019869d11000307e07e07401</li>
-<li>User/Project#Issue: revolunet/sublimetext-markdown-preview#1</li>
-<li>User : @revolunet</li>
-</ul>
-<p>Some Python code :</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CardGame</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">""" a sample python class """</span></span><br><span class="line">    NB_CARDS = <span class="number">32</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, cards=<span class="number">5</span>)</span>:</span></span><br><span class="line">        self.cards = random.sample(range(self.NB_CARDS), <span class="number">5</span>)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'ready to play'</span></span><br></pre></td></tr></table></figure>
-<p>Some Javascript code :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">    duration: <span class="number">5</span>,</span><br><span class="line">    comment: <span class="string">'WTF'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// callbacks beauty un action</span></span><br><span class="line">async_call(<span class="string">'/path/to/api'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">    another_call(json, <span class="function"><span class="keyword">function</span>(<span class="params">result2</span>) </span>&#123;</span><br><span class="line">        another_another_call(result2, <span class="function"><span class="keyword">function</span>(<span class="params">result3</span>) </span>&#123;</span><br><span class="line">            another_another_another_call(result3, <span class="function"><span class="keyword">function</span>(<span class="params">result4</span>) </span>&#123;</span><br><span class="line">                alert(<span class="string">'And if all went well, i got my result :)'</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>The Github Markdown also brings some <a href="http://www.emoji-cheat-sheet.com/" target="_blank" rel="external">nice Emoji support</a> : :+1: :heart: :beer:</p>
-<p>[^note-id]: This is the text of the note. </p>
-<h2 id="Parsers_and_Extensions">Parsers and Extensions</h2><p>Markdown Preview comes with <strong>Python-Markdown</strong> preloaded.</p>
-<h3 id="Python-Markdown"><em>Python-Markdown</em></h3><p>The <a href="https://github.com/waylan/Python-Markdown" target="_blank" rel="external">Python-Markdown Parser</a> provides support for several extensions.</p>
-<h4 id="Extra_Extensions">Extra Extensions</h4><ul>
-<li><code>abbr</code> — <a href="http://pythonhosted.org/Markdown/extensions/abbreviations.html" target="_blank" rel="external">Abbreviations</a></li>
-<li><code>attr_list</code> — <a href="http://pythonhosted.org/Markdown/extensions/attr_list.html" target="_blank" rel="external">Attribute Lists</a></li>
-<li><code>def_list</code> — <a href="http://pythonhosted.org/Markdown/extensions/definition_lists.html" target="_blank" rel="external">Definition Lists</a></li>
-<li><code>fenced_code</code> — <a href="http://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html" target="_blank" rel="external">Fenced Code Blocks</a></li>
-<li><code>footnotes</code> — <a href="http://pythonhosted.org/Markdown/extensions/footnotes.html" target="_blank" rel="external">Footnotes</a></li>
-<li><code>tables</code> — <a href="http://pythonhosted.org/Markdown/extensions/tables.html" target="_blank" rel="external">Tables</a></li>
-<li><code>smart_strong</code> — <a href="http://pythonhosted.org/Markdown/extensions/smart_strong.html" target="_blank" rel="external">Smart Strong</a></li>
-</ul>
-<p>You can enable them all at once using the <code>extra</code> keyword.</p>
-<pre><code><span class="rule"><span class="attribute">extensions</span>:<span class="value"> [ <span class="string">'extra'</span> ]</span></span>
-</code></pre><p>If you want all the extras plus the <code>toc</code> extension,<br>your settings would look like this:</p>
-<pre><code>{
-    ...
-    <span class="atom">parser</span>: <span class="string">'markdown'</span>,
-    <span class="atom">extensions</span>: [<span class="string">'extra'</span>, <span class="string">'toc'</span>],
-    ...
-}
-</code></pre><h4 id="Other_Extensions">Other Extensions</h4><p>There are also some extensions that are not included in Markdown Extra<br>but come in the standard Python-Markdown library.</p>
-<ul>
-<li><code>code-hilite</code> — <a href="http://pythonhosted.org/Markdown/extensions/code_hilite.html" target="_blank" rel="external">CodeHilite</a></li>
-<li><code>html-tidy</code> — <a href="http://pythonhosted.org/Markdown/extensions/html_tidy.html" target="_blank" rel="external">HTML Tidy</a></li>
-<li><code>header-id</code> — <a href="http://pythonhosted.org/Markdown/extensions/header_id.html" target="_blank" rel="external">HeaderId</a></li>
-<li><code>meta_data</code> — <a href="http://pythonhosted.org/Markdown/extensions/meta_data.html" target="_blank" rel="external">Meta-Data</a></li>
-<li><code>nl2br</code> — <a href="http://pythonhosted.org/Markdown/extensions/nl2br.html" target="_blank" rel="external">New Line to Break</a></li>
-<li><code>rss</code> — <a href="http://pythonhosted.org/Markdown/extensions/rss.html" target="_blank" rel="external">RSS</a></li>
-<li><code>sane_lists</code> — <a href="http://pythonhosted.org/Markdown/extensions/sane_lists.html" target="_blank" rel="external">Sane Lists</a></li>
-<li><code>smarty</code> — <a href="https://pythonhosted.org/Markdown/extensions/smarty.html" target="_blank" rel="external">Smarty</a></li>
-<li><code>toc</code> — <a href="http://pythonhosted.org/Markdown/extensions/toc.html" target="_blank" rel="external">Table of Contents</a></li>
-<li><code>wikilinks</code> — <a href="http://pythonhosted.org/Markdown/extensions/wikilinks.html" target="_blank" rel="external">WikiLinks</a></li>
-</ul>
-<h4 id="3rd_Party_Extensions">3rd Party Extensions</h4><p><em>Python-Markdown</em> is designed to be extended.</p>
-<p>Some included ones are:</p>
-<ul>
-<li><code>delete</code> — github style delte support via <code>~~word~~</code></li>
-<li><code>githubemoji</code> —  github emoji support</li>
-<li><code>tasklist</code> — github style tasklists</li>
-<li><code>magiclink</code> — github style auto link conversion of http|ftp links</li>
-<li><code>headeranchor</code> — github style header anchor links</li>
-<li><code>github</code> — Adds the above extensions in one shot</li>
-<li><code>b64</code> — convert and embed local images to base64.  Setup by adding this <code>b64(base_path=${BASE_PATH})</code></li>
-</ul>
-<p>There are also a number of others available:</p>
-<p>Just fork this repo and add your extensions inside the <code>.../Packages/Markdown Preview/markdown/extensions/</code> folder.</p>
-<p>Check out the list of <a href="https://github.com/waylan/Python-Markdown/wiki/Third-Party-Extensions" target="_blank" rel="external">3rd Party extensions</a>.</p>
-<h4 id="Default_Extensions">Default Extensions</h4><p>The default extensions are:</p>
-<ul>
-<li><code>footnotes</code> — <a href="http://pythonhosted.org/Markdown/extensions/footnotes.html" target="_blank" rel="external">Footnotes</a></li>
-<li><code>toc</code> — <a href="http://pythonhosted.org/Markdown/extensions/toc.html" target="_blank" rel="external">Table of Contents</a></li>
-<li><code>fenced_code</code> — <a href="http://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html" target="_blank" rel="external">Fenced Code Blocks</a> </li>
-<li><code>tables</code> — <a href="http://pythonhosted.org/Markdown/extensions/tables.html" target="_blank" rel="external">Tables</a></li>
-</ul>
-<p>Use the <code>default</code> keyword, to select them all.<br>If you want all the defaults plus the <code>definition_lists</code> extension,<br>your settings would look like this:</p>
-<pre><code>{
-    ...
-    <span class="atom">parser</span>: <span class="string">'markdown'</span>,
-    <span class="atom">extensions</span>: [<span class="string">'default'</span>, <span class="string">'definition_lists'</span>],
-    ...
-}
-</code></pre><h2 id="Examples">Examples</h2><h3 id="Tables">Tables</h3><p>The <code>tables</code> extension of the <em>Python-Markdown</em> parser is activated by default,<br>but is currently <strong>not</strong> available in <em>Markdown2</em>.</p>
-<p>The syntax was adopted from the <a href="http://michelf.ca/projects/php-markdown/extra/#table" target="_blank" rel="external">php markdown project</a>,<br>and is also used in github flavoured markdown.</p>
-<table>
-<thead>
-<tr>
-<th>Year</th>
-<th>Temperature (low)</th>
-<th>Temperature (high)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1900</td>
-<td>-10</td>
-<td>25</td>
-</tr>
-<tr>
-<td>1910</td>
-<td>-15</td>
-<td>30</td>
-</tr>
-<tr>
-<td>1920</td>
-<td>-10</td>
-<td>32</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Wiki_Tables">Wiki Tables</h3><p>If you are using <em>Markdown2</em> with the <code>wiki-tables</code> extra activated you should see a table below:</p>
-<p>|| <em>Year</em> || <em>Temperature (low)</em> || <em>Temperature (high)</em> ||<br>||   1900 ||                 -10 ||                   25 ||<br>||   1910 ||                 -15 ||                   30 ||<br>||   1920 ||                 -10 ||                   32 ||  </p>
-<h3 id="Definition_Lists">Definition Lists</h3><p>This example requires <em>Python Markdown</em>‘s <code>def_list</code> extension.</p>
-<p>Apple<br>:   Pomaceous fruit of plants of the genus Malus in<br>    the family Rosaceae.</p>
-<p>Orange<br>:   The fruit of an evergreen tree of the genus Citrus.</p>
-<h2 id="About">About</h2><p>This plugin and this sample file is proudly brought to you by the <a href="http://revolunet.com" target="_blank" rel="external">revolunet team</a></p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
   
-    <article id="post-markdown-learn1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/10/markdown-learn1/" class="article-date">
-  	<time datetime="2015-06-10T09:15:30.000Z" itemprop="datePublished">2015-06-10</time>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/06/10/markdown-learn1/" class="archive-article-date">
+  	<time datetime="2015-06-10T09:15:30.000Z" itemprop="datePublished">6月 10</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/10/markdown-learn1/">markdown学习笔记</a>
+      <a class="archive-article-title" href="/2015/06/10/markdown-learn1/">markdown学习笔记</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-_标题设置(改变字体大小)">1. 标题设置(改变字体大小)</h1><p>在文本开头添加N个#代表N级标题</p>
-<h1 id="2-_引用块">2. 引用块</h1><p>通过在文字开头添加>表示块引用.(当>和文字之间添加五个空格时，块注释的文字会有变化)</p>
-<blockquote>
-<pre><code>这是带5个空格的引用
-</code></pre><p>这是不带5个空格的引用</p>
-</blockquote>
-<h1 id="3-_斜体">3. 斜体</h1><p>将需要设置为斜体的文字两端使用1个*或者_夹起来<br><em>斜体内容1</em><br><em>斜体内容2</em></p>
-<h1 id="4-_粗体">4. 粗体</h1><p>将需要设置为斜体的文字两端使用2个**或者__夹起来<br><strong>这是粗体内容</strong></p>
-<h1 id="5-_无序列表">5. 无序列表</h1><p>在文字开头添加(*, +, 或-)实现无序列表。但是要注意在(*, +, 或-)和文字之间需要添加空格(建议：一个文档中只是用一种无序列表的表示方式)</p>
-<ul>
-<li>内容1</li>
-<li>内容2</li>
-<li>内容3</li>
-</ul>
-<h1 id="6-_有序列表">6. 有序列表</h1><p>使用数字后面跟上句号.加空格 例如1. 内容1</p>
-<ol>
-<li>内容1</li>
-<li>内容2</li>
-<li>内容3</li>
-</ol>
-<h1 id="7-_链接（Links）">7. 链接（Links）</h1><p>Markdown中有两种方式，实现链接，分别为内联方式和引用方式。</p>
-<blockquote>
-<p>内联方式：This is an <a href="http://example.com/" target="_blank" rel="external">引用链接1</a>.<br>引用方式：[引用链接1][1] than from [引用链接2][2] </p>
-<p>[1]: <a href="http://google.com/" target="_blank" rel="external">http://google.com/</a>        “Google”</p>
-<p>[2]: <a href="http://search.yahoo.com/" target="_blank" rel="external">http://search.yahoo.com/</a>  “Yahoo Search”</p>
-</blockquote>
-<p><a href="http://www.baidu.com" target="_blank" rel="external">这是百度链接1</a></p>
-<h1 id="8-_图片（Images）">8. 图片（Images）</h1><p>图片的处理方式和链接的处理方式，非常的类似。</p>
-<blockquote>
-<p>内联方式：![图片1](/path/to/img.jpg “Title”)<br>引用方式：![图片1][id] </p>
-<p>[id]: /path/to/img.jpg “Title”</p>
-<p>![图片1](/images/1.png “测试图片添加”)<br><img src="/images/1.png" alt="图片1" title="测试图片添加"></p>
-</blockquote>
-<h1 id="9-_数学公式">9. 数学公式</h1><p>＼[J<em>\alpha(x) = \sum</em>{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}＼]</p>
-<p>Simple inline $a = b + c$.</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
   
-    <article id="post-Markdown-Preview" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/10/Markdown-Preview/" class="article-date">
-  	<time datetime="2015-06-10T09:15:30.000Z" itemprop="datePublished">2015-06-10</time>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/06/10/Markdown-Preview/" class="archive-article-date">
+  	<time datetime="2015-06-10T09:15:30.000Z" itemprop="datePublished">6月 10</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/10/Markdown-Preview/">Markdown Preview</a>
+      <a class="archive-article-title" href="/2015/06/10/Markdown-Preview/">Markdown Preview</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Package_Control_Messages">Package Control Messages</h1><h2 id="Markdown_Preview:">Markdown Preview:</h2><h1 id="Sublime_Text_2/3_Markdown_Preview">  Sublime Text 2/3 Markdown Preview</h1><p>  Preview and build your markdown files quickly in your web browser from sublime text 2/3. </p>
-<p>  You can use builtin <a href="https://github.com/waylan/Python-Markdown" target="_blank" rel="external">python-markdown</a> parser or use the <a href="http://developer.github.com/v3/markdown" target="_blank" rel="external">github markdown API</a> for the conversion.</p>
-<p>  <strong>NOTE:</strong> If you choose the GitHub API for conversion (set parser: github in your settings), your code will be sent through https to github for live conversion. You’ll have <a href="http://github.github.com/github-flavored-markdown/" target="_blank" rel="external">Github flavored markdown</a>, syntax highlighting and EMOJI support for free :heart: :octocat: :gift:. If you make more than 60 calls a day, be sure to set your GitHub API key in the settings :). You can also get most of this in the default Markdown parser with by enabling certain extensions; see “<a href="#parsing-github-flavored-markdown-">Parsing Github Flavored Markdown</a>“” below for more information.</p>
-<p>  <strong>LINUX users:</strong> If you want to use GitHub API for conversion, you’ll need to have a custom Python install that includes python-ssl as its not built in the Sublime Text 2 Linux package. see <a href="https://github.com/revolunet/sublimetext-markdown-preview/issues/27#issuecomment-11772098" target="_blank" rel="external">@dusteye comment</a>. If you use a custom window manager, also be sure to set a <code>BROWSER</code> environment variable. see <a href="https://github.com/revolunet/sublimetext-markdown-preview/issues/78#issuecomment-15644727" target="_blank" rel="external">@PPvG comments</a></p>
-<h2 id="Features_:">Features :</h2><ul>
-<li>Markdown preview using the <a href="https://github.com/waylan/Python-Markdown" target="_blank" rel="external">Python-markdown</a> or the Github API just choose select the build commands.</li>
-<li>Syntax highlighting via Pygments. See “<a href="#configuring-pygments">Configuring Pygments</a>“ for more info.</li>
-<li>Build markdown file using Sublime Text build system. The build parser are config via the <code>&quot;parser&quot;</code> config.</li>
-<li>Browser preview auto reload on save if you have the <a href="https://github.com/dz0ny/LiveReload-sublimetext2" target="_blank" rel="external">ST2 LiveReload plugin</a> installed.</li>
-<li>Builtin parser : supports <code>abbr</code>, <code>attr_list</code>, <code>def_list</code>, <code>fenced_code</code>, <code>footnotes</code>, <code>tables</code>, <code>smart_strong</code>, <code>smarty</code>,  <code>wikilinks</code>, <code>meta</code>, <code>sane_lists</code>, <code>codehilite</code>, <code>nl2br</code>, and <code>toc</code> markdown extensions.</li>
-<li>CSS search path for local and build-in CSS files (always enabled) and/or CSS overriding if you need</li>
-<li>YAML support thanks to @tommi</li>
-<li>Clipboard selection and copy to clipboard thanks to @hexatrope</li>
-<li>MathJax support : \\(\frac{\pi}{2}\\) thanks to @bps10</li>
-<li>HTML template customisation thanks to @hozaka</li>
-<li>Embed images as base64 (see <a href="https://github.com/revolunet/sublimetext-markdown-preview/blob/master/MarkdownPreview.sublime-settings" target="_blank" rel="external">settings</a> file for more info)</li>
-<li>Strip out multimarkdown critic marks (see <a href="https://github.com/revolunet/sublimetext-markdown-preview/blob/master/MarkdownPreview.sublime-settings" target="_blank" rel="external">settings</a> file for more info)</li>
-<li><p>3rd party extensions for the Python Markdown parser:</p>
-<p> | Extension | Documentation |<br> |—————-|———————-|<br> | magiclink | Find and convert HTML links and email address to links (<a href="http://facelessuser.github.io/PyMdown/Extensions/MagicLink.html" target="_blank" rel="external">MagicLink Documentation</a>). |<br> | delete | Surround inline text with <code>~~crossed out~~</code> to get del tags <del>crossed out</del>. |<br> | insert | Surround inline text with <code>^^underlined^^</code> to get ins tags <ins>underlined</ins>. |<br> | tasklist | Github Flavored Markdown tasklists (<a href="http://facelessuser.github.io/PyMdown/Extensions/Tasklist.html" target="_blank" rel="external">Tasklist Documentation</a>). |<br> | githubemoji | Support for Github Flavored Markdown emojis (<a href="http://facelessuser.github.io/PyMdown/Extensions/GithubEmoji.html" target="_blank" rel="external">GithubEmoji Documentation</a>). |<br> | headeranchor | Github Flavored Markdown style header anchors (<a href="http://facelessuser.github.io/PyMdown/Extensions/HeaderAnchor.html" target="_blank" rel="external">HeaderAnchor Documentation</a>). |<br> | github | A convenience extension to add: <code>magiclink</code>, <code>delete</code>, <code>tasklist</code>, <code>githubemoji</code>, <code>headeranchor</code>, <code>superfences</code>, and <code>nl2br</code> to parse and display Markdown in a github-ish way.  It is recommed to pair <code>github</code> with <code>extra</code> and <code>codehilite</code> (with language guessing off) to parse close to github’s way.  Be aware of what extensions <code>github</code> loads, because you should not load extensions more than once. |<br> | progressbar | Create progress bars (<a href="http://facelessuser.github.io/PyMdown/Extensions/ProgressBar.html" target="_blank" rel="external">ProgressBar Documentation</a>). |<br> | superfences | Allow fenced blocks to be nested under lists, blockquotes, etc. and add special UML diagram blocks (<a href="http://facelessuser.github.io/PyMdown/Extensions/SuperFences.html" target="_blank" rel="external">SuperFences Documentation</a>). |</p>
-<h2 id="Installation_:">Installation :</h2><h3 id="Using_Package_Control_(Recommended)">Using <a href="https://sublime.wbond.net/" target="_blank" rel="external">Package Control</a> (<em>Recommended</em>)</h3><p>For all Sublime Text 2/3 users we recommend install via <a href="https://sublime.wbond.net/" target="_blank" rel="external">Package Control</a>.</p>
-<ol>
-<li><a href="https://sublime.wbond.net/installation" target="_blank" rel="external">Install</a> Package Control if you haven’t yet.</li>
-<li>Use <code>cmd+shift+P</code> then <code>Package Control: Install Package</code></li>
-<li>Look for <code>Markdown Preview</code> and install it.</li>
-</ol>
-<h3 id="Manual_Install">Manual Install</h3><ol>
-<li>Click the <code>Preferences &gt; Browse Packages…</code> menu</li>
-<li>Browse up a folder and then into the <code>Installed Packages/</code> folder</li>
-<li>Download <a href="https://github.com/revolunet/sublimetext-markdown-preview/archive/master.zip" target="_blank" rel="external">zip package</a> rename it to <code>Markdown Preview.sublime-package</code> and copy it into the <code>Installed Packages/</code> directory</li>
-<li>Restart Sublime Text</li>
-</ol>
-<h2 id="Usage_:">Usage :</h2><h3 id="To_preview_:">To preview :</h3></li>
-<li><p>optionally select some of your markdown for conversion</p>
-</li>
-<li>use <code>cmd+shift+P</code> then <code>Markdown Preview</code> to show the follow commands (you will be prompted to select which parser you prefer):<ul>
-<li>Markdown Preview: Preview in Browser</li>
-<li>Markdown Preview: Export HTML in Sublime Text</li>
-<li>Markdown Preview: Copy to Clipboard</li>
-<li>Markdown Preview: Open Markdown Cheat sheet</li>
-</ul>
-</li>
-<li>or bind some key in your user key binding, using a line like this one:<br><code>{ &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: {&quot;target&quot;: &quot;browser&quot;, &quot;parser&quot;:&quot;markdown&quot;} },</code> for a specific parser and target or <code>{ &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview_select&quot;, &quot;args&quot;: {&quot;target&quot;: &quot;browser&quot;} },</code> to bring up the quick panel to select enabled parsers for a given target.</li>
-<li><p>once converted a first time, the output HTML will be updated on each file save (with LiveReload plugin)</p>
-<h3 id="To_build_:">To build :</h3></li>
-<li><p>Just use <code>Ctrl+B</code> (Windows/Linux) or <code>cmd+B</code> (Mac) to build current file.</p>
-<h3 id="To_config_:">To config :</h3><p>Using Sublime Text menu: <code>Preferences</code>-&gt;<code>Package Settings</code>-&gt;<code>Markdown Preview</code></p>
-<ul>
-<li><code>Settings - User</code> is where you change your settings for Markdown Preview.</li>
-<li><code>Settings - Default</code> is a good reference with detailed descriptions for each setting.</li>
-</ul>
-<h3 id="Configuring_Pygments">Configuring Pygments</h3><p>If you add the codehilite extension manually in the enabled extensions, you can override some of the default settings.</p>
-<ul>
-<li>Turn language guessing <em>on</em> or <em>off</em> (<em>on</em> will highlight fenced blocks even if you don’t specify a language)  <code>codehilite(guess_lang=False)</code> (True|False).</li>
-<li>Show line numbers: <code>codehilite(linenums=True)</code> (True|False).</li>
-<li>Change the higlight theme: <code>codehilite(pygments_style=emacs)</code>.</li>
-<li>Inline the CSS: <code>codehilite(noclasses=True)</code> (True|False).</li>
-<li>Use multiple: <code>codehilite(linenums=True, pygments_style-emacs)</code>.</li>
-</ul>
-<p>See <a href="https://pythonhosted.org/Markdown/extensions/code_hilite.html" target="_blank" rel="external">codehilte page</a> for more info.</p>
-<h3 id="Meta_Data_Support">Meta Data Support</h3><p>When the <code>meta</code> extension is enabled (<a href="https://pythonhosted.org/Markdown/extensions/meta_data.html" target="_blank" rel="external">https://pythonhosted.org/Markdown/extensions/meta_data.html</a>), the results will be written to the HTML head in the form <code>&lt;meta name=&quot;key&quot; content=&quot;value1,value2&quot;&gt;</code>.  <code>title</code> is the one exception, and its content will be written to the title tag in the HTML head.</p>
-<h3 id="YAML_Frontmatter_Support">YAML Frontmatter Support</h3><p>YAML frontmatter can be stripped out and read when <code>strip_yaml_front_matter</code> is set to  <code>true</code> in the settings file.  In general the, the fronmatter is handled the same as <a href="#meta-data-support">meta data</a>, but if both exist in a file, the YAML keys will override the <code>meta</code> extension keys.  There are a few special keys names that won’t be handled as html meta data.</p>
-<h4 id="Special_YAML_Key_Names">Special YAML Key Names</h4><p>Yaml frontmatter has a few special key names that are used that will not be handled as meta data:</p>
-<ul>
-<li><strong>basepath</strong>: An absolute path to configure the relative paths for images etc. (for when the markdown is supposed to reference images in a different location.)</li>
-<li><strong>references</strong>: Can take a file path or an array of file paths for separate markdown files containing references, footnotes, etc.  Can be an absolute path or relative path.  Relative paths first use the source file’s directory, and if the file cannot be found, it will use the <code>basepath</code> setting.</li>
-<li><strong>destination</strong>: This is an absolute file path or relative file path for when the markdown is saved to html via the build command or the <code>Save to HTML</code> command.  Relative paths first use the source file’s directory, and if the file cannot be found, it will use the <code>basepath</code> setting.</li>
-<li><strong>settings</strong>: This is a dictionary where you can override settings that are in the settings file.</li>
-</ul>
-<h4 id="Example">Example</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---&#10;    # Builtin values&#10;    references:&#10;        - references.md&#10;        - abbreviations.md&#10;        - footnotes.md&#10;&#10;    destination: destination.html&#10;&#10;    # Meta Data&#10;    title: Test Page&#10;    author:&#10;        - John Doe&#10;        - Jane Doe&#10;&#10;    # Settings overrides&#10;    settings:&#10;        enabled_extensions:&#10;        - extra&#10;        - github&#10;        - toc&#10;        - headerid&#10;        - smarty(smart_quotes=False) # smart quotes interferes with attr_list&#10;        - meta&#10;        - wikilinks&#10;        - admonition&#10;        - codehilite(guess_lang=False,pygments_style=github)&#10;---</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Parsing_Github_Flavored_Markdown_:">Parsing Github Flavored Markdown :</h3><p>  Github Flavored Mardown (GFM) is a very popular markdown.  Markdown Preview can actually handle them in a couple of ways: online and offline.</p>
-<h4 id="Online_:">Online :</h4><p>  Parsing GFM using the online method requires using the Github API as the parser.  It may also require setting <code>github_mode</code> to <code>gfm</code> to get things like tasklists to render properly.</p>
-<h4 id="Offline_:">Offline :</h4><p>  By default almost all extensions are enabled to help with the github feel, but there are some tweaks needed to get the full experience.</p>
-<p>  GFM does not auto guess language in fenced blocks, but Markdown Preview does this by default.  You can fix this in one of two ways:</p>
-<ol>
-<li>Disable auto language guessing in the settings file <code>&quot;guess_language&quot;: false,</code></li>
-<li>Or if you are manually defining extensions: <code>&quot;enabled_extensions&quot;: [&quot;codehilite(guess_lang=False,pygments_style=github)&quot;]</code></li>
-</ol>
-<p>  As mentioned earlier, almost all extensions are enabled by default, but as a reference, the minimum extensions that should be enabled are listed below:</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"enabled_extensions"</span>: [</span><br><span class="line">    <span class="string">"extra"</span>,</span><br><span class="line">    <span class="string">"github"</span>,</span><br><span class="line">    <span class="string">"codehilite(guess_lang=False,pygments_style=github)"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>  This may be further enhanced in the future.</p>
-<h2 id="Support_:">Support :</h2><ul>
-<li>Any bugs about Markdown Preview please feel free to report <a href="https://github.com/revolunet/sublimetext-markdown-preview/issues" target="_blank" rel="external">here</a>.</li>
-<li>And you are welcome to fork and submit pullrequests.</li>
-</ul>
-<h2 id="License_:">License :</h2><p>  The code is available at github <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="external">project</a> under <a href="http://revolunet.mit-license.org" target="_blank" rel="external">MIT licence</a>.</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
   
   
+    </div></section>
+  
+
+    
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -726,9 +315,9 @@
     	<div class="footer-left">
     		&copy; 2015 uxfork
     	</div>
-      	<div class="footer-right">
+<!--       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+      	</div> -->
     </div>
   </div>
 </footer>
