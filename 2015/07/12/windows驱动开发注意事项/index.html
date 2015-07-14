@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows驱动开发注意事项 | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务
+2.含IoSetCompletionRoutine调用的驱动不能动态unloaded因为驱动unload前，所有pending IRP必须都调用completion函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows驱动开发注意事项">
+<meta property="og:url" content="http://localhost:4000/2015/07/12/windows驱动开发注意事项/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务
+2.含IoSetCompletionRoutine调用的驱动不能动态unloaded因为驱动unload前，所有pending IRP必须都调用completion函数">
+<meta property="og:updated_time" content="2015-07-12T04:17:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows驱动开发注意事项">
+<meta name="twitter:description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务
+2.含IoSetCompletionRoutine调用的驱动不能动态unloaded因为驱动unload前，所有pending IRP必须都调用completion函数">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-windows驱动开发注意事项" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/12/windows驱动开发注意事项/" class="article-date">
+  	<time datetime="2015-07-12T04:16:16.000Z" itemprop="datePublished">2015-07-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows驱动开发注意事项
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-Nt函数与Zw函数区别"><strong>1.Nt函数与Zw函数区别</strong></h1><p>在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0<br>在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务</p>
+<h1 id="2-含IoSetCompletionRoutine调用的驱动不能动态unloaded"><strong>2.含IoSetCompletionRoutine调用的驱动不能动态unloaded</strong></h1><p>因为驱动unload前，所有pending IRP必须都调用completion函数<br>支持安全卸载，请调用IoSetCompletionRoutineEx</p>
+<h1 id="3-Irp-&gt;CurrentLocation为1时如何设置完成回调"><strong>3.Irp-&gt;CurrentLocation为1时如何设置完成回调</strong></h1><p>Irp-&gt;CurrentLocation为1，表示栈空间只剩一个了，只能IoSkipCurrentIrpStackLocation，而它不能与IoSetCompletionRoutine同时调用(直接覆盖了上层驱动的completion函数)。<br>如何解决？<br>先保存上层驱动的completion函数和参数?<br>然后再调用IoSetCompletionRoutine，在完成函数中记得恢复上层函数的completion函数</p>
+<h1 id="4-IoMarkIrpPending调用注意事项"><strong>4.IoMarkIrpPending调用注意事项</strong></h1><p>在dispatch例程中，若需要对当前IRP做更多处理，则需要调用IoMarkIrpPending，pend该IRP，以免被IO管理器、其他驱动IoCompleteRequest完成该IRP(会导致IRP释放)</p>
+<p>在dispatch例程中调用IoMarkIrpPending后，必须返回STATUS_PENDING(<strong>驱动的返回值意义不大? 确实如此，可能IoCallDriver还没返回时，completion函数已经调用了，这时系统不知道IoCallDriver的返回值</strong>)</p>
+<p>若驱动要对IRP排队处理，在入队前，必须IoMarkIrpPending，否则可能在入队时IRP已经被释放、重用</p>
+<p>若驱动设置了IRP的IoCompletion，并call lower driver，则在IoCompletion回调中，需检查IRP-&gt;PendingReturned标记，若为true，需调用IoMarkIrpPending告诉上层驱动IRP处于pending中(<strong>pending标记上传</strong>)</p>
+<p>协议栈顶层驱动的IoCompletion不能去调用IoMarkIrpPending，因为没有顶层驱动的stack location，导致访问异常</p>
+<p>若call lower driver后并wait on an event，在IoCompletion中，signal event并返回STATUS_MORE_PROCESSING_REQUIRED(告诉IO管理器IoCompleteRequest后，不要马上free irp，而是等call driver返回后再free)</p>
+<h1 id="5-IRP完成函数注意事项"><strong>5.IRP完成函数注意事项</strong></h1><p>IoCompletion完成函数在DISPATCH_LEVEL上运行，不能访问分页指针.<br>IoCompletion函数可以check the IRP’s I/O status block检查lower driver执行结果<br>若irp在DispatchRoutine中分配(IoAllocateIrp/IoBuildAsynchronousFsdRequest),IoCompletion中需要IoFreeIrp</p>
+<h1 id="6-IRP结构"><strong>6.IRP结构</strong></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> _IRP &#123;</span><br><span class="line">    CSHORT Type;</span><br><span class="line">    USHORT Size;</span><br><span class="line">    <span class="comment">//direct I/O中 内存MDL</span></span><br><span class="line">    PMDL MdlAddress;</span><br><span class="line">    <span class="comment">//各种标识符</span></span><br><span class="line">    ULONG Flags;</span><br><span class="line">    <span class="comment">//执行结果</span></span><br><span class="line">    IO_STATUS_BLOCK IoStatus;</span><br><span class="line">    <span class="comment">//ring0 ring3 ?</span></span><br><span class="line">    KPROCESSOR_MODE RequestorMode;</span><br><span class="line">    BOOLEAN PendingReturned;</span><br><span class="line">    <span class="comment">//驱动调用栈数目</span></span><br><span class="line">    CHAR StackCount;</span><br><span class="line">    <span class="comment">//调用栈帧</span></span><br><span class="line">...</span><br><span class="line">&#125; IRP;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">PIO_STACK_LOCATION <span class="title">IoGetCurrentIrpStackLocation</span><span class="params">(__in PIRP Irp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Irp-&gt;Tail.Overlay.CurrentStackLocation;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">PIO_STACK_LOCATION <span class="title">IoGetNextIrpStackLocation</span><span class="params">(__in PIRP Irp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((Irp)-&gt;Tail.Overlay.CurrentStackLocation - <span class="number">1</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IoMarkIrpPending(__inout PIRP Irp)&#123;</span><br><span class="line">    IoGetCurrentIrpStackLocation( (Irp) )-&gt;Control |= SL_PENDING_RETURNED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">IoSetCompletionRoutine</span><span class="params">(</span><br><span class="line">    __in PIRP Irp,</span><br><span class="line">    __in_opt PIO_COMPLETION_ROUTINE CompletionRoutine,</span><br><span class="line">    __in_opt __drv_aliasesMem PVOID Context,</span><br><span class="line">    __in BOOLEAN InvokeOnSuccess,</span><br><span class="line">    __in BOOLEAN InvokeOnError,</span><br><span class="line">    __in BOOLEAN InvokeOnCancel)</span></span>&#123;</span><br><span class="line">    PIO_STACK_LOCATION irpSp;</span><br><span class="line"></span><br><span class="line">    irpSp = IoGetNextIrpStackLocation(Irp);</span><br><span class="line">    irpSp-&gt;CompletionRoutine = CompletionRoutine;</span><br><span class="line">    irpSp-&gt;Context = Context;</span><br><span class="line">    irpSp-&gt;Control = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (InvokeOnSuccess) &#123;</span><br><span class="line">        irpSp-&gt;Control = SL_INVOKE_ON_SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (InvokeOnError) &#123;</span><br><span class="line">        irpSp-&gt;Control |= SL_INVOKE_ON_ERROR;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (InvokeOnCancel) &#123;</span><br><span class="line">        irpSp-&gt;Control |= SL_INVOKE_ON_CANCEL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">注意:IoSetCompletionRoutine不安全，所有IRP完成之前，驱动不能被卸载，支持安全卸载请调用<span class="function">IoSetCompletionRoutineEx</span><br><span class="line"></span><br><span class="line">VOID <span class="title">IoSetNextIrpStackLocation</span> <span class="params">(__inout PIRP Irp)</span></span>&#123;</span><br><span class="line">    Irp-&gt;CurrentLocation--;</span><br><span class="line">    Irp-&gt;Tail.Overlay.CurrentStackLocation--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">IoCopyCurrentIrpStackLocationToNext</span><span class="params">(__inout PIRP Irp)</span></span>&#123;</span><br><span class="line">    PIO_STACK_LOCATION irpSp;</span><br><span class="line">    PIO_STACK_LOCATION nextIrpSp;</span><br><span class="line">    irpSp = IoGetCurrentIrpStackLocation(Irp);</span><br><span class="line">    nextIrpSp = IoGetNextIrpStackLocation(Irp);</span><br><span class="line">    RtlCopyMemory( nextIrpSp, irpSp, FIELD_OFFSET(IO_STACK_LOCATION, CompletionRoutine));</span><br><span class="line">    nextIrpSp-&gt;Control = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">IoSkipCurrentIrpStackLocation</span> <span class="params">(__inout PIRP Irp)</span></span>&#123;</span><br><span class="line">    Irp-&gt;CurrentLocation++;</span><br><span class="line">    Irp-&gt;Tail.Overlay.CurrentStackLocation++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="6-cancel_safe_irp_queue"><strong>6.cancel safe irp queue</strong></h1><p>难点：IRP的一些内部状态维护困难,主要是在Dispatch函数与Completion函数中同步，最好用微软提供的现成稳定框架<br><a href="https://msdn.microsoft.com/en-us/library/windows/hardware/ff540755.aspx" target="_blank" rel="external">cancel safe irp queue</a></p>
+<h1 id="7-最好用MmProbeAndLockPages而不是MmIsAddressValid"><strong>7.最好用MmProbeAndLockPages而不是MmIsAddressValid</strong></h1><p>MmIsAddressValid只是判断调用时刻内存地址状态，随后状态可能会改变<br>MmProbeAndLockPages调用会确保地址有效</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/12/miniport文件过滤驱动/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          miniport文件过滤驱动
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/10/linux下一些有用的工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux下一些有用的工具</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
