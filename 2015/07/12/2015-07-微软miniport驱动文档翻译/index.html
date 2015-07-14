@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>linux下一些有用的工具 | 技术人生</title>
+  <title>微软miniport驱动文档翻译 | 技术人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
+  <meta name="description" content="微软miniport驱动原始文档地址http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/FilterDriverDeveloperGuide.doc
+1.概述本文所述适用于本地、网络文件系统与IO管理器之间的过滤驱动。对于文件系统与磁盘驱动之间的过滤驱动并不适用。例如FtDisk、DMI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux下一些有用的工具">
-<meta property="og:url" content="http://localhost:4000/2015/07/10/linux下一些有用的工具/index.html">
+<meta property="og:title" content="微软miniport驱动文档翻译">
+<meta property="og:url" content="http://localhost:4000/2015/07/12/2015-07-微软miniport驱动文档翻译/index.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
-<meta property="og:updated_time" content="2015-07-10T09:37:06.000Z">
+<meta property="og:description" content="微软miniport驱动原始文档地址http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/FilterDriverDeveloperGuide.doc
+1.概述本文所述适用于本地、网络文件系统与IO管理器之间的过滤驱动。对于文件系统与磁盘驱动之间的过滤驱动并不适用。例如FtDisk、DMI">
+<meta property="og:updated_time" content="2015-07-12T12:50:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux下一些有用的工具">
-<meta name="twitter:description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
+<meta name="twitter:title" content="微软miniport驱动文档翻译">
+<meta name="twitter:description" content="微软miniport驱动原始文档地址http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/FilterDriverDeveloperGuide.doc
+1.概述本文所述适用于本地、网络文件系统与IO管理器之间的过滤驱动。对于文件系统与磁盘驱动之间的过滤驱动并不适用。例如FtDisk、DMI">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -149,11 +152,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-linux下一些有用的工具" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015-07-微软miniport驱动文档翻译" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/10/linux下一些有用的工具/" class="article-date">
-  	<time datetime="2015-07-10T09:36:13.000Z" itemprop="datePublished">2015-07-10</time>
+      <a href="/2015/07/12/2015-07-微软miniport驱动文档翻译/" class="article-date">
+  	<time datetime="2015-07-12T12:50:02.000Z" itemprop="datePublished">2015-07-12</time>
 </a>
     </div>
   
@@ -166,7 +169,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      linux下一些有用的工具
+      微软miniport驱动文档翻译
     </h1>
   
 
@@ -175,7 +178,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开源/">开源</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
 
         
@@ -186,15 +189,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-arpspoof(ARP欺骗：中间人攻击)">1.arpspoof(ARP欺骗：中间人攻击)</h1><p>redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic on a switch. kernel IP forwarding (or a userland program which accomplishes the same, e.g. fragrouter :-) must be turned on ahead of time.</p>
-<p>场景如下：<br>在一个LAN中，A、B为主机，R为路由器。常规情况下：<br>A所有外发TCP数据都先经过R转发。<br>A所有接收TCP数据都由R转发给自己。</p>
-<p><strong>B want to sniff A outbound traffic</strong><br>B周期性向A发送arp欺骗response包(告诉A，我是R)<br>A发送给R的数据发送给了B，由B转发给R</p>
-<p><strong>B want to sniff A inbound traffic</strong><br>B周期性向R发送arp欺骗response包(告诉R，我是A)<br>R发送给A的数据发送给了B，由B转发给A</p>
-<h1 id="2-dnsspoof(DNS劫持：中间人攻击)">2.dnsspoof(DNS劫持：中间人攻击)</h1><p>forge replies to arbitrary DNS address / pointer queries on the LAN. this is useful in bypassing hostname-based access controls, or in implementing a variety of man-in-the-middle attacks (HTTP, HTTPS, SSH, Kerberos, etc).<br>可以发送欺骗响应包(DNS请求:给伪造的IP; DNS反查请求:给伪造的host)<br>跟其他一些DNS劫持原理不一样<br>使用libpcap监控所有DNS请求，请求需要被劫持时，构造response包</p>
-<h1 id="3-tcpkill(TCP连接断开)">3.tcpkill(TCP连接断开)</h1><p>kills specified in-progress TCP connections (useful for libnids-based pplications which require a full TCP 3-whs for TCB creation).<br>原理很简单:发送一个伪造的FIN/RST包即可</p>
-<h1 id="4-tcpnice(TCP连接限速)">4.tcpnice(TCP连接限速)</h1><p>slow down specified TCP connections via “active” traffic shaping. forges tiny TCP window advertisements, and optionally ICMP source quench replies.<br>使用libpcap监控所有TCP数据包，并伪造一个精心构造的tiny TCP window包，改变其TCP滑动窗口。<br>或者使用libpcap发送伪造的ICMP source quench(源冷却)响应消息，来降低速度<br>维基百科对<a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Source_quench" target="_blank" rel="external">source quench</a>定义<br><strong>Source quench</strong><br>Source Quench requests that the sender decrease the rate of messages sent to a router or host. This message may be generated if a router or host does not have sufficient buffer space to process the request, or may occur if the router or host buffer is approaching its limit.</p>
-<h1 id="5-webmitm(http、https透明代理)">5.webmitm(http、https透明代理)</h1><p>HTTP / HTTPS monkey-in-the-middle. transparently proxies and sniffs web traffic redirected by dnsspoof(8), capturing most “secure” SSL-encrypted webmail logins and form submissions.<br>支持http、https的透明代理服务器</p>
-<h1 id="6-iptables">6.iptables</h1><p>Linux下网络过滤大神器，内置到Linux内核中，支持各种复杂配置，例如ipforward nat等</p>
+        <h1 id="微软miniport驱动原始文档地址">微软miniport驱动原始文档地址</h1><p><a href="http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/FilterDriverDeveloperGuide.doc" target="_blank" rel="external">http://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/FilterDriverDeveloperGuide.doc</a></p>
+<h1 id="1-概述">1.概述</h1><p>本文所述适用于本地、网络文件系统与IO管理器之间的过滤驱动。对于文件系统与磁盘驱动之间的过滤驱动并不适用。例如FtDisk、DMIO。<br>我们将讲述一种新的文件系统过滤驱动：minifilter<br>legacy filters是指：基于IRP、设备过滤的文件系统过滤驱动。<br>minifilter驱动中，minifilter管理器是以legacy filter实现的，并内置到windows系统中<br>minifilter框架相比传统框架，有如下优势：<br>•   简单、稳定、开发难度低.<br>•   支持动态加载卸载、attach、detach.<br>•   在设备栈中绑定到合适的位置.<br>•   上下文管理：高效、清晰、稳定的上下文管理，用于file object、streams、files、instances、volumes.<br>•   A host of utility routines including support for looking up names and caching them for efficient access, communication between minifilters and user mode services, and IO queuing.<br>•   Support non-recursive I/O so minifilter generated I/O can easily be seen only by lower minifilters and the file system.<br>•   Filter only operations of interest to minifilter – unlike the legacy model where a filter has to hook every entry point to pass through operation.</p>
+<h1 id="2-术语">2.术语</h1><p>Filter: 文件系统过滤驱动<br>Volume: 本地文件系统中的volume<br>Instance: filter驱动在一个卷设备上的instance. 同一个卷设备上可以有多个instance.例如：FileSpy<br>Stream: 一个文件中的stream<br>FileObject: .<br>CallbackData:  包含一次operation的所有相关信息，类似一个IRP.</p>
+<h1 id="3-Minifilter_Installation">3.Minifilter Installation</h1><p>CreateService创建驱动时，DependOnService设置为FltMgr<br>设置一组注册表值<br>SYSTEM\CurrentControlSet\Services\Instance下<br>DefaultInstance：SYSTEM\CurrentControlSet\Services\Instance<br>Altitude<br>Flags</p>
+<h1 id="4-_Minifilter_Registration">4. Minifilter Registration</h1><p>DriverEntry函数中调用FltRegisterFilter</p>
+<h1 id="5-_Initiating_filtering">5. Initiating filtering</h1><p>调用FltStartFiltering</p>
+<h1 id="6-_Instance_Notification_Support">6. Instance Notification Support</h1><p>A set of callbacks are provided to notify a minifilter when an instance is being created or torn down.  Through these callbacks, the minifilter can control when instances are attached and detached from volumes.</p>
 
       
     </div>
@@ -204,18 +205,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/07/12/windows驱动开发注意事项/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/13/2015-07-windows下内核对象过滤新方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          windows驱动开发注意事项
+          windows下内核对象过滤新方法
         
       </div>
     </a>
   
   
-    <a href="/2015/07/08/asio使用命名管道/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">asio使用命名管道</div>
+    <a href="/2015/07/12/2015-07-miniport文件过滤驱动/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">miniport文件过滤驱动</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

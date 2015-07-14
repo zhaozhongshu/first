@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windbg调试技巧 | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Evaluating Expressionswindbg支持MASM、C++两种表达式，默认使用MASM表达式，在MASM表达式中，所有符号都被当作地址处理.C++表达式中，符号都有实际的数据类型信息.
+
+.expr /s C++   切换到C++表达式.?? (C++表达式) ??后面内容当作C++表达式处理watch/locals windows使用C++表达式一些extension comm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windbg调试技巧">
+<meta property="og:url" content="http://localhost:4000/2015/07/14/2015-07-windbg调试技巧/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="Evaluating Expressionswindbg支持MASM、C++两种表达式，默认使用MASM表达式，在MASM表达式中，所有符号都被当作地址处理.C++表达式中，符号都有实际的数据类型信息.
+
+.expr /s C++   切换到C++表达式.?? (C++表达式) ??后面内容当作C++表达式处理watch/locals windows使用C++表达式一些extension comm">
+<meta property="og:updated_time" content="2015-07-14T10:29:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windbg调试技巧">
+<meta name="twitter:description" content="Evaluating Expressionswindbg支持MASM、C++两种表达式，默认使用MASM表达式，在MASM表达式中，所有符号都被当作地址处理.C++表达式中，符号都有实际的数据类型信息.
+
+.expr /s C++   切换到C++表达式.?? (C++表达式) ??后面内容当作C++表达式处理watch/locals windows使用C++表达式一些extension comm">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-07-windbg调试技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/14/2015-07-windbg调试技巧/" class="article-date">
+  	<time datetime="2015-07-14T01:46:30.000Z" itemprop="datePublished">2015-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windbg调试技巧
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试/">调试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Evaluating_Expressions">Evaluating Expressions</h1><p>windbg支持MASM、C++两种表达式，默认使用MASM表达式，<strong>在MASM表达式中，所有符号都被当作地址处理.<br>C++表达式中，符号都有实际的数据类型信息</strong>.</p>
+<blockquote>
+<p>.expr /s C++   切换到C++表达式.<br>?? (C++表达式) ??后面内容当作C++表达式处理<br>watch/locals windows使用C++表达式<br>一些extension commands只支持MASM表达式</p>
+</blockquote>
+<p>一些案例</p>
+<p><strong>条件断点</strong><br>下面是一条bp + MASM表达式的条件断点,数字默认是16进制，0n开头是10进制</p>
+<blockquote>
+<p>0:000&gt; bp MyFunction+0x43 “j ( poi(MyVar)&gt;0n20 ) ‘’; ‘gc’” </p>
+</blockquote>
+<p>若MyVar在C代码中是一个整数变量，MASM把所有符号当作地址,必须要用poi(MyVar)取变量的值<br>j表达式为if、else表达式 j(expr) code1;code2<br>gc表示继续执行<br>上面语句含义:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( MyVar &gt; <span class="number">20</span> )&#123;</span><br><span class="line">    <span class="comment">//什么也不做,断下来了</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    gc; 表示<span class="keyword">continue</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在MyVar大于20的时候断下来</p>
+<p><strong>条件表达式</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>:<span class="number">000</span>&gt; ? ecx*(eax&gt;ebx) + <span class="number">7</span>*(eax&lt;ebx) + <span class="number">3</span>*(eax=ebx) </span><br><span class="line">?表示一条MASM表达式</span><br><span class="line">若eax大于ebx则表达式加ecx，若eax大于ebx，则表达式加<span class="number">7</span>，若eax==ebx则表达式加<span class="number">3</span>，因为MASM表达式中=是比较符不是赋值语句</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>:<span class="number">000</span>&gt; ?? @ecx*(<span class="keyword">int</span>)(@eax&gt;@ebx) + <span class="number">7</span>*(<span class="keyword">int</span>)(@eax&lt;@ebx) + <span class="number">3</span>*(<span class="keyword">int</span>)(@eax==@ebx) </span><br><span class="line">??表示一条C++表达式，在C++语法中,@表示紧跟寄存器</span><br></pre></td></tr></table></figure></p>
+<p>执行结果如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Current expression evaluator: MASM - Microsoft Assembler expressions</span><br><span class="line"><span class="number">0</span>:<span class="number">000</span>&gt; ? ecx*(eax&gt;ebx) + <span class="number">7</span>*(eax&lt;ebx) + <span class="number">3</span>*(eax=ebx)</span><br><span class="line">Evaluate expression: <span class="number">3</span> = <span class="number">00000000</span>`<span class="number">00000003</span></span><br><span class="line"><span class="number">0</span>:<span class="number">000</span>&gt; ?? @ecx*(<span class="keyword">int</span>)(@eax&gt;@ebx) + <span class="number">7</span>*(<span class="keyword">int</span>)(@eax&lt;@ebx) + <span class="number">3</span>*(<span class="keyword">int</span>)(@eax==@ebx)</span><br><span class="line"><span class="keyword">unsigned</span> int64 <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>C++表达式</strong><br>若myInt类型为ULONG32，且默认为MASM表达式解析<br>0:000&gt; ?? myInt     c++表达式<br>0:000&gt; dd myInt L1  MASM表达式<br>0:000&gt; ? myInt      MASM表达式myInt符号地址</p>
+<p><strong>C++/MASM混合</strong><br>在C++表达式中，你无法使用源码行号，@@()表示嵌入不同模式下的表达式，如下是在C++表达式中嵌入MASM表达式，判断MyPtr指针是否指向地址myfile.c:43</p>
+<blockquote>
+<p>0:000&gt; ?? MyPtr = @@( <code>myfile.c:43</code> )</p>
+</blockquote>
+<p>如下是在MASM表达式中嵌入C++表达式(Expression2为C++表达式)</p>
+<blockquote>
+<p>0:000&gt; .expr /s masm<br>0:000&gt; bp Expression1 + @@( Expression2 ) + Expression3<br>若myInt类型为ULONG64，要在myInt后面紧跟另一个ULONG64变量，C++表达式和MASM表达式下内存访问断点：<br>0:000&gt; ba r8 @@( &amp;myInt + 1 )<br>0:000&gt; ba r8 myInt + 8 </p>
+</blockquote>
+<p><strong>查看结构体</strong><br>C++表达式会把一些加寄存器pseudo-register转成响应的类型，例如$teb 转成 TEB*,@表示引用一个寄存器,$teb是个假寄存器</p>
+<blockquote>
+<p>kd&gt; ??  @$teb-&gt;ClientId.UniqueProcess </p>
+</blockquote>
+<h1 id="breakpoints">breakpoints</h1><blockquote>
+<p>bu 符号/DLL未加载时，设置对应断点，例如user32未加载，bu user32!MessageBoxW<br>bm 设置通配符断点，例如bm kernel32!Create*<br>ba 内存读写、执行断点 ba e4 xxx 执行断点 ba r4 xxx访问断点 ba w4 xxx写入断点<br>bu MyFunction+0x47 “.dump c:\mydump.dmp; g” 未加载符号断点，断下来后生成dump，并continue</p>
+</blockquote>
+<p><strong>内核调试中，要给某个用户进程下断点</strong><br>下断前，先切换进程地址空间到目标进程</p>
+<blockquote>
+<p>!process 0 0   打印当前所有进程<br>.process /i    目标进程EPROCESS 切换到目标进程<br>g;             等待切换到目标进程<br>!process       可以看到已经切换到目标进程了</p>
+</blockquote>
+<p>然后可以用bp、bm、bu、ba下断了</p>
+<h1 id="读写内存">读写内存</h1><p><strong>虚拟内存读写</strong><br>可以在memory windows中读写内存<br>也可以使用命令读写内存<br>读内存</p>
+<blockquote>
+<p>db<br>dw<br>dd<br>dq<br>du</p>
+</blockquote>
+<p>写内存</p>
+<blockquote>
+<p>eb<br>ew<br>ed<br>eq<br>eu</p>
+<p>dt     查看类型<br>ds     查看ANSI_STRING<br>dS     查看UNICODE_STRING<br>dl     查询单向双向链表<br>d*s    查看值且解析地址对应的符号 一般都用dps查看地址对应的符号<br>!address 查看地址信息<br>ln     查看与地址最接近的符号</p>
+<p>m Range Address 移动内存<br>f      填充内存块<br>c      比较内存块<br>s      查找内存<br>#[Pattern] [Address [ L Size ]]  在指定范围内查找指令流<br>a   addr 进入修改汇编指令模式 （退出汇编指令模式：ctrl+c 回车）</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">!address查看地址信息</span><br><span class="line"><span class="label"></span><br><span class="line">0:</span><span class="number">000</span>&gt; !address <span class="number">77782660</span> </span><br><span class="line"><span class="string">Usage:</span>                  Image</span><br><span class="line">Allocation <span class="string">Base:</span>        <span class="number">00000000</span>`<span class="number">77650000</span></span><br><span class="line">Base <span class="string">Address:</span>           <span class="number">00000000</span>`<span class="number">77782000</span></span><br><span class="line">End <span class="string">Address:</span>            <span class="number">00000000</span>`<span class="number">77783000</span></span><br><span class="line">Region <span class="string">Size:</span>            <span class="number">00000000</span>`<span class="number">00001000</span></span><br><span class="line"><span class="string">Type:</span>                   <span class="number">01000000</span>    MEM_IMAGE</span><br><span class="line"><span class="string">State:</span>                  <span class="number">00001000</span>    MEM_COMMIT</span><br><span class="line"><span class="string">Protect:</span>                <span class="number">00000004</span>    PAGE_READWRITE</span><br><span class="line">More <span class="string">info:</span>              lmv m ntdll</span><br><span class="line">More <span class="string">info:</span>              !lmi ntdll</span><br><span class="line">More <span class="string">info:</span>              ln <span class="number">0x77782660</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">main</span> ~~ <span class="keyword">main</span> + <span class="number">0x1000</span> 之间查找strlen函数调用</span><br><span class="line"><span class="comment"># "strlen" main L1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">main</span> ~~ <span class="keyword">main</span> + <span class="number">0x1000</span> 之间查找 call 指令</span><br><span class="line"><span class="comment"># "call" main L1000</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">使用a修改代码，想让fn1直接返回</span><br><span class="line"><span class="number">0</span>:<span class="number">002</span>&gt; uf fn1</span><br><span class="line">Flow analysis was incomplete, some code may be missing</span><br><span class="line"><span class="label">fn1:</span></span><br><span class="line"> <span class="number">2004</span> <span class="number">00000000</span>`<span class="number">0117</span>d410 <span class="number">55</span>              <span class="keyword">push</span>    rbp</span><br><span class="line"> <span class="number">2004</span> <span class="number">00000000</span>`<span class="number">0117</span>d411 <span class="number">8</span>bec            <span class="keyword">mov</span>     ebp,esp</span><br><span class="line"> <span class="number">2004</span> <span class="number">00000000</span>`<span class="number">0117</span>d413 <span class="number">6</span>aff            <span class="keyword">push</span>    <span class="number">0</span>FFFFFFFFFFFFFFFFh</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>:<span class="number">002</span>&gt; a 输入a回车，进入Input&gt;模式</span><br><span class="line"><span class="number">00000000</span>`<span class="number">776</span>a0590 </span><br><span class="line"></span><br><span class="line">直接输入<span class="keyword">ret</span>指令</span><br><span class="line"><span class="number">00000000</span>`<span class="number">776</span>a0590 <span class="keyword">ret</span></span><br><span class="line"><span class="keyword">ret</span></span><br><span class="line"></span><br><span class="line">ctrl+c 回车</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>:<span class="number">002</span>:x86&gt; uf fn1 </span><br><span class="line"><span class="label">fn1:</span></span><br><span class="line"> <span class="number">2004</span> <span class="number">0117</span>d410 c3 <span class="keyword">ret</span></span><br><span class="line"></span><br><span class="line"> 可以看到已经修改为<span class="keyword">ret</span>指令了</span><br></pre></td></tr></table></figure>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span>查找相邻符号</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>:<span class="number">000</span>&gt; <span class="built_in">ln</span> <span class="number">0</span>x77782660</span><br><span class="line"><span class="params">(<span class="number">00000000</span>`<span class="number">77782640</span>)</span>   ntdll<span class="built_in">!</span>PebLdr+<span class="number">0</span>x20   |  <span class="params">(<span class="number">00000000</span>`<span class="number">77782448</span>)</span>   ntdll<span class="built_in">!</span>LdrpNtDllDataTableEntry</span><br></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">m 移动内存块 0028eff0 ~ 0028eff0+8 到 <span class="number">0028f000</span></span><br><span class="line"></span><br><span class="line">0:000&gt; db 0028eff0 </span><br><span class="line"><span class="number">00000000`00</span>28eff0  00 60 fd ff ff <span class="number">07 00 00-50</span> <span class="number">26 78 77 00</span> 00 00 00  .`......P&amp;xw....</span><br><span class="line"><span class="number">00000000`00</span>28f000  <span class="number">50 26 78 77</span> <span class="number">00 00 00 00</span>-<span class="number">00 00 00 00</span> <span class="number">00 00 00 00</span>  P&amp;xw............</span><br><span class="line">0:000&gt; m 0028eff0 L<span class="number">8 0028f00</span>0  </span><br><span class="line">0:000&gt; db 0028eff0 </span><br><span class="line"><span class="number">00000000`00</span>28eff0  00 60 fd ff ff <span class="number">07 00 00-50</span> <span class="number">26 78 77 00</span> 00 00 00  .`......P&amp;xw....</span><br><span class="line"><span class="number">00000000`00</span>28f000  00 60 fd ff ff <span class="number">07 00 00-00</span> <span class="number">00 00 00 00</span> 00 00 00  .`..............</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">c比较内存块</span><br><span class="line"></span><br><span class="line">void <span class="function">main</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="value">char</span> rgBuf1<span class="attr_selector">[100]</span>;</span><br><span class="line">    <span class="value">char</span> rgBuf2<span class="attr_selector">[100]</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">0<span class="value">:<span class="number">000</span>&gt; c rgBuf1 L <span class="number">0</span>n100 rgBuf2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s查找内存</span><br><span class="line">s -u <span class="number">00000000</span> L7ffffff <span class="string">"notepad"</span>    在<span class="number">0</span> ~ <span class="number">7f</span>fffff内存段中查找宽字符串<span class="string">"notepad"</span></span><br><span class="line">s -a <span class="number">00000000</span> L7ffffff <span class="string">"notepad"</span>    在<span class="number">0</span> ~ <span class="number">7f</span>fffff内存段中查找字符串<span class="string">"notepad"</span></span><br><span class="line">s    <span class="number">00000000</span> L7ffffff <span class="number">48</span> <span class="number">65</span> <span class="number">6</span>c     在<span class="number">0</span> ~ <span class="number">7f</span>fffff内存段中查找二进制串<span class="number">48</span> <span class="number">65</span> <span class="number">6</span>c</span><br></pre></td></tr></table></figure>
+<p><strong>物理内存读写</strong><br>使用扩展指令读写物理内存</p>
+<blockquote>
+<p>!eb 写内存<br>!ed 写内存<br>!db<br>!dw<br>!dd<br>!search 搜索物理内存</p>
+</blockquote>
+<p><strong>读写符号值</strong></p>
+<blockquote>
+<p>0:000&gt; ? MyCounter<br>Evaluate expression: 1244892 = 0012fedc<br>0:000&gt; dd 0x0012fedc L1<br>0012fedc  00000052<br>0:000&gt; ed MyCounter 83  修改MyCounter值为83</p>
+</blockquote>
+<h1 id="调试多进程多线程时线程、进程的切换">调试多进程多线程时线程、进程的切换</h1><blockquote>
+<p>| 列出所有被调试进程(可以同时调试多个进程)<br>2:005&gt; |<em><br>2:005&gt; |. 显示当前活动进程<br>2:005&gt; |# 显示触发异常进程<br>2:005&gt; |2 显示2号进程<br>2:005&gt; |2s 切换到2号进程<br>~ 列出所有线程<br>0:001&gt; ~</em>kvnf 对所有线程应用命令kvnf<br>0:001&gt; ~. 列出active线程<br>0:001&gt; ~# 查看触发异常线程<br>0:001&gt; ~2 查看2号线程<br>0:001&gt; ~2s 切换到2号线程<br>0:001&gt; ~2n suspend 2号线程<br>0:001&gt; ~2m resume 2号线程<br>0:001&gt; ~2f freeze 2号线程<br>0:001&gt; ~2u unfreeze 2号线程<br>~e 对某条线程执行某个命令<br>0:001&gt; ~2e !gle 查看2号线程的last error<br>0:001&gt; ~*e !gle 查看所有线程的last error</p>
+</blockquote>
+<h1 id="内核模式下特有的调试技巧">内核模式下特有的调试技巧</h1><blockquote>
+<p>.crash 强制crash系统<br>.reboot 强制重启系统</p>
+</blockquote>
+<p>内核调试中，存在大量的进程、线程、stask、session等，首先需要理解5大context，才能更好的调试</p>
+<blockquote>
+<p>session context            用户上下文 用户session<br>process context             进程上下文 当前virtual address space属于哪个进程<br>user-mode address context   一般不直接设置,切换process context后，它也自动切换<br>register context            一般也叫做线程上下文<br>local context               局部变量上下文 一个线程stack中的一个frame</p>
+</blockquote>
+<p><strong>session context</strong></p>
+<blockquote>
+<p>!session 切换、查看session<br>!sprocess session上的进程<br>!spoolused session上使用的内存</p>
+</blockquote>
+<p><strong>process context</strong><br>每个进程都有自己单独的页目录(page directory)，用于记录本进程虚拟地址向物理地址的映射表。<br>在用户模式调试user-debugging中，当前晋城的process context是确定的，可以直接对当前进程地址空间做任意操作。<br>在kernel-debugging中，需要<strong>.process</strong>命令选择一个目标进程的page directory，来解析虚拟地址<br><strong>.process /i xxx</strong>同时还可以切换到目标进程的用户地址空间，kernel debugger可以设置用户进程断点。 </p>
+<blockquote>
+<p>!process 0 0 打印所有进程<br>!process 当前page directory对应的进程<br>.process /i xxx 切换到目标进程<br>.process /i /r xxx 切换到目标进程并reload ring3符号</p>
+</blockquote>
+<p><strong>Register Context</strong></p>
+<blockquote>
+<p>.cxr xxx   切换寄存器上下文(xxx为context record地址)<br>.ecxr       切换到触发异常的寄存器上下文<br>.thread /r /p xxx 切换到目标线程，并reload PTD，且reload user symbol<br>.trap       展示一个trap frame<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kd&gt; .thread /p /r 21b7b30 </span><br><span class="line"><span class="type">Implicit</span> thread is now 21b7b30</span><br><span class="line"><span class="type">Implicit</span> process is now 21b9830</span><br><span class="line">.cache forcedecodeuser done</span><br><span class="line">Loading User Symbols</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>local Context</strong></p>
+<blockquote>
+<p>.frame xx              切换到xx处的栈帧<br>!for_each_frame “xxx”   对所有栈帧执行xxx命令<br>!for_each_frame “x”     打印所有栈帧下的local变量 </p>
+</blockquote>
+<h1 id="Mapping_Driver_Files">Mapping Driver Files</h1><p>为了调试一个驱动，每次修改时，都需要把新驱动copy到目标机器指定目录，这样很麻烦低效，map用来解决这个问题<br>定义map规则文件d:\dbg\DemoSys.ini,文件内容如下:<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map</span><br><span class="line"><span class="command">\Systemroot</span><span class="command">\system</span>32<span class="command">\drivers</span><span class="command">\DemoSys</span>.sys <span class="special">#</span>目标机器旧驱动位置</span><br><span class="line">d:<span class="command">\dbg</span><span class="command">\DemoSys</span>.sys                       <span class="special">#</span>本机新驱动位置</span><br><span class="line">map</span><br><span class="line"><span class="command">\Systemroot</span><span class="command">\system</span>32<span class="command">\drivers</span><span class="command">\hao</span>123.sys <span class="special">#</span>目标机器旧驱动位置</span><br><span class="line">d:<span class="command">\dbg</span><span class="command">\hao</span>123.sys                       <span class="special">#</span>本机新驱动位置</span><br></pre></td></tr></table></figure></p>
+<p>加载map规则<br>.kdfiles d:\dbg\DemoSys.ini<br>以后目标机器每加载一个驱动前，都会先查询windbg是否需要更新该驱动，并从本机更新最新的驱动，保证每次加载的驱动都是最新</p>
+<h1 id="Debugger_Extensions">Debugger Extensions</h1><blockquote>
+<p>.load DLLName 加载插件dll<br>.unload DLLName 卸载插件DLL<br>.chain 列出所有已加载插件DLL<br>![dllname.]extension [arguments] 调用某个插件</p>
+</blockquote>
+<h1 id="应用层windbg远程调试">应用层windbg远程调试</h1><p>我们知道visual studio中有一个非常优秀的远程调试工具msvsmon.exe<br>windbg中同样也支持远程调试dbgsrv，调试步奏：</p>
+<blockquote>
+<p>1.拷贝dbgsrv.exe、dbghelp.dll、dbgeng.dll到目标目录<br>2.目标机执行dbgsrv.exe -t tcp:port=9999 在999端口上侦听<br>3.windbg -premote tcp:port=9999,server=192.168.220.145<br>4.attach自己想要调试的进程</p>
+</blockquote>
+<h1 id="Crash_Dump_Files">Crash Dump Files</h1><p><strong>Forcing a System Crash from the Keyboard</strong><br>With USB keyboards, you must enable the keyboard-initiated crash in the registry. In the registry key HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\kbdhid\Parameters, create a value named CrashOnCtrlScroll, and set it equal to a REG_DWORD value of 0x01.<br><strong>Hold down the rightmost CTRL key, and press the SCROLL LOCK key twice.</strong></p>
+<p>分析内核dump常用命令</p>
+<blockquote>
+<p>!drivers 7     展示所有加载的驱动，内存使用等信息<br>!kdext*.locks   所有锁<br>!locks<br>!memusage       内存使用<br>!vm             虚拟内存使用<br>!process 0 0    所有进程<br>!process 0 7    所有进程所有信息</p>
+</blockquote>
+<h1 id="其他一些常用命令汇总">其他一些常用命令汇总</h1><blockquote>
+<p>?      执行表达式<br>??      执行C++表达式<br>gc      从条件断点中continue<br>gh      从异常中continen，标记异常已被处理<br>gn      从异常中continue，标记异常未被处理<br>gu      执行到函数返回<br>p       单步<br>pa          单步执行到目标地址<br>.call       让目标进程执行目标函数<br>.chain      加载的插件DLL列表<br>.childdbg   调试子进程<br>.closehandle    关闭句柄<br>.closehandle -a 关闭进程所有句柄<br>.crash      强制蓝屏<br>.fnret      显示函数返回值</p>
+</blockquote>
+<h1 id="扩展命令汇总">扩展命令汇总</h1><blockquote>
+<p>!acl       打印一个ACL控制列表<br>!address    查看地址信息(内存分配、访问属性)<br>!analyze    分析异常信息<br>!chksym     检查某个符号有效性<br>!cppexr     计算一个C++表达式的值<br>!cpuid      CPUID信息<br>!cs -l -o   查看所有被占用锁对应线程信息<br>!dh         查看某个image的PE头<br>!dlls       查看进程加载的DLL列表<br>!dlls -v    查看进程加载的DLL列表+DLL版本信息<br>!envvar     展示环境变量<br>!exchain    打印callstack中的异常处理链<br>!for_each_frame     针对所有frame执行某条命令<br>!for_each_local     针对所有locals变量执行某条命令<br>!for_each_module    针对所有加载模块执行某条命令<br>!gle        当前线程 last error<br>!gs         检测/GS栈溢出<br>!handle     句柄信息<br>!heap       堆破坏分析<br>!htrace     句柄使用跟踪分析（打开、关闭、等）<br>!kuser      查看shared user-mode page (KUSER_SHARED_DATA)<br>!list       打印一个链表管理的所有元素<br>!lmi        查看一个DLL信息<br>!sd         打印一个security descriptor<br>!std_map    打印一个stdmap（貌似不起作用）<br>!stl        打印stl变量(貌似不起作用）<br>!tp         线程池信息</p>
+</blockquote>
+<p><strong>内核模式下有效的扩展</strong></p>
+<blockquote>
+<p>!apc       打印APC信息<br>!deadlock   死锁检测(需要结合app verifier使用)<br>!devhandles 打印一个设备对象上打开的所有handle<br>!devnode    打印设备树种一个、N个节点  !devnode 0 1打印整个设备树<br>!devobj     查看一个deviceobject信息<br>!devstack   查看一个设备对象相关设备栈<br>!dpa        内存池分配信息<br>!drvobj     驱动对象信息<br>!fileobj    查看FILE_OBJECT<br>!irp        查看一个irp对象<br>!irpfind    在非分页池中查找所有的irp对象<br>!locks      打印锁信息<br>!object     查看一个内核对象<br>!obtrace    跟踪一个内核对象使用情况(需要gflags中Object Reference Tracing开启)<br>!process    打印进程信息，使用!process 0 0查看所有进程,使用!process 81c802d0 7查看指定进程<br>!stacks     打印内核栈信息<br>!validatelist 校验一个地址是否为有效的LIST_ENTRY<br>!verifier   展示驱动verifier信息</p>
+</blockquote>
+<p><strong>用户模式下有效的扩展</strong></p>
+<blockquote>
+<p>!avrf      verifier信息<br>!critsec    查看一个critical_section的信息(先用!locks获取存在问题的锁)<br>!findstack  查找堆栈上包含指定符号的线程<br>!locks      分析死锁的神器 (不过没有!cs好用)<br>!runaway    分析CPU消耗高的神器<br>!threadtoken 查看线程TOKEN信息<br>!vadump     查看进程中虚拟内存分配情况</p>
+</blockquote>
+<p><strong>NDIS Extensions (Ndiskd.dll)</strong></p>
+<blockquote>
+<p>!ndiskd.dbglevel<br>!ndiskd.filters     所有filters<br>…</p>
+</blockquote>
+<p><strong>RPC Extensions (Rpcexts.dll)</strong></p>
+<h1 id="实际操作案例">实际操作案例</h1><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">打印一个对象的安全信息，例如\device\physicalmemory</span><br><span class="line"></span><br><span class="line">kd&gt; !object \device\physicalmemory</span><br><span class="line"><span class="string">Object:</span> e10018a8  <span class="string">Type:</span> (<span class="number">821</span>b5560) Section</span><br><span class="line"><span class="label">    ObjectHeader:</span> e1001890 (old version)</span><br><span class="line"><span class="label">    HandleCount:</span> <span class="number">0</span>  <span class="string">PointerCount:</span> <span class="number">2</span></span><br><span class="line">    Directory <span class="string">Object:</span> e100d670  <span class="string">Name:</span> PhysicalMemory</span><br><span class="line"></span><br><span class="line">kd&gt; dt nt!_OBJECT_HEADER e1001890</span><br><span class="line">   +<span class="number">0x000</span> <span class="string">PointerCount     :</span> <span class="number">0</span>n2</span><br><span class="line">   +<span class="number">0x004</span> <span class="string">HandleCount      :</span> <span class="number">0</span>n0</span><br><span class="line">   +<span class="number">0x004</span> <span class="string">NextToFree       :</span> (<span class="literal">null</span>) </span><br><span class="line">   +<span class="number">0x008</span> <span class="string">Type             :</span> <span class="number">0x821b5560</span> _OBJECT_TYPE</span><br><span class="line">   +<span class="number">0x00c</span> <span class="string">NameInfoOffset   :</span> <span class="number">0x10</span> <span class="string">''</span></span><br><span class="line">   +<span class="number">0x00d</span> <span class="string">HandleInfoOffset :</span> <span class="number">0</span> <span class="string">''</span></span><br><span class="line">   +<span class="number">0x00e</span> <span class="string">QuotaInfoOffset  :</span> <span class="number">0</span> <span class="string">''</span></span><br><span class="line">   +<span class="number">0x00f</span> <span class="string">Flags            :</span> <span class="number">0x32</span> <span class="string">'2'</span></span><br><span class="line">   +<span class="number">0x010</span> <span class="string">ObjectCreateInfo :</span> <span class="number">0x00000001</span> _OBJECT_CREATE_INFORMATION</span><br><span class="line">   +<span class="number">0x010</span> <span class="string">QuotaBlockCharged :</span> <span class="number">0x00000001</span> Void</span><br><span class="line">   +<span class="number">0x014</span> <span class="string">SecurityDescriptor :</span> <span class="number">0xe100e77b</span> Void</span><br><span class="line">   +<span class="number">0x018</span> <span class="string">Body             :</span> _QUAD</span><br><span class="line"></span><br><span class="line">该对象的安全描述符显示为<span class="number">0xe100e77b</span>，其低三位代表指针在本结构中的偏移量，实际SECURITY_DESCRIPTOR指针应该是 <span class="number">0xe100e77b</span> &amp; ~<span class="number">0x7</span> = <span class="number">0xe100e778</span></span><br><span class="line"></span><br><span class="line">kd&gt; !sd <span class="number">0xe100e778</span></span><br><span class="line">-&gt;<span class="string">Revision:</span> <span class="number">0x1</span></span><br><span class="line">-&gt;<span class="string">Sbz1    :</span> <span class="number">0x0</span></span><br><span class="line">-&gt;<span class="string">Control :</span> <span class="number">0x8004</span></span><br><span class="line">            SE_DACL_PRESENT</span><br><span class="line">            SE_SELF_RELATIVE</span><br><span class="line">-&gt;<span class="string">Owner   :</span> S-<span class="number">1</span>-<span class="number">5</span>-<span class="number">32</span>-<span class="number">544</span></span><br><span class="line">-&gt;<span class="string">Group   :</span> S-<span class="number">1</span>-<span class="number">5</span>-<span class="number">18</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> </span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;<span class="string">AclRevision:</span> <span class="number">0x2</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;<span class="string">Sbz1       :</span> <span class="number">0x0</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;<span class="string">AclSize    :</span> <span class="number">0x44</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;<span class="string">AceCount   :</span> <span class="number">0x2</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;<span class="string">Sbz2       :</span> <span class="number">0x0</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">0</span>]: -&gt;<span class="string">AceType:</span> ACCESS_ALLOWED_ACE_TYPE</span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">0</span>]: -&gt;<span class="string">AceFlags:</span> <span class="number">0x0</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">0</span>]: -&gt;<span class="string">AceSize:</span> <span class="number">0x14</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">0</span>]: -&gt;<span class="string">Mask :</span> <span class="number">0x000f001f</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">0</span>]: -&gt;<span class="string">SID:</span> S-<span class="number">1</span>-<span class="number">5</span>-<span class="number">18</span></span><br><span class="line"></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">1</span>]: -&gt;<span class="string">AceType:</span> ACCESS_ALLOWED_ACE_TYPE</span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">1</span>]: -&gt;<span class="string">AceFlags:</span> <span class="number">0x0</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">1</span>]: -&gt;<span class="string">AceSize:</span> <span class="number">0x18</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">1</span>]: -&gt;<span class="string">Mask :</span> <span class="number">0x0002000d</span></span><br><span class="line">-&gt;<span class="string">Dacl    :</span> -&gt;Ace[<span class="number">1</span>]: -&gt;<span class="string">SID:</span> S-<span class="number">1</span>-<span class="number">5</span>-<span class="number">32</span>-<span class="number">544</span></span><br><span class="line"></span><br><span class="line">-&gt;<span class="string">Sacl    :</span>  is NULL</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">内核调试器下，查看某个ring3进程死锁信息</span><br><span class="line"><span class="class">.process</span> /s /<span class="tag">i</span> xxx  切换到该进程上下文</span><br><span class="line">g</span><br><span class="line"><span class="class">.reload</span>             加载ring3符号</span><br><span class="line">!cs -l -o           查看占用锁的线程</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">查看进程句柄<span class="number">0x14</span>的信息</span><br><span class="line"><span class="number">0</span>:<span class="number">000</span>:x86&gt; !handle <span class="number">14</span> <span class="number">0xe</span></span><br><span class="line">Handle <span class="number">14</span></span><br><span class="line">  <span class="keyword">Attributes</span>    <span class="number">0</span></span><br><span class="line">  GrantedAccess <span class="number">0x9</span>:</span><br><span class="line">         <span class="keyword">None</span></span><br><span class="line">         QueryValue,EnumSubKey</span><br><span class="line">  HandleCount   <span class="number">2</span></span><br><span class="line">  PointerCount  <span class="number">3</span></span><br><span class="line">  Name          \REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\<span class="keyword">Image</span> <span class="keyword">File</span> Execution <span class="keyword">Options</span></span><br><span class="line">  Object Specific <span class="keyword">Information</span></span><br><span class="line">    Key last write time:  <span class="number">20</span>:<span class="number">03</span>:<span class="number">29.</span> <span class="number">5</span>/<span class="number">19</span>/<span class="number">2015</span></span><br><span class="line">    Key name <span class="keyword">Image</span> <span class="keyword">File</span> Execution <span class="keyword">Options</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">句柄使用分析</span><br><span class="line"><span class="change">!htrace -enable     开启跟踪（之后所有的句柄操作都会被记录下来）</span></span><br><span class="line"><span class="change">!htrace 14          查询14号句柄操作信息</span></span><br><span class="line"><span class="change">!htrace -disable    完成分析后关掉trace</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">分析设备对象的一些信息</span><br><span class="line">!devnode <span class="number">0</span> <span class="number">1</span> 打印整个设备树</span><br><span class="line">kd&gt; !devnode <span class="number">0</span> <span class="number">1</span></span><br><span class="line">Dumping IopRootDeviceNode (= <span class="number">0x821a4ee8</span>)</span><br><span class="line">DevNode <span class="number">0x821a4ee8</span> <span class="keyword">for</span> PDO <span class="number">0x821a4020</span></span><br><span class="line">  InstancePath is <span class="string">"HTREE\ROOT\0"</span></span><br><span class="line">  State = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">  Previous State = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line">  DevNode <span class="number">0x821a4b20</span> <span class="keyword">for</span> PDO <span class="number">0x821a4c68</span></span><br><span class="line">    InstancePath is <span class="string">"Root\ACPI_HAL\0000"</span></span><br><span class="line">    State = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">    Previous State = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line">    DevNode <span class="number">0x8219f570</span> <span class="keyword">for</span> PDO <span class="number">0x821a0de0</span></span><br><span class="line">      InstancePath is <span class="string">"ACPI_HAL\PNP0C08\0"</span></span><br><span class="line">      ServiceName is <span class="string">"ACPI"</span></span><br><span class="line">      State = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">      Previous State = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line">  DevNode <span class="number">0x821e73a8</span> <span class="keyword">for</span> PDO <span class="number">0x821e74f0</span></span><br><span class="line">    InstancePath is <span class="string">"Root\VMWVMCIHOSTDEV\0000"</span></span><br><span class="line">    ServiceName is <span class="string">"vmci"</span></span><br><span class="line">    State = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">    Previous State = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line"></span><br><span class="line">查看Root\VMWVMCIHOSTDEV\<span class="number">0000</span>设备对象详细信息</span><br><span class="line">kd&gt; !devnode <span class="number">0x821e73a8</span> </span><br><span class="line">DevNode <span class="number">0x821e73a8</span> <span class="keyword">for</span> PDO <span class="number">0x821e74f0</span></span><br><span class="line">  Parent <span class="number">0x821a4ee8</span>   Sibling <span class="number">0000000000</span>   Child <span class="number">0000000000</span></span><br><span class="line">  InstancePath is <span class="string">"Root\VMWVMCIHOSTDEV\0000"</span></span><br><span class="line">  ServiceName is <span class="string">"vmci"</span></span><br><span class="line">  State = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">  Previous State = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line">  StateHistory[<span class="number">07</span>] = DeviceNodeEnumerateCompletion (<span class="number">0x30d</span>)</span><br><span class="line">  StateHistory[<span class="number">06</span>] = DeviceNodeStarted (<span class="number">0x308</span>)</span><br><span class="line">  ...</span><br><span class="line">  Flags (<span class="number">0x00000131</span>)  DNF_MADEUP, DNF_ENUMERATED, </span><br><span class="line">                      DNF_IDS_QUERIED, DNF_NO_RESOURCE_REQUIRED</span><br><span class="line"></span><br><span class="line">想查看vmci设备都有哪些进程持有其句柄</span><br><span class="line">kd&gt; !devhandles <span class="number">0x821e74f0</span></span><br><span class="line"></span><br><span class="line">Checking handle table <span class="keyword">for</span> process <span class="number">0x81c72520</span></span><br><span class="line">Handle table at e1a5f000 with <span class="number">147</span> entries <span class="keyword">in</span> use</span><br><span class="line"></span><br><span class="line">PROCESS <span class="number">81</span>c72520  <span class="string">SessionId:</span> <span class="number">0</span>  <span class="string">Cid:</span> <span class="number">068</span>c    <span class="string">Peb:</span> <span class="number">7</span>ffde000  <span class="string">ParentCid:</span> <span class="number">0598</span></span><br><span class="line"><span class="label">    DirBase:</span> <span class="number">04040180</span>  <span class="string">ObjectTable:</span> e15a67b0  <span class="string">HandleCount:</span> <span class="number">147.</span></span><br><span class="line"><span class="label">    Image:</span> vmtoolsd.exe</span><br><span class="line"><span class="number">01</span><span class="string">b8:</span> <span class="string">Object:</span> <span class="number">81</span>b4ef90  <span class="string">GrantedAccess:</span> <span class="number">00120089</span> <span class="string">Entry:</span> e1a5f370</span><br><span class="line"><span class="string">Object:</span> <span class="number">81</span>b4ef90  <span class="string">Type:</span> (<span class="number">821</span>eb040) File</span><br><span class="line"><span class="label">    ObjectHeader:</span> <span class="number">81</span>b4ef78 (old version)</span><br><span class="line"><span class="label">        HandleCount:</span> <span class="number">1</span>  <span class="string">PointerCount:</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">PROCESS <span class="number">81</span>c72520  <span class="string">SessionId:</span> <span class="number">0</span>  <span class="string">Cid:</span> <span class="number">068</span>c    <span class="string">Peb:</span> <span class="number">7</span>ffde000  <span class="string">ParentCid:</span> <span class="number">0598</span></span><br><span class="line"><span class="label">    DirBase:</span> <span class="number">04040180</span>  <span class="string">ObjectTable:</span> e15a67b0  <span class="string">HandleCount:</span> <span class="number">147.</span></span><br><span class="line"><span class="label">    Image:</span> vmtoolsd.exe</span><br><span class="line"><span class="number">01</span><span class="string">c0:</span> <span class="string">Object:</span> <span class="number">81</span>b4eef8  <span class="string">GrantedAccess:</span> <span class="number">0012019</span>f <span class="string">Entry:</span> e1a5f380</span><br><span class="line"><span class="string">Object:</span> <span class="number">81</span>b4eef8  <span class="string">Type:</span> (<span class="number">821</span>eb040) File</span><br><span class="line"><span class="label">    ObjectHeader:</span> <span class="number">81</span>b4eee0 (old version)</span><br><span class="line"><span class="label">        HandleCount:</span> <span class="number">1</span>  <span class="string">PointerCount:</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">Checking handle table <span class="keyword">for</span> process <span class="number">0x81fe8a70</span></span><br><span class="line">Handle table at e1a78000 with <span class="number">65</span> entries <span class="keyword">in</span> use</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">//vmtoolsd.exe在vmci设备上持有两个句柄 81b4ef90 81b4eef8,这两个句柄猜测应该都是FILE_OBJECT</span></span><br><span class="line">kd&gt; !object <span class="number">81</span>b4ef90</span><br><span class="line"><span class="string">Object:</span> <span class="number">81</span>b4ef90  <span class="string">Type:</span> (<span class="number">821</span>eb040) File</span><br><span class="line"><span class="label">    ObjectHeader:</span> <span class="number">81</span>b4ef78 (old version)</span><br><span class="line"><span class="label">    HandleCount:</span> <span class="number">1</span>  <span class="string">PointerCount:</span> <span class="number">1</span></span><br><span class="line">kd&gt; !object <span class="number">81</span>b4eef8</span><br><span class="line"><span class="string">Object:</span> <span class="number">81</span>b4eef8  <span class="string">Type:</span> (<span class="number">821</span>eb040) File</span><br><span class="line"><span class="label">    ObjectHeader:</span> <span class="number">81</span>b4eee0 (old version)</span><br><span class="line"><span class="label">    HandleCount:</span> <span class="number">1</span>  <span class="string">PointerCount:</span> <span class="number">1</span></span><br><span class="line">果然都是file_object</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看设备堆栈</span><br><span class="line">kd&gt; !devstack <span class="number">0x821e74f0</span></span><br><span class="line">  !DevObj   !DrvObj            !DevExt   ObjectName</span><br><span class="line">  <span class="number">81</span>c9fc20  \Driver\vmci       <span class="number">81</span>c9fcd8  VMCIHostDev</span><br><span class="line">&gt; <span class="number">821e74</span>f0  \Driver\PnpManager <span class="number">821e75</span>a8  <span class="number">00000034</span></span><br><span class="line">!DevNode <span class="number">821e73</span><span class="string">a8 :</span></span><br><span class="line">  DeviceInst is <span class="string">"Root\VMWVMCIHOSTDEV\0000"</span></span><br><span class="line">  ServiceName is <span class="string">"vmci"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用<span class="exclamation_mark">!</span><span class="function_or_atom">findstack</span>查找包含符号<span class="variable">CWinThread</span>的线程堆栈</span><br><span class="line"><span class="exclamation_mark">!</span><span class="function_or_atom">sw</span> <span class="number">32</span> 切换到<span class="number">32</span>位模式</span><br><span class="line"><span class="exclamation_mark">!</span><span class="function_or_atom">findstack</span> <span class="variable">CWinThread</span></span><br></pre></td></tr></table></figure>
+<h1 id="windbg调试技巧">windbg调试技巧</h1><p><strong>学会使用!analyze -v </strong><br>分析问题第一步应该就是!analyze -v ，并仔细看一下给出的分析报告<br><strong>设置条件断点</strong></p>
+<blockquote>
+<p>bp/bm/bu xxx “j(exp1) ; ‘gc;’”<br>bp /t @$thread nt!ntopenfile 只在当前线程生效的断点($thread是个假寄存器，保存当前线程ID)</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/13/2015-07-windows下内核对象过滤新方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">windows下内核对象过滤新方法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
