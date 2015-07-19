@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>minifilter communication port通信模型 | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="minifilter port通信模型是在minifilter驱动中引入的，用于高效的ring0、ring3通信，但它不限于minifilter中使用。
+minifilter port提供的API函数驱动中的API函数1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+<meta property="og:type" content="article">
+<meta property="og:title" content="minifilter communication port通信模型">
+<meta property="og:url" content="http://localhost:4000/2015/07/18/2015-07-minifilter-communication-port通信模型/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="minifilter port通信模型是在minifilter驱动中引入的，用于高效的ring0、ring3通信，但它不限于minifilter中使用。
+minifilter port提供的API函数驱动中的API函数1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+<meta property="og:updated_time" content="2015-07-18T12:50:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="minifilter communication port通信模型">
+<meta name="twitter:description" content="minifilter port通信模型是在minifilter驱动中引入的，用于高效的ring0、ring3通信，但它不限于minifilter中使用。
+minifilter port提供的API函数驱动中的API函数1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-07-minifilter-communication-port通信模型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/18/2015-07-minifilter-communication-port通信模型/" class="article-date">
+  	<time datetime="2015-07-18T12:46:29.000Z" itemprop="datePublished">2015-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      minifilter communication port通信模型
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/asio/">asio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>minifilter port通信模型是在minifilter驱动中引入的，用于高效的ring0、ring3通信，但它不限于minifilter中使用。</p>
+<h1 id="minifilter_port提供的API函数">minifilter port提供的API函数</h1><p><strong><em>驱动中的API函数</em></strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS <span class="title">FltCreateCommunicationPort</span><span class="params">(</span><br><span class="line">    IN PFLT_FILTER  Filter,</span><br><span class="line">    OUT PFLT_PORT  *ServerPort,</span><br><span class="line">    IN POBJECT_ATTRIBUTES  ObjectAttributes,</span><br><span class="line">    IN PVOID  ServerPortCookie OPTIONAL,</span><br><span class="line">    IN PFLT_CONNECT_NOTIFY  ConnectNotifyCallback,</span><br><span class="line">    IN PFLT_DISCONNECT_NOTIFY  DisconnectNotifyCallback,</span><br><span class="line">    IN PFLT_MESSAGE_NOTIFY  MessageNotifyCallback,</span><br><span class="line">    IN LONG  MaxConnections</span><br><span class="line">    )</span></span>;</span><br><span class="line"></span><br><span class="line">用于创建一个port服务端，服务端需要提供 on_connect, on_disconnect, on_message回调函数</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">FltCloseCommunicationPort</span><span class="params">(</span><br><span class="line">    __in PFLT_PORT  ServerPort</span><br><span class="line">    )</span></span>; </span><br><span class="line">关闭port服务端</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">FltCloseClientPort</span><span class="params">(</span><br><span class="line">    __in PFLT_FILTER  Filter,</span><br><span class="line">    __deref_out PFLT_PORT  *ClientPort</span><br><span class="line">    )</span></span>; </span><br><span class="line">关闭一个connection实例</span><br><span class="line"></span><br><span class="line"><span class="function">NTSTATUS <span class="title">FltSendMessage</span><span class="params">(</span><br><span class="line">    __in PFLT_FILTER  Filter,</span><br><span class="line">    __in PFLT_PORT  *ClientPort,</span><br><span class="line">    __in PVOID  SenderBuffer,</span><br><span class="line">    __in ULONG  SenderBufferLength,</span><br><span class="line">    __out_opt PVOID  ReplyBuffer OPTIONAL,</span><br><span class="line">    __inout_opt PULONG  ReplyLength </span><br><span class="line">    __in_opt PLARGE_INTEGER  Timeout </span><br><span class="line">    )</span></span>; </span><br><span class="line">驱动主动向ring3发送消息</span><br><span class="line">这个函数有两种使用方法：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>请求+响应</span><br><span class="line">指定reply buffer，用于接收ring3消息处理结果</span><br><span class="line">Timeout设置比较大的值</span><br><span class="line">等待ring3接收消息(ring3调用FilterGetMessage)</span><br><span class="line">等待ring3返回消息结果(FilterReplyMessage)</span><br><span class="line"></span><br><span class="line">一般用于驱动在任意线程上下文中上抛：文件监控、注册表监控等，会导致调用线程hang</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>仅请求</span><br><span class="line">reply buffer为NULL</span><br><span class="line">Timeout设置比较大的值</span><br><span class="line">等待ring3接收消息(ring3调用FilterGetMessage)</span><br><span class="line"></span><br><span class="line">一般用于驱动发送给ring3一些通知消息，例如：不需要ring3返回结果</span><br><span class="line">也可用于驱动不需要马上得到结果的场景，ring3可以通过FilterSendMessage发送结果消息</span><br><span class="line">在驱动的on_message函数中处理消息结果</span><br></pre></td></tr></table></figure></p>
+<p><strong>应用层的API函数</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HRESULT</span><br><span class="line">WINAPI</span><br><span class="line">  <span class="title">FilterConnectCommunicationPort</span><span class="params">(</span><br><span class="line">    IN LPCWSTR  lpPortName,</span><br><span class="line">    IN DWORD  dwOptions,</span><br><span class="line">    IN LPVOID  lpContext OPTIONAL,</span><br><span class="line">    IN DWORD  dwSizeOfContext,</span><br><span class="line">    IN LPSECURITY_ATTRIBUTES  lpSecurityAttributes OPTIONAL,</span><br><span class="line">    OUT HANDLE  *hPort</span><br><span class="line">    )</span></span>; </span><br><span class="line">连接port服务端，建立连接后返回一个connection句柄</span><br><span class="line"></span><br><span class="line"><span class="function">HRESULT</span><br><span class="line">WINAPI</span><br><span class="line">  <span class="title">FilterGetMessage</span><span class="params">(</span><br><span class="line">    IN HANDLE  hPort,</span><br><span class="line">    IN OUT PFILTER_MESSAGE_HEADER  lpMessageBuffer,</span><br><span class="line">    IN DWORD  dwMessageBufferSize,</span><br><span class="line">    IN LPOVERLAPPED  lpOverlapped OPTIONAL</span><br><span class="line">    )</span></span>; </span><br><span class="line">获取ring0发送的消息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">HRESULT</span><br><span class="line">WINAPI</span><br><span class="line">  <span class="title">FilterReplyMessage</span><span class="params">(</span><br><span class="line">    __in HANDLE  hPort,</span><br><span class="line">    __in PFILTER_REPLY_HEADER  lpReplyBuffer,</span><br><span class="line">    __in DWORD  dwReplyBufferSize</span><br><span class="line">    )</span></span>; </span><br><span class="line">返回某个消息处理结果</span><br><span class="line"></span><br><span class="line"><span class="function">HRESULT</span><br><span class="line">WINAPI</span><br><span class="line">  <span class="title">FilterSendMessage</span><span class="params">(</span><br><span class="line">    __in HANDLE  hPort,</span><br><span class="line">    __in_bcount LPVOID  lpInBuffer,</span><br><span class="line">    __in DWORD  dwInBufferSize,</span><br><span class="line">    __out_bcount_part_opt LPVOID  lpOutBuffer,</span><br><span class="line">    __in DWORD  dwOutBufferSize,</span><br><span class="line">    __out LPDWORD  lpBytesReturned</span><br><span class="line">    )</span></span>; </span><br><span class="line">应用层主动给ring0发送消息请求</span><br></pre></td></tr></table></figure></p>
+<h1 id="应用层主动调用驱动功能">应用层主动调用驱动功能</h1><p>驱动在caller线程上下文中执行<br>传统方式方式：使用DeviceIoControl跟驱动通信。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">应用层</span><br><span class="line">HANDLE hConnect = NULL;</span><br><span class="line">FilterConnectCommunicationPort(...,&amp;hConnect);</span><br><span class="line">FilterSendMessage(hConnect, send_buffer, recv_buffer,...); </span><br><span class="line"></span><br><span class="line">驱动层MessageNotifyCallback回调函数</span><br><span class="line"><span class="function">NTSTATUS <span class="title">OnMessageRequest</span><span class="params">(</span><br><span class="line">      IN PVOID PortCookie,</span><br><span class="line">      IN PVOID InputBuffer OPTIONAL,</span><br><span class="line">      IN ULONG InputBufferLength,</span><br><span class="line">      OUT PVOID OutputBuffer OPTIONAL,</span><br><span class="line">      IN ULONG OutputBufferLength,</span><br><span class="line">      OUT PULONG ReturnOutputBufferLength</span><br><span class="line">      )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="驱动同步调用应用层">驱动同步调用应用层</h1><p>驱动在任意线程上下文中调用FltSendMessage，等待应用层返回处理结果<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">应用层</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    FilterGetMessage(...);  <span class="comment">//获取ring0调用</span></span><br><span class="line">    handle_message();       <span class="comment">//处理消息(可以放在单独线程中处理)</span></span><br><span class="line">    FilterReplyMessage();   <span class="comment">//回复结果(可以放在单独线程中处理)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">驱动层</span><br><span class="line">FltSendMessage(...);</span><br></pre></td></tr></table></figure></p>
+<h1 id="驱动异步调用应用层">驱动异步调用应用层</h1><p>驱动在任意上下文中调用FltSendMessage，只需等待消息提交成功，不用等待FilterReplyMessage</p>
+<h1 id="应用层flt与asio结合">应用层flt与asio结合</h1><p>由于FilterGetMessage支持IOCP，所有可以使用asio管理消息接收</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/14/2015-07-windbg调试技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">windbg调试技巧</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
