@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>(nan)Native Abstractions for Node.js(转载) | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Native Abstractions for Node.js主要用于node.js native模块开发，它解决了多版本node.js开发native模块的难点
+Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(nan)Native Abstractions for Node.js(转载)">
+<meta property="og:url" content="http://localhost:4000/2015/07/18/2015-07-Native-Abstractions-for-Node-js/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="Native Abstractions for Node.js主要用于node.js native模块开发，它解决了多版本node.js开发native模块的难点
+Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, pa">
+<meta property="og:updated_time" content="2015-07-18T12:50:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(nan)Native Abstractions for Node.js(转载)">
+<meta name="twitter:description" content="Native Abstractions for Node.js主要用于node.js native模块开发，它解决了多版本node.js开发native模块的难点
+Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, pa">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-07-Native-Abstractions-for-Node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/18/2015-07-Native-Abstractions-for-Node-js/" class="article-date">
+  	<time datetime="2015-07-18T12:46:29.000Z" itemprop="datePublished">2015-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (nan)Native Abstractions for Node.js(转载)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Native_Abstractions_for_Node-js">Native Abstractions for Node.js</h1><p>主要用于node.js native模块开发，它解决了多版本node.js开发native模块的难点</p>
+<p>Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, particularly 0.10 to 0.12, is a minor nightmare. The goal of this project is to store all logic necessary to develop native Node.js addons without having to inspect <code>NODE_MODULE_VERSION</code> and get yourself into a macro-tangle.</p>
+<p>This project also contains some helper utilities that make addon development a bit more pleasant.</p>
+<ul>
+<li><strong><a href="#news">News &amp; Updates</a></strong></li>
+<li><strong><a href="#usage">Usage</a></strong></li>
+<li><strong><a href="#example">Example</a></strong></li>
+<li><strong><a href="#api">API</a></strong></li>
+<li><strong><a href="#tests">Tests</a></strong></li>
+<li><strong><a href="#porting">Porting</a></strong></li>
+<li><strong><a href="#governance">Governance &amp; Contributing</a></strong></li>
+</ul>
+<p><a name="news"></a></p>
+<h2 id="News_&amp;_Updates">News &amp; Updates</h2><h3 id="Apr-2015:_1-8-0_release">Apr-2015: 1.8.0 release</h3><ul>
+<li>Support V8 4.2</li>
+<li>Removed support for creating <code>Signature</code>s with arguments</li>
+<li>Backported thread local storage routines for libuv</li>
+</ul>
+<h3 id="Feb-2015:_1-7-0_release">Feb-2015: 1.7.0 release</h3><ul>
+<li>Made <code>NanCallback::Call</code> accept optional target</li>
+<li>Support atom-shell 0.21</li>
+</ul>
+<p>Node 0.12.0 is out and supported by NAN. So is atom-shell 0.21. <code>NanCallback::Call</code> now accepts an optional <code>target</code> argument like <code>NanMakeCallback</code>.</p>
+<h3 id="Jan-2015:_1-6-0_release">Jan-2015: 1.6.0 release</h3><ul>
+<li>Deprecated <code>NanNewContextHandle</code> in favor of <code>NanNew&lt;Context&gt;</code></li>
+<li>Added <code>NanSetCounterFunction</code>, <code>NanSetCreateHistogramFunction</code>, <code>NanSetAddHistogramSampleFunction</code></li>
+<li>Added <code>NanIdleNotification</code>, <code>NanLowMemoryNotification</code>, <code>NanContextDisposedNotification</code></li>
+<li>Added <code>NanEncode</code>, <code>NanDecodeBytes</code> and <code>NanDecodeWrite</code></li>
+</ul>
+<h3 id="Jan-2015:_1-5-0_release">Jan-2015: 1.5.0 release</h3><ul>
+<li>Support <a href="https://github.com/iojs/io.js" target="_blank" rel="external">io.js</a> thanks to <a href="bnoordhuis">Ben Noordhuis</a></li>
+<li>Rewritten NanNew internals thanks to <a href="agnat">David Siegel</a></li>
+<li>NanAsyncWorker now supports progress reporting thanks to <a href="brett19">Brett Lawson</a></li>
+</ul>
+<h3 id="Aug-2014:_1-3-0_release">Aug-2014: 1.3.0 release</h3><ul>
+<li><code>NanCString()</code> and <code>NanRawString()</code> have been deprecated in favour of new <a href="#api_nan_ascii_string"><b><code>NanAsciiString</code></b></a>, <a href="#api_nan_utf8_string"><b><code>NanUtf8String</code></b></a> and <a href="#api_nan_ucs2_string"><b><code>NanUcs2String</code></b></a>. These classes manage the underlying memory for you in a safer way than just handing off an allocated array. You should now <code>*NanAsciiString(handle)</code> to access the raw <code>char</code> data, you can also allocate on the heap if you need to keep a reference.</li>
+<li>Two more <a href="#api_nan_make_callback"><b><code>NanMakeCallback</code></b></a> overloads have been added to for parity with Node core.</li>
+<li>You can now <code>NanNew(std::string)</code> (use <code>NanNew&lt;std::string&amp;&gt;(std::string&amp;)</code> to pass by reference)</li>
+<li><a href="#api_nan_set_template"><b><code>NanSetTemplate</code></b></a>, <a href="#api_nan_set_prototype_template"><b><code>NanSetPrototypeTemplate</code></b></a> and <a href="#api_nan_set_instance_template"><b><code>NanSetInstanceTemplate</code></b></a> have been added.</li>
+</ul>
+<h3 id="May-2014:_1-1-0_release">May-2014: 1.1.0 release</h3><ul>
+<li>We’ve deprecated <code>NanSymbol()</code>, you should just use <code>NanNew&lt;String&gt;()</code> now.</li>
+<li><code>NanNull()</code>, <code>NanUndefined()</code>, <code>NanTrue()</code>, <code>NanFalse()</code> all return <code>Local</code>s now.</li>
+<li><code>nan_isolate</code> is gone, it was intended to be internal-only but if you were using it then you should switch to <code>v8::Isolate::GetCurrent()</code>.</li>
+<li><code>NanNew()</code> has received some additional overload-love so you should be able to give it many kinds of values without specifying the <code>&lt;Type&gt;</code>.</li>
+<li>Lots of small fixes and additions to expand the V8 API coverage, <em>use the source, Luke</em>.</li>
+</ul>
+<h3 id="May-2014:_Major_changes_for_V8_3-25_/_Node_0-11-13">May-2014: Major changes for V8 3.25 / Node 0.11.13</h3><p>Node 0.11.11 and 0.11.12 were both broken releases for native add-ons, you simply can’t properly compile against either of them for different reasons. But we now have a 0.11.13 release that jumps a couple of versions of V8 ahead and includes some more, major (traumatic) API changes.</p>
+<p>Because we are now nearing Node 0.12 and estimate that the version of V8 we are using in Node 0.11.13 will be close to the API we get for 0.12, we have taken the opportunity to not only <em>fix</em> NAN for 0.11.13 but make some major changes to improve the NAN API.</p>
+<p>We have <strong>removed support for Node 0.11 versions prior to 0.11.13</strong>. As usual, our tests are run against (and pass) the last 5 versions of Node 0.8 and Node 0.10. We also include Node 0.11.13 obviously.</p>
+<p>The major change is something that <a href="kkoopa">Benjamin Byholm</a> has put many hours in to. We now have a fantastic new <code>NanNew&lt;T&gt;(args)</code> interface for creating new <code>Local</code>s, this replaces <code>NanNewLocal()</code> and much more. If you look in <a href="nan.h">./nan.h</a> you’ll see a large number of overloaded versions of this method. In general you should be able to <code>NanNew&lt;Type&gt;(arguments)</code> for any type you want to make a <code>Local</code> from. This includes <code>Persistent</code> types, so we now have a <code>Local&lt;T&gt; NanNew(const Persistent&lt;T&gt; arg)</code> to replace <code>NanPersistentToLocal()</code>.</p>
+<p>We also now have <code>NanUndefined()</code>, <code>NanNull()</code>, <code>NanTrue()</code> and <code>NanFalse()</code>. Mainly because of the new requirement for an <code>Isolate</code> argument for each of the native V8 versions of this.</p>
+<p>V8 has now introduced an <code>EscapableHandleScope</code> from which you <code>scope.Escape(Local&lt;T&gt; value)</code> to <em>return</em> a value from a one scope to another. This replaces the standard <code>HandleScope</code> and <code>scope.Close(Local&lt;T&gt; value)</code>, although <code>HandleScope</code> still exists for when you don’t need to return a handle to the caller. For NAN we are exposing it as <code>NanEscapableScope()</code> and <code>NanEscapeScope()</code>, while <code>NanScope()</code> is still how you create a new scope that doesn’t need to return handles. For older versions of Node/V8, it’ll still map to the older <code>HandleScope</code> functionality.</p>
+<p><code>NanFromV8String()</code> was deprecated and has now been removed. You should use <code>NanCString()</code> or <code>NanRawString()</code> instead.</p>
+<p>Because <code>node::MakeCallback()</code> now takes an <code>Isolate</code>, and because it doesn’t exist in older versions of Node, we’ve introduced <code>NanMakeCallback()</code>. You should <em>always</em> use this when calling a JavaScript function from C++.</p>
+<p>There’s lots more, check out the Changelog in nan.h or look through <a href="https://github.com/iojs/nan/pull/86" target="_blank" rel="external">#86</a> for all the gory details.</p>
+<h3 id="Dec-2013:_NanCString_and_NanRawString">Dec-2013: NanCString and NanRawString</h3><p>Two new functions have been introduced to replace the functionality that’s been provided by <code>NanFromV8String</code> until now. NanCString has sensible defaults so it’s super easy to fetch a null-terminated c-style string out of a <code>v8::String</code>. <code>NanFromV8String</code> is still around and has defaults that allow you to pass a single handle to fetch a <code>char*</code> while <code>NanRawString</code> requires a little more attention to arguments.</p>
+<h3 id="Nov-2013:_Node_0-11-9+_breaking_V8_change">Nov-2013: Node 0.11.9+ breaking V8 change</h3><p>The version of V8 that’s shipping with Node 0.11.9+ has changed the signature for new <code>Local</code>s to: <code>v8::Local&lt;T&gt;::New(isolate, value)</code>, i.e. introducing the <code>isolate</code> argument and therefore breaking all new <code>Local</code> declarations for previous versions. NAN 0.6+ now includes a <code>NanNewLocal&lt;T&gt;(value)</code> that can be used in place to work around this incompatibility and maintain compatibility with 0.8-&gt;0.11.9+ (minus a few early 0.11 releases).</p>
+<p>For example, if you wanted to return a <code>null</code> on a callback you will have to change the argument from <code>v8::Local&lt;v8::Value&gt;::New(v8::Null())</code> to <code>NanNewLocal&lt;v8::Value&gt;(v8::Null())</code>.</p>
+<h3 id="Nov-2013:_Change_to_binding-gyp_&quot;include_dirs&quot;_for_NAN">Nov-2013: Change to binding.gyp <code>&quot;include_dirs&quot;</code> for NAN</h3><p>Inclusion of NAN in a project’s binding.gyp is now greatly simplified. You can now just use <code>&quot;&lt;!(node -e \&quot;require(&#39;nan&#39;)\&quot;)&quot;</code> in your <code>&quot;include_dirs&quot;</code>, see example below (note Windows needs the quoting around <code>require</code> to be just right: <code>&quot;require(&#39;nan&#39;)&quot;</code> with appropriate <code>\</code> escaping).</p>
+<p><a name="usage"></a></p>
+<h2 id="Usage">Usage</h2><p>Simply add <strong>NAN</strong> as a dependency in the <em>package.json</em> of your Node addon:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save nan</span><br></pre></td></tr></table></figure>
+<p>Pull in the path to <strong>NAN</strong> in your <em>binding.gyp</em> so that you can use <code>#include &lt;nan.h&gt;</code> in your <em>.cpp</em> files:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"include_dirs"</span> : [</span><br><span class="line">    <span class="string">"&lt;!(node -e \"require('nan')\")"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>This works like a <code>-I&lt;path-to-NAN&gt;</code> when compiling your addon.</p>
+<p><a name="example"></a></p>
+<h2 id="Example">Example</h2><p>See <strong><a href="https://github.com/rvagg/node-leveldown/pull/48" target="_blank" rel="external">LevelDOWN</a></strong> for a full example of <strong>NAN</strong> in use.</p>
+<p>For a simpler example, see the <strong><a href="https://github.com/iojs/nan/tree/master/examples/async_pi_estimate" target="_blank" rel="external">async pi estimation example</a></strong> in the examples directory for full code and an explanation of what this Monte Carlo Pi estimation example does. Below are just some parts of the full example that illustrate the use of <strong>NAN</strong>.</p>
+<p>For another example, see <strong><a href="https://github.com/CodeCharmLtd/nan-example-eol" target="_blank" rel="external">nan-example-eol</a></strong>. It shows newline detection implemented as a native addon.</p>
+<p>Compare to the current 0.10 version of this example, found in the <a href="https://github.com/iojs/node-addon-examples/tree/master/9_async_work" target="_blank" rel="external">node-addon-examples</a> repository and also a 0.11 version of the same found <a href="https://github.com/kkoopa/node-addon-examples/tree/5c01f58fc993377a567812597e54a83af69686d7/9_async_work" target="_blank" rel="external">here</a>.</p>
+<p>Note that there is no embedded version sniffing going on here and also the async work is made much simpler, see below for details on the <code>NanAsyncWorker</code> class.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// addon.cc</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;nan.h&gt;</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> v8::FunctionTemplate;</span><br><span class="line"><span class="keyword">using</span> v8::Handle;</span><br><span class="line"><span class="keyword">using</span> v8::Object;</span><br><span class="line"><span class="keyword">using</span> v8::String;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitAll</span><span class="params">(Handle&lt;Object&gt; exports)</span> </span>&#123;</span><br><span class="line">  exports-&gt;Set(NanNew&lt;String&gt;(<span class="string">"calculateSync"</span>),</span><br><span class="line">    NanNew&lt;FunctionTemplate&gt;(CalculateSync)-&gt;GetFunction());</span><br><span class="line"></span><br><span class="line">  exports-&gt;Set(NanNew&lt;String&gt;(<span class="string">"calculateAsync"</span>),</span><br><span class="line">    NanNew&lt;FunctionTemplate&gt;(CalculateAsync)-&gt;GetFunction());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NODE_MODULE(addon, InitAll)</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sync.h</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;nan.h&gt;</span></span><br><span class="line"></span><br><span class="line">NAN_METHOD(CalculateSync);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sync.cc</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;nan.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> "./sync.h"</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> v8::Number;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Simple synchronous access to the `Estimate()` function</span></span><br><span class="line">NAN_METHOD(CalculateSync) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// expect a number as the first argument</span></span><br><span class="line">  <span class="keyword">int</span> points = args[<span class="number">0</span>]-&gt;Uint32Value();</span><br><span class="line">  <span class="keyword">double</span> est = Estimate(points);</span><br><span class="line"></span><br><span class="line">  NanReturnValue(NanNew&lt;Number&gt;(est));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// async.h</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;nan.h&gt;</span></span><br><span class="line"></span><br><span class="line">NAN_METHOD(CalculateAsync);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// async.cc</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;nan.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> "./async.h"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> v8::Function;</span><br><span class="line"><span class="keyword">using</span> v8::Local;</span><br><span class="line"><span class="keyword">using</span> v8::Null;</span><br><span class="line"><span class="keyword">using</span> v8::Number;</span><br><span class="line"><span class="keyword">using</span> v8::Value;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> PiWorker : <span class="keyword">public</span> NanAsyncWorker &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  PiWorker(NanCallback *callback, <span class="keyword">int</span> points)</span><br><span class="line">    : NanAsyncWorker(callback), points(points) &#123;&#125;</span><br><span class="line">  ~PiWorker() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Executed inside the worker-thread.</span></span><br><span class="line">  <span class="comment">// It is not safe to access V8, or V8 data structures</span></span><br><span class="line">  <span class="comment">// here, so everything we need for input and output</span></span><br><span class="line">  <span class="comment">// should go on `this`.</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Execute</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    estimate = Estimate(points);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Executed when the async work is complete</span></span><br><span class="line">  <span class="comment">// this function will be run inside the main event loop</span></span><br><span class="line">  <span class="comment">// so it is safe to use V8 again</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">HandleOKCallback</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    NanScope();</span><br><span class="line"></span><br><span class="line">    Local&lt;Value&gt; argv[] = &#123;</span><br><span class="line">        NanNull()</span><br><span class="line">      , NanNew&lt;Number&gt;(estimate)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    callback-&gt;Call(<span class="number">2</span>, argv);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> points;</span><br><span class="line">  <span class="keyword">double</span> estimate;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Asynchronous access to the `Estimate()` function</span></span><br><span class="line">NAN_METHOD(CalculateAsync) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> points = args[<span class="number">0</span>]-&gt;Uint32Value();</span><br><span class="line">  NanCallback *callback = <span class="keyword">new</span> NanCallback(args[<span class="number">1</span>].As&lt;Function&gt;());</span><br><span class="line"></span><br><span class="line">  NanAsyncQueueWorker(<span class="keyword">new</span> PiWorker(callback, points));</span><br><span class="line">  NanReturnUndefined();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api"></a></p>
+<h2 id="API">API</h2><ul>
+<li><a href="#api_nan_method"><b><code>NAN_METHOD</code></b></a></li>
+<li><a href="#api_nan_getter"><b><code>NAN_GETTER</code></b></a></li>
+<li><a href="#api_nan_setter"><b><code>NAN_SETTER</code></b></a></li>
+<li><a href="#api_nan_property_getter"><b><code>NAN_PROPERTY_GETTER</code></b></a></li>
+<li><a href="#api_nan_property_setter"><b><code>NAN_PROPERTY_SETTER</code></b></a></li>
+<li><a href="#api_nan_property_enumerator"><b><code>NAN_PROPERTY_ENUMERATOR</code></b></a></li>
+<li><a href="#api_nan_property_deleter"><b><code>NAN_PROPERTY_DELETER</code></b></a></li>
+<li><a href="#api_nan_property_query"><b><code>NAN_PROPERTY_QUERY</code></b></a></li>
+<li><a href="#api_nan_index_getter"><b><code>NAN_INDEX_GETTER</code></b></a></li>
+<li><a href="#api_nan_index_setter"><b><code>NAN_INDEX_SETTER</code></b></a></li>
+<li><a href="#api_nan_index_enumerator"><b><code>NAN_INDEX_ENUMERATOR</code></b></a></li>
+<li><a href="#api_nan_index_deleter"><b><code>NAN_INDEX_DELETER</code></b></a></li>
+<li><a href="#api_nan_index_query"><b><code>NAN_INDEX_QUERY</code></b></a></li>
+<li><a href="#api_nan_gc_callback"><b><code>NAN_GC_CALLBACK</code></b></a></li>
+<li><a href="#api_nan_weak_callback"><b><code>NAN_WEAK_CALLBACK</code></b></a></li>
+<li><a href="#api_nan_deprecated"><b><code>NAN_DEPRECATED</code></b></a></li>
+<li><a href="#api_nan_inline"><b><code>NAN_INLINE</code></b></a></li>
+<li><a href="#api_nan_new"><b><code>NanNew</code></b></a></li>
+<li><a href="#api_nan_undefined"><b><code>NanUndefined</code></b></a></li>
+<li><a href="#api_nan_null"><b><code>NanNull</code></b></a></li>
+<li><a href="#api_nan_true"><b><code>NanTrue</code></b></a></li>
+<li><a href="#api_nan_false"><b><code>NanFalse</code></b></a></li>
+<li><a href="#api_nan_return_value"><b><code>NanReturnValue</code></b></a></li>
+<li><a href="#api_nan_return_undefined"><b><code>NanReturnUndefined</code></b></a></li>
+<li><a href="#api_nan_return_null"><b><code>NanReturnNull</code></b></a></li>
+<li><a href="#api_nan_return_empty_string"><b><code>NanReturnEmptyString</code></b></a></li>
+<li><a href="#api_nan_return_this"><b><code>NanReturnThis</code></b></a></li>
+<li><a href="#api_nan_return_holder"><b><code>NanReturnHolder</code></b></a></li>
+<li><a href="#api_nan_scope"><b><code>NanScope</code></b></a></li>
+<li><a href="#api_nan_escapable_scope"><b><code>NanEscapableScope</code></b></a></li>
+<li><a href="#api_nan_escape_scope"><b><code>NanEscapeScope</code></b></a></li>
+<li><a href="#api_nan_locker"><b><code>NanLocker</code></b></a></li>
+<li><a href="#api_nan_unlocker"><b><code>NanUnlocker</code></b></a></li>
+<li><a href="#api_nan_get_internal_field_pointer"><b><code>NanGetInternalFieldPointer</code></b></a></li>
+<li><a href="#api_nan_set_internal_field_pointer"><b><code>NanSetInternalFieldPointer</code></b></a></li>
+<li><a href="#api_nan_object_wrap_handle"><b><code>NanObjectWrapHandle</code></b></a></li>
+<li><del><a href="#api_nan_symbol"><b><code>NanSymbol</code></b></a></del></li>
+<li><a href="#api_nan_get_pointer_safe"><b><code>NanGetPointerSafe</code></b></a></li>
+<li><a href="#api_nan_set_pointer_safe"><b><code>NanSetPointerSafe</code></b></a></li>
+<li><del><a href="#api_nan_raw_string"><b><code>NanRawString</code></b></a></del></li>
+<li><del><a href="#api_nan_c_string"><b><code>NanCString</code></b></a></del></li>
+<li><a href="#api_nan_ascii_string"><b><code>NanAsciiString</code></b></a></li>
+<li><a href="#api_nan_utf8_string"><b><code>NanUtf8String</code></b></a></li>
+<li><a href="#api_nan_ucs2_string"><b><code>NanUcs2String</code></b></a></li>
+<li><a href="#api_nan_boolean_option_value"><b><code>NanBooleanOptionValue</code></b></a></li>
+<li><a href="#api_nan_uint32_option_value"><b><code>NanUInt32OptionValue</code></b></a></li>
+<li><a href="#api_nan_error"><b><code>NanError</code></b>, <b><code>NanTypeError</code></b>, <b><code>NanRangeError</code></b></a></li>
+<li><a href="#api_nan_throw_error"><b><code>NanThrowError</code></b>, <b><code>NanThrowTypeError</code></b>, <b><code>NanThrowRangeError</code></b>, <b><code>NanThrowError(Handle<value>)</value></code></b>, <b><code>NanThrowError(Handle<value>, int)</value></code></b></a></li>
+<li><a href="#api_nan_new_buffer_handle"><b><code>NanNewBufferHandle(char <em>, size_t, FreeCallback, void </em>)</code></b>, <b><code>NanNewBufferHandle(char *, uint32_t)</code></b>, <b><code>NanNewBufferHandle(uint32_t)</code></b></a></li>
+<li><a href="#api_nan_buffer_use"><b><code>NanBufferUse(char *, uint32_t)</code></b></a></li>
+<li><del><a href="#api_nan_new_context_handle"><b><code>NanNewContextHandle</code></b></a></del></li>
+<li><a href="#api_nan_get_current_context"><b><code>NanGetCurrentContext</code></b></a></li>
+<li><a href="#api_nan_has_instance"><b><code>NanHasInstance</code></b></a></li>
+<li><a href="#api_nan_dispose_persistent"><b><code>NanDisposePersistent</code></b></a></li>
+<li><a href="#api_nan_assign_persistent"><b><code>NanAssignPersistent</code></b></a></li>
+<li><a href="#api_nan_make_weak_persistent"><b><code>NanMakeWeakPersistent</code></b></a></li>
+<li><a href="#api_nan_set_template"><b><code>NanSetTemplate</code></b></a></li>
+<li><a href="#api_nan_set_prototype_template"><b><code>NanSetPrototypeTemplate</code></b></a></li>
+<li><a href="#api_nan_set_instance_template"><b><code>NanSetInstanceTemplate</code></b></a></li>
+<li><a href="#api_nan_make_callback"><b><code>NanMakeCallback</code></b></a></li>
+<li><a href="#api_nan_encode"><b><code>NanEncode</code></b></a></li>
+<li><a href="#api_nan_decode_bytes"><b><code>NanDecodeBytes</code></b></a></li>
+<li><a href="#api_nan_decode_write"><b><code>NanDecodeWrite</code></b></a></li>
+<li><a href="#api_nan_compile_script"><b><code>NanCompileScript</code></b></a></li>
+<li><a href="#api_nan_run_script"><b><code>NanRunScript</code></b></a></li>
+<li><a href="#api_nan_adjust_external_memory"><b><code>NanAdjustExternalMemory</code></b></a></li>
+<li><a href="#api_nan_add_gc_epilogue_callback"><b><code>NanAddGCEpilogueCallback</code></b></a></li>
+<li><a href="#api_nan_add_gc_prologue_callback"><b><code>NanAddGCPrologueCallback</code></b></a></li>
+<li><a href="#api_nan_remove_gc_epilogue_callback"><b><code>NanRemoveGCEpilogueCallback</code></b></a></li>
+<li><a href="#api_nan_remove_gc_prologue_callback"><b><code>NanRemoveGCPrologueCallback</code></b></a></li>
+<li><a href="#api_nan_get_heap_statistics"><b><code>NanGetHeapStatistics</code></b></a></li>
+<li><a href="#api_nan_set_counter_function"><b><code>NanSetCounterFunction</code></b></a></li>
+<li><a href="#api_nan_set_create_histogram_function"><b><code>NanSetCreateHistogramFunction</code></b></a></li>
+<li><a href="#api_nan_set_add_histogram_sample_function"><b><code>NanSetAddHistogramSampleFunction</code></b></a></li>
+<li><a href="#api_nan_idle_notification"><b><code>NanIdleNotification</code></b></a></li>
+<li><a href="#api_nan_low_memory_notification"><b><code>NanLowMemoryNotification</code></b></a></li>
+<li><a href="#api_nan_context_disposed_notification"><b><code>NanContextDisposedNotification</code></b></a></li>
+<li><a href="#api_nan_callback"><b><code>NanCallback</code></b></a></li>
+<li><a href="#api_nan_async_worker"><b><code>NanAsyncWorker</code></b></a></li>
+<li><a href="#api_nan_async_queue_worker"><b><code>NanAsyncQueueWorker</code></b></a></li>
+</ul>
+<p><a name="api_nan_method"></a></p>
+<h3 id="NAN_METHOD(methodname)">NAN_METHOD(methodname)</h3><p>Use <code>NAN_METHOD</code> to define your V8 accessible methods:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h:</span></span><br><span class="line"><span class="keyword">class</span> Foo : <span class="keyword">public</span> node::ObjectWrap &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="title">NAN_METHOD</span><span class="params">(Bar)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="title">NAN_METHOD</span><span class="params">(Baz)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// .cc:</span></span><br><span class="line">NAN_METHOD(Foo::Bar) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The reason for this macro is because of the method signature change in 0.11:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0.10 and below:</span></span><br><span class="line">Handle&lt;Value&gt; name(<span class="keyword">const</span> Arguments&amp; args)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 0.11 and above</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">name</span><span class="params">(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args)</span></span></span><br></pre></td></tr></table></figure>
+<p>The introduction of <code>FunctionCallbackInfo</code> brings additional complications:</p>
+<p><a name="api_nan_getter"></a></p>
+<h3 id="NAN_GETTER(methodname)">NAN_GETTER(methodname)</h3><p>Use <code>NAN_GETTER</code> to declare your V8 accessible getters. You get a <code>Local&lt;String&gt;</code> <code>property</code> and an appropriately typed <code>args</code> object that can act like the <code>args</code> argument to a <code>NAN_METHOD</code> call.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_GETTER</code>.</p>
+<p><a name="api_nan_setter"></a></p>
+<h3 id="NAN_SETTER(methodname)">NAN_SETTER(methodname)</h3><p>Use <code>NAN_SETTER</code> to declare your V8 accessible setters. Same as <code>NAN_GETTER</code> but you also get a <code>Local&lt;Value&gt;</code> <code>value</code> object to work with.</p>
+<p><a name="api_nan_property_getter"></a></p>
+<h3 id="NAN_PROPERTY_GETTER(cbname)">NAN_PROPERTY_GETTER(cbname)</h3><p>Use <code>NAN_PROPERTY_GETTER</code> to declare your V8 accessible property getters. You get a <code>Local&lt;String&gt;</code> <code>property</code> and an appropriately typed <code>args</code> object that can act similar to the <code>args</code> argument to a <code>NAN_METHOD</code> call.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_PROPERTY_GETTER</code>.</p>
+<p><a name="api_nan_property_setter"></a></p>
+<h3 id="NAN_PROPERTY_SETTER(cbname)">NAN_PROPERTY_SETTER(cbname)</h3><p>Use <code>NAN_PROPERTY_SETTER</code> to declare your V8 accessible property setters. Same as <code>NAN_PROPERTY_GETTER</code> but you also get a <code>Local&lt;Value&gt;</code> <code>value</code> object to work with.</p>
+<p><a name="api_nan_property_enumerator"></a></p>
+<h3 id="NAN_PROPERTY_ENUMERATOR(cbname)">NAN_PROPERTY_ENUMERATOR(cbname)</h3><p>Use <code>NAN_PROPERTY_ENUMERATOR</code> to declare your V8 accessible property enumerators. You get an appropriately typed <code>args</code> object like the <code>args</code> argument to a <code>NAN_PROPERTY_GETTER</code> call.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_PROPERTY_ENUMERATOR</code>.</p>
+<p><a name="api_nan_property_deleter"></a></p>
+<h3 id="NAN_PROPERTY_DELETER(cbname)">NAN_PROPERTY_DELETER(cbname)</h3><p>Use <code>NAN_PROPERTY_DELETER</code> to declare your V8 accessible property deleters. Same as <code>NAN_PROPERTY_GETTER</code>.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_PROPERTY_DELETER</code>.</p>
+<p><a name="api_nan_property_query"></a></p>
+<h3 id="NAN_PROPERTY_QUERY(cbname)">NAN_PROPERTY_QUERY(cbname)</h3><p>Use <code>NAN_PROPERTY_QUERY</code> to declare your V8 accessible property queries. Same as <code>NAN_PROPERTY_GETTER</code>.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_PROPERTY_QUERY</code>.</p>
+<p><a name="api_nan_index_getter"></a></p>
+<h3 id="NAN_INDEX_GETTER(cbname)">NAN_INDEX_GETTER(cbname)</h3><p>Use <code>NAN_INDEX_GETTER</code> to declare your V8 accessible index getters. You get a <code>uint32_t</code> <code>index</code> and an appropriately typed <code>args</code> object that can act similar to the <code>args</code> argument to a <code>NAN_METHOD</code> call.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_INDEX_GETTER</code>.</p>
+<p><a name="api_nan_index_setter"></a></p>
+<h3 id="NAN_INDEX_SETTER(cbname)">NAN_INDEX_SETTER(cbname)</h3><p>Use <code>NAN_INDEX_SETTER</code> to declare your V8 accessible index setters. Same as <code>NAN_INDEX_GETTER</code> but you also get a <code>Local&lt;Value&gt;</code> <code>value</code> object to work with.</p>
+<p><a name="api_nan_index_enumerator"></a></p>
+<h3 id="NAN_INDEX_ENUMERATOR(cbname)">NAN_INDEX_ENUMERATOR(cbname)</h3><p>Use <code>NAN_INDEX_ENUMERATOR</code> to declare your V8 accessible index enumerators. You get an appropriately typed <code>args</code> object like the <code>args</code> argument to a <code>NAN_INDEX_GETTER</code> call.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_INDEX_ENUMERATOR</code>.</p>
+<p><a name="api_nan_index_deleter"></a></p>
+<h3 id="NAN_INDEX_DELETER(cbname)">NAN_INDEX_DELETER(cbname)</h3><p>Use <code>NAN_INDEX_DELETER</code> to declare your V8 accessible index deleters. Same as <code>NAN_INDEX_GETTER</code>.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_INDEX_DELETER</code>.</p>
+<p><a name="api_nan_index_query"></a></p>
+<h3 id="NAN_INDEX_QUERY(cbname)">NAN_INDEX_QUERY(cbname)</h3><p>Use <code>NAN_INDEX_QUERY</code> to declare your V8 accessible index queries. Same as <code>NAN_INDEX_GETTER</code>.</p>
+<p>You can use <code>NanReturnNull()</code>, <code>NanReturnEmptyString()</code>, <code>NanReturnUndefined()</code> and <code>NanReturnValue()</code> in a <code>NAN_INDEX_QUERY</code>.</p>
+<p><a name="api_nan_gc_callback"></a></p>
+<h3 id="NAN_GC_CALLBACK(cbname)">NAN_GC_CALLBACK(cbname)</h3><p>Use <code>NAN_GC_CALLBACK</code> to declare your callbacks for <code>NanAddGCEpilogueCallback</code> and <code>NanAddGCPrologueCallback</code>. You get arguments <code>GCType type</code> and <code>GCCallbackFlags flags</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Persistent&lt;Function&gt; callback;</span><br><span class="line"></span><br><span class="line">NAN_GC_CALLBACK(gcPrologueCallback) &#123;</span><br><span class="line">  Local&lt;Value&gt; argv[] = &#123;NanNew(<span class="string">"prologue"</span>)&#125;;</span><br><span class="line">  NanMakeCallback(NanGetCurrentContext()-&gt;Global(), NanNew(callback), <span class="number">1</span>, argv);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(Hook) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  NanAssignPersistent(callback, args[<span class="number">0</span>].As&lt;Function&gt;());</span><br><span class="line">  NanAddGCPrologueCallback(gcPrologueCallback);</span><br><span class="line">  NanReturnValue(args.Holder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_weak_callback"></a></p>
+<h3 id="NAN_WEAK_CALLBACK(cbname)">NAN_WEAK_CALLBACK(cbname)</h3><p>Use <code>NAN_WEAK_CALLBACK</code> to define your V8 WeakReference callbacks. There is an argument object <code>const _NanWeakCallbackData&lt;T, P&gt; &amp;data</code> allowing access to the weak object and the supplied parameter through its <code>GetValue</code> and <code>GetParameter</code> methods. You can even access the weak callback info object through the <code>GetCallbackInfo()</code>method, but you probably should not. <code>Revive()</code> keeps the weak object alive until the next GC round.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NAN_WEAK_CALLBACK(weakCallback) &#123;</span><br><span class="line">  <span class="keyword">int</span> *parameter = data.GetParameter();</span><br><span class="line">  NanMakeCallback(NanGetCurrentContext()-&gt;Global(), data.GetValue(), <span class="number">0</span>, NULL);</span><br><span class="line">  <span class="keyword">if</span> ((*parameter)++ == <span class="number">0</span>) &#123;</span><br><span class="line">    data.Revive();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">delete</span> parameter;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_deprecated"></a></p>
+<h3 id="NAN_DEPRECATED">NAN_DEPRECATED</h3><p>Declares a function as deprecated.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> NAN_DEPRECATED <span class="title">NAN_METHOD</span><span class="params">(foo)</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_inline"></a></p>
+<h3 id="NAN_INLINE">NAN_INLINE</h3><p>Inlines a function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NAN_INLINE <span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> bar)</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_new"></a></p>
+<h3 id="Local&lt;T&gt;_NanNew&lt;T&gt;(_…_)">Local&lt;T&gt; NanNew&lt;T&gt;( … )</h3><p>Use <code>NanNew</code> to construct almost all v8 objects (bound <code>Script</code>s are constructed with <a href="#api_nan_compile_script"><code>NanCompileScript(Handle)</code></a>) and make new local handles.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;String&gt; s = NanNew&lt;String&gt;(<span class="string">"value"</span>);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Persistent&lt;Object&gt; o;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Local&lt;Object&gt; lo = NanNew(o);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_undefined"></a></p>
+<h3 id="Local&lt;Primitive&gt;_NanUndefined()">Local&lt;Primitive&gt; NanUndefined()</h3><p>Use instead of <code>Undefined()</code></p>
+<p><a name="api_nan_null"></a></p>
+<h3 id="Local&lt;Primitive&gt;_NanNull()">Local&lt;Primitive&gt; NanNull()</h3><p>Use instead of <code>Null()</code></p>
+<p><a name="api_nan_true"></a></p>
+<h3 id="Local&lt;Boolean&gt;_NanTrue()">Local&lt;Boolean&gt; NanTrue()</h3><p>Use instead of <code>True()</code></p>
+<p><a name="api_nan_false"></a></p>
+<h3 id="Local&lt;Boolean&gt;_NanFalse()">Local&lt;Boolean&gt; NanFalse()</h3><p>Use instead of <code>False()</code></p>
+<p><a name="api_nan_return_value"></a></p>
+<h3 id="NanReturnValue(Handle&lt;Value&gt;)">NanReturnValue(Handle&lt;Value&gt;)</h3><p>Use <code>NanReturnValue</code> when you want to return a value from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Bar) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnValue(NanNew&lt;String&gt;(<span class="string">"FooBar!"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>No <code>return</code> statement required.</p>
+<p>For convenience, <code>NanReturnValue</code> also accepts common primitives directly by implicitly performing an overloaded <code>NanNew(T)</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NanReturnValue(<span class="string">"FooBar!"</span>);</span><br><span class="line">NanReturnValue(<span class="keyword">true</span>);</span><br><span class="line">NanReturnValue(<span class="number">12</span>);</span><br><span class="line">NanReturnValue(<span class="number">3.14</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_return_undefined"></a></p>
+<h3 id="NanReturnUndefined()">NanReturnUndefined()</h3><p>Use <code>NanReturnUndefined</code> when you don’t want to return anything from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnUndefined();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_return_null"></a></p>
+<h3 id="NanReturnNull()">NanReturnNull()</h3><p>Use <code>NanReturnNull</code> when you want to return <code>Null</code> from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnNull();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_return_empty_string"></a></p>
+<h3 id="NanReturnEmptyString()">NanReturnEmptyString()</h3><p>Use <code>NanReturnEmptyString</code> when you want to return an empty <code>String</code> from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnEmptyString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_return_this"></a></p>
+<h3 id="NanReturnThis()">NanReturnThis()</h3><p>Use <code>NanReturnThis</code> when you want to return <code>This</code> from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnThis();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_return_holder"></a></p>
+<h3 id="NanReturnHolder()">NanReturnHolder()</h3><p>Use <code>NanReturnHolder</code> when you want to return <code>Holder</code> from your V8 accessible method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Baz) &#123;</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  NanReturnHolder();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_scope"></a></p>
+<h3 id="NanScope()">NanScope()</h3><p>The introduction of <code>isolate</code> references for many V8 calls in Node 0.11 makes <code>NanScope()</code> necessary, use it in place of <code>HandleScope scope</code> when you do not wish to return handles (<code>Handle</code> or <code>Local</code>) to the surrounding scope (or in functions directly exposed to V8, as they do not return values in the normal sense):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line"></span><br><span class="line">  NanReturnValue(NanNew&lt;String&gt;(<span class="string">"FooBar!"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This method is not directly exposed to V8, nor does it return a handle, so it uses an unescapable scope:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Foo::Bar() &#123;</span><br><span class="line">  NanScope();</span><br><span class="line"></span><br><span class="line">  Local&lt;Boolean&gt; val = NanFalse();</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> val-&gt;Value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_escapable_scope"></a></p>
+<h3 id="NanEscapableScope()">NanEscapableScope()</h3><p>The separation of handle scopes into escapable and inescapable scopes makes <code>NanEscapableScope()</code> necessary, use it in place of <code>HandleScope scope</code> when you later wish to return a handle (<code>Handle</code> or <code>Local</code>) from the scope, this is for internal functions not directly exposed to V8:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Handle&lt;String&gt; Foo::Bar() &#123;</span><br><span class="line">  NanEscapableScope();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> NanEscapeScope(NanNew&lt;String&gt;(<span class="string">"FooBar!"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_escape_scope"></a></p>
+<h3 id="Local&lt;T&gt;_NanEscapeScope(Handle&lt;T&gt;_value);">Local&lt;T&gt; NanEscapeScope(Handle&lt;T&gt; value);</h3><p>Use together with <code>NanEscapableScope</code> to escape the scope. Corresponds to <code>HandleScope::Close</code> or <code>EscapableHandleScope::Escape</code>.</p>
+<p><a name="api_nan_locker"></a></p>
+<h3 id="NanLocker()">NanLocker()</h3><p>The introduction of <code>isolate</code> references for many V8 calls in Node 0.11 makes <code>NanLocker()</code> necessary, use it in place of <code>Locker locker</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Bar) &#123;</span><br><span class="line">  NanLocker();</span><br><span class="line">  ...</span><br><span class="line">  NanUnlocker();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_unlocker"></a></p>
+<h3 id="NanUnlocker()">NanUnlocker()</h3><p>The introduction of <code>isolate</code> references for many V8 calls in Node 0.11 makes <code>NanUnlocker()</code> necessary, use it in place of <code>Unlocker unlocker</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(Foo::Bar) &#123;</span><br><span class="line">  NanLocker();</span><br><span class="line">  ...</span><br><span class="line">  NanUnlocker();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_get_internal_field_pointer"></a></p>
+<h3 id="void_*_NanGetInternalFieldPointer(Handle&lt;Object&gt;,_int)">void * NanGetInternalFieldPointer(Handle&lt;Object&gt;, int)</h3><p>Gets a pointer to the internal field with at <code>index</code> from a V8 <code>Object</code> handle.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;Object&gt; obj;</span><br><span class="line">...</span><br><span class="line">NanGetInternalFieldPointer(obj, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_set_internal_field_pointer"></a></p>
+<h3 id="void_NanSetInternalFieldPointer(Handle&lt;Object&gt;,_int,_void_*)">void NanSetInternalFieldPointer(Handle&lt;Object&gt;, int, void *)</h3><p>Sets the value of the internal field at <code>index</code> on a V8 <code>Object</code> handle.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Persistent&lt;Function&gt; dataWrapperCtor;</span><br><span class="line">...</span><br><span class="line">Local&lt;Object&gt; wrapper = NanNew(dataWrapperCtor)-&gt;NewInstance();</span><br><span class="line">NanSetInternalFieldPointer(wrapper, <span class="number">0</span>, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_object_wrap_handle"></a></p>
+<h3 id="Local&lt;Object&gt;_NanObjectWrapHandle(const_node::ObjectWrap_&amp;obj)">Local&lt;Object&gt; NanObjectWrapHandle(const node::ObjectWrap &amp;obj)</h3><p>When you want to fetch the V8 object handle from a native object you’ve wrapped with Node’s <code>ObjectWrap</code>, you should use <code>NanObjectWrapHandle</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NanObjectWrapHandle(iterator)-&gt;Get(NanNew&lt;String&gt;(<span class="string">"end"</span>))</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_symbol"></a></p>
+<h3 id="Local&lt;String&gt;_NanSymbol(const_char_*)"><del>Local&lt;String&gt; NanSymbol(const char *)</del></h3><p>Deprecated. Use <code>NanNew&lt;String&gt;</code> instead.<br><del>Use to create string symbol objects (i.e. <code>v8::String::NewSymbol(x)</code>), for getting and setting object properties, or names of objects.</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> foo = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">if</span> (obj-&gt;Has(NanNew&lt;String&gt;(<span class="string">"foo"</span>)))</span><br><span class="line">  foo = optionsObj-&gt;Get(NanNew&lt;String&gt;(<span class="string">"foo"</span>))-&gt;BooleanValue()</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_get_pointer_safe"></a></p>
+<h3 id="Type_NanGetPointerSafe(Type_*[,_Type])">Type NanGetPointerSafe(Type *[, Type])</h3><p>A helper for getting values from optional pointers. If the pointer is <code>NULL</code>, the function returns the optional default value, which defaults to <code>0</code>.  Otherwise, the function returns the value the pointer points to.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *plugh(<span class="keyword">uint32_t</span> *optional) &#123;</span><br><span class="line">  <span class="keyword">char</span> res[] = <span class="string">"xyzzy"</span>;</span><br><span class="line">  <span class="keyword">uint32_t</span> param = NanGetPointerSafe&lt;<span class="keyword">uint32_t</span>&gt;(optional, <span class="number">0x1337</span>);</span><br><span class="line">  <span class="keyword">switch</span> (param) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  NanSetPointerSafe&lt;<span class="keyword">uint32_t</span>&gt;(optional, <span class="number">0xDEADBEEF</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_set_pointer_safe"></a></p>
+<h3 id="bool_NanSetPointerSafe(Type_*,_Type)">bool NanSetPointerSafe(Type *, Type)</h3><p>A helper for setting optional argument pointers. If the pointer is <code>NULL</code>, the function simply returns <code>false</code>.  Otherwise, the value is assigned to the variable the pointer points to.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *plugh(<span class="keyword">size_t</span> *outputsize) &#123;</span><br><span class="line">  <span class="keyword">char</span> res[] = <span class="string">"xyzzy"</span>;</span><br><span class="line">  <span class="keyword">if</span> !(NanSetPointerSafe&lt;<span class="keyword">size_t</span>&gt;(outputsize, <span class="built_in">strlen</span>(res) + <span class="number">1</span>)) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_raw_string"></a></p>
+<h3 id="void_NanRawString(Handle&lt;Value&gt;,_enum_Nan::Encoding,_size_t_,_void_*,_size_t,_int)"><del>void<em> NanRawString(Handle&lt;Value&gt;, enum Nan::Encoding, size_t </em>, void *, size_t, int)</del></h3><p>Deprecated. Use something else.</p>
+<p><del>When you want to convert a V8 <code>String</code> to a <code>char*</code> buffer, use <code>NanRawString</code>. You have to supply an encoding as well as a pointer to a variable that will be assigned the number of bytes in the returned string. It is also possible to supply a buffer and its length to the function in order not to have a new buffer allocated. The final argument allows setting <code>String::WriteOptions</code>.<br>Just remember that you’ll end up with an object that you’ll need to <code>delete[]</code> at some point unless you supply your own buffer:</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> count;</span><br><span class="line"><span class="keyword">void</span>* decoded = NanRawString(args[<span class="number">1</span>], Nan::BASE64, &amp;count, NULL, <span class="number">0</span>, String::HINT_MANY_WRITES_EXPECTED);</span><br><span class="line">...</span><br><span class="line"><span class="keyword">delete</span>[] <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">char</span>*&gt;(decoded);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_c_string"></a></p>
+<h3 id="char_NanCString(Handle&lt;Value&gt;,_size_t_[,_char_*,_size_t,_int])"><del>char<em> NanCString(Handle&lt;Value&gt;, size_t </em>[, char *, size_t, int])</del></h3><p>Deprecated. Use <code>String::Utf8Value</code> or <code>NanUtf8String</code> instead.</p>
+<p><del>When you want to convert a V8 <code>String</code> to a null-terminated C <code>char*</code> use <code>NanCString</code>. The resulting <code>char*</code> will be UTF-8-encoded, and you need to supply a pointer to a variable that will be assigned the number of bytes in the returned string. It is also possible to supply a buffer and its length to the function in order not to have a new buffer allocated. The final argument allows optionally setting <code>String::WriteOptions</code>, which default to <code>v8::String::NO_OPTIONS</code>.<br>Just remember that you’ll end up with an object that you’ll need to <code>delete[]</code> at some point unless you supply your own buffer:</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> count;</span><br><span class="line"><span class="keyword">char</span>* name = NanCString(args[<span class="number">0</span>], &amp;count);</span><br><span class="line">...</span><br><span class="line"><span class="keyword">delete</span>[] name;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_ascii_string"></a></p>
+<h3 id="NanAsciiString">NanAsciiString</h3><p>Contrary to the name, this is not actually an ASCII string, it is a one-byte string with no particular encoding. Do not use unless you actually need this incorrect legacy behavior. Consider fixing your broken code instead. If you actually have a proper ASCII-string, use UTF-8, which is a proper superset of ASCII.<br>Convert a <code>String</code> to zero-terminated, sort-of Ascii-encoded <code>char *</code>. The underlying buffer is freed when the owner object goes out of scope, so make a copy or heap allocation if you need it to stick around.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(foo) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  NanReturnValue(NanNew(*NanAsciiString(arg[<span class="number">0</span>])));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="WRONG:"><em>WRONG</em>:</h4><p>the buffer <code>str</code> points to has been freed when <code>baz</code> was destroyed:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  <span class="function">NanAsciiString <span class="title">baz</span><span class="params">(arg[0])</span></span>;</span><br><span class="line"></span><br><span class="line">  str = *baz;</span><br><span class="line">  NanReturnUndefined(); <span class="comment">// baz goes out of scope, freeing str</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(str); <span class="comment">// use-after-free error</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="RIGHT:"><em>RIGHT</em>:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> NanAsciiString *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  str = <span class="keyword">new</span> NanAsciiString(arg[<span class="number">0</span>]);</span><br><span class="line">  NanReturnUndefined();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(**str);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_utf8_string"></a></p>
+<h3 id="NanUtf8String">NanUtf8String</h3><p>Equivalent to <code>String::Utf8Value</code>, it only exists for the sake of completeness.<br>Convert a <code>String</code> to zero-terminated, Utf8-encoded <code>char *</code>. The underlying buffer is freed when the owner object goes out of scope, so make a copy or heap allocation if you need it to stick around.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(foo) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  NanReturnValue(NanNew(*NanUtf8String(arg[<span class="number">0</span>])));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="WRONG:-1"><em>WRONG</em>:</h4><p>the buffer <code>str</code> points to has been freed when <code>baz</code> was destroyed:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  <span class="function">NanUtf8String <span class="title">baz</span><span class="params">(arg[0])</span></span>;</span><br><span class="line"></span><br><span class="line">  str = *baz;</span><br><span class="line">  NanReturnUndefined(); <span class="comment">// baz goes out of scope, freeing str</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(str); <span class="comment">// use-after-free error</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="RIGHT:-1"><em>RIGHT</em>:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> NanUtf8String *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  str = <span class="keyword">new</span> NanUtf8String(arg[<span class="number">0</span>]);</span><br><span class="line">  NanReturnUndefined();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(**str);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_ucs2_string"></a></p>
+<h3 id="NanUcs2String">NanUcs2String</h3><p>Equivalent to <code>String::Value</code>, it only exists for the sake of completeness.<br>Convert a <code>String</code> to zero-terminated, Ucs2-encoded <code>uint16_t *</code>. The underlying buffer is freed when the owner object goes out of scope, so make a copy or heap allocation if you need it to stick around.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAN_METHOD(foo) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  NanReturnValue(NanNew(*NanUcs2String(arg[<span class="number">0</span>])));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="WRONG:-2"><em>WRONG</em>:</h4><p>the buffer <code>str</code> points to has been freed when <code>baz</code> was destroyed:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  <span class="function">NanUcs2String <span class="title">baz</span><span class="params">(arg[0])</span></span>;</span><br><span class="line"></span><br><span class="line">  str = *baz;</span><br><span class="line">  NanReturnUndefined(); <span class="comment">// baz goes out of scope, freeing str</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(str); <span class="comment">// use-after-free error</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="RIGHT:-2"><em>RIGHT</em>:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> NanUcs2String *str;</span><br><span class="line"></span><br><span class="line">NAN_METHOD(bar) &#123;</span><br><span class="line">  NanScope();</span><br><span class="line">  str = <span class="keyword">new</span> NanUcs2String(arg[<span class="number">0</span>]);</span><br><span class="line">  NanReturnUndefined();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(**str);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_boolean_option_value"></a></p>
+<h3 id="bool_NanBooleanOptionValue(Handle&lt;Value&gt;,_Handle&lt;String&gt;[,_bool])">bool NanBooleanOptionValue(Handle&lt;Value&gt;, Handle&lt;String&gt;[, bool])</h3><p>When you have an “options” object that you need to fetch properties from, boolean options can be fetched with this pair. They check first if the object exists (<code>IsEmpty</code>), then if the object has the given property (<code>Has</code>) then they get and convert/coerce the property to a <code>bool</code>.</p>
+<p>The optional last parameter is the <em>default</em> value, which is <code>false</code> if left off:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `foo` is false unless the user supplies a truthy value for it</span></span><br><span class="line"><span class="keyword">bool</span> foo = NanBooleanOptionValue(optionsObj, NanNew&lt;String&gt;(<span class="string">"foo"</span>));</span><br><span class="line"><span class="comment">// `bar` is true unless the user supplies a falsy value for it</span></span><br><span class="line"><span class="keyword">bool</span> bar = NanBooleanOptionValueDefTrue(optionsObj, NanNew&lt;String&gt;(<span class="string">"bar"</span>), <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_uint32_option_value"></a></p>
+<h3 id="uint32_t_NanUInt32OptionValue(Handle&lt;Value&gt;,_Handle&lt;String&gt;,_uint32_t)">uint32_t NanUInt32OptionValue(Handle&lt;Value&gt;, Handle&lt;String&gt;, uint32_t)</h3><p>Similar to <code>NanBooleanOptionValue</code>, use <code>NanUInt32OptionValue</code> to fetch an integer option from your options object. Can be any kind of JavaScript <code>Number</code> and it will be coerced to an unsigned 32-bit integer.</p>
+<p>Requires all 3 arguments as a default is not optional:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint32_t</span> count = NanUInt32OptionValue(optionsObj, NanNew&lt;String&gt;(<span class="string">"count"</span>), <span class="number">1024</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_error"></a></p>
+<h3 id="NanError(message),_NanTypeError(message),_NanRangeError(message)">NanError(message), NanTypeError(message), NanRangeError(message)</h3><p>For making <code>Error</code>, <code>TypeError</code> and <code>RangeError</code> objects.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;Value&gt; res = NanError(<span class="string">"you must supply a callback argument"</span>);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_throw_error"></a></p>
+<h3 id="NanThrowError(message),_NanThrowTypeError(message),_NanThrowRangeError(message),_NanThrowError(Local&lt;Value&gt;),_NanThrowError(Local&lt;Value&gt;,_int)">NanThrowError(message), NanThrowTypeError(message), NanThrowRangeError(message), NanThrowError(Local&lt;Value&gt;), NanThrowError(Local&lt;Value&gt;, int)</h3><p>For throwing <code>Error</code>, <code>TypeError</code> and <code>RangeError</code> objects.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NanThrowError(<span class="string">"you must supply a callback argument"</span>);</span><br></pre></td></tr></table></figure>
+<p>Can also handle any custom object you may want to throw. If used with the error code argument, it will add the supplied error code to the error object as a property called <code>code</code>.</p>
+<p><a name="api_nan_new_buffer_handle"></a></p>
+<h3 id="Local&lt;Object&gt;_NanNewBufferHandle(char_*,_uint32_t),_Local&lt;Object&gt;_NanNewBufferHandle(uint32_t)">Local&lt;Object&gt; NanNewBufferHandle(char *, uint32_t), Local&lt;Object&gt; NanNewBufferHandle(uint32_t)</h3><p>The <code>Buffer</code> API has changed a little in Node 0.11, this helper provides consistent access to <code>Buffer</code> creation:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NanNewBufferHandle((<span class="keyword">char</span>*)value.data(), value.size());</span><br></pre></td></tr></table></figure>
+<p>Can also be used to initialize a <code>Buffer</code> with just a <code>size</code> argument.</p>
+<p>Can also be supplied with a <code>NanFreeCallback</code> and a hint for the garbage collector.</p>
+<p><a name="api_nan_buffer_use"></a></p>
+<h3 id="Local&lt;Object&gt;_NanBufferUse(char*,_uint32_t)">Local&lt;Object&gt; NanBufferUse(char*, uint32_t)</h3><p><code>Buffer::New(char*, uint32_t)</code> prior to 0.11 would make a copy of the data.<br>While it was possible to get around this, it required a shim by passing a<br>callback. So the new API <code>Buffer::Use(char*, uint32_t)</code> was introduced to remove<br>needing to use this shim.</p>
+<p><code>NanBufferUse</code> uses the <code>char*</code> passed as the backing data, and will free the<br>memory automatically when the weak callback is called. Keep this in mind, as<br>careless use can lead to “double free or corruption” and other cryptic failures.</p>
+<p><a name="api_nan_has_instance"></a></p>
+<h3 id="bool_NanHasInstance(Persistent&lt;FunctionTemplate&gt;&amp;,_Handle&lt;Value&gt;)">bool NanHasInstance(Persistent&lt;FunctionTemplate&gt;&amp;, Handle&lt;Value&gt;)</h3><p>Can be used to check the type of an object to determine it is of a particular class you have already defined and have a <code>Persistent&lt;FunctionTemplate&gt;</code> handle for.</p>
+<p><a name="api_nan_new_context_handle"></a></p>
+<h3 id="Local&lt;Context&gt;_NanNewContextHandle([ExtensionConfiguration*,_Handle&lt;ObjectTemplate&gt;,_Handle&lt;Value&gt;])"><del>Local&lt;Context&gt; NanNewContextHandle([ExtensionConfiguration*, Handle&lt;ObjectTemplate&gt;, Handle&lt;Value&gt;])</del></h3><p>Deprecated. Use <code>NanNew&lt;Context&gt;</code> instead.</p>
+<p><del>Creates a new <code>Local&lt;Context&gt;</code> handle.</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;FunctionTemplate&gt; ftmpl = NanNew&lt;FunctionTemplate&gt;();</span><br><span class="line">Local&lt;ObjectTemplate&gt; otmpl = ftmpl-&gt;InstanceTemplate();</span><br><span class="line">Local&lt;Context&gt; ctx =  NanNewContextHandle(NULL, otmpl);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_get_current_context"></a></p>
+<h3 id="Local&lt;Context&gt;_NanGetCurrentContext()">Local&lt;Context&gt; NanGetCurrentContext()</h3><p>Gets the current context.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;Context&gt; ctx = NanGetCurrentContext();</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_dispose_persistent"></a></p>
+<h3 id="void_NanDisposePersistent(Persistent&lt;T&gt;_&amp;)">void NanDisposePersistent(Persistent&lt;T&gt; &amp;)</h3><p>Use <code>NanDisposePersistent</code> to dispose a <code>Persistent</code> handle.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NanDisposePersistent(persistentHandle);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_assign_persistent"></a></p>
+<h3 id="NanAssignPersistent(handle,_object)">NanAssignPersistent(handle, object)</h3><p>Use <code>NanAssignPersistent</code> to assign a non-<code>Persistent</code> handle to a <code>Persistent</code> one. You can no longer just declare a <code>Persistent</code> handle and assign directly to it later, you have to <code>Reset</code> it in Node 0.11, so this makes it easier.</p>
+<p>In general it is now better to place anything you want to protect from V8’s garbage collector as properties of a generic <code>Object</code> and then assign that to a <code>Persistent</code>. This works in older versions of Node also if you use <code>NanAssignPersistent</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Persistent&lt;Object&gt; persistentHandle;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Local&lt;Object&gt; obj = NanNew&lt;Object&gt;();</span><br><span class="line">obj-&gt;Set(NanNew&lt;String&gt;(<span class="string">"key"</span>), keyHandle); <span class="comment">// where keyHandle might be a Local&lt;String&gt;</span></span><br><span class="line">NanAssignPersistent(persistentHandle, obj)</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_make_weak_persistent"></a></p>
+<h3 id="_NanWeakCallbackInfo&lt;T,_P&gt;_NanMakeWeakPersistent(Handle&lt;T&gt;,_P,__NanWeakCallbackInfo&lt;T,_P&gt;::Callback)">_NanWeakCallbackInfo&lt;T, P&gt;<em> NanMakeWeakPersistent(Handle&lt;T&gt;, P</em>, _NanWeakCallbackInfo&lt;T, P&gt;::Callback)</h3><p>Creates a weak persistent handle with the supplied parameter and <code>NAN_WEAK_CALLBACK</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NAN_WEAK_CALLBACK(weakCallback) &#123;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Local&lt;Function&gt; func;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *parameter = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">0</span>);</span><br><span class="line">NanMakeWeakPersistent(func, parameter, &amp;weakCallback);</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_set_template"></a></p>
+<h3 id="NanSetTemplate(templ,_name,_value_[,_attributes])">NanSetTemplate(templ, name, value [, attributes])</h3><p>Use to add properties on object and function templates.</p>
+<p><a name="api_nan_set_prototype_template"></a></p>
+<h3 id="NanSetPrototypeTemplate(templ,_name,_value_[,_attributes])">NanSetPrototypeTemplate(templ, name, value [, attributes])</h3><p>Use to add prototype properties on function templates.</p>
+<p><a name="api_nan_set_instance_template"></a></p>
+<h3 id="NanSetInstanceTemplate(templ,_name,_value_[,_attributes])">NanSetInstanceTemplate(templ, name, value [, attributes])</h3><p>Use to add instance properties on function templates.</p>
+<p><a name="api_nan_make_callback"></a></p>
+<h3 id="NanMakeCallback(target,_func,_argc,_argv)">NanMakeCallback(target, func, argc, argv)</h3><p>Use instead of <code>node::MakeCallback</code> to call javascript functions. This (or <code>NanCallback</code>) is the only proper way of calling functions. You must <em><em>never, ever</em></em> directly use <code>Function::Call</code>, it will lead to run-time failures.</p>
+<p><a name="api_nan_encode"></a></p>
+<h3 id="NanEncode(const_void*,_size_t[,_enum_Nan::Encoding])">NanEncode(const void*, size_t[, enum Nan::Encoding])</h3><p>Replaces <code>node::Encode</code>.</p>
+<p><a name="api_nan_decode_bytes"></a></p>
+<h3 id="NanDecodeBytes(v8::Handle&lt;v8::Value&gt;[,_enum_Nan::Encoding])">NanDecodeBytes(v8::Handle&lt;v8::Value&gt;[, enum Nan::Encoding])</h3><p>Replaces <code>node::DecodeBytes</code>.</p>
+<p><a name="api_nan_decode_write"></a></p>
+<h3 id="NanDecodeWrite(char_*,_size_t,_v8::Handle&lt;v8::Value&gt;[,_enum_Nan::Encoding])">NanDecodeWrite(char *, size_t, v8::Handle&lt;v8::Value&gt;[, enum Nan::Encoding])</h3><p>Replaces <code>node::DecodeWrite</code>.</p>
+<p><a name="api_nan_compile_script"></a></p>
+<h3 id="NanCompileScript(Handle_s_[,_const_ScriptOrigin&amp;_origin])">NanCompileScript(Handle<string> s [, const ScriptOrigin&amp; origin])</string></h3><p>Use to create new scripts bound to the current context.</p>
+<p><a name="api_nan_run_script"></a></p>
+<h3 id="NanRunScript(script)">NanRunScript(script)</h3><p>Use to run both bound and unbound scripts.</p>
+<p><a name="api_nan_adjust_external_memory"></a></p>
+<h3 id="NanAdjustExternalMemory(int_change_in_bytes)">NanAdjustExternalMemory(int change_in_bytes)</h3><p>Simply does <code>AdjustAmountOfExternalAllocatedMemory</code>, note that the argument and returned value have type <code>int</code>.</p>
+<p><a name="api_nan_add_gc_epilogue_callback"></a></p>
+<h3 id="NanAddGCEpilogueCallback(GCEpilogueCallback_callback,_GCType_gc_type_filter=kGCTypeAll)">NanAddGCEpilogueCallback(GCEpilogueCallback callback, GCType gc_type_filter=kGCTypeAll)</h3><p>Simply does <code>AddGCEpilogueCallback</code></p>
+<p><a name="api_nan_add_gc_prologue_callback"></a></p>
+<h3 id="NanAddGCPrologueCallback(GCPrologueCallback_callback,_GCType_gc_type_filter=kGCTypeAll)">NanAddGCPrologueCallback(GCPrologueCallback callback, GCType gc_type_filter=kGCTypeAll)</h3><p>Simply does <code>AddGCPrologueCallback</code></p>
+<p><a name="api_nan_remove_gc_epilogue_callback"></a></p>
+<h3 id="NanRemoveGCEpilogueCallback(GCEpilogueCallback_callback)">NanRemoveGCEpilogueCallback(GCEpilogueCallback callback)</h3><p>Simply does <code>RemoveGCEpilogueCallback</code></p>
+<p><a name="api_nan_remove_gc_prologue_callback"></a></p>
+<h3 id="NanRemoveGCPrologueCallback(GCPrologueCallback_callback)">NanRemoveGCPrologueCallback(GCPrologueCallback callback)</h3><p>Simply does <code>RemoveGCPrologueCallback</code></p>
+<p><a name="api_nan_get_heap_statistics"></a></p>
+<h3 id="NanGetHeapStatistics(HeapStatistics_*heap_statistics)">NanGetHeapStatistics(HeapStatistics *heap_statistics)</h3><p>Simply does <code>GetHeapStatistics</code></p>
+<p><a name="api_nan_set_counter_function"></a></p>
+<h3 id="NanSetCounterFunction(CounterLookupCallback_cb)">NanSetCounterFunction(CounterLookupCallback cb)</h3><p>Simply does <code>SetCounterFunction</code></p>
+<p><a name="api_nan_set_create_histogram_function"></a></p>
+<h3 id="NanSetCreateHistogramFunction(CreateHistogramCallback_cb)">NanSetCreateHistogramFunction(CreateHistogramCallback cb)</h3><p>Simply does <code>SetCreateHistogramFunction</code></p>
+<p><a name="api_nan_set_add_histogram_sample_function"></a></p>
+<h3 id="NanSetAddHistogramSampleFunction(AddHistogramSampleCallback_cb)">NanSetAddHistogramSampleFunction(AddHistogramSampleCallback cb)</h3><p>Simply does <code>SetAddHistogramSampleFunction</code></p>
+<p><a name="api_nan_idle_notification"></a></p>
+<h3 id="NanIdleNotification(int_idle_time_in_ms)">NanIdleNotification(int idle_time_in_ms)</h3><p>Simply does <code>IdleNotification</code></p>
+<p><a name="api_nan_low_memory_notification"></a></p>
+<h3 id="NanLowMemoryNotification()">NanLowMemoryNotification()</h3><p>Simply does <code>LowMemoryNotification</code></p>
+<p><a name="api_nan_context_disposed_notification"></a></p>
+<h3 id="NanContextDisposedNotification()">NanContextDisposedNotification()</h3><p>Simply does <code>ContextDisposedNotification</code></p>
+<p><a name="api_nan_callback"></a></p>
+<h3 id="NanCallback">NanCallback</h3><p>Because of the difficulties imposed by the changes to <code>Persistent</code> handles in V8 in Node 0.11, creating <code>Persistent</code> versions of your <code>Handle&lt;Function&gt;</code> is annoyingly tricky. <code>NanCallback</code> makes it easier by taking your handle, making it persistent until the <code>NanCallback</code> is deleted and even providing a handy <code>Call()</code> method to fetch and execute the callback <code>Function</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Local&lt;Function&gt; callbackHandle = args[<span class="number">0</span>].As&lt;Function&gt;();</span><br><span class="line">NanCallback *callback = <span class="keyword">new</span> NanCallback(callbackHandle);</span><br><span class="line"><span class="comment">// pass `callback` around and it's safe from GC until you:</span></span><br><span class="line"><span class="keyword">delete</span> callback;</span><br></pre></td></tr></table></figure>
+<p>You can execute the callback like so:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// no arguments:</span></span><br><span class="line">callback-&gt;Call(<span class="number">0</span>, NULL);</span><br><span class="line"></span><br><span class="line"><span class="comment">// an error argument:</span></span><br><span class="line">Handle&lt;Value&gt; argv[] = &#123;</span><br><span class="line">  NanError(NanNew&lt;String&gt;(<span class="string">"fail!"</span>))</span><br><span class="line">&#125;;</span><br><span class="line">callback-&gt;Call(<span class="number">1</span>, argv);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a success argument:</span></span><br><span class="line">Handle&lt;Value&gt; argv[] = &#123;</span><br><span class="line">  NanNull(),</span><br><span class="line">  NanNew&lt;String&gt;(<span class="string">"w00t!"</span>)</span><br><span class="line">&#125;;</span><br><span class="line">callback-&gt;Call(<span class="number">2</span>, argv);</span><br></pre></td></tr></table></figure>
+<p><code>NanCallback</code> also has a <code>Local&lt;Function&gt; GetFunction()</code> method that you can use<br>to fetch a local handle to the underlying callback function, as well  as a<br><code>void SetFunction(Handle&lt;Function&gt;)</code> for setting the callback on the<br><code>NanCallback</code>. You can check if a <code>NanCallback</code> is empty with the <code>bool IsEmpty()</code> method. Additionally a generic constructor is available for using<br><code>NanCallback</code> without performing heap allocations.</p>
+<p><a name="api_nan_async_worker"></a></p>
+<h3 id="NanAsyncWorker">NanAsyncWorker</h3><p><code>NanAsyncWorker</code> is an abstract class that you can subclass to have much of the annoying async queuing and handling taken care of for you. It can even store arbitrary V8 objects for you and have them persist while the async work is in progress.</p>
+<p>See a rough outline of the implementation:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> NanAsyncWorker &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  NanAsyncWorker (NanCallback *callback);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Clean up persistent handles and delete the *callback</span></span><br><span class="line">  <span class="keyword">virtual</span> ~NanAsyncWorker ();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Check the `ErrorMessage()` and call HandleOKCallback()</span></span><br><span class="line">  <span class="comment">// or HandleErrorCallback depending on whether it has been set or not</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">WorkComplete</span> <span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// You must implement this to do some async work. If there is an</span></span><br><span class="line">  <span class="comment">// error then use `SetErrorMessage()` to set an error message and the callback will</span></span><br><span class="line">  <span class="comment">// be passed that string in an Error object</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Execute</span> <span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Save a V8 object in a Persistent handle to protect it from GC</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">SaveToPersistent</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *key, Local&lt;Object&gt; &amp;obj)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Fetch a stored V8 object (don't call from within `Execute()`)</span></span><br><span class="line">  Local&lt;Object&gt; GetFromPersistent(<span class="keyword">const</span> <span class="keyword">char</span> *key);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the error message (or NULL)</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *ErrorMessage();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Set an error message</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">SetErrorMessage</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *msg)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  <span class="comment">// Default implementation calls the callback function with no arguments.</span></span><br><span class="line">  <span class="comment">// Override this to return meaningful data</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleOKCallback</span> <span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Default implementation calls the callback function with an Error object</span></span><br><span class="line">  <span class="comment">// wrapping the `errmsg` string</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">HandleErrorCallback</span> <span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a name="api_nan_async_queue_worker"></a></p>
+<h3 id="NanAsyncQueueWorker(NanAsyncWorker_*)">NanAsyncQueueWorker(NanAsyncWorker *)</h3><p><code>NanAsyncQueueWorker</code> will run a <code>NanAsyncWorker</code> asynchronously via libuv. Both the <em>execute</em> and <em>after_work</em> steps are taken care of for you&mdash;most of the logic for this is embedded in <code>NanAsyncWorker</code>.</p>
+<p><a name="api"></a></p>
+<h3 id="Tests">Tests</h3><p>To run the NAN tests do:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run-script rebuild-tests</span><br><span class="line">npm <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>Or just:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">make <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h2 id="Porting">Porting</h2><p>Follows is a guide to porting your C++ node to NAN.</p>
+<table><tbody><br><br><tr><th>Aspect</th><th>Without NAN</th><th>With NAN</th></tr><br><br><tr><td>Function declaration</td><td><pre>class MyClass : public ObjectWrap {<br>    ….<br>    static Handle<value> ToString(const Arguments&amp; args);<br>    ….<br>}</value></pre></td><td><pre>class MyClass : public ObjectWrap {<br>    ….<br>    static NAN_METHOD(ToString);<br>    ….<br>}</pre></td></tr><br><br><tr><td>Function definition</td><td><pre>Handle<value><br>MyClass::ToString(const Arguments&amp; args)<br>{<br>    HandleScope scope;<br>    ….<br>}</value></pre></td><td><pre><br>NAN_METHOD(MyClass::ToString)<br>{<br>  NanScope();<br>  ….<br>}</pre></td></tr><br><br><tr><td>Return a value</td><td><pre>return scope.Close(result);</pre></td><td><pre>NanReturnValue(result);</pre></td></tr><br><br><tr><td>Return undefined</td><td><pre>return Undefined();</pre></td><td><pre>NanReturnUndefined();</pre></td></tr><br><br><tr><td>Throw an error</td><td><pre>return ThrowException(<br>  Exception::Error(<br>    String::New(“Error text…”)));</pre></td><td><pre>return NanThrowError(“Error text…”);</pre></td></tr><br><br><tr><td>New v8 string literal</td><td><pre>String::NewSymbol(“my text”)</pre></td><td><pre>NanNew(“my text”)</pre></td></tr><br><br></tbody></table>
+
+<h2 id="Contributors">Contributors</h2><p><a name="governance"></a></p>
+<h2 id="Governance_&amp;_Contributing">Governance &amp; Contributing</h2><p>NAN is governed by the <a href="https://iojs.org/" target="_blank" rel="external">io.js</a> Addon API Working Group</p>
+<h3 id="Addon_API_Working_Group_(WG)">Addon API Working Group (WG)</h3><p>The NAN project is jointly governed by a Working Group which is responsible for high-level guidance of the project.</p>
+<p>Members of the WG are also known as Collaborators, there is no distinction between the two, unlike other io.js projects.</p>
+<p>The WG has final authority over this project including:</p>
+<ul>
+<li>Technical direction</li>
+<li>Project governance and process (including this policy)</li>
+<li>Contribution policy</li>
+<li>GitHub repository hosting</li>
+<li>Maintaining the list of additional Collaborators</li>
+</ul>
+<p>For the current list of WG members, see the project <a href="./README.md#collaborators">README.md</a>.</p>
+<p>Individuals making significant and valuable contributions are made members of the WG and given commit-access to the project. These individuals are identified by the WG and their addition to the WG is discussed via GitHub and requires unanimous consensus amongst those WG members participating in the discussion with a quorum of 50% of WG members required for acceptance of the vote.</p>
+<p><em>Note:</em> If you make a significant contribution and are not considered for commit-access log an issue or contact a WG member directly.</p>
+<p>For the current list of WG members / Collaborators, see the project <a href="./README.md#collaborators">README.md</a>.</p>
+<h3 id="Consensus_Seeking_Process">Consensus Seeking Process</h3><p>The WG follows a <a href="http://en.wikipedia.org/wiki/Consensus-seeking_decision-making" target="_blank" rel="external">Consensus Seeking</a> decision making model.</p>
+<p>Modifications of the contents of the NAN repository are made on a collaborative basis. Anybody with a GitHub account may propose a modification via pull request and it will be considered by the WG. All pull requests must be reviewed and accepted by a WG member with sufficient expertise who is able to take full responsibility for the change. In the case of pull requests proposed by an existing WG member, an additional WG member is required for sign-off. Consensus should be sought if additional WG members participate and there is disagreement around a particular modification.</p>
+<p>If a change proposal cannot reach a consensus, a WG member can call for a vote amongst the members of the WG. Simple majority wins.</p>
+<h3 id="Developer’s_Certificate_of_Origin_1-0">Developer’s Certificate of Origin 1.0</h3><p>By making a contribution to this project, I certify that:</p>
+<ul>
+<li>(a) The contribution was created in whole or in part by me and I have the right to submit it under the open source license indicated in the file; or</li>
+<li>(b) The contribution is based upon previous work that, to the best of my knowledge, is covered under an appropriate open source license and I have the right under that license to submit that work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to submit under a different license), as indicated in the file; or</li>
+<li>(c) The contribution was provided directly to me by some other person who certified (a), (b) or (c) and I have not modified it.</li>
+</ul>
+<p><a name="collaborators"></a></p>
+<h3 id="WG_Members_/_Collaborators">WG Members / Collaborators</h3><table><tbody><br><tr><th align="left">Rod Vagg</th><td><a href="https://github.com/rvagg" target="_blank" rel="external">GitHub/rvagg</a></td><td><a href="http://twitter.com/rvagg" target="_blank" rel="external">Twitter/@rvagg</a></td></tr><br><tr><th align="left">Benjamin Byholm</th><td><a href="https://github.com/kkoopa/" target="_blank" rel="external">GitHub/kkoopa</a></td><td>-</td></tr><br><tr><th align="left">Trevor Norris</th><td><a href="https://github.com/trevnorris" target="_blank" rel="external">GitHub/trevnorris</a></td><td><a href="http://twitter.com/trevnorris" target="_blank" rel="external">Twitter/@trevnorris</a></td></tr><br><tr><th align="left">Nathan Rajlich</th><td><a href="https://github.com/TooTallNate" target="_blank" rel="external">GitHub/TooTallNate</a></td><td><a href="http://twitter.com/TooTallNate" target="_blank" rel="external">Twitter/@TooTallNate</a></td></tr><br><tr><th align="left">Brett Lawson</th><td><a href="https://github.com/brett19" target="_blank" rel="external">GitHub/brett19</a></td><td><a href="http://twitter.com/brett19x" target="_blank" rel="external">Twitter/@brett19x</a></td></tr><br><tr><th align="left">Ben Noordhuis</th><td><a href="https://github.com/bnoordhuis" target="_blank" rel="external">GitHub/bnoordhuis</a></td><td><a href="http://twitter.com/bnoordhuis" target="_blank" rel="external">Twitter/@bnoordhuis</a></td></tr><br><tr><th align="left">David Siegel</th><td><a href="https://github.com/agnat" target="_blank" rel="external">GitHub/agnat</a></td><td>-</td></tr><br></tbody></table>
+
+<h2 id="Licence_&amp;_copyright">Licence &amp; copyright</h2><p>Copyright (c) 2015 NAN WG Members / Collaborators (listed above).</p>
+<p>Native Abstractions for Node.js is licensed under an MIT license. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE file for more details.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/18/2015-07-Zombie-js-Insanely-fast-headless-full-stack-testing-using-Node-js/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/14/2015-07-windbg调试技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">windbg调试技巧</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

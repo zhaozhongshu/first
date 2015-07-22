@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>(Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载) | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Insanely fast, headless full-stack testing using Node.js无窗口浏览器沙箱，除了没有浏览器界面，浏览器其他功能貌似都有，可以用于网页漏洞检测，网站测试等
+The BiteIf you’re going to write an insanely fast, headless browser, how can you notcall it Zomb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)">
+<meta property="og:url" content="http://localhost:4000/2015/07/18/2015-07-Zombie-js-Insanely-fast-headless-full-stack-testing-using-Node-js/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="Insanely fast, headless full-stack testing using Node.js无窗口浏览器沙箱，除了没有浏览器界面，浏览器其他功能貌似都有，可以用于网页漏洞检测，网站测试等
+The BiteIf you’re going to write an insanely fast, headless browser, how can you notcall it Zomb">
+<meta property="og:updated_time" content="2015-07-18T12:50:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)">
+<meta name="twitter:description" content="Insanely fast, headless full-stack testing using Node.js无窗口浏览器沙箱，除了没有浏览器界面，浏览器其他功能貌似都有，可以用于网页漏洞检测，网站测试等
+The BiteIf you’re going to write an insanely fast, headless browser, how can you notcall it Zomb">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-07-Zombie-js-Insanely-fast-headless-full-stack-testing-using-Node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/18/2015-07-Zombie-js-Insanely-fast-headless-full-stack-testing-using-Node-js/" class="article-date">
+  	<time datetime="2015-07-18T12:46:29.000Z" itemprop="datePublished">2015-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器/">浏览器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Insanely_fast,_headless_full-stack_testing_using_Node-js">Insanely fast, headless full-stack testing using Node.js</h3><p>无窗口浏览器沙箱，除了没有浏览器界面，浏览器其他功能貌似都有，可以用于网页漏洞检测，网站测试等</p>
+<h2 id="The_Bite">The Bite</h2><p>If you’re going to write an insanely fast, headless browser, how can you not<br>call it Zombie?  Zombie it is.</p>
+<p>Zombie.js is a lightweight framework for testing client-side JavaScript code in<br>a simulated environment.  No browser required.</p>
+<p>Let’s try to sign up to a page and see what happens:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Browser = <span class="built_in">require</span>(<span class="string">'zombie'</span>);</span><br><span class="line"><span class="comment">// We're going to make requests to http://example.com/signup</span></span><br><span class="line"><span class="comment">// Which will be routed to our test server localhost:3000</span></span><br><span class="line">Browser.localhost(<span class="string">'example.com'</span>, <span class="number">3000</span>);</span><br><span class="line">describe(<span class="string">'User visits signup page'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">new</span> Browser();</span><br><span class="line">  before(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    browser.visit(<span class="string">'/signup'</span>, done);</span><br><span class="line">  &#125;);</span><br><span class="line">  describe(<span class="string">'submits form'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    before(<span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">      browser</span><br><span class="line">        .fill(<span class="string">'email'</span>,    <span class="string">'zombie@underworld.dead'</span>)</span><br><span class="line">        .fill(<span class="string">'password'</span>, <span class="string">'eat-the-living'</span>)</span><br><span class="line">        .pressButton(<span class="string">'Sign Me Up!'</span>, done);</span><br><span class="line">    &#125;);</span><br><span class="line">    it(<span class="string">'should be successful'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      browser.assert.success();</span><br><span class="line">    &#125;);</span><br><span class="line">    it(<span class="string">'should see welcome page'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      browser.assert.text(<span class="string">'title'</span>, <span class="string">'Welcome To Brains Depot'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>This example uses the <a href="https://github.com/mochajs/mocha" target="_blank" rel="external">Mocha</a> testing<br>framework, but Zombie will work with other testing frameworks.  Since Mocha<br>supports promises, we can also write the test like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Browser = <span class="built_in">require</span>(<span class="string">'zombie'</span>);</span><br><span class="line"><span class="comment">// We're going to make requests to http://example.com/signup</span></span><br><span class="line"><span class="comment">// Which will be routed to our test server localhost:3000</span></span><br><span class="line">Browser.localhost(<span class="string">'example.com'</span>, <span class="number">3000</span>);</span><br><span class="line">describe(<span class="string">'User visits signup page'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">new</span> Browser();</span><br><span class="line">  before(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> browser.visit(<span class="string">'/signup'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  describe(<span class="string">'submits form'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    before(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      browser</span><br><span class="line">        .fill(<span class="string">'email'</span>,    <span class="string">'zombie@underworld.dead'</span>)</span><br><span class="line">        .fill(<span class="string">'password'</span>, <span class="string">'eat-the-living'</span>);</span><br><span class="line">      <span class="keyword">return</span> browser.pressButton(<span class="string">'Sign Me Up!'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    it(<span class="string">'should be successful'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      browser.assert.success();</span><br><span class="line">    &#125;);</span><br><span class="line">    it(<span class="string">'should see welcome page'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      browser.assert.text(<span class="string">'title'</span>, <span class="string">'Welcome To Brains Depot'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Well, that was easy.</p>
+<h2 id="Table_of_Contents">Table of Contents</h2><ul>
+<li><a href="#installing">Installing</a></li>
+<li><a href="#browser">Browser</a></li>
+<li><a href="#assertions">Assertions</a></li>
+<li><a href="#cookies">Cookies</a></li>
+<li><a href="#tabs">Tabs</a></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#pipeline">Pipeline</a></li>
+</ul>
+<h2 id="Installing">Installing</h2><p>To install Zombie.js you will need <a href="https://iojs.org/" target="_blank" rel="external">io.js</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install zombie --save-dev</span><br></pre></td></tr></table></figure>
+<h2 id="Browser">Browser</h2><h4 id="browser-assert">browser.assert</h4><p>Methods for making assertions against the browser, such as<br><code>browser.assert.element(&#39;.foo&#39;)</code>.</p>
+<p>See <a href="#assertions">Assertions</a> for detailed discussion.</p>
+<h4 id="browser-referer">browser.referer</h4><p>You can use this to set the HTTP Referer header.</p>
+<h4 id="browser-resources">browser.resources</h4><p>Access to history of retrieved resources.  See <a href="#resources">Resources</a> for<br>detailed discussion.</p>
+<h4 id="browser-pipeline">browser.pipeline</h4><p>Access to the pipeline for making requests and processing responses.  Use this<br>to add new request/response handlers the pipeline for a single browser instance,<br>or use <code>Pipeline.addHandler</code> to modify all instances.  See<br><a href="#pipeline">Pipeline</a>.</p>
+<h4 id="browser-tabs">browser.tabs</h4><p>Array of all open tabs (windows).  Allows you to operate on more than one open<br>window at a time.</p>
+<p>See <a href="#tabs">Tabs</a> for detailed discussion.</p>
+<h4 id="browser-proxy">browser.proxy</h4><p>The <code>proxy</code> option takes a URL so you can tell Zombie what protocol, host and<br>port to use. Also supports Basic authentication, e.g.:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.proxy = <span class="string">'http://me:secret@myproxy:8080'</span></span><br></pre></td></tr></table></figure>
+<h4 id="browser-errors">browser.errors</h4><p>Collection of errors accumulated by the browser while loading page and executing<br>scripts.</p>
+<h4 id="Browser-localhost(host,_port)">Browser.localhost(host, port)</h4><p>Allows you to make requests against a named domain and HTTP/S port, and will<br>route it to the test server running on localhost and unprivileged port.</p>
+<p>For example, if you want to call your application “example.com”, and redirect<br>traffic from port 80 to the test server that’s listening on port 3000, you can<br>do this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Browser.localhost(<span class="string">'example.com'</span>, <span class="number">3000</span>)</span><br><span class="line">browser.visit(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(browser.location.href);</span><br><span class="line">&#125;);</span><br><span class="line">=&gt; <span class="string">'http://example.com/path'</span></span><br></pre></td></tr></table></figure>
+<p>The first time you call <code>Browser.localhost</code>, if you didn’t specify<br><code>Browser.site</code>, it will set it to the hostname (in the above example,<br>“example.com”).  Whenever you call <code>browser.visit</code> with a relative URL, it<br>appends it to <code>Browser.site</code>, so you don’t need to repeat the full URL in every<br>test case.</p>
+<p>You can use wildcards to map domains and all hosts within these domains, and you<br>can specify the source port to map protocols other than HTTP.  For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HTTP requests for example.test www.example.test will be answered by localhost</span></span><br><span class="line"><span class="comment">// server running on port 3000</span></span><br><span class="line">Browser.localhost(<span class="string">'*.example.test'</span>, <span class="number">3000</span>);</span><br><span class="line"><span class="comment">// HTTPS requests will be answered by localhost server running on port 3001</span></span><br><span class="line">Browser.localhost(<span class="string">'*.example.test:443'</span>, <span class="number">3001</span>);</span><br></pre></td></tr></table></figure>
+<p>The underlying implementation hacks <code>net.Socket.connect</code>, so it will route any<br>TCP connection made by the Node application, whether Zombie or any other<br>library.  It does not affect other processes running on your machine.</p>
+<h3 id="Browser-extend">Browser.extend</h3><p>You can use this to customize new browser instances for your specific needs.<br>The extension function is called for every new browser instance, and can change<br>properties, bind methods, register event listeners, etc.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Browser.extend(<span class="function"><span class="keyword">function</span>(<span class="params">browser</span>) </span>&#123;</span><br><span class="line">  browser.on(<span class="string">'console'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">level, message</span>) </span>&#123;</span><br><span class="line">    logger.log(message);</span><br><span class="line">  &#125;);</span><br><span class="line">  browser.on(<span class="string">'log'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">level, message</span>) </span>&#123;</span><br><span class="line">    logger.log(message);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Assertions">Assertions</h2><p>To make life easier, Zombie introduces a set of convenience assertions that you<br>can access directly from the browser object.  For example, to check that a page<br>loaded successfully:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.success();</span><br><span class="line">browser.assert.text(<span class="string">'title'</span>, <span class="string">'My Awesome Site'</span>);</span><br><span class="line">browser.assert.element(<span class="string">'#main'</span>);</span><br></pre></td></tr></table></figure>
+<p>These assertions are available from the <code>browser</code> object since they operate on a<br>particular browser instance — generally dependent on the currently open window,<br>or document loaded in that window.</p>
+<p>Many assertions require an element/elements as the first argument, for example,<br>to compare the text content (<code>assert.text</code>), or attribute value<br>(<code>assert.attribute</code>).  You can pass one of the following values:</p>
+<ul>
+<li>An HTML element or an array of HTML elements</li>
+<li>A CSS selector string (e.g. “h2”, “.book”, “#first-name”)</li>
+</ul>
+<p>Many assertions take an expected value and compare it against the actual value.<br>For example, <code>assert.text</code> compares the expected value against the text contents<br>of one or more strings.  The expected value can be one of:</p>
+<ul>
+<li>A JavaScript primitive value (string, number)</li>
+<li><code>undefined</code> or <code>null</code> are used to assert the lack of value</li>
+<li>A regular expression</li>
+<li>A function that is called with the actual value and returns true if the<br>assertion is true</li>
+<li>Any other object will be matched using <code>assert.deepEqual</code></li>
+</ul>
+<p>Note that in some cases the DOM specification indicates that lack of value is an<br>empty string, not <code>null</code>/<code>undefined</code>.</p>
+<p>All assertions take an optional last argument that is the message to show if the<br>assertion fails.  Better yet, use a testing framework like<br><a href="https://github.com/mochajs/mocha" target="_blank" rel="external">Mocha</a> that has good diff support and<br>don’t worry about these messages.</p>
+<h3 id="Available_Assertions">Available Assertions</h3><p>The following assertions are available:</p>
+<h4 id="assert-attribute(selection,_name,_expected,_message)">assert.attribute(selection, name, expected, message)</h4><p>Asserts the named attribute of the selected element(s) has the expected value.</p>
+<p>Fails if no element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.attribute(<span class="string">'form'</span>, <span class="string">'method'</span>, <span class="string">'post'</span>);</span><br><span class="line">browser.assert.attribute(<span class="string">'form'</span>, <span class="string">'action'</span>, <span class="string">'/customer/new'</span>);</span><br><span class="line"><span class="comment">// Disabled with no attribute value, i.e. &lt;button disabled&gt;</span></span><br><span class="line">browser.assert.attribute(<span class="string">'button'</span>, <span class="string">'disabled'</span>, <span class="string">''</span>);</span><br><span class="line"><span class="comment">// No disabled attribute i.e. &lt;button&gt;</span></span><br><span class="line">browser.assert.attribute(<span class="string">'button'</span>, <span class="string">'disabled'</span>, <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-className(selection,_className,_message)">assert.className(selection, className, message)</h4><p>Asserts that selected element(s) has that and only that class name.  May also be<br>space-separated list of class names.</p>
+<p>Fails if no element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.className(<span class="string">'form input[name=email]'</span>, <span class="string">'has-error'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-cookie(identifier,_expected,_message)">assert.cookie(identifier, expected, message)</h4><p>Asserts that a cookie exists and  has the expected value, or if <code>expected</code> is<br><code>null</code>, that no such cookie exists.</p>
+<p>The identifier is either the name of a cookie, or an object with the property<br><code>name</code> and the optional properties <code>domain</code> and <code>path</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.cookie(<span class="string">'flash'</span>, <span class="string">'Missing email address'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-element(selection,_message)">assert.element(selection, message)</h4><p>Asserts that one element matching selection exists.</p>
+<p>Fails if no element or more than one matching element are found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.element(<span class="string">'form'</span>);</span><br><span class="line">browser.assert.element(<span class="string">'form input[name=email]'</span>);</span><br><span class="line">browser.assert.element(<span class="string">'form input[name=email].has-error'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-elements(selection,_count,_message)">assert.elements(selection, count, message)</h4><p>Asserts how many elements exist in the selection.</p>
+<p>The argument <code>count</code> can be a number, or an object with the following<br>properties:</p>
+<ul>
+<li><code>atLeast</code> - Expecting to find at least that many elements</li>
+<li><code>atMost</code>  - Expecting to find at most that many elements</li>
+<li><code>exactly</code> - Expecting to find exactly that many elements</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.elements(<span class="string">'form'</span>, <span class="number">1</span>);</span><br><span class="line">browser.assert.elements(<span class="string">'form input'</span>, <span class="number">3</span>);</span><br><span class="line">browser.assert.elements(<span class="string">'form input.has-error'</span>, &#123; atLeast: <span class="number">1</span> &#125;);</span><br><span class="line">browser.assert.elements(<span class="string">'form input:not(.has-error)'</span>, &#123; atMost: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-evaluate(expression,_expected,_message)">assert.evaluate(expression, expected, message)</h4><p>Evaluates the JavaScript expression in the context of the currently open window.</p>
+<p>With one argument, asserts that the value is equal to <code>true</code>.</p>
+<p>With two/three arguments, asserts that the returned value matches the expected<br>value.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.evaluate(<span class="string">'$('</span>form<span class="string">').data('</span>valid<span class="string">')'</span>);</span><br><span class="line">browser.assert.evaluate(<span class="string">'$('</span>form<span class="string">').data('</span>errors<span class="string">').length'</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-global(name,_expected,_message)">assert.global(name, expected, message)</h4><p>Asserts that the global (window) property has the expected value.</p>
+<h4 id="assert-hasClass(selection,_className,_message)">assert.hasClass(selection, className, message)</h4><p>Asserts that selected element(s) have the expected class name.  Elements may<br>have other class names (unlike <code>assert.className</code>).</p>
+<p>Fails if no element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.hasClass(<span class="string">'form input[name=email]'</span>, <span class="string">'has-error'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-hasFocus(selection,_message)">assert.hasFocus(selection, message)</h4><p>Asserts that selected element has the focus.</p>
+<p>If the first argument is <code>null</code>, asserts that no element has the focus.</p>
+<p>Otherwise, fails if element not found, or if more than one element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.hasFocus(<span class="string">'form input:nth-child(1)'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-hasNoClass(selection,_className,_message)">assert.hasNoClass(selection, className, message)</h4><p>Asserts that selected element(s) does not have the expected class name.  Elements may<br>have other class names (unlike <code>assert.className</code>).</p>
+<p>Fails if no element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.hasNoClass(<span class="string">'form input'</span>, <span class="string">'has-error'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-input(selection,_expected,_message)">assert.input(selection, expected, message)</h4><p>Asserts that selected input field(s) (<code>input</code>, <code>textarea</code>, <code>select</code> etc) have<br>the expected value.</p>
+<p>Fails if no element found.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.input(<span class="string">'form input[name=text]'</span>, <span class="string">'Head Eater'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-link(selection,_text,_url,_message)">assert.link(selection, text, url, message)</h4><p>Asserts that at least one link exists with the given selector, text and URL.<br>The selector can be <code>a</code>, but a more specific selector is recommended.</p>
+<p>URL can be relative to the current document, or a regular expression.</p>
+<p>Fails if no element is selected that also has the specified text content and<br>URL.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.link(<span class="string">'footer a'</span>, <span class="string">'Privacy Policy'</span>, <span class="string">'/privacy'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-redirected(message)">assert.redirected(message)</h4><p>Asserts the browser was redirected when retrieving the current page.</p>
+<h4 id="assert-success(message)">assert.success(message)</h4><p>Asserts the current page loaded successfully (status code 2xx or 3xx).</p>
+<h4 id="assert-status(code,_message)">assert.status(code, message)</h4><p>Asserts the current page loaded with the expected status code.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.status(<span class="number">404</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-style(selection,_style,_expected,_message)">assert.style(selection, style, expected, message)</h4><p>Asserts that selected element(s) have the expected value for the named style<br>property.  For example:</p>
+<p>Fails if no element found, or element style does not match expected value.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.style(<span class="string">'#show-hide.hidden'</span>, <span class="string">'display'</span>, <span class="string">'none'</span>);</span><br><span class="line">browser.assert.style(<span class="string">'#show-hide:not(.hidden)'</span>, <span class="string">'display'</span>, <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-text(selection,_expected,_message)">assert.text(selection, expected, message)</h4><p>Asserts that selected element(s) have the expected text content.  For example:</p>
+<p>Fails if no element found that has that text content.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.text(<span class="string">'title'</span>, <span class="string">'My Awesome Page'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="assert-url(url,_message)">assert.url(url, message)</h4><p>Asserts the current page has the expected URL.</p>
+<p>The expected URL can be one of:</p>
+<ul>
+<li>The full URL as a string</li>
+<li>A regular expression</li>
+<li>A function, called with the URL and returns true if the assertion is true</li>
+<li>An <a href="http://nodejs.org/api/url.html#url_url_parse_urlstr_parsequerystring_slashesdenotehost" target="_blank" rel="external">object</a>, in which case individual properties are matched against the URL</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">browser.assert.url(<span class="string">'http://localhost/foo/bar'</span>);</span><br><span class="line">browser.assert.url(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'^http://localhost/foo/\\w+$'</span>));</span><br><span class="line">browser.assert.url(&#123; pathname: <span class="string">'/foo/bar'</span> &#125;);</span><br><span class="line">browser.assert.url(&#123; query: &#123; name: <span class="string">'joedoe'</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Roll_Your_Own_Assertions">Roll Your Own Assertions</h3><p>Not seeing an assertion you want?  You can add your own assertions to the<br>prototype of <code>Browser.Assert</code>.</p>
+<p>For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Asserts the browser has the expected number of open tabs.</span></span><br><span class="line">Browser.Assert.prototype.openTabs = <span class="function"><span class="keyword">function</span>(<span class="params">expected, message</span>) </span>&#123;</span><br><span class="line">  assert.equal(<span class="keyword">this</span>.browser.tabs.length, expected, message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Or application specific:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Asserts which links is highlighted in the navigation bar</span></span><br><span class="line">Browser.Assert.navigationOn = <span class="function"><span class="keyword">function</span>(<span class="params">linkText</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.assert.element(<span class="string">'.navigation-bar'</span>);</span><br><span class="line">  <span class="keyword">this</span>.assert.text(<span class="string">'.navigation-bar a.highlighted'</span>, linkText);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Cookies">Cookies</h2><p>Are delicious.  Also, somewhat tricky to work with.   A browser will only send a<br>cookie to the server if it matches the request domain and path.</p>
+<p>Most modern Web applications don’t care so much about the path and set all<br>cookies to the root path of the application (<code>/</code>), but do pay attention to the<br>domain.</p>
+<p>Consider this code:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">browser.setCookie(name: <span class="string">'session'</span>, domain: <span class="string">'example.com'</span>, value: <span class="string">'delicious'</span>);</span><br><span class="line">browser.visit(<span class="string">'http://example.com'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> value = browser.getCookie(<span class="string">'session'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Cookie'</span>, value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In order for the cookie to be set in this example, we need to specify the cookie<br>name, domain and path.  In this example we omit the path and choose the default<br><code>/</code>.</p>
+<p>To get the cookie in this example, we only need the cookie name, because at that<br>point the browser has an open document, and it can use the domain of that<br>document to find the right cookie.  We do need to specify a domain if we’re<br>interested in other cookies, e.g for a 3rd party widget.</p>
+<p>There may be multiple cookies that match the same host, for example, cookies set<br>for <code>.example.com</code> and <code>www.example.com</code> will both match <code>www.example.com</code>, but<br>only the former will match <code>example.com</code>.  Likewise, cookies set for <code>/</code> and<br><code>/foo</code> will both match a request for <code>/foo/bar</code>.</p>
+<p><code>getCookie</code>, <code>setCookie</code> and <code>deleteCookie</code> always operate on a single cookie,<br>and they match the most specific one, starting with the cookies that have the<br>longest matching domain, followed by the cookie that has the longest matching<br>path.</p>
+<p>If the first argument is a string, they look for a cookie with that name using<br>the hostname of the currently open page as the domain and <code>/</code> as the path.  To<br>be more specific, the first argument can be an object with the properties<br><code>name</code>, <code>domain</code> and <code>path</code>.</p>
+<p>The following are equivalent:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">browser.getCookie(<span class="string">'session'</span>);</span><br><span class="line">browser.getCookie(&#123; name: <span class="string">'session'</span>,</span><br><span class="line">                    domain: browser.location.hostname,</span><br><span class="line">                    path: browser.location.pathname &#125;);</span><br></pre></td></tr></table></figure>
+<p><code>getCookie</code> take a second argument.  If false (or missing), it returns the<br>value of the cookie.  If true, it returns an object with all the cookie<br>properties: <code>name</code>, <code>value</code>, <code>domain</code>, <code>path</code>, <code>expires</code>, <code>httpOnly</code> and<br><code>secure</code>.</p>
+<h4 id="browser-cookies">browser.cookies</h4><p>Returns an object holding all cookies used by this browser.</p>
+<h4 id="browser-cookies-dump(output?)">browser.cookies.dump(output?)</h4><p>Dumps all cookies to standard output, or the output stream.</p>
+<h4 id="browser-deleteCookie(identifier)">browser.deleteCookie(identifier)</h4><p>Deletes a cookie matching the identifier.</p>
+<p>The identifier is either the name of a cookie, or an object with the property<br><code>name</code> and the optional properties <code>domain</code> and <code>path</code>.</p>
+<h4 id="browser-deleteCookies()">browser.deleteCookies()</h4><p>Deletes all cookies.</p>
+<h4 id="browser-getCookie(identifier,_allProperties?)">browser.getCookie(identifier, allProperties?)</h4><p>Returns a cookie matching the identifier.</p>
+<p>The identifier is either the name of a cookie, or an object with the property<br><code>name</code> and the optional properties <code>domain</code> and <code>path</code>.</p>
+<p>If <code>allProperties</code> is true, returns an object with all the cookie properties,<br>otherwise returns the cookie value.</p>
+<h4 id="browser-setCookie(name,_value)">browser.setCookie(name, value)</h4><p>Sets the value of a cookie based on its name.</p>
+<h4 id="browser-setCookie(cookie)">browser.setCookie(cookie)</h4><p>Sets the value of a cookie based on the following properties:</p>
+<ul>
+<li><code>domain</code> - Domain of the cookie (requires, defaults to hostname of currently<br>open page)</li>
+<li><code>expires</code> - When cookie it set to expire (<code>Date</code>, optional, defaults to<br>session)</li>
+<li><code>maxAge</code> - How long before cookie expires (in seconds, defaults to session)</li>
+<li><code>name</code> - Cookie name (required)</li>
+<li><code>path</code> - Path for the cookie (defaults to <code>/</code>)</li>
+<li><code>httpOnly</code> - True if HTTP-only (not accessible from client-side JavaScript,<br>defaults to false)</li>
+<li><code>secure</code> - True if secure (requires HTTPS, defaults to false)</li>
+<li><code>value</code> - Cookie value (required)</li>
+</ul>
+<h2 id="Tabs">Tabs</h2><p>Just like your favorite Web browser, Zombie manages multiple open windows as<br>tabs.  New browsers start without any open tabs.  As you visit the first page,<br>Zombie will open a tab for it.</p>
+<p>All operations against the <code>browser</code> object operate on the currently active tab<br>(window) and most of the time you only need to interact with that one tab.  You<br>can access it directly via <code>browser.window</code>.</p>
+<p>Web pages can open additional tabs using the <code>window.open</code> method, or whenever a<br>link or form specifies a target (e.g. <code>target=_blank</code> or <code>target=window-name</code>).<br>You can also open additional tabs by calling <code>browser.open</code>.  To close the<br>currently active tab, close the window itself.</p>
+<p>You can access all open tabs from <code>browser.tabs</code>.  This property is an<br>associative array, you can access each tab by its index number, and iterate over<br>all open tabs using functions like <code>forEach</code> and <code>map</code>.</p>
+<p>If a window was opened with a name, you can also access it by its name.  Since<br>names may conflict with reserved properties/methods, you may need to use<br><code>browser.tabs.find</code>.</p>
+<p>The value of a tab is the currently active window.  That window changes when you<br>navigate forwards and backwards in history.  For example, if you visited the URL<br>‘/foo’ and then the URL ‘/bar’, the first tab (<code>browser.tabs[0]</code>) would be a<br>window with the document from ‘/bar’.  If you then navigate back in history, the<br>first tab would be the window with the document ‘/foo’.</p>
+<p>The following operations are used for managing tabs:</p>
+<h4 id="browser-tabs-1">browser.tabs</h4><p>Returns an array of all open tabs.</p>
+<h4 id="browser-tabs[number]">browser.tabs[number]</h4><p>Returns the tab with that index number.</p>
+<h4 id="browser-tabs[string]">browser.tabs[string]</h4><h4 id="browser-tabs-find(string)">browser.tabs.find(string)</h4><p>Returns the tab with that name.</p>
+<h4 id="browser-tabs-closeAll()">browser.tabs.closeAll()</h4><p>Closes all tabs.</p>
+<h4 id="browser-tabs-current">browser.tabs.current</h4><p>This is a read/write property.  It returns the currently active tab.</p>
+<p>Can also be used to change the currently active tab.  You can set it to a<br>window (e.g. as currently returned from <code>browser.current</code>), a window name or the<br>tab index number.</p>
+<h4 id="browser-tabs-dump(output?)">browser.tabs.dump(output?)</h4><p>Dump a list of all open tabs to standard output, or the output stream.</p>
+<h4 id="browser-tabs-index">browser.tabs.index</h4><p>Returns the index of the currently active tab.</p>
+<h4 id="browser-tabs-length">browser.tabs.length</h4><p>Returns the number of currently opened tabs.</p>
+<h4 id="browser-open_(url)">browser.open (url)</h4><p>Opens and returns a new tab.  Supported options are:</p>
+<ul>
+<li><code>name</code> - Window name.</li>
+<li><code>url</code> - Load document from this URL.</li>
+</ul>
+<h4 id="browser-window">browser.window</h4><p>Returns the currently active window, same as <code>browser.tabs.current.</code></p>
+<h2 id="Debugging">Debugging</h2><p>To see what your code is doing, you can use <code>console.log</code> and friends from both<br>client-side scripts and your test code.</p>
+<p>To see everything Zombie does (opening windows, loading URLs, firing events,<br>etc), set the environment variable <code>DEBUG=zombie</code>.  Zombie uses the<br><a href="https://github.com/visionmedia/debug" target="_blank" rel="external">debug</a> module.  For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ DEBUG=zombie mocha</span><br></pre></td></tr></table></figure>
+<p>You can also turn debugging on from your code (e.g. a specific test you’re<br>trying to troubleshoot) by calling <code>browser.debug()</code>.</p>
+<p>Some objects, like the browser, history, resources, tabs and windows also<br>include <code>dump</code> method that will dump the current state to the console, or an<br>output stream of your choice.  For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">browser.dump();</span><br><span class="line">browser.dump(process.stderr);</span><br></pre></td></tr></table></figure>
+<p>If you want to disable console output from scripts, set <code>browser.silent = true</code><br>or once for all browser instances with <code>Browser.silent = true</code>.</p>
+<h2 id="Events">Events</h2><p>Each browser instance is an <code>EventEmitter</code>, and will emit a variety of events<br>you can listen to.</p>
+<p>Some things you can do with events:</p>
+<ul>
+<li>Trace what the browser is doing, e.g. log every page loaded, every DOM event<br>emitted, every timeout fired</li>
+<li>Wait for something to happen, e.g. form submitted, link clicked, input element<br>getting the focus</li>
+<li>Strip out code from HTML pages, e.g remove analytics code when running tests</li>
+<li>Add event listeners to the page before any JavaScript executes</li>
+<li>Mess with the browser, e.g. modify loaded resources, capture and change DOM<br>events</li>
+</ul>
+<h4 id="console_(level,_message)">console (level, message)</h4><p>Emitted whenever a message is printed to the console (<code>console.log</code>,<br><code>console.error</code>, <code>console.trace</code>, etc).</p>
+<p>The first argument is the logging level, and the second argument is the message.</p>
+<p>The logging levels are: <code>debug</code>, <code>error</code>, <code>info</code>, <code>log</code>, <code>trace</code> and <code>warn</code>.</p>
+<h4 id="active_(window)">active (window)</h4><p>Emitted when this window becomes the active window.</p>
+<h4 id="closed_(window)">closed (window)</h4><p>Emitted when this window is closed.</p>
+<h4 id="done_()">done ()</h4><p>Emitted when the event loop goes empty.</p>
+<h4 id="error_(error)">error (error)</h4><p>Error when loading a resource, or evaluating JavaScript.</p>
+<h4 id="evaluated_(code,_result,_filename)">evaluated (code, result, filename)</h4><p>Emitted after JavaScript code is evaluated.</p>
+<p>The first argument is the JavaScript function or code (string).  The second<br>argument is the result.  The third argument is the filename.</p>
+<h4 id="event_(event,_target)">event (event, target)</h4><p>Emitted whenever a DOM event is fired on the target element, document or window.</p>
+<h4 id="focus_(element)">focus (element)</h4><p>Emitted whenever an element receives the focus.</p>
+<h4 id="idle_()">idle ()</h4><p>Event loop is idle.</p>
+<h4 id="inactive_(window)">inactive (window)</h4><p>Emitted when this window is no longer the active window.</p>
+<h4 id="interval_(function,_interval)">interval (function, interval)</h4><p>Emitted whenever an interval (<code>setInterval</code>) is fired.</p>
+<p>The first argument is the function or code to evaluate, the second argument is<br>the interval in milliseconds.</p>
+<h4 id="link_(url,_target)">link (url, target)</h4><p>Emitted when a link is clicked.</p>
+<p>The first argument is the URL of the new location, the second argument<br>identifies the target window (<code>_self</code>, <code>_blank</code>, window name, etc).</p>
+<h4 id="loaded_(document)">loaded (document)</h4><p>Emitted when a document has been loaded into a window or frame.</p>
+<p>This event is emitted after the HTML is parsed, and some scripts executed.</p>
+<h4 id="loading_(document)">loading (document)</h4><p>Emitted when a document is about to be loaded into a window or frame.</p>
+<p>This event is emitted when the document is still empty, before parsing any HTML.</p>
+<h4 id="opened_(window)">opened (window)</h4><p>Emitted when a new window is opened.</p>
+<h4 id="redirect_(request,_response)">redirect (request, response)</h4><p>Emitted when following a redirect.</p>
+<h4 id="request_(request)">request (request)</h4><p>Emitted before making a request to retrieve a resource.</p>
+<p>The first argument is the request object.  See <a href="#resources">Resources</a> for more<br>details.</p>
+<h4 id="response_(request,_response)">response (request, response)</h4><p>Emitted after receiving the response (excluding redirects).</p>
+<p>The first argument is the request object, the second argument is the response<br>object.  See <a href="#resources">Resources</a> for more details.</p>
+<h4 id="serverEvent_()">serverEvent ()</h4><p>Browser received server initiated event (e.g. <code>EventSource</code> message).</p>
+<h4 id="setInterval_(function,_interval)">setInterval (function, interval)</h4><p>Event loop fired a <code>setInterval</code> event.</p>
+<h4 id="setTimeout_(function,_delay)">setTimeout (function, delay)</h4><p>Event loop fired a <code>setTimeout</code> event.</p>
+<h4 id="submit_(url,_target)">submit (url, target)</h4><p>Emitted whenever a form is submitted.</p>
+<p>The first argument is the URL of the new location, the second argument<br>identifies the target window (<code>_self</code>, <code>_blank</code>, window name, etc).</p>
+<h4 id="timeout_(function,_delay)">timeout (function, delay)</h4><p>Emitted whenever a timeout (<code>setTimeout</code>) is fired.</p>
+<p>The first argument is the function or code to evaluate, the second argument is<br>the delay in milliseconds.</p>
+<h4 id="xhr_(event,_url)">xhr (event, url)</h4><p>Called for each XHR event (<code>progress</code>, <code>abort</code>, <code>readystatechange</code>, <code>loadend</code>,<br>etc).</p>
+<h2 id="Authentication">Authentication</h2><p>Zombie supports HTTP basic access authentication. To provide the login credentials:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">browser.on(<span class="string">'authenticate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">authentication</span>) </span>&#123;</span><br><span class="line">  authentication.username = <span class="string">'myusername'</span>;</span><br><span class="line">  authentication.password = <span class="string">'mypassword'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">browser.visit(<span class="string">'/mypage'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Resources">Resources</h2><p>Zombie can retrieve with resources - HTML pages, scripts, XHR requests - over<br>HTTP, HTTPS and from the file system.</p>
+<p>Most work involving resources is done behind the scenes, but there are few<br>notable features that you’ll want to know about. Specifically, if you need to do<br>any of the following:</p>
+<ul>
+<li>Inspect the history of retrieved resources, useful for troubleshooting issues<br>related to resource loading</li>
+<li>Request resources directly, but have Zombie handle cookies, authentication,<br>etc</li>
+<li>Implement new mechanism for retrieving resources, for example, add new<br>protocols or support new headers (see <a href="#pipeline">Pipeline</a>)</li>
+</ul>
+<h3 id="The_Resources_List">The Resources List</h3><p>Each browser provides access to the list of resources loaded by the currently<br>open window via <code>browser.resources</code>.  You can iterate over this list just like<br>any JavaScript array.</p>
+<p>Each resource provides three properties:</p>
+<ul>
+<li><code>request</code>   - The request object</li>
+<li><code>response</code>  - The resource object (if received)</li>
+<li><code>error</code>     - The error generated (no response)</li>
+</ul>
+<p>The request object is based on the <a href="https://fetch.spec.whatwg.org/#request-class" target="_blank" rel="external">Fetch API Request<br>object</a>.</p>
+<p>The response object is based on the <a href="https://fetch.spec.whatwg.org/#response-class" target="_blank" rel="external">Fetch API Response<br>object</a>.  Note that the fetch API<br>has the property <code>status</code>, whereas Node HTTP module uses <code>statusCode</code>.</p>
+<h4 id="browser-fetch(input,_init)">browser.fetch(input, init)</h4><p>You can use the browser directly to make requests against external resources.<br>These requests will share the same cookies, authentication and other browser<br>settings (also pipline).</p>
+<p>The <code>fetch</code> method is based on the <a href="https://fetch.spec.whatwg.org/#fetch-method" target="_blank" rel="external">Fetch<br>API</a>.</p>
+<p>For example:</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">browser.fetch(url)</span><br><span class="line">  .<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(response)</span></span> &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="string">'Status code:'</span>, response.<span class="keyword">status</span>);</span><br><span class="line">    <span class="keyword">if</span> (response.<span class="keyword">status</span> === <span class="number">200</span>)</span><br><span class="line">      <span class="keyword">return</span> response.text();</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(text)</span></span> &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="string">'Document:'</span>, text);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span><span class="params">(error)</span></span> &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="string">'Network error'</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>To access the response document body as a Node buffer, use the following:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response.arrayBuffer()</span><br><span class="line">  .then(Buffer) <span class="comment">// arrayBuffer -&gt; Buffer</span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">buffer</span>) </span>&#123;</span><br><span class="line">    assert( Buffer.isBuffer(buffer) );</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="resources-dump(output?)">resources.dump(output?)</h4><p>Dumps the resources list to the output stream (defaults to standard output<br>stream).</p>
+<h2 id="Pipeline">Pipeline</h2><p>Zombie uses a pipeline to operate on resources.  You can extend that pipeline<br>with your own set of handlers, for example, to support additional protocols,<br>content types, special handlers, etc.</p>
+<p>The pipeline consists of a set of handlers.  There are two types of handlers:</p>
+<p>Functions with two arguments deal with requests.  They are called with the<br>browser and request object.  They may modify the request object, and they may<br>either return null (pass control to the next handler) or return the Response<br>object, or return a promise that resolves to either outcome.</p>
+<p>Functions with three arguments deal with responses.  They are called with the<br>browser, request and response objects.  They may modify the response object, and<br>must return a Response object, either the same as the argument or a new Response<br>object, either directly or through a promise.</p>
+<p>To add a new handle to the end of the pipeline:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">browser.pipeline.addHandler(<span class="function"><span class="keyword">function</span>(<span class="params">browser, request</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Let's delay this request by 1/10th second</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(resolve, <span class="number">100</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>You can add handlers to all browsers via <code>Pipeline.addHandler</code>.  These<br>handlers are automatically added to every new <code>browser.pipeline</code> instance.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Pipeline.addHandler(<span class="function"><span class="keyword">function</span>(<span class="params">browser, request, response</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Log the response body</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Response body: '</span> + response.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/18/2015-07-minifilter-communication-port通信模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          minifilter communication port通信模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/18/2015-07-Native-Abstractions-for-Node-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">(nan)Native Abstractions for Node.js(转载)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
