@@ -3,24 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>node.js中npm源码解析 | 技术人生</title>
+  <title>node.js中npm解析 | 技术人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1npm install xxx即可
-我们先从npm.cmd开始,npm.cmd文件内容如下1node &quot;%~dp0\.\node_modules\npm\bin\npm-cli.js&quot; %*
-npm-cli.js代码：123456789101112131415161718192021222324(funct">
+  <meta name="description" content="npm使用在一个目录下创建一个package在目录下执行
+npm init
+添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
+他会在package.json文件中dependencies添加一项
+npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js中npm源码解析">
+<meta property="og:title" content="node.js中npm解析">
 <meta property="og:url" content="http://localhost:4000/2015/07/21/2015-07-node-js中npm源码解析/index.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1npm install xxx即可
-我们先从npm.cmd开始,npm.cmd文件内容如下1node &quot;%~dp0\.\node_modules\npm\bin\npm-cli.js&quot; %*
-npm-cli.js代码：123456789101112131415161718192021222324(funct">
+<meta property="og:description" content="npm使用在一个目录下创建一个package在目录下执行
+npm init
+添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
+他会在package.json文件中dependencies添加一项
+npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
 <meta property="og:updated_time" content="2015-07-21T07:32:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js中npm源码解析">
-<meta name="twitter:description" content="npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1npm install xxx即可
-我们先从npm.cmd开始,npm.cmd文件内容如下1node &quot;%~dp0\.\node_modules\npm\bin\npm-cli.js&quot; %*
-npm-cli.js代码：123456789101112131415161718192021222324(funct">
+<meta name="twitter:title" content="node.js中npm解析">
+<meta name="twitter:description" content="npm使用在一个目录下创建一个package在目录下执行
+npm init
+添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
+他会在package.json文件中dependencies添加一项
+npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -172,7 +178,7 @@ npm-cli.js代码：123456789101112131415161718192021222324(funct">
         
   
     <h1 class="article-title" itemprop="name">
-      node.js中npm源码解析
+      node.js中npm解析
     </h1>
   
 
@@ -192,7 +198,11 @@ npm-cli.js代码：123456789101112131415161718192021222324(funct">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：<br>要安装某个包，只需：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install xxx即可</span><br></pre></td></tr></table></figure></p>
+        <h1 id="npm使用">npm使用</h1><p><strong>在一个目录下创建一个package</strong><br>在目录下执行</p>
+<pre><code><span class="built_in">npm</span> init
+</code></pre><p><strong>添加一个package依赖</strong><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="string">https:</span><span class="comment">//github.com/sylvinus/node-crawler.git b --save</span></span><br></pre></td></tr></table></figure></p>
+<p>他会在package.json文件中dependencies添加一项</p>
+<p>npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：<br>要安装某个包，只需：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install xxx即可</span><br></pre></td></tr></table></figure></p>
 <p>我们先从npm.cmd开始,npm.cmd文件内容如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node <span class="string">"%~dp0\.\node_modules\npm\bin\npm-cli.js"</span> %*</span><br></pre></td></tr></table></figure></p>
 <p>npm-cli.js代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// wrapper in case we're in module_context mode</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"graceful-fs"</span>)</span><br><span class="line">  , path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line">  , npm = <span class="built_in">require</span>(<span class="string">"../lib/npm.js"</span>)</span><br><span class="line">  , npmconf = <span class="built_in">require</span>(<span class="string">"npmconf"</span>)</span><br><span class="line">  , errorHandler = <span class="built_in">require</span>(<span class="string">"../lib/utils/error-handler.js"</span>)</span><br><span class="line">  , configDefs = npmconf.defs</span><br><span class="line">  , shorthands = configDefs.shorthands</span><br><span class="line">  , types = configDefs.types</span><br><span class="line">  , nopt = <span class="built_in">require</span>(<span class="string">"nopt"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> conf = nopt(types, shorthands)</span><br><span class="line">npm.argv = conf.argv.remain</span><br><span class="line"><span class="keyword">if</span> (npm.deref(npm.argv[<span class="number">0</span>])) </span><br><span class="line">    npm.command = npm.argv.shift()</span><br><span class="line"></span><br><span class="line">process.on(<span class="string">"uncaughtException"</span>, errorHandler)</span><br><span class="line"></span><br><span class="line">conf._exit = <span class="literal">true</span></span><br><span class="line">npm.load(conf, <span class="function"><span class="keyword">function</span> (<span class="params">er</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (er) <span class="keyword">return</span> errorHandler(er)</span><br><span class="line">  npm.commands[npm.command](npm.argv, errorHandler)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
 <p>(function(){…})() 这样执行函数的有个好处：不污染js环境。<br>从代码中可以看到，npm-cli.js调用npm.js中的功能npm.load(conf);，我们看一下conf都有哪些参数？在load前假如一行console.log(conf)看一下输出<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt;npm search crawler</span><br><span class="line">&#123; argv:</span><br><span class="line">   &#123; remain: [ <span class="string">'crawler'</span> ],</span><br><span class="line">     cooked: [ <span class="string">'search'</span>, <span class="string">'crawler'</span> ],</span><br><span class="line">     original: [ <span class="string">'search'</span>, <span class="string">'crawler'</span> ] &#125;,</span><br><span class="line">  _exit: <span class="literal">true</span> &#125;</span><br><span class="line">No match found <span class="keyword">for</span> <span class="string">"crawler"</span></span><br></pre></td></tr></table></figure></p>

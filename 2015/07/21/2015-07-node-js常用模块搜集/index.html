@@ -6,46 +6,55 @@
   <title>node.js常用模块搜集 | 技术人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="目录
+lodash
+optimist：命令行解析
+uglify-js：js压缩
+socket.io：websocket实现
+connect：用于连接各种中间件
+node_redis：redis的node客户端
+debug：调试模块
+q：异步promise库
+debug：调试模块
 abbrev：参数预测
+optimist：命令行解析工具
 chai：js测试框架
-type-detect：js类型判断
-deep-eql
-cheerio：jquery风格的html文档解析库
-generic_pool：通用对象池，管理MySQL连接很优雅
-iconv：文本编码转换
-JsChardet：文本编码格式识别
-Gumbo Parser:Google开发的HTML5解析引擎C99
-browser-request：用在浏">
+type-detect：js类型判断">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node.js常用模块搜集">
 <meta property="og:url" content="http://localhost:4000/2015/07/21/2015-07-node-js常用模块搜集/index.html">
 <meta property="og:site_name" content="技术人生">
 <meta property="og:description" content="目录
+lodash
+optimist：命令行解析
+uglify-js：js压缩
+socket.io：websocket实现
+connect：用于连接各种中间件
+node_redis：redis的node客户端
+debug：调试模块
+q：异步promise库
+debug：调试模块
 abbrev：参数预测
+optimist：命令行解析工具
 chai：js测试框架
-type-detect：js类型判断
-deep-eql
-cheerio：jquery风格的html文档解析库
-generic_pool：通用对象池，管理MySQL连接很优雅
-iconv：文本编码转换
-JsChardet：文本编码格式识别
-Gumbo Parser:Google开发的HTML5解析引擎C99
-browser-request：用在浏">
+type-detect：js类型判断">
 <meta property="og:image" content="http://localhost:4000/images/chai_usage.png">
 <meta property="og:updated_time" content="2015-07-21T08:16:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node.js常用模块搜集">
 <meta name="twitter:description" content="目录
+lodash
+optimist：命令行解析
+uglify-js：js压缩
+socket.io：websocket实现
+connect：用于连接各种中间件
+node_redis：redis的node客户端
+debug：调试模块
+q：异步promise库
+debug：调试模块
 abbrev：参数预测
+optimist：命令行解析工具
 chai：js测试框架
-type-detect：js类型判断
-deep-eql
-cheerio：jquery风格的html文档解析库
-generic_pool：通用对象池，管理MySQL连接很优雅
-iconv：文本编码转换
-JsChardet：文本编码格式识别
-Gumbo Parser:Google开发的HTML5解析引擎C99
-browser-request：用在浏">
+type-detect：js类型判断">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -218,7 +227,17 @@ browser-request：用在浏">
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="目录">目录</h1><ul>
+<li><strong><a href="#lodash">lodash</a></strong></li>
+<li><strong><a href="#optimist">optimist：命令行解析</a></strong></li>
+<li><strong><a href="#uglify-js">uglify-js：js压缩</a></strong></li>
+<li><strong><a href="#socket.io">socket.io：websocket实现</a></strong></li>
+<li><strong><a href="#connect">connect：用于连接各种中间件</a></strong></li>
+<li><strong><a href="#node_redis">node_redis：redis的node客户端</a></strong></li>
+<li><strong><a href="#debug">debug：调试模块</a></strong></li>
+<li><strong><a href="#q">q：异步promise库</a></strong></li>
+<li><strong><a href="#debug">debug：调试模块</a></strong></li>
 <li><strong><a href="#abbrev">abbrev：参数预测</a></strong></li>
+<li><strong><a href="#optimist">optimist：命令行解析工具</a></strong></li>
 <li><strong><a href="#chai">chai：js测试框架</a></strong></li>
 <li><strong><a href="#type-detect">type-detect：js类型判断</a></strong></li>
 <li><strong><a href="#deep-eql">deep-eql</a></strong></li>
@@ -238,7 +257,28 @@ browser-request：用在浏">
 <li><strong><a href="#hawk">hawk：HTTP认证模块</a></strong></li>
 <li><strong><a href="#mime-types">mime-types：根据文件名识别mime类型</a></strong></li>
 <li><strong><a href="#request">request：功能丰富的http request client</a></strong></li>
+<li><strong><a href="#node-crawler">Node-Crawler：功能强大使用方便的爬虫</a></strong></li>
 </ul>
+<h1 id="lodash">lodash</h1><p>提供set的交、并、差、补，提供简单的模版算法，提供各种排序</p>
+<h1 id="optimist">optimist</h1><p>命令行解析</p>
+<h1 id="uglify-js">uglify-js</h1><p>提供js压缩功能</p>
+<h1 id="socket-io">socket.io</h1><p>websocket模块</p>
+<h1 id="connect">connect</h1><p>express中间件技术，用于连接各种中间件模块，例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> connect = <span class="built_in">require</span>(<span class="string">'connect'</span>)</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = connect()</span><br><span class="line"></span><br><span class="line"><span class="comment">// gzip/deflate outgoing responses</span></span><br><span class="line"><span class="keyword">var</span> compression = <span class="built_in">require</span>(<span class="string">'compression'</span>)</span><br><span class="line">app.use(compression())</span><br><span class="line"></span><br><span class="line"><span class="comment">// store session state in browser cookie</span></span><br><span class="line"><span class="keyword">var</span> cookieSession = <span class="built_in">require</span>(<span class="string">'cookie-session'</span>)</span><br><span class="line">app.use(cookieSession(&#123;</span><br><span class="line">    keys: [<span class="string">'secret1'</span>, <span class="string">'secret2'</span>]</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// parse urlencoded request bodies into req.body</span></span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line">app.use(bodyParser.urlencoded())</span><br><span class="line"></span><br><span class="line"><span class="comment">// respond to all requests</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  res.end(<span class="string">'Hello from Connect!\n'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//create node.js http server and listen on port</span></span><br><span class="line">http.createServer(app).listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="node_redis">node_redis</h1><p>node.js的redis客户端</p>
+<h1 id="debug">debug</h1><p>调试模块</p>
+<h1 id="q">q</h1><p>一个async promise库，例如，可以把这种代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</span><br><span class="line">    step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</span><br><span class="line">        step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</span><br><span class="line">            step4(value3, <span class="function"><span class="keyword">function</span>(<span class="params">value4</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// Do something with value4</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>转换成这种代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Q.fcall(promisedStep1)</span><br><span class="line">.then(promisedStep2)</span><br><span class="line">.then(promisedStep3)</span><br><span class="line">.then(promisedStep4)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">value4</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with value4</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle any error from all above steps</span></span><br><span class="line">&#125;)</span><br><span class="line">.done();</span><br></pre></td></tr></table></figure></p>
+<h1 id="mime">mime</h1><p>mime处理</p>
+<h1 id="glob">glob</h1><p>通配符文件列表</p>
+<h1 id="node-uuid">node-uuid</h1><p>uuid生成</p>
+<h1 id="moment">moment</h1><p>时间处理模块，生成类似于：发表于12分钟前这类的string</p>
+<h1 id="grunt">grunt</h1><p>前段构建工具</p>
+<h1 id="less">less</h1><p>前段构建工具</p>
+<h1 id="stylus">stylus</h1><p>前段构建工具</p>
+<h1 id="marked">marked</h1><p>markdown解析</p>
+<h1 id="when">when</h1><p>另一个async Promises库</p>
+<h1 id="node-static">node-static</h1><p>静态文件服务器</p>
+<h1 id="sprintf">sprintf</h1><p>sprintf的node实现版本</p>
 <h1 id="abbrev">abbrev</h1><p>一个案例：我们的程序中，常常有各种输入参数，假设有[“dir”,”path”,”debug”]，用户要输入完整参数，很麻烦，abbrev可以解决这个问题:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> abbrev = <span class="built_in">require</span>(<span class="string">"abbrev"</span>);</span><br><span class="line">abbrev(<span class="string">"dir"</span>,<span class="string">"path"</span>,<span class="string">"debug"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>程序生成一个新的表：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123; de: 'debug',</span><br><span class="line">  deb: 'debug',</span><br><span class="line">  debu: 'debug',</span><br><span class="line">  debug: 'debug',</span><br><span class="line">  di: 'dir',</span><br><span class="line">  dir: 'dir',</span><br><span class="line">  p: 'path',</span><br><span class="line">  pa: 'path',</span><br><span class="line">  pat: 'path',</span><br><span class="line">  path: 'path' &#125;</span><br></pre></td></tr></table></figure></p>
 <p>这时，用户输入de,deb,debug我们都可以自动映射到debug参数，di，dir我们自动映射到dir了</p>
@@ -287,10 +327,20 @@ browser-request：用在浏">
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-&gt; Xyz </span><br><span class="line">JS! Hooray!</span><br><span class="line">-&gt; <span class="keyword">var</span> foo = <span class="string">'&lt;&lt;bar&gt;&gt;'</span>;</span><br><span class="line">That is it?!</span><br></pre></td></tr></table></figure>
 <h1 id="inherits">inherits</h1><p>Browser-friendly inheritance fully compatible with standard node.js<br>使用案例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inherits = <span class="built_in">require</span>(<span class="string">'inherits'</span>);</span><br><span class="line"><span class="comment">// then use exactly as the standard one</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Parent.call(<span class="keyword">this</span>)</span><br><span class="line">  test(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">inherits(Child, Parent)</span><br></pre></td></tr></table></figure></p>
 <h1 id="process-nextick-args">process-nextick-args</h1><p>很简单，就是封装process.nextTick调用<br>Always be able to pass arguments to process.nextTick, no matter the platform<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nextTick = <span class="built_in">require</span>(<span class="string">'process-nextick-args'</span>);</span><br><span class="line"></span><br><span class="line">nextTick(<span class="function"><span class="keyword">function</span> (<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a, b, c);</span><br><span class="line">&#125;, <span class="string">'step'</span>, <span class="number">3</span>,  <span class="string">'profit'</span>);</span><br></pre></td></tr></table></figure></p>
-<h1 id="async-js">async.js</h1><p>提供一组工具函数，实现一种函数式编程模式</p>
+<h1 id="async-js">async.js</h1><p>提供一组工具函数，实现一种函数式编程模式，它提供的是一种编程模式</p>
 <h1 id="hawk">hawk</h1><p>Hawk是一套HTTP认证策略，用于提供client、server端认证</p>
 <h1 id="mime-types">mime-types</h1><p>根据文件后缀名，查询mime类型，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mime.lookup(<span class="string">'json'</span>)             <span class="comment">// 'application/json'</span></span><br><span class="line">mime.lookup(<span class="string">'.md'</span>)              <span class="comment">// 'text/x-markdown'</span></span><br><span class="line">mime.lookup(<span class="string">'file.html'</span>)        <span class="comment">// 'text/html'</span></span><br><span class="line">mime.lookup(<span class="string">'folder/file.js'</span>)   <span class="comment">// 'application/javascript'</span></span><br><span class="line">mime.lookup(<span class="string">'folder/.htaccess'</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">mime.lookup(<span class="string">'cats'</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="request">request</h1><p>一个功能丰富的http request client，它支持proxy设置，<code>application/x-www-form-urlencoded</code> and <code>multipart/form-data</code> form uploads. For <code>multipart/related</code> refer to the <code>multipart</code><br>同时支持HTTP Authentication、OAuth Signing</p>
+<h1 id="node-crawler">node-crawler</h1><p>网站爬虫程序<br>node-crawler aims to be the best crawling/scraping package for Node.<br>It features:</p>
+<ul>
+<li>A clean, simple API</li>
+<li>server-side DOM &amp; automatic jQuery insertion with Cheerio (default) or JSDOM</li>
+<li>Configurable pool size and retries</li>
+<li>Priority of requests</li>
+<li>forceUTF8 mode to let node-crawler deal for you with charset detection and conversion</li>
+<li>A local cache</li>
+<li>node 0.10 and 0.12 support</li>
+</ul>
 
       
     </div>
@@ -311,7 +361,7 @@ browser-request：用在浏">
   
   
     <a href="/2015/07/21/2015-07-node-js中npm源码解析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">node.js中npm源码解析</div>
+      <div class="article-nav-title">node.js中npm解析</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
