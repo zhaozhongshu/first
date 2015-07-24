@@ -3,30 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>node.js中npm解析 | 技术人生</title>
+  <title>node.js中部分库解析 | 技术人生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="npm使用在一个目录下创建一个package在目录下执行
-npm init
-添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
-他会在package.json文件中dependencies添加一项
-npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
+  <meta name="description" content="util库
+npm库
+
+util库1util.format(fmt,...);
+格式化字符串,里面实现中用到了string.replace(/%[sdj%]/g, callback)，用callback返回值替换正则token%%  输入%%s  输入字符串%d  输入Number%j  输入json对象(任意对象通过JSON.stringify转成json)
+1util.deprecate(fn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js中npm解析">
-<meta property="og:url" content="http://localhost:4000/2015/07/21/2015-07-node-js中npm源码解析/index.html">
+<meta property="og:title" content="node.js中部分库解析">
+<meta property="og:url" content="http://localhost:4000/2015/07/21/2015-07-node-js中部分库源码解析/index.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="npm使用在一个目录下创建一个package在目录下执行
-npm init
-添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
-他会在package.json文件中dependencies添加一项
-npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
-<meta property="og:updated_time" content="2015-07-21T07:32:23.000Z">
+<meta property="og:description" content="util库
+npm库
+
+util库1util.format(fmt,...);
+格式化字符串,里面实现中用到了string.replace(/%[sdj%]/g, callback)，用callback返回值替换正则token%%  输入%%s  输入字符串%d  输入Number%j  输入json对象(任意对象通过JSON.stringify转成json)
+1util.deprecate(fn">
+<meta property="og:updated_time" content="2015-07-24T06:12:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js中npm解析">
-<meta name="twitter:description" content="npm使用在一个目录下创建一个package在目录下执行
-npm init
-添加一个package依赖1npm install https://github.com/sylvinus/node-crawler.git b --save
-他会在package.json文件中dependencies添加一项
-npm是node.js软件中配套的包管理工具，使用起来非常方便，例如：要安装某个包，只需：1n">
+<meta name="twitter:title" content="node.js中部分库解析">
+<meta name="twitter:description" content="util库
+npm库
+
+util库1util.format(fmt,...);
+格式化字符串,里面实现中用到了string.replace(/%[sdj%]/g, callback)，用callback返回值替换正则token%%  输入%%s  输入字符串%d  输入Number%j  输入json对象(任意对象通过JSON.stringify转成json)
+1util.deprecate(fn">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -87,31 +90,7 @@ npm是node.js软件中配套的包管理工具，使用起来非常方便，例�
 				
 				
 				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
-			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
-			        
-			        </div>
-				</section>
-				
 
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
-				</section>
 				
 			</div>
 		</div>
@@ -161,10 +140,10 @@ npm是node.js软件中配套的包管理工具，使用起来非常方便，例�
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2015-07-node-js中npm源码解析" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015-07-node-js中部分库源码解析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/21/2015-07-node-js中npm源码解析/" class="article-date">
+      <a href="/2015/07/21/2015-07-node-js中部分库源码解析/" class="article-date">
   	<time datetime="2015-07-21T07:30:01.000Z" itemprop="datePublished">2015-07-21</time>
 </a>
     </div>
@@ -178,7 +157,7 @@ npm是node.js软件中配套的包管理工具，使用起来非常方便，例�
         
   
     <h1 class="article-title" itemprop="name">
-      node.js中npm解析
+      node.js中部分库解析
     </h1>
   
 
@@ -198,7 +177,20 @@ npm是node.js软件中配套的包管理工具，使用起来非常方便，例�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="npm使用">npm使用</h1><p><strong>在一个目录下创建一个package</strong><br>在目录下执行</p>
+        <ul>
+<li><strong><a href="#util库">util库</a></strong></li>
+<li><strong><a href="#npm库">npm库</a></strong></li>
+</ul>
+<h1 id="util库">util库</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">util.format(fmt,...);</span><br></pre></td></tr></table></figure>
+<p>格式化字符串,里面实现中用到了string.replace(/%[sdj%]/g, callback)，用callback返回值替换正则token<br>%%  输入%<br>%s  输入字符串<br>%d  输入Number<br>%j  输入json对象(任意对象通过JSON.stringify转成json)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">util.deprecate(fn, msg);</span><br></pre></td></tr></table></figure>
+<p>标记一个函数为deprecate，它的实现比较有意思，是指是返回一个wrapper函数，在首次调用时，给出提示<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">exports.deprecate = <span class="function"><span class="keyword">function</span>(<span class="params">fn, msg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isUndefined(global.process)) &#123;  <span class="comment">//startup过程中global.process对象还没建立起来，这时可以延迟到调用目标函数时，才调用deprecate</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> exports.deprecate(fn, msg).apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (process.noDeprecation === <span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> fn;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> warned = <span class="literal">false</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">deprecated</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!warned) &#123;</span><br><span class="line">      <span class="keyword">if</span> (process.throwDeprecation) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(msg);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.traceDeprecation) &#123;</span><br><span class="line">        <span class="built_in">console</span>.trace(msg);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(msg);</span><br><span class="line">      &#125;</span><br><span class="line">      warned = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> deprecated;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">util.inspect(obj, opts)</span><br></pre></td></tr></table></figure>
+<p>更详细的展示一个obj</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">util.inherits(ctor, superCtor);</span><br></pre></td></tr></table></figure>
+<p>继承<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">util._extend(origin, add)</span><br></pre></td></tr></table></figure></p>
+<p>将add对象中所有成员拷贝的origin对象中，同时会覆盖原来的字段g</p>
+<h1 id="npm库">npm库</h1><p><strong>在一个目录下创建一个package</strong><br>在目录下执行</p>
 <pre><code><span class="built_in">npm</span> init
 </code></pre><p><strong>添加一个package依赖</strong><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="string">https:</span><span class="comment">//github.com/sylvinus/node-crawler.git b --save</span></span><br></pre></td></tr></table></figure></p>
 <p>他会在package.json文件中dependencies添加一项</p>
@@ -207,7 +199,8 @@ npm是node.js软件中配套的包管理工具，使用起来非常方便，例�
 <p>npm-cli.js代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// wrapper in case we're in module_context mode</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"graceful-fs"</span>)</span><br><span class="line">  , path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line">  , npm = <span class="built_in">require</span>(<span class="string">"../lib/npm.js"</span>)</span><br><span class="line">  , npmconf = <span class="built_in">require</span>(<span class="string">"npmconf"</span>)</span><br><span class="line">  , errorHandler = <span class="built_in">require</span>(<span class="string">"../lib/utils/error-handler.js"</span>)</span><br><span class="line">  , configDefs = npmconf.defs</span><br><span class="line">  , shorthands = configDefs.shorthands</span><br><span class="line">  , types = configDefs.types</span><br><span class="line">  , nopt = <span class="built_in">require</span>(<span class="string">"nopt"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> conf = nopt(types, shorthands)</span><br><span class="line">npm.argv = conf.argv.remain</span><br><span class="line"><span class="keyword">if</span> (npm.deref(npm.argv[<span class="number">0</span>])) </span><br><span class="line">    npm.command = npm.argv.shift()</span><br><span class="line"></span><br><span class="line">process.on(<span class="string">"uncaughtException"</span>, errorHandler)</span><br><span class="line"></span><br><span class="line">conf._exit = <span class="literal">true</span></span><br><span class="line">npm.load(conf, <span class="function"><span class="keyword">function</span> (<span class="params">er</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (er) <span class="keyword">return</span> errorHandler(er)</span><br><span class="line">  npm.commands[npm.command](npm.argv, errorHandler)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
 <p>(function(){…})() 这样执行函数的有个好处：不污染js环境。<br>从代码中可以看到，npm-cli.js调用npm.js中的功能npm.load(conf);，我们看一下conf都有哪些参数？在load前假如一行console.log(conf)看一下输出<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt;npm search crawler</span><br><span class="line">&#123; argv:</span><br><span class="line">   &#123; remain: [ <span class="string">'crawler'</span> ],</span><br><span class="line">     cooked: [ <span class="string">'search'</span>, <span class="string">'crawler'</span> ],</span><br><span class="line">     original: [ <span class="string">'search'</span>, <span class="string">'crawler'</span> ] &#125;,</span><br><span class="line">  _exit: <span class="literal">true</span> &#125;</span><br><span class="line">No match found <span class="keyword">for</span> <span class="string">"crawler"</span></span><br></pre></td></tr></table></figure></p>
 <p>接下来看npm.js的代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">Object</span>.keys(abbrevs).concat(plumbing).forEach(</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCommand</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(npm.commands, c, </span><br><span class="line">  &#123; get : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = npm.deref(c)</span><br><span class="line">    <span class="keyword">if</span> (c === <span class="string">"la"</span> || c === <span class="string">"ll"</span>) </span><br><span class="line">      npm.config.set(<span class="string">"long"</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">    npm.command = c</span><br><span class="line">    <span class="keyword">if</span> (commandCache[a]) <span class="keyword">return</span> commandCache[a]</span><br><span class="line">    <span class="comment">//调用对应命令的js文件</span></span><br><span class="line">    <span class="keyword">var</span> cmd = <span class="built_in">require</span>(__dirname+<span class="string">"/"</span>+a+<span class="string">".js"</span>)</span><br><span class="line">    commandCache[a] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      ...</span><br><span class="line">      cmd.apply(npm, args)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Object</span>.keys(cmd).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">k</span>) </span>&#123;</span><br><span class="line">      commandCache[a][k] = cmd[k]</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> commandCache[a]</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></p>
-<h1 id="查看npm系统配置">查看npm系统配置</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt;npm config ls</span><br><span class="line">; cli configs</span><br><span class="line">registry = <span class="string">"http://registry.npm.taobao.org/"</span></span><br><span class="line">user-agent = <span class="string">"npm/1.4.14 node/v0.10.29 win32 ia32"</span></span><br><span class="line"></span><br><span class="line">; userconfig C:\Users\zzs\.npmrc</span><br><span class="line">registry = <span class="string">"http://registry.npm.taobao.org/"</span></span><br><span class="line"></span><br><span class="line">; builtin config <span class="literal">undefined</span></span><br><span class="line">prefix = <span class="string">"C:\\Users\\zzs\\AppData\\Roaming\\npm"</span></span><br><span class="line"></span><br><span class="line">; node bin location = C:\Program Files (x86)\nodejs\\node.exe</span><br><span class="line">; cwd = C:\</span><br><span class="line">; HOME = C:\Users\zzs</span><br><span class="line">; <span class="string">'npm config ls -l'</span> to show all defaults.</span><br></pre></td></tr></table></figure>
+<p><strong>查看npm系统配置</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt;npm config ls</span><br><span class="line">; cli configs</span><br><span class="line">registry = <span class="string">"http://registry.npm.taobao.org/"</span></span><br><span class="line">user-agent = <span class="string">"npm/1.4.14 node/v0.10.29 win32 ia32"</span></span><br><span class="line"></span><br><span class="line">; userconfig C:\Users\zzs\.npmrc</span><br><span class="line">registry = <span class="string">"http://registry.npm.taobao.org/"</span></span><br><span class="line"></span><br><span class="line">; builtin config <span class="literal">undefined</span></span><br><span class="line">prefix = <span class="string">"C:\\Users\\zzs\\AppData\\Roaming\\npm"</span></span><br><span class="line"></span><br><span class="line">; node bin location = C:\Program Files (x86)\nodejs\\node.exe</span><br><span class="line">; cwd = C:\</span><br><span class="line">; HOME = C:\Users\zzs</span><br><span class="line">; <span class="string">'npm config ls -l'</span> to show all defaults.</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
