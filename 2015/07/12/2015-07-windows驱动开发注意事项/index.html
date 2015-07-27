@@ -8,7 +8,7 @@
   <meta name="description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3，最">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows驱动开发注意事项">
-<meta property="og:url" content="http://localhost:4000/2015/07/12/2015-07-windows驱动开发注意事项/index.html">
+<meta property="og:url" content="http://blog.uxfork.cn/2015/07/12/2015-07-windows驱动开发注意事项/index.html">
 <meta property="og:site_name" content="技术人生">
 <meta property="og:description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3，最">
 <meta property="og:updated_time" content="2015-07-16T02:34:21.000Z">
