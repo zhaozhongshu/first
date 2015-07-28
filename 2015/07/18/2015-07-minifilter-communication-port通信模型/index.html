@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>minifilter communication port通信模型 | 技术人生</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <meta name="description" content="minifilter port通信模型是在minifilter驱动中引入的，用于高效的ring0、ring3通信，但它不限于minifilter中使用。
 minifilter port提供的API函数驱动中的API函数1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -137,27 +137,20 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       minifilter communication port通信模型
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/asio/">asio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
-
         
-
         <div class="clearfix"></div>
       </div>
       
@@ -171,17 +164,15 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
 <h1 id="驱动同步调用应用层">驱动同步调用应用层</h1><p>驱动在任意线程上下文中调用FltSendMessage，等待应用层返回处理结果<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">应用层</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    FilterGetMessage(...);  <span class="comment">//获取ring0调用</span></span><br><span class="line">    handle_message();       <span class="comment">//处理消息(可以放在单独线程中处理)</span></span><br><span class="line">    FilterReplyMessage();   <span class="comment">//回复结果(可以放在单独线程中处理)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">驱动层</span><br><span class="line">FltSendMessage(...);</span><br></pre></td></tr></table></figure></p>
 <h1 id="驱动异步调用应用层">驱动异步调用应用层</h1><p>驱动在任意上下文中调用FltSendMessage，只需等待消息提交成功，不用等待FilterReplyMessage</p>
 <h1 id="应用层flt与asio结合">应用层flt与asio结合</h1><p>由于FilterGetMessage支持IOCP，所有可以使用asio管理消息接收 </p>
-
       
     </div>
     
   </div>
   
-    
-<nav id="article-nav">
+    <nav id="article-nav">
   
     <a href="/2015/07/18/2015-07-Zombie-js-Insanely-fast-headless-full-stack-testing-using-Node-js/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
+      <strong class="article-nav-caption"></strong>
       <div class="article-nav-title">
         
           (Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)
@@ -192,11 +183,10 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
   
     <a href="/2015/07/14/2015-07-windbg调试技巧/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">windbg调试技巧</div>
-      <strong class="article-nav-caption">></strong>
+      <strong class="article-nav-caption"></strong>
     </a>
   
 </nav>
-
   
 </article>
 
@@ -214,13 +204,7 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-</div>
+</div></div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -234,8 +218,7 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
   </div>
 </footer>
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -253,7 +236,6 @@ minifilter port提供的API函数驱动中的API函数12345678910111213141516171
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
-
 
 
 
@@ -278,8 +260,5 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-
   </div>
 </body>
-</html>

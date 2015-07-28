@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>windows驱动开发注意事项 | 技术人生</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <meta name="description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3，最">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows驱动开发注意事项">
@@ -21,7 +21,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -134,27 +134,20 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       windows驱动开发注意事项
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
-
         
-
         <div class="clearfix"></div>
       </div>
       
@@ -189,17 +182,15 @@
 <p>BOOLEAN KeSetTimer(IN PKTIMER  Timer,IN LARGE_INTEGER  DueTime,IN PKDPC  Dpc OPTIONAL);<br>BOOLEAN KeSetTimerEx(IN PKTIMER  Timer,IN LARGE_INTEGER  DueTime,IN LONG  Period OPTIONAL,IN PKDPC  Dpc);</p>
 </blockquote>
 <p>前者启动expire just once定时器，后者启动expire repeatedly定时器</p>
-
       
     </div>
     
   </div>
   
-    
-<nav id="article-nav">
+    <nav id="article-nav">
   
     <a href="/2015/07/12/2015-07-minifilter文件过滤驱动/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
+      <strong class="article-nav-caption"></strong>
       <div class="article-nav-title">
         
           minifilter文件过滤驱动
@@ -210,11 +201,10 @@
   
     <a href="/2015/07/10/2015-07-linux下一些有用的工具/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">linux下一些有用的工具</div>
-      <strong class="article-nav-caption">></strong>
+      <strong class="article-nav-caption"></strong>
     </a>
   
 </nav>
-
   
 </article>
 
@@ -232,13 +222,7 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-</div>
+</div></div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -252,8 +236,7 @@
   </div>
 </footer>
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -271,7 +254,6 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
-
 
 
 
@@ -296,8 +278,5 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-
   </div>
 </body>
-</html>

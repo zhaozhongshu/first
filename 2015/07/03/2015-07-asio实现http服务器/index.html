@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>asio实现http服务器 | 技术人生</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <meta name="description" content="asio基础asio是一个跨平台的C++网络库，通过它，可以方便的进行异步I/O编程。
 io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对象提供支持asio::ip::tcp::socketasio::ip::tcp::acceptorasio::ip::udp::socketasio::deadline_timer通过io_service类的run/run_">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -137,27 +137,20 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       asio实现http服务器
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/asio/">asio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 	</div>
-
         
-
         <div class="clearfix"></div>
       </div>
       
@@ -184,17 +177,15 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
 <p>当on_req_message_complete回调函数被调用时，说明已经接收到一个完整的http请求了，可以处理这个request了.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">on_req_message_complete</span><span class="params">(http_parser* parser)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    CONNECTION* cnn = CONTAINING_RECORD(parser ,CONNECTION, parser);</span><br><span class="line">    on_new_request(cnn);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>on_new_request决定服务器应该相应client端什么内容<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_new_request</span><span class="params">(CONNECTION* cnn)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    transform(cnn-&gt;uri.begin(), cnn-&gt;uri.end(), cnn-&gt;uri.begin(), <span class="built_in">tolower</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">char</span> szHelloMessage[] = </span><br><span class="line">        <span class="string">"HTTP/1.1 200 OK\r\n"</span></span><br><span class="line">        <span class="string">"Connection: keep-alive\r\n"</span></span><br><span class="line">        <span class="string">"Server: uxfork\r\n"</span></span><br><span class="line">        <span class="string">"Content-Length: 18\r\n"</span></span><br><span class="line">        <span class="string">"\r\n"</span></span><br><span class="line">        <span class="string">"hello http server!"</span>;</span><br><span class="line">    </span><br><span class="line">    asio::async_write(cnn-&gt;sock, asio::buffer((<span class="keyword">void</span>*)szHelloMessage, <span class="built_in">strlen</span>(szHelloMessage)), bind(on_send, cnn, buf, _1, _2));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>一个精简的http服务器就完成了，是不是很简单？ 使用asio库，可以同时处理大量TCP连接，简单高效。</p>
-
       
     </div>
     
   </div>
   
-    
-<nav id="article-nav">
+    <nav id="article-nav">
   
     <a href="/2015/07/03/2015-07-asio-softwares/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
+      <strong class="article-nav-caption"></strong>
       <div class="article-nav-title">
         
           使用asio的常用软件(不定期更新)
@@ -204,7 +195,6 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
   
   
 </nav>
-
   
 </article>
 
@@ -222,13 +212,7 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-</div>
+</div></div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -242,8 +226,7 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
   </div>
 </footer>
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -261,7 +244,6 @@ io_serviceio_service类是asio库的核心框架类，为以下这些异步IO对
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
-
 
 
 
@@ -286,8 +268,5 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-
   </div>
 </body>
-</html>

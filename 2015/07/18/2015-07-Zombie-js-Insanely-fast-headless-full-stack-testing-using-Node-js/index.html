@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>(Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载) | 技术人生</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <meta name="description" content="Insanely fast, headless full-stack testing using Node.js无窗口浏览器沙箱，除了没有浏览器界面，浏览器其他功能貌似都有，可以用于网页漏洞检测，网站测试等
 The BiteIf you’re going to write an insanely fast, headless browser, how can you notcall it Zomb">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -137,27 +137,20 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
+        <h1 class="article-title" itemprop="name">
       (Zombie.js)Insanely fast, headless full-stack testing using Node.js(转载)
     </h1>
-  
-
       </header>
       
       <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
+        <div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器/">浏览器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
 	</div>
-
         
-
         <div class="clearfix"></div>
       </div>
       
@@ -428,17 +421,15 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">browser.pipeline.addHandler(<span class="function"><span class="keyword">function</span>(<span class="params">browser, request</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Let's delay this request by 1/10th second</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(resolve, <span class="number">100</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>You can add handlers to all browsers via <code>Pipeline.addHandler</code>.  These<br>handlers are automatically added to every new <code>browser.pipeline</code> instance.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Pipeline.addHandler(<span class="function"><span class="keyword">function</span>(<span class="params">browser, request, response</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Log the response body</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Response body: '</span> + response.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
       
     </div>
     
   </div>
   
-    
-<nav id="article-nav">
+    <nav id="article-nav">
   
     <a href="/2015/07/18/2015-07-Native-Abstractions-for-Node-js/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
+      <strong class="article-nav-caption"></strong>
       <div class="article-nav-title">
         
           (nan)Native Abstractions for Node.js(转载)
@@ -449,11 +440,10 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
   
     <a href="/2015/07/18/2015-07-minifilter-communication-port通信模型/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">minifilter communication port通信模型</div>
-      <strong class="article-nav-caption">></strong>
+      <strong class="article-nav-caption"></strong>
     </a>
   
 </nav>
-
   
 </article>
 
@@ -471,13 +461,7 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-</div>
+</div></div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -491,8 +475,7 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
   </div>
 </footer>
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -510,7 +493,6 @@ The BiteIf you’re going to write an insanely fast, headless browser, how can y
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
-
 
 
 
@@ -535,8 +517,5 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-
   </div>
 </body>
-</html>
