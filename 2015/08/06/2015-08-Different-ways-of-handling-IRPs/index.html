@@ -1,0 +1,295 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Different ways of handling IRPs | 技术人生</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="description" content="Introduction
+Forward and forget
+Forward and wait
+Forward with a completion routine
+Queue for later, or forward and reuse
+Complete the IRP in the dispatch routine
+
+IntroductionWDM驱动最频繁的任务就是从一个驱动向另一个驱动发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Different ways of handling IRPs">
+<meta property="og:url" content="http://blog.uxfork.cn/2015/08/06/2015-08-Different-ways-of-handling-IRPs/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="Introduction
+Forward and forget
+Forward and wait
+Forward with a completion routine
+Queue for later, or forward and reuse
+Complete the IRP in the dispatch routine
+
+IntroductionWDM驱动最频繁的任务就是从一个驱动向另一个驱动发">
+<meta property="og:updated_time" content="2015-08-06T01:40:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Different ways of handling IRPs">
+<meta name="twitter:description" content="Introduction
+Forward and forget
+Forward and wait
+Forward with a completion routine
+Queue for later, or forward and reuse
+Complete the IRP in the dispatch routine
+
+IntroductionWDM驱动最频繁的任务就是从一个驱动向另一个驱动发">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/zhihu.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/zhihu.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">true</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/zhihu.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-08-Different-ways-of-handling-IRPs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/06/2015-08-Different-ways-of-handling-IRPs/" class="article-date">
+  	<time datetime="2015-08-06T01:40:31.000Z" itemprop="datePublished">2015-08-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        <h1 class="article-title" itemprop="name">
+      Different ways of handling IRPs
+    </h1>
+      </header>
+      
+      <div class="article-info article-info-post">
+        <div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
+	</div>
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong><a href="#Introduction">Introduction</a></strong></li>
+<li><strong><a href="#Forward and forget">Forward and forget</a></strong></li>
+<li><strong><a href="#Forward and wait">Forward and wait</a></strong></li>
+<li><strong><a href="#Forward with a completion routine">Forward with a completion routine</a></strong></li>
+<li><strong><a href="#Queue for later, or forward and reuse">Queue for later, or forward and reuse</a></strong></li>
+<li><strong><a href="#Complete the IRP in the dispatch routine">Complete the IRP in the dispatch routine</a></strong></li>
+</ul>
+<h1 id="Introduction"><strong>Introduction</strong></h1><p>WDM驱动最频繁的任务就是从一个驱动向另一个驱动发送IRP请求，要么创建自己的IRP发给下层驱动，要么forward另一个驱动发来的IRP给下层驱动<br>本文主要列举出所有IRP传递方式。</p>
+<p>前5个例子描述在IRP Dispatch routine中如何forward IRP给另一个驱动<br>后7个例子描述create IRP and send IRP的各种方式<br>在看这些例子前，先了解一下completion routine中返回的几个状态码含义：</p>
+<p><strong>STATUS_MORE_PROCESSING_REQUIRED</strong> ：IO管理器检测到这个标记时，会 stop completing the IRP，leave the stack location unchanged and return。主要防止IRP被释放，我们必须在其他地方调用IoCompleteRequest继续完成这个IRP。<br><strong>非STATUS_MORE_PROCESSING_REQUIRED</strong>：IO管理器会向上继续completing the IRP<br>DDK中的定义：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">// This value should be returned from completion routines to continue</span></span><br><span class="line"><span class="comment">// completing the IRP upwards. Otherwise, STATUS_MORE_PROCESSING_REQUIRED</span></span><br><span class="line"><span class="comment">// should be returned.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> STATUS_CONTINUE_COMPLETION      STATUS_SUCCESS</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">// Completion routines can also use this enumeration instead of status codes.</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> _IO_COMPLETION_ROUTINE_RESULT &#123;</span><br><span class="line">    </span><br><span class="line">    ContinueCompletion = STATUS_CONTINUE_COMPLETION,</span><br><span class="line">    StopCompletion = STATUS_MORE_PROCESSING_REQUIRED</span><br><span class="line"></span><br><span class="line">&#125; IO_COMPLETION_ROUTINE_RESULT, *PIO_COMPLETION_ROUTINE_RESULT;</span><br></pre></td></tr></table></figure></p>
+<h1 id="场景1：Forward_and_forget"><strong>场景1：Forward and forget</strong></h1><p>驱动forward IRP到下层，不做其他处理，不需要设置completion routine</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">DispatchRoutine_1</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT DeviceObject,</span><br><span class="line">    IN PIRP Irp</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// You are not setting a completion routine, so just skip the stack</span></span><br><span class="line">    <span class="comment">// location because it provides better performance.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoSkipCurrentIrpStackLocation (Irp);</span><br><span class="line">    <span class="keyword">return</span> IoCallDriver(TopOfDeviceStack, Irp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="场景2：Forward_and_wait"><strong>场景2：Forward and wait</strong></h1><p>驱动forward IRP到下层，同时等下层完成IRP后，对IRP做一些其他处理，例如PNP IRP，你收到IRP_MN_START_DEVICE IRP，你需要forward IRP到bus driver，并等它完成后，你才能启动你的设备，XP下有个新的API函数<strong>IoForwardIrpSynchronously</strong>,专干这事。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">CompletionRoutine_2</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT   DeviceObject,</span><br><span class="line">    IN PIRP             Irp,</span><br><span class="line">    IN PVOID            Context</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123; </span><br><span class="line">  <span class="keyword">if</span> (Irp-&gt;PendingReturned == TRUE) &#123;</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// You will set the event only if the lower driver has returned</span></span><br><span class="line">    <span class="comment">// STATUS_PENDING earlier. This optimization removes the need to</span></span><br><span class="line">    <span class="comment">// call KeSetEvent unnecessarily and improves performance because the</span></span><br><span class="line">    <span class="comment">// system does not have to acquire an internal lock.  </span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    KeSetEvent ((PKEVENT) Context, IO_NO_INCREMENT, FALSE);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// This is the only status you can return. 停止完成，因为我们驱动还要处理</span></span><br><span class="line">  <span class="keyword">return</span> STATUS_MORE_PROCESSING_REQUIRED;  </span><br><span class="line">&#125; </span><br><span class="line">    </span><br><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">DispatchRoutine_2</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT DeviceObject,</span><br><span class="line">    IN PIRP Irp</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    KEVENT   event;</span><br><span class="line">    NTSTATUS status;</span><br><span class="line"></span><br><span class="line">    KeInitializeEvent(&amp;event, NotificationEvent, FALSE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// You are setting completion routine, so you must copy</span></span><br><span class="line">    <span class="comment">// current stack location to the next. You cannot skip a location</span></span><br><span class="line">    <span class="comment">// here.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoCopyCurrentIrpStackLocationToNext(Irp);</span><br><span class="line"></span><br><span class="line">    IoSetCompletionRoutine(Irp,</span><br><span class="line">                           CompletionRoutine_2,</span><br><span class="line">                           &amp;event,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE</span><br><span class="line">                           );</span><br><span class="line"></span><br><span class="line">    status = IoCallDriver(TopOfDeviceStack, Irp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (status == STATUS_PENDING) &#123;</span><br><span class="line">        </span><br><span class="line">       KeWaitForSingleObject(&amp;event,</span><br><span class="line">                             Executive, <span class="comment">// WaitReason</span></span><br><span class="line">                             KernelMode, <span class="comment">// must be Kernelmode to prevent the stack getting paged out</span></span><br><span class="line">                             FALSE,</span><br><span class="line">                             NULL <span class="comment">// indefinite wait</span></span><br><span class="line">                             );</span><br><span class="line">       status = Irp-&gt;IoStatus.Status;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// &lt;---- Do your own work here.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because you stopped the completion of the IRP in the CompletionRoutine</span></span><br><span class="line">    <span class="comment">// by returning STATUS_MORE_PROCESSING_REQUIRED, you must call</span></span><br><span class="line">    <span class="comment">// IoCompleteRequest here.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoCompleteRequest (Irp, IO_NO_INCREMENT);</span><br><span class="line">    <span class="keyword">return</span> status;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="场景3：Forward_with_a_completion_routine"><strong>场景3：Forward with a completion routine</strong></h1><p>驱动设置completion routine，forward IRP到下层，并返回下层驱动的返回码，在IRP完成过程中，completion routine可以对IRP做一些处理<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">DispathRoutine_3</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT DeviceObject,</span><br><span class="line">    IN PIRP Irp</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    NTSTATUS status;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because you are setting completion routine, you must copy the</span></span><br><span class="line">    <span class="comment">// current stack location to the next. You cannot skip a location</span></span><br><span class="line">    <span class="comment">// here.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoCopyCurrentIrpStackLocationToNext(Irp); </span><br><span class="line"></span><br><span class="line">    IoSetCompletionRoutine(Irp,</span><br><span class="line">                           CompletionRoutine_31,<span class="comment">// or CompletionRoutine_32</span></span><br><span class="line">                           NULL,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE</span><br><span class="line">                           );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> IoCallDriver(TopOfDeviceStack, Irp);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果你在Dispatch routine中直接返回下层驱动的返回值，如上，你就不能在completion routine中修改IRP的Status。Irp-&gt;IoStatus.Status的值必须和下层驱动的返回值一致。同时必须在completion routine中上传Irp-&gt;PendingReturned标记<br>以下两个版本的completion routine都是可以的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS <span class="title">CompletionRoutine_31</span> <span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT   DeviceObject,</span><br><span class="line">    IN PIRP             Irp,</span><br><span class="line">    IN PVOID            Context</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;   </span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because the dispatch routine is returning the status of lower driver</span></span><br><span class="line">    <span class="comment">// as is, you must do the following:</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">if</span> (Irp-&gt;PendingReturned) &#123;</span><br><span class="line">        <span class="comment">//因为我们在Dispatch routine中返回了PENDING，所以必须mark IRP pending</span></span><br><span class="line">        IoMarkIrpPending( Irp );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> STATUS_CONTINUE_COMPLETION ; <span class="comment">// Make sure of same synchronicity </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">CompletionRoutine_32</span> <span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT   DeviceObject,</span><br><span class="line">    IN PIRP             Irp,</span><br><span class="line">    IN PVOID            Context</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;   </span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because the dispatch routine is returning the status of lower driver</span></span><br><span class="line">    <span class="comment">// as is, you must do the following:</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">if</span> (Irp-&gt;PendingReturned) &#123;</span><br><span class="line">        IoMarkIrpPending( Irp );</span><br><span class="line">        <span class="comment">//按理说这里也是可以修改IRP的状态的</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//    </span></span><br><span class="line">    <span class="comment">// To make sure of the same synchronicity, complete the IRP here.</span></span><br><span class="line">    <span class="comment">// You cannot complete the IRP later in another thread because the </span></span><br><span class="line">    <span class="comment">// the dispatch routine is returning the status returned by the lower</span></span><br><span class="line">    <span class="comment">// driver as is.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoCompleteRequest( Irp,  IO_NO_INCREMENT);  </span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Although this is an unusual completion routine that you rarely see,</span></span><br><span class="line">    <span class="comment">// it is discussed here to address all possible ways to handle IRPs.  </span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">return</span> STATUS_MORE_PROCESSING_REQUIRED; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有问题都用异步的思维考虑</p>
+<h1 id="场景4：Queue_for_later,_or_forward_and_reuse"><strong>场景4：Queue for later, or forward and reuse</strong></h1><p>当驱动需要对一个IRP排队（以后再处理），Dispatch routine需要mark IRP pending并返回STATUS_PENDING，因为IRP不会马上完成，completion routine中可以修改IRP的Status</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">DispathRoutine_4</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT DeviceObject,</span><br><span class="line">    IN PIRP Irp</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    NTSTATUS status;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// You mark the IRP pending if you are intending to queue the IRP</span></span><br><span class="line">    <span class="comment">// and process it later. If you are intending to forward the IRP </span></span><br><span class="line">    <span class="comment">// directly, use one of the methods discussed earlier in this article.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoMarkIrpPending( Irp );    </span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// For demonstration purposes: this IRP is forwarded to the lower driver.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    IoCopyCurrentIrpStackLocationToNext(Irp); </span><br><span class="line"></span><br><span class="line">    IoSetCompletionRoutine(Irp,</span><br><span class="line">                           CompletionRoutine_41, <span class="comment">// or CompletionRoutine_42</span></span><br><span class="line">                           NULL,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE,</span><br><span class="line">                           TRUE</span><br><span class="line">                           ); </span><br><span class="line">    IoCallDriver(TopOfDeviceStack, Irp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because you marked the IRP pending, you must return pending,</span></span><br><span class="line">    <span class="comment">// regardless of the status of returned by IoCallDriver.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">return</span> STATUS_PENDING ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>completion routine中可以返回STATUS_CONTINUE_COMPLETION（继续完成IRP），STATUS_MORE_PROCESSING_REQUIRED（暂停完成，我在其他地方调用IoCompleteRequest）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">CompletionRoutine_41</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT   DeviceObject,</span><br><span class="line">    IN PIRP             Irp,</span><br><span class="line">    IN PVOID            Context</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123; </span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// By returning STATUS_CONTINUE_COMPLETION , you are relinquishing the </span></span><br><span class="line">    <span class="comment">// ownership of the IRP. You cannot touch the IRP after this.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">return</span> STATUS_CONTINUE_COMPLETION ; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">CompletionRoutine_42</span> <span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT   DeviceObject,</span><br><span class="line">    IN PIRP             Irp,</span><br><span class="line">    IN PVOID            Context</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// Because you are stopping the completion of the IRP by returning the</span></span><br><span class="line">    <span class="comment">// following status, you must complete the IRP later.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="keyword">return</span> STATUS_MORE_PROCESSING_REQUIRED ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="场景5：Complete_the_IRP_in_the_dispatch_routine"><strong>场景5：Complete the IRP in the dispatch routine</strong></h1><p>没啥好说的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS</span><br><span class="line"><span class="title">DispatchRoutine_5</span><span class="params">(</span><br><span class="line">    IN PDEVICE_OBJECT DeviceObject,</span><br><span class="line">    IN PIRP Irp</span><br><span class="line">    )</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    <span class="comment">// &lt;-- Process the IRP here.</span></span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    Irp-&gt;IoStatus.Status = STATUS_XXX;</span><br><span class="line">    Irp-&gt;IoStatus.Information = YYY;</span><br><span class="line">    IoCompletRequest(Irp, IO_NO_INCREMENT);</span><br><span class="line">    <span class="keyword">return</span> STATUS_XXX;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Creating_IRPs_and_sending_them_to_another_driver">Creating IRPs and sending them to another driver</h1><p>在看下面的场景前，先了解以下驱动创建的同步IRP和异步IRP的区别<br><a href="https://support.microsoft.com/en-us/kb/326315" target="_blank" rel="external">https://support.microsoft.com/en-us/kb/326315</a></p>
+      
+    </div>
+    
+  </div>
+  
+    <nav id="article-nav">
+  
+  
+    <a href="/2015/07/31/2015-07-集体智慧编程阅读笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">集体智慧编程阅读笔记</div>
+      <strong class="article-nav-caption"></strong>
+    </a>
+  
+</nav>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script type="text/javascript">
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	};
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </div>
+</body>

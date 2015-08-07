@@ -10,7 +10,7 @@
 <meta property="og:url" content="http://blog.uxfork.cn/2015/07/12/2015-07-windows驱动开发注意事项/index.html">
 <meta property="og:site_name" content="技术人生">
 <meta property="og:description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3，最">
-<meta property="og:updated_time" content="2015-07-16T02:34:21.000Z">
+<meta property="og:updated_time" content="2015-08-06T01:41:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows驱动开发注意事项">
 <meta name="twitter:description" content="1.Nt函数与Zw函数区别在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3，最">
@@ -75,6 +75,12 @@
 				
 				
 
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">true</div>
+				</section>
 				
 			</div>
 		</div>
@@ -182,6 +188,8 @@
 <p>BOOLEAN KeSetTimer(IN PKTIMER  Timer,IN LARGE_INTEGER  DueTime,IN PKDPC  Dpc OPTIONAL);<br>BOOLEAN KeSetTimerEx(IN PKTIMER  Timer,IN LARGE_INTEGER  DueTime,IN LONG  Period OPTIONAL,IN PKDPC  Dpc);</p>
 </blockquote>
 <p>前者启动expire just once定时器，后者启动expire repeatedly定时器</p>
+<h2 id="再讨论IRP处理"><strong>再讨论IRP处理</strong></h2><p>若完成函数要返回STATUS_PENDING，必须先调用IoMarkIrpPending mark IRP pending<br>函数调用实质是：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IoGetCurrentIrpStackLocation( (Irp) )-&gt;Control |= SL_PENDING_RETURNED;</span><br></pre></td></tr></table></figure></p>
+<p>同样，若完成函数中调用了IoMarkIrpPending,则完成函数一定要返回STATUS_PENDING<br>一旦调用IoCompleteRequest，IRP就会被完成、释放<br>以下代码也是有效的，只是速度慢一点：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IoMarkIrpPending(Irp);</span><br><span class="line">(VOID)IoCallDriver(BottomDeviceObject, Irp);</span><br><span class="line"><span class="keyword">return</span> STATUS_PENDING;</span><br></pre></td></tr></table></figure></p>
       
     </div>
     
