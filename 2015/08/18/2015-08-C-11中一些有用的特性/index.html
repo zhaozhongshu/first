@@ -1,0 +1,269 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C++11中一些有用的特性 | 技术人生</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="description" content="tupletuple是stl中pair的泛化，pair模板可以聚合两个类型,相当于定义了一个新的类型，例如：123456789类型typedef pair&amp;lt;LONG,string&amp;gt; record;构造record r(123,&quot;123&quot;);record r = make_pair(123, &quot;123&quot;); record r = make_pair&amp;lt;LONG,string&amp;gt;(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++11中一些有用的特性">
+<meta property="og:url" content="http://blog.uxfork.cn/2015/08/18/2015-08-C-11中一些有用的特性/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="tupletuple是stl中pair的泛化，pair模板可以聚合两个类型,相当于定义了一个新的类型，例如：123456789类型typedef pair&amp;lt;LONG,string&amp;gt; record;构造record r(123,&quot;123&quot;);record r = make_pair(123, &quot;123&quot;); record r = make_pair&amp;lt;LONG,string&amp;gt;(">
+<meta property="og:updated_time" content="2015-08-18T06:39:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++11中一些有用的特性">
+<meta name="twitter:description" content="tupletuple是stl中pair的泛化，pair模板可以聚合两个类型,相当于定义了一个新的类型，例如：123456789类型typedef pair&amp;lt;LONG,string&amp;gt; record;构造record r(123,&quot;123&quot;);record r = make_pair(123, &quot;123&quot;); record r = make_pair&amp;lt;LONG,string&amp;gt;(">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/zhihu.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/zhihu.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">true</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/zhihu.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-08-C-11中一些有用的特性" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/18/2015-08-C-11中一些有用的特性/" class="article-date">
+  	<time datetime="2015-08-18T06:39:16.000Z" itemprop="datePublished">2015-08-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        <h1 class="article-title" itemprop="name">
+      C++11中一些有用的特性
+    </h1>
+      </header>
+      
+      <div class="article-info article-info-post">
+        <div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	</div>
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="tuple">tuple</h1><p>tuple是stl中pair的泛化，pair模板可以聚合两个类型,相当于定义了一个新的类型，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">类型</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;LONG,<span class="built_in">string</span>&gt; record;</span><br><span class="line">构造</span><br><span class="line"><span class="function">record <span class="title">r</span><span class="params">(123,"123")</span></span>;</span><br><span class="line">record r = make_pair(<span class="number">123</span>, <span class="string">"123"</span>); </span><br><span class="line">record r = make_pair&lt;LONG,<span class="built_in">string</span>&gt;(<span class="number">123</span>, <span class="string">"123"</span>);</span><br><span class="line">访问</span><br><span class="line">r.first = <span class="number">46</span>;</span><br><span class="line">r.second = <span class="string">"456"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>tuple模板可以聚合多个类型，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">类型</span><br><span class="line"><span class="keyword">typedef</span> tuple&lt;LONG,<span class="built_in">string</span>,<span class="built_in">string</span>&gt; RECORD;</span><br><span class="line">构造</span><br><span class="line"><span class="function">record <span class="title">r</span><span class="params">(123,"123","123")</span></span>;</span><br><span class="line">record r = <span class="keyword">make_t</span>uple(<span class="number">123</span>, <span class="string">"123"</span>,<span class="string">"123"</span>); </span><br><span class="line">record r = <span class="keyword">make_t</span>uple&lt;LONG,<span class="built_in">string</span>,<span class="built_in">string</span>&gt;(<span class="number">123</span>, <span class="string">"123"</span>,<span class="string">"123"</span>);</span><br><span class="line">访问</span><br><span class="line"><span class="built_in">printf</span>(__FUNCTION__<span class="string">" %d --&gt;%s %s\n"</span>, get&lt;<span class="number">0</span>&gt;(v), get&lt;<span class="number">1</span>&gt;(v).c_str(), get&lt;<span class="number">2</span>&gt;(v).c_str());</span><br><span class="line">修改</span><br><span class="line">get&lt;<span class="number">0</span>&gt;(v) = <span class="number">4567</span>;</span><br></pre></td></tr></table></figure></p>
+<p>使用make_tuple构造tuple对象，也可以使用tie(左值引用)构造一个全部是变量引用的对象，例如批量赋值:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LONG v1 = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">string</span> v2 = <span class="string">"2"</span>;</span><br><span class="line"><span class="keyword">auto</span> t = tie(v1, v2);</span><br><span class="line">t = <span class="keyword">make_t</span>uple(<span class="number">2</span>, <span class="string">"4"</span>);</span><br><span class="line"><span class="built_in">printf</span>(__FUNCTION__<span class="string">" %d --&gt;%s\n"</span>, v1, v2.c_str());</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> tp = <span class="keyword">return</span> <span class="built_in">std</span>::tie(<span class="number">1</span>, <span class="string">"aa"</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">//tp的类型实际是：</span></span><br><span class="line"><span class="built_in">std</span>::tuple&lt;<span class="keyword">int</span>&amp;,<span class="built_in">string</span>&amp;, <span class="keyword">int</span>&amp;&gt;</span><br><span class="line"></span><br><span class="line">还有一种方法也可以获取元组的值，通过<span class="built_in">std</span>::tie解包tuple</span><br><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="built_in">string</span> a;</span><br><span class="line"><span class="built_in">std</span>::tie(x,a,y) = tp; </span><br><span class="line">通过tie解包后，tp中三个值会自动赋值给三个变量。</span><br><span class="line">解包时，我们如果只想解某个位置的值时，可以用<span class="built_in">std</span>::ignore占位符来表示不解某个位置的值。比如我们只想解第三个值时：</span><br><span class="line"><span class="built_in">std</span>::tie(<span class="built_in">std</span>::ignore,<span class="built_in">std</span>::ignore,y) = tp; <span class="comment">//只解第三个值了</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="bind">bind</h1><p>大名鼎鼎的bind库，一句话，就是动态修改函数签名，调整参数顺序</p>
+<h1 id="右值引用与std::move">右值引用与std::move</h1><p>在标准C++语言中，临时量（术语为右值，因其出现在赋值表达式的右边）可以被传给函数，但只能被接受为const&amp;类型。这样函数便无法区分传给const &amp;的是真实的右值还是常规变量。而且，由于类型为const&amp;,函数也无法改变所传对象的值。<br>C++0x将增加一种名为右值引用的新的引用类型，记作typename &amp;&amp;，通过右值引用，我们可以修改临时变量的值了。<br>默认情况下，所有<strong>定义了名称的变量都不能被右值引用</strong>，如果非要右值引用，需要使用std::move(v)转换，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_r_value</span><span class="params">(<span class="keyword">int</span> &amp;&amp;)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_r_value</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> &amp;&amp;i)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    is_r_value(i);              <span class="comment">// 因为变量i是有名字的，所以不能直接当作右值引用</span></span><br><span class="line">    is_r_value(<span class="built_in">std</span>::move(i));   <span class="comment">// move强制转换成右值引用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另一个例子：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"Hello"</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; v;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 使用push_back(const T&amp;) 会产生一个string拷贝构造</span></span><br><span class="line">    v.push_back(str);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//使用右值引用，直接将str变量中的buffer move到vector中，str现在为null</span></span><br><span class="line">    v.push_back(<span class="built_in">std</span>::move(str));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看一下std::move函数定义:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; </span><br><span class="line"><span class="keyword">typename</span> remove_ref&lt;T&gt;::type&amp;&amp; move(T&amp;&amp; arg)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> ((<span class="keyword">typename</span> remove_ref&lt;T&gt;::type&amp;&amp;)arg);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>强制转换成右值引用，同时string中实现了右值引用的构造函数basic_string(_Myt&amp;&amp; _Right)，在函数中，直接将_Right变量中的buffer转给自己，从而减少不必要的拷贝</p>
+<p>因此，<strong>以后C++类实现时，一定要加上右值引用拷造函数</strong></p>
+      
+    </div>
+    
+  </div>
+  
+    <nav id="article-nav">
+  
+    <a href="/2015/08/19/2015-08-ragel-state-compiler文档/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"></strong>
+      <div class="article-nav-title">
+        
+          ragel state compiler翻译
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/17/2015-08-pnp管理器原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pnp管理器原理</div>
+      <strong class="article-nav-caption"></strong>
+    </a>
+  
+</nav>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+<!--       	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+    </div>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script type="text/javascript">
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	};
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </div>
+</body>
