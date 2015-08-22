@@ -2,17 +2,45 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 算法 | 技术人生</title>
+  <title>技术人生</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="依然随意的技术博客">
+  <meta name="description" content="div#input_area    {
+        float:left;
+        height:135px;
+        width:50%;
+        margin-left:5px;
+        }
+    #input_area h2    {
+        margin:10px 0 6px 5px;
+        color:red;
+        fo">
 <meta property="og:type" content="website">
 <meta property="og:title" content="技术人生">
-<meta property="og:url" content="http://blog.uxfork.cn/tags/算法/index.html">
+<meta property="og:url" content="http://blog.uxfork.cn/mathjax.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="依然随意的技术博客">
+<meta property="og:description" content="div#input_area    {
+        float:left;
+        height:135px;
+        width:50%;
+        margin-left:5px;
+        }
+    #input_area h2    {
+        margin:10px 0 6px 5px;
+        color:red;
+        fo">
+<meta property="og:updated_time" content="2015-08-22T16:21:45.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术人生">
-<meta name="twitter:description" content="依然随意的技术博客">
+<meta name="twitter:description" content="div#input_area    {
+        float:left;
+        height:135px;
+        width:50%;
+        margin-left:5px;
+        }
+    #input_area h2    {
+        margin:10px 0 6px 5px;
+        color:red;
+        fo">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -129,108 +157,122 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/19/2015-08-ragel-state-compiler文档/" class="archive-article-date">
-  	<time datetime="2015-08-19T02:06:49.000Z" itemprop="datePublished">8月 19</time>
+      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/mathjax.html" class="article-date">
+  	<time datetime="2015-08-22T16:23:02.843Z" itemprop="datePublished">2015-08-23</time>
 </a>
-        </div>
-    	 <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/19/2015-08-ragel-state-compiler文档/">ragel state compiler</a>
-    </h1>
-        <div class="article-info info-on-right">
-          <div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/确定自动机/">确定自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <html>
+	<body>
+    <style type="text/css">
+    div#input_area    {
+        float:left;
+        height:135px;
+        width:50%;
+        margin-left:5px;
+        }
+    #input_area h2    {
+        margin:10px 0 6px 5px;
+        color:red;
+        font-size:14px;
+        }
+    #input_area textarea{
+        width:100%;
+        height:100px;
+        overflow:auto;
+        border:1px solid #c5c5c5;
+            border-right:0;
+        font:14px "Courier New", Courier, monospace;
+        }
+    div#output_area  {
+        float:right;
+        height:135px;
+        width:49%;
+        }
+    #output_area h2  {
+        margin:10px 0 6px 5px;
+        color:red;
+        font-size:14px;
+        }
+    #output_area div{
+        width:100%;
+        height:100px;
+        border:1px solid #c5c5c5;
+        }
+    </style>
+    <div id="input_area">
+        <h2>输入公式：</h2>
+        <textarea id="input_mathjax" wrap="logical"></textarea>
+    </div>
+    <div id="output_area">
+        <h2>查看结果:</h2>
+        <div id="output_mathjax">\({}\)</div>
+    </div>
+
+    <input type="button" value="显示公式" onclick="show_mathjax()">
+
+    <script type="text/javascript">
+        function show_mathjax()
+        {
+            var data = document.getElementById("input_mathjax").value;
+            var math = MathJax.Hub.getAllJax("output_mathjax")[0];
+            MathJax.Hub.Queue(["Text",math, data]);
+        }
+    </script>
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        });
+
+        MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';                 
+            }       
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	</body>
+</html>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/17/2015-08-pnp管理器原理/" class="archive-article-date">
-  	<time datetime="2015-08-17T06:22:24.000Z" itemprop="datePublished">8月 17</time>
-</a>
-        </div>
-    	 <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/17/2015-08-pnp管理器原理/">pnp管理器原理</a>
-    </h1>
-        <div class="article-info info-on-right">
-          <div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/07/2015-08-红黑树-伸展树/" class="archive-article-date">
-  	<time datetime="2015-08-07T09:04:10.000Z" itemprop="datePublished">8月 7</time>
-</a>
-        </div>
-    	 <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/07/2015-08-红黑树-伸展树/">红黑树+伸展树</a>
-    </h1>
-        <div class="article-info info-on-right">
-          <div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/07/21/2015-07-BKDRHash字符串hash算法/" class="archive-article-date">
-  	<time datetime="2015-07-21T03:16:25.000Z" itemprop="datePublished">7月 21</time>
-</a>
-        </div>
-    	 <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/21/2015-07-BKDRHash字符串hash算法/">BKDRHash字符串hash算法</a>
-    </h1>
-        <div class="article-info info-on-right">
-          <div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-	</div>
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section></div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -252,7 +294,7 @@
 		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	};
