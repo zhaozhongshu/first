@@ -226,7 +226,7 @@
 <p>0:000&gt; ? MyCounter<br>Evaluate expression: 1244892 = 0012fedc<br>0:000&gt; dd 0x0012fedc L1<br>0012fedc  00000052<br>0:000&gt; ed MyCounter 83  修改MyCounter值为83</p>
 </blockquote>
 <h1 id="调试多进程多线程时线程、进程的切换">调试多进程多线程时线程、进程的切换</h1><blockquote>
-<p>| 列出所有被调试进程(可以同时调试多个进程)<br>2:005&gt; |<em><br>2:005&gt; |. 显示当前活动进程<br>2:005&gt; |# 显示触发异常进程<br>2:005&gt; |2 显示2号进程<br>2:005&gt; |2s 切换到2号进程<br>~ 列出所有线程<br>0:001&gt; ~</em>kvnf 对所有线程应用命令kvnf<br>0:001&gt; ~. 列出active线程<br>0:001&gt; ~# 查看触发异常线程<br>0:001&gt; ~2 查看2号线程<br>0:001&gt; ~2s 切换到2号线程<br>0:001&gt; ~2n suspend 2号线程<br>0:001&gt; ~2m resume 2号线程<br>0:001&gt; ~2f freeze 2号线程<br>0:001&gt; ~2u unfreeze 2号线程<br>~e 对某条线程执行某个命令<br>0:001&gt; ~2e !gle 查看2号线程的last error<br>0:001&gt; ~*e !gle 查看所有线程的last error</p>
+<p>| 列出所有被调试进程(可以同时调试多个进程)<br>2:005&gt; |_<br>2:005&gt; |. 显示当前活动进程<br>2:005&gt; |# 显示触发异常进程<br>2:005&gt; |2 显示2号进程<br>2:005&gt; |2s 切换到2号进程<br>~ 列出所有线程<br>0:001&gt; ~_kvnf 对所有线程应用命令kvnf<br>0:001&gt; ~. 列出active线程<br>0:001&gt; ~# 查看触发异常线程<br>0:001&gt; ~2 查看2号线程<br>0:001&gt; ~2s 切换到2号线程<br>0:001&gt; ~2n suspend 2号线程<br>0:001&gt; ~2m resume 2号线程<br>0:001&gt; ~2f freeze 2号线程<br>0:001&gt; ~2u unfreeze 2号线程<br>~e 对某条线程执行某个命令<br>0:001&gt; ~2e !gle 查看2号线程的last error<br>0:001&gt; ~*e !gle 查看所有线程的last error</p>
 </blockquote>
 <h1 id="内核模式下特有的调试技巧">内核模式下特有的调试技巧</h1><blockquote>
 <p>.crash 强制crash系统<br>.reboot 强制重启系统</p>
@@ -301,11 +301,11 @@
   
     <nav id="article-nav">
   
-    <a href="/2015/07/18/2015-07-Native-Abstractions-for-Node-js/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/18/2015-07-minifilter-communication-port通信模型/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
       <div class="article-nav-title">
         
-          (nan)Native Abstractions for Node.js(转载)
+          minifilter communication port通信模型
         
       </div>
     </a>
