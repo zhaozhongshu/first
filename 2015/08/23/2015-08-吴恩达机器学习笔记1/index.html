@@ -5,24 +5,46 @@
   <title>吴恩达机器学习笔记1 | 技术人生</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <meta name="description" content="监督学习
-一些例子
+线性回归问题
+梯度下降LMS算法
+线性回归问题通用计算方法
+局部加权线性回归
 
-监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集合时，我们称这类问题为回归问题， 当$y$值取值为有限集合，我们称这">
+监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吴恩达机器学习笔记1">
 <meta property="og:url" content="http://blog.uxfork.cn/2015/08/23/2015-08-吴恩达机器学习笔记1/index.html">
 <meta property="og:site_name" content="技术人生">
 <meta property="og:description" content="监督学习
-一些例子
+线性回归问题
+梯度下降LMS算法
+线性回归问题通用计算方法
+局部加权线性回归
 
-监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集合时，我们称这类问题为回归问题， 当$y$值取值为有限集合，我们称这">
+监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml1.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml2.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml3.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml4.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml5.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml6.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml7.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml8.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml9.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml10.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml11.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml12.png">
+<meta property="og:image" content="http://blog.uxfork.cn/images/ml13.png">
 <meta property="og:updated_time" content="2015-08-23T01:40:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达机器学习笔记1">
 <meta name="twitter:description" content="监督学习
-一些例子
+线性回归问题
+梯度下降LMS算法
+线性回归问题通用计算方法
+局部加权线性回归
 
-监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集合时，我们称这类问题为回归问题， 当$y$值取值为有限集合，我们称这">
+监督学习设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$为m组输入学习样本，也叫训练集。目标函数为$h_{\theta}(X)$为我们的预测值当$y$值取值为无限集">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -171,20 +193,43 @@
       
         <ul>
 <li><strong><a href="#监督学习">监督学习</a></strong></li>
-<li><strong><a href="#一些例子">一些例子</a></strong></li>
+<li><strong><a href="#线性回归问题">线性回归问题</a></strong></li>
+<li><strong><a href="#梯度下降LMS算法">梯度下降LMS算法</a></strong></li>
+<li><strong><a href="#线性回归问题通用计算方法">线性回归问题通用计算方法</a></strong></li>
+<li><strong><a href="#局部加权线性回归">局部加权线性回归</a></strong></li>
 </ul>
 <h1 id="监督学习">监督学习</h1><p>设输入变量$X$为n维向量，表示n个特征，$y$为输出结果，为实数，是我们需要预测的结果,<br>$\{ X_{i},y_{i} \};i = [1,…,m],X_{i} \epsilon R^{n}$<br>为m组输入学习样本，也叫训练集。<br>目标函数为$h_{\theta}(X)$为我们的预测值<br>当$y$值取值为无限集合时，我们称这类问题为<strong>回归问题</strong>， 当$y$值取值为有限集合，我们称这类问题为<strong>分类问题</strong></p>
-<h2 id="线性回归问题">线性回归问题</h2><p>假设$X \epsilon R^{n}$，为$n$维向量，我们设$h_{\theta}(X)$函数为线性函数：<br>$h_{\theta}(X) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + … + \theta_{n}x_{n}$<br>简化为：<br>$h_{\theta}(X) = \sum_{i = 0}^{n} \theta_{i}x_{i} = \theta^{T}X$<br>对任意输入样本$X_{i}$，我们用$\theta^{T}X_{i}$预测$y_{i}$。我们设置一组初始向量$\Theta$，同时定义如下函数：<br>$J(\theta) = \frac{1}{2}\sum_{i=1}^{m}(h_{\theta}(X_{i}) - y_{i})^{2}$<br>对于m组输入样本，我们要求在$J(\theta)$最小时，$\theta$的值</p>
-<h3 id="梯度下降算法LMS算法">梯度下降算法LMS算法</h3><p>机器学习的表就是找到向量$\theta$，使$J(\theta)$取值最小，我们使用如下搜索算法：<br>设置$\theta$初始值，然后不断的更新$\theta$使$J(\theta)$更小：<br>$\theta_{j} := \theta_{j} - \alpha \frac{\delta J(\theta)}{\delta \theta_{}j}$<br>其中$j = 0,…,n$，$\alpha$为学习速度<br>$\frac{\delta J(\theta)}{\delta \theta_{}j}$为$J(\theta)$的偏导数<br>通过不断的更新$\theta$，使其从初始点，按照最快的梯度向下更新\theta，直到一个局部最优点（局部最优点不一定是最终最优点）<br>先假设只有一组输入数据${X,y}$，所以公式可以简化为：<br>$\frac{\delta J(\theta)}{\delta \theta _{j}} = \frac{1}{2} \frac{ \delta (h_{\theta}(x) - y)^{2}}{\delta \theta_{j}} $<br>$     = 2 \cdot \frac{1}{2} (h_{\theta}(x) - y) \cdot \frac{ \delta (h_{\theta}(x) -y)}{ \delta \theta _{j}}$</p>
+<h1 id="线性回归问题">线性回归问题</h1><p>假设$X \epsilon R^{n}$，为$n$维向量，我们设$h_{\theta}(X)$函数为线性函数：<br>$h_{\theta}(X) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + … + \theta_{n}x_{n}$<br>简化为：<br>$h_{\theta}(X) = \sum_{i = 0}^{n} \theta_{i}x_{i} = \theta^{T}X$<br>对任意输入样本$X_{i}$，我们用$\theta^{T}X_{i}$预测$y_{i}$。我们设置一组初始向量$\Theta$，同时定义如下函数：<br>$J(\theta) = \frac{1}{2}\sum_{i=1}^{m}(h_{\theta}(X_{i}) - y_{i})^{2}$<br>对于m组输入样本，我们要求在$J(\theta)$最小时，$\theta$的值</p>
+<h3 id="梯度下降LMS算法">梯度下降LMS算法</h3><p>机器学习的表就是找到向量$\theta$，使$J(\theta)$取值最小，我们使用如下搜索算法：<br>设置$\theta$初始值，然后不断的更新$\theta$使$J(\theta)$更小：<br>$\theta_{j} := \theta_{j} - \alpha \frac{\delta J(\theta)}{\delta \theta_{}j}$<br>其中$j = 0,…,n$，$\alpha$为学习速度<br>$\frac{\delta J(\theta)}{\delta \theta_{}j}$为$J(\theta)$的偏导数<br>通过不断的更新$\theta$，使其从初始点，按照最快的梯度向下更新\theta，直到一个局部最优点（局部最优点不一定是最终最优点）<br>先假设只有一组输入数据${X,y}$，所以公式可以简化为：<br>$\frac{\delta J(\theta)}{\delta \theta _{j}} = \frac{1}{2} \frac{ \delta (h_{\theta}(x) - y)^{2}}{\delta \theta_{j}} $<br>$     = 2 \cdot \frac{1}{2} (h_{\theta}(x) - y) \cdot \frac{ \delta (h_{\theta}(x) -y)}{ \delta \theta _{j}}$</p>
 <p>$     = (h_{\theta}(x) - y) \cdot \frac{ \delta (\sum_{j=0}^{n}\theta_{j} x_{j} -y)}{\theta _{j}} $<br>$     = (h_{\theta}(x) - y) \cdot x_{j}$<br>所以更新动作简化为：<br>$\theta_{j} := \theta_{j} + (y - h_{\theta}(x)) \cdot x_{j}$<br>从更新动作可以看出，如果预测值与样本值相差太大，调整步长就大，反之，就小，<strong>快速收敛</strong>，但到达最低点附近后一直徘徊</p>
-<p>以上是只针对一组样本情况，如果输入多组样本：</p>
-<h3 id="使用矩阵倒数简化公式">使用矩阵倒数简化公式</h3>
+<h1 id="线性回归问题通用计算方法">线性回归问题通用计算方法</h1><p>先定义矩阵的偏导数：<br><img src="/images/ml1.png" alt=""><br>定义输入m组n维特征数据：<br><img src="/images/ml2.png" alt=""><br>m个目标值向量：<br><img src="/images/ml3.png" alt=""></p>
+<p>设$X\theta - y$为：<br><img src="/images/ml4.png" alt=""><br>$X\theta - y$的长度为：<br><img src="/images/ml5.png" alt=""></p>
+<p>对$J_{\theta}$求导得：<br><img src="/images/ml6.png" alt=""></p>
+<p>令求导结果为$O$，最优点，得到求解$\theta$更一般的公式：<br><img src="/images/ml7.png" alt=""><br>根据上面公式，给出m组训练样本，我们可以一次性求解$h_{\theta}(x)$函数</p>
+<h1 id="使用概率论解释线性回归求解方法的合理性">使用概率论解释线性回归求解方法的合理性</h1><h1 id="局部加权线性回归">局部加权线性回归</h1><p>当输入n维数据$x$时，要求$h(x)$，以前的算法：</p>
+<ul>
+<li>求解$\theta$使<img src="/images/ml8.png" alt="">最小（只需要在输入m组样本时，训练求解，后续不用再求解）</li>
+<li>输出$\theta ^{T} X $<br>局部加权线性回归算法是这样：</li>
+<li>求解$\theta$使<img src="/images/ml9.png" alt="">最小（注意，看后面$\omega^{(i)}$函数定义可以确定，每次预测都需要算一下$\theta$）</li>
+<li>输出$\theta ^{T} X $<br>其中$\omega^{(i)}$函数定义：<br><img src="/images/ml10.png" alt=""><br>当x越接近训练样本$x^{i}$时，$\omega^{(i)}$越趋近1，反之，$\omega^{(i)}$越趋近于0</li>
+</ul>
+<p>局部加权线性回归算法属于：非参数化模型中的一种，即：不训练任何参数，而是每次预测时，使用输入数据进行预测(每次都要计算参数)</p>
+<h1 id="逻辑回归">逻辑回归</h1><p>逻辑回归问题中，$y \epsilon {0,1}$，我们重新设计$h_{\theta}(x)$：<br><img src="/images/ml11.png" alt=""><br>其中$g(x)$函数图形如下：<br><img src="/images/ml12.png" alt=""><br>从图中可以看出，$(g(x))$取值在(0,1)之间<br>其中$\theta ^{T} X $展开为<img src="/images/ml13.png" alt=""></p>
       
     </div>
     
   </div>
   
     <nav id="article-nav">
+  
+    <a href="/2015/08/25/2015-08-pub-sub网络开发模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"></strong>
+      <div class="article-nav-title">
+        
+          pub-sub网络开发模型
+        
+      </div>
+    </a>
   
   
     <a href="/2015/08/19/2015-08-ragel-state-compiler文档/" id="article-nav-older" class="article-nav-link-wrap">
