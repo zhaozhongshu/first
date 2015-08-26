@@ -276,7 +276,7 @@ Qu">
 <h2 id="Stability_Index">Stability Index</h2><!--type=misc-->
 <p>Throughout the documentation, you will see indications of a section’s<br>stability.  The Node.js API is still somewhat changing, and as it<br>matures, certain parts are more reliable than others.  Some are so<br>proven, and so relied upon, that they are unlikely to ever change at<br>all.  Others are brand new and experimental, or known to be hazardous<br>and in the process of being redesigned.</p>
 <p>The stability indices are as follows:</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stability: <span class="number">0</span> - Deprecated</span><br><span class="line">This feature <span class="keyword">is</span> known <span class="keyword">to</span> be problematic, <span class="keyword">and</span> changes are</span><br><span class="line">planned.  Do <span class="keyword">not</span> rely <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">it</span>.  Use <span class="keyword">of</span> <span class="keyword">the</span> feature may cause warnings.  Backwards</span><br><span class="line">compatibility should <span class="keyword">not</span> be expected.</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stability: <span class="operator">0 - Deprecated</span><br><span class="line">This feature <span class="keyword">is</span> known <span class="keyword">to</span> be problematic, <span class="keyword">and</span> changes <span class="keyword">are</span></span><br><span class="line">planned.  <span class="keyword">Do</span> <span class="keyword">not</span> <span class="keyword">rely</span> <span class="keyword">on</span> it.  <span class="keyword">Use</span> <span class="keyword">of</span> the feature may cause <span class="keyword">warnings</span>.  Backwards</span><br><span class="line"><span class="keyword">compatibility</span> should <span class="keyword">not</span> be expected.</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stability: <span class="number">1</span> - Experimental</span><br><span class="line">This feature was introduced recently, <span class="keyword">and</span> may change</span><br><span class="line"><span class="keyword">or</span> be removed <span class="keyword">in</span> future versions.  Please <span class="keyword">try</span> <span class="keyword">it</span> out <span class="keyword">and</span> provide feedback.</span><br><span class="line">If <span class="keyword">it</span> addresses a use-case <span class="keyword">that</span> <span class="keyword">is</span> important <span class="keyword">to</span> you, <span class="keyword">tell</span> <span class="keyword">the</span> node core team.</span><br></pre></td></tr></table></figure>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stability: <span class="number">2</span> - Unstable</span><br><span class="line">The API <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> settling, <span class="keyword">but</span> has <span class="keyword">not</span> yet had</span><br><span class="line">sufficient <span class="type">real</span>-world testing <span class="keyword">to</span> be considered stable. Backwards-compatibility</span><br><span class="line">will be maintained <span class="keyword">if</span> reasonable.</span><br></pre></td></tr></table></figure>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stability: <span class="number">3</span> - Stable</span><br><span class="line">The API has proven satisfactory, <span class="keyword">but</span> cleanup <span class="keyword">in</span> <span class="keyword">the</span> underlying</span><br><span class="line">code may cause minor changes.  Backwards-compatibility <span class="keyword">is</span> guaranteed.</span><br></pre></td></tr></table></figure>
@@ -434,7 +434,7 @@ console.<span class="literal">log</span>('<span class="keyword">count</span>: %<
 </code></pre><!--name=module-->
 <p>Node has a simple module loading system.  In Node, files and modules are in<br>one-to-one correspondence.  As an example, <code>foo.js</code> loads the module<br><code>circle.js</code> in the same directory.</p>
 <p>The contents of <code>foo.js</code>:</p>
-<pre><code><span class="reserved">var</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>);
+<pre><code><span class="keyword">var</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>);
 <span class="built_in">console</span>.log( <span class="string">'The area of a circle of radius 4 is '</span>
            + circle.area(<span class="number">4</span>));
 </code></pre><p>The contents of <code>circle.js</code>:</p>
@@ -483,8 +483,8 @@ exports.<span class="keyword">done</span> = <span class="literal">true</span>;
 console.log(<span class="symbol">'b</span> done');
 </code></pre><p><code>main.js</code>:</p>
 <pre><code><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);
-<span class="reserved">var</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);
-<span class="reserved">var</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);
+<span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);
+<span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);
 <span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);
 </code></pre><p>When <code>main.js</code> loads <code>a.js</code>, then <code>a.js</code> in turn loads <code>b.js</code>.  At that<br>point, <code>b.js</code> tries to load <code>a.js</code>.  In order to prevent an infinite<br>loop, an <strong>unfinished copy</strong> of the <code>a.js</code> exports object is returned to the<br><code>b.js</code> module.  <code>b.js</code> then finishes loading, and its <code>exports</code> object is<br>provided to the <code>a.js</code> module.</p>
 <p>By the time <code>main.js</code> has loaded both modules, they’re both finished.<br>The output of this program would thus be:</p>
@@ -570,7 +570,7 @@ a.on(<span class="string">'ready'</span>, <span class="function"><span class="ke
   <span class="built_in">module</span>.exports = { a: <span class="string">"hello"</span> };
 }, <span class="number">0</span>);
 </code></pre><p>y.js:</p>
-<pre><code><span class="reserved">var</span> x = <span class="built_in">require</span>(<span class="string">'./x'</span>);
+<pre><code><span class="keyword">var</span> x = <span class="built_in">require</span>(<span class="string">'./x'</span>);
 <span class="built_in">console</span>.log(x.a);
 </code></pre><h4 id="exports_alias">exports alias</h4><p>The <code>exports</code> variable that is available within a module starts as a reference<br>to <code>module.exports</code>. As with any variable, if you assign a new value to it, it<br>is no longer bound to the previous value.</p>
 <p>To illustrate the behaviour, imagine this hypothetical implementation of<br><code>require()</code>:</p>
@@ -703,21 +703,21 @@ a.on(<span class="string">'ready'</span>, <span class="function"><span class="ke
 <pre><code><span class="built_in">module</span>.exports.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{ <span class="keyword">return</span> <span class="string">'world'</span>; };
 </code></pre><p>First we create a file <code>hello.cc</code>:</p>
 <pre><code><span class="comment">// hello.cc</span>
-#include &lt;node.h&gt;
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
-void <span class="function"><span class="keyword">Method</span><span class="params">(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> <span class="comment">{
+<span class="function"><span class="keyword">void</span> <span class="title">Method</span><span class="params">(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> </span>{
   Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
-}</span>
+  <span class="function">HandleScope <span class="title">scope</span><span class="params">(isolate)</span></span>;
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, <span class="string">"world"</span>));
+}
 
-<span class="title">void</span> <span class="title">init</span><span class="params">(Handle&lt;Object&gt; exports)</span> <span class="comment">{
-  NODE_SET_METHOD(exports, "hello", Method);
-}</span>
+<span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(Handle&lt;Object&gt; exports)</span> </span>{
+  NODE_SET_METHOD(exports, <span class="string">"hello"</span>, Method);
+}
 
-<span class="title">NODE_MODULE</span><span class="params">(addon, init)</span></span>
+NODE_MODULE(addon, init)
 </code></pre><p>Note that all Node addons must export an initialization function:</p>
 <pre><code>void Initialize <span class="list">(<span class="keyword">Handle&lt;Object&gt;</span> exports)</span><span class="comment">;</span>
 NODE_MODULE<span class="list">(<span class="keyword">module_name</span>, Initialize)</span>
@@ -757,37 +757,37 @@ NODE_MODULE<span class="list">(<span class="keyword">module_name</span>, Initial
 <pre><code><span class="variable">$ </span>node-gyp configure build
 </code></pre><h3 id="Function_arguments">Function arguments</h3><p>The following pattern illustrates how to read arguments from JavaScript<br>function calls and return a result. This is the main and only needed source<br><code>addon.cc</code>:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> &lt;node.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
 
-using namespace v8;
+<span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
-void Add<span class="params">(const FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> {
-  Isolate<span class="built_in">*</span> isolate = Isolate::GetCurrent<span class="params">()</span>;
-  HandleScope scope<span class="params">(isolate)</span>;
+<span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> </span>{
+  Isolate* isolate = Isolate::GetCurrent();
+  <span class="function">HandleScope <span class="title">scope</span><span class="params">(isolate)</span></span>;
 
-  <span class="keyword">if</span> <span class="params">(args.Length<span class="params">()</span> &lt; <span class="number">2</span>)</span> {
-    isolate-&gt;ThrowException<span class="params">(Exception::TypeError<span class="params">(
-        String::NewFromUtf8<span class="params">(isolate, <span class="string">"Wrong number of arguments"</span>)</span>)</span>)</span>;
-    return;
+  <span class="keyword">if</span> (args.Length() &lt; <span class="number">2</span>) {
+    isolate-&gt;ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate, <span class="string">"Wrong number of arguments"</span>)));
+    <span class="keyword">return</span>;
   }
 
-  <span class="keyword">if</span> <span class="params">(!args[<span class="number">0</span>]-&gt;IsNumber<span class="params">()</span> || !args[<span class="number">1</span>]-&gt;IsNumber<span class="params">()</span>)</span> {
-    isolate-&gt;ThrowException<span class="params">(Exception::TypeError<span class="params">(
-        String::NewFromUtf8<span class="params">(isolate, <span class="string">"Wrong arguments"</span>)</span>)</span>)</span>;
-    return;
+  <span class="keyword">if</span> (!args[<span class="number">0</span>]-&gt;IsNumber() || !args[<span class="number">1</span>]-&gt;IsNumber()) {
+    isolate-&gt;ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate, <span class="string">"Wrong arguments"</span>)));
+    <span class="keyword">return</span>;
   }
 
-  double value = args[<span class="number">0</span>]-&gt;NumberValue<span class="params">()</span> + args[<span class="number">1</span>]-&gt;NumberValue<span class="params">()</span>;
-  Local&lt;Number&gt; num = Number::New<span class="params">(isolate, value)</span>;
+  <span class="keyword">double</span> value = args[<span class="number">0</span>]-&gt;NumberValue() + args[<span class="number">1</span>]-&gt;NumberValue();
+  Local&lt;Number&gt; num = Number::New(isolate, value);
 
-  args.GetReturnValue<span class="params">()</span>.Set<span class="params">(num)</span>;
+  args.GetReturnValue().Set(num);
 }
 
-void Init<span class="params">(Handle&lt;Object&gt; exports)</span> {
-  NODE_SET_METHOD<span class="params">(exports, <span class="string">"add"</span>, Add)</span>;
+<span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(Handle&lt;Object&gt; exports)</span> </span>{
+  NODE_SET_METHOD(exports, <span class="string">"add"</span>, Add);
 }
 
-NODE_MODULE<span class="params">(addon, Init)</span>
+NODE_MODULE(addon, Init)
 </code></pre><p>You can test it with the following JavaScript snippet:</p>
 <pre><code><span class="comment">// test.js</span>
 <span class="keyword">var</span> addon = <span class="built_in">require</span>(<span class="string">'./build/Release/addon'</span>);
@@ -795,7 +795,7 @@ NODE_MODULE<span class="params">(addon, Init)</span>
 <span class="built_in">console</span>.log( <span class="string">'This should be eight:'</span>, addon.add(<span class="number">3</span>,<span class="number">5</span>) );
 </code></pre><h3 id="Callbacks">Callbacks</h3><p>You can pass JavaScript functions to a C++ function and execute them from<br>there. Here’s <code>addon.cc</code>:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -824,7 +824,7 @@ addon(<span class="function"><span class="keyword">function</span>(<span class="
 });
 </code></pre><h3 id="Object_factory">Object factory</h3><p>You can create and return new objects from within a C++ function with this<br><code>addon.cc</code> pattern, which returns an object with property <code>msg</code> that echoes<br>the string passed to <code>createObject()</code>:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -852,7 +852,7 @@ NODE_MODULE(addon, Init)
 <span class="built_in">console</span>.log(obj1.msg+<span class="string">' '</span>+obj2.msg); <span class="comment">// 'hello world'</span>
 </code></pre><h3 id="Function_factory">Function factory</h3><p>This pattern illustrates how to create and return a JavaScript function that<br>wraps a C++ function:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -888,8 +888,8 @@ NODE_MODULE(addon, Init)
 <span class="built_in">console</span>.log(fn()); <span class="comment">// 'hello world'</span>
 </code></pre><h3 id="Wrapping_C++_objects">Wrapping C++ objects</h3><p>Here we will create a wrapper for a C++ object/class <code>MyObject</code> that can be<br>instantiated in JavaScript through the <code>new</code> operator. First prepare the main<br>module <code>addon.cc</code>:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "myobject.h"</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"myobject.h"</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -900,18 +900,18 @@ NODE_MODULE(addon, Init)
 NODE_MODULE(addon, InitAll)
 </code></pre><p>Then in <code>myobject.h</code> make your wrapper inherit from <code>node::ObjectWrap</code>:</p>
 <pre><code><span class="comment">// myobject.h</span>
-<span class="preprocessor">#ifndef MYOBJECT_H</span>
+<span class="preprocessor">#<span class="keyword">ifndef</span> MYOBJECT_H</span>
 <span class="preprocessor">#<span class="keyword">define</span> MYOBJECT_H</span>
 
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node_object_wrap.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node_object_wrap.h&gt;</span></span>
 
 <span class="keyword">class</span> MyObject : <span class="keyword">public</span> node::ObjectWrap {
  <span class="keyword">public</span>:
   <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">(v8::Handle&lt;v8::Object&gt; exports)</span></span>;
 
  <span class="keyword">private</span>:
-  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = 0)</span></span>;
+  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = <span class="number">0</span>)</span></span>;
   ~MyObject();
 
   <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">New</span><span class="params">(<span class="keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span></span>;
@@ -923,61 +923,61 @@ NODE_MODULE(addon, InitAll)
 <span class="preprocessor">#<span class="keyword">endif</span></span>
 </code></pre><p>And in <code>myobject.cc</code> implement the various methods that you want to expose.<br>Here we expose the method <code>plusOne</code> by adding it to the constructor’s<br>prototype:</p>
 <pre><code><span class="comment">// myobject.cc</span>
-#include <span class="string">"myobject.h"</span>
+<span class="built_in">#</span><span class="preprocessor"><span class="keyword">include</span> "myobject.h"
 
 using namespace v8;
 
-Persistent&lt;<span class="built_in">Function</span>&gt; MyObject::<span class="constructor"><span class="keyword">constructor</span>;
+Persistent&lt;Function&gt;</span> MyObject::constructor;
 
-MyObject::MyObject(double value) : value_(value) </span>{
+MyObject::MyObject<span class="params">(double value)</span> : value_<span class="params">(value)</span> {
 }
 
-MyObject::~MyObject() {
+MyObject::~MyObject<span class="params">()</span> {
 }
 
-<span class="built_in">void</span> MyObject::Init(Handle&lt;<span class="built_in">Object</span>&gt; exports) {
-  Isolate* isolate = Isolate::GetCurrent();
+void MyObject::Init<span class="params">(Handle&lt;Object&gt; exports)</span> {
+  Isolate<span class="built_in">*</span> isolate = Isolate::GetCurrent<span class="params">()</span>;
 
   <span class="comment">// Prepare constructor template</span>
-  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New(isolate, New);
-  tpl-&gt;SetClassName(<span class="built_in">String</span>::NewFromUtf8(isolate, <span class="string">"MyObject"</span>));
-  tpl-&gt;InstanceTemplate()-&gt;SetInternalFieldCount(<span class="number">1</span>);
+  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New<span class="params">(isolate, New)</span>;
+  tpl-&gt;SetClassName<span class="params">(String::NewFromUtf8<span class="params">(isolate, <span class="string">"MyObject"</span>)</span>)</span>;
+  tpl-&gt;InstanceTemplate<span class="params">()</span>-&gt;SetInternalFieldCount<span class="params">(<span class="number">1</span>)</span>;
 
   <span class="comment">// Prototype</span>
-  NODE_SET_PROTOTYPE_METHOD(tpl, <span class="string">"plusOne"</span>, PlusOne);
+  NODE_SET_PROTOTYPE_METHOD<span class="params">(tpl, <span class="string">"plusOne"</span>, PlusOne)</span>;
 
-  <span class="constructor"><span class="keyword">constructor</span>.Reset(isolate, tpl-&gt;GetFunction());
-  exports-&gt;Set(<span class="built_in">String</span>::NewFromUtf8(isolate, "MyObject"),
-               tpl-&gt;GetFunction());
+  constructor.Reset<span class="params">(isolate, tpl-&gt;GetFunction<span class="params">()</span>)</span>;
+  exports-&gt;Set<span class="params">(String::NewFromUtf8<span class="params">(isolate, <span class="string">"MyObject"</span>)</span>,
+               tpl-&gt;GetFunction<span class="params">()</span>)</span>;
 }
 
-<span class="built_in">void</span> MyObject::New(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+void MyObject::New<span class="params">(const FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> {
+  Isolate<span class="built_in">*</span> isolate = Isolate::GetCurrent<span class="params">()</span>;
+  HandleScope scope<span class="params">(isolate)</span>;
 
-  <span class="keyword">if</span> (args.IsConstructCall()) {
+  <span class="keyword">if</span> <span class="params">(args.IsConstructCall<span class="params">()</span>)</span> {
     <span class="comment">// Invoked as constructor: `new MyObject(...)`</span>
-    double value = args[<span class="number">0</span>]-&gt;IsUndefined() ? <span class="number">0</span> : args[<span class="number">0</span>]-&gt;NumberValue();
-    MyObject* obj = <span class="keyword">new</span> MyObject(value);
-    obj-&gt;Wrap(args.This());
-    args.GetReturnValue().Set(args.This());
+    double value = args[<span class="number">0</span>]-&gt;IsUndefined<span class="params">()</span> ? <span class="number">0</span> : args[<span class="number">0</span>]-&gt;NumberValue<span class="params">()</span>;
+    MyObject<span class="built_in">*</span> obj = new MyObject<span class="params">(value)</span>;
+    obj-&gt;Wrap<span class="params">(args.This<span class="params">()</span>)</span>;
+    args.GetReturnValue<span class="params">()</span>.Set<span class="params">(args.This<span class="params">()</span>)</span>;
   } <span class="keyword">else</span> {
     <span class="comment">// Invoked as plain function `MyObject(...)`, turn into construct call.</span>
-    <span class="keyword">const</span> int argc = <span class="number">1</span>;
+    const int argc = <span class="number">1</span>;
     Local&lt;Value&gt; argv[argc] = { args[<span class="number">0</span>] };
-    Local&lt;<span class="built_in">Function</span>&gt; cons = Local&lt;<span class="built_in">Function</span>&gt;::New(isolate, <span class="constructor"><span class="keyword">constructor</span>);
-    args.GetReturnValue().Set(cons-&gt;NewInstance(argc, argv));
+    Local&lt;Function&gt; cons = Local&lt;Function&gt;::New<span class="params">(isolate, constructor)</span>;
+    args.GetReturnValue<span class="params">()</span>.Set<span class="params">(cons-&gt;NewInstance<span class="params">(argc, argv)</span>)</span>;
   }
 }
 
-<span class="built_in">void</span> MyObject::PlusOne(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+void MyObject::PlusOne<span class="params">(const FunctionCallbackInfo&lt;Value&gt;&amp; args)</span> {
+  Isolate<span class="built_in">*</span> isolate = Isolate::GetCurrent<span class="params">()</span>;
+  HandleScope scope<span class="params">(isolate)</span>;
 
-  MyObject* obj = ObjectWrap::Unwrap&lt;MyObject&gt;(args.Holder());
+  MyObject<span class="built_in">*</span> obj = ObjectWrap::Unwrap&lt;MyObject&gt;<span class="params">(args.Holder<span class="params">()</span>)</span>;
   obj-&gt;value_ += <span class="number">1</span>;
 
-  args.GetReturnValue().Set(<span class="built_in">Number</span>::New(isolate, obj-&gt;value_));
+  args.GetReturnValue<span class="params">()</span>.Set<span class="params">(Number::New<span class="params">(isolate, obj-&gt;value_)</span>)</span>;
 }
 </code></pre><p>Test it with:</p>
 <pre><code><span class="comment">// test.js</span>
@@ -993,8 +993,8 @@ console.<span class="built_in">log</span><span class="params">( obj.plusOne<span
 <span class="comment">// var obj = new addon.Object();</span>
 </code></pre><p>Let’s register our <code>createObject</code> method in <code>addon.cc</code>:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "myobject.h"</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"myobject.h"</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -1013,11 +1013,11 @@ console.<span class="built_in">log</span><span class="params">( obj.plusOne<span
 NODE_MODULE(addon, InitAll)
 </code></pre><p>In <code>myobject.h</code> we now introduce the static method <code>NewInstance</code> that takes<br>care of instantiating the object (i.e. it does the job of <code>new</code> in JavaScript):</p>
 <pre><code><span class="comment">// myobject.h</span>
-<span class="preprocessor">#ifndef MYOBJECT_H</span>
+<span class="preprocessor">#<span class="keyword">ifndef</span> MYOBJECT_H</span>
 <span class="preprocessor">#<span class="keyword">define</span> MYOBJECT_H</span>
 
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node_object_wrap.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node_object_wrap.h&gt;</span></span>
 
 <span class="keyword">class</span> MyObject : <span class="keyword">public</span> node::ObjectWrap {
  <span class="keyword">public</span>:
@@ -1025,7 +1025,7 @@ NODE_MODULE(addon, InitAll)
   <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">NewInstance</span><span class="params">(<span class="keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span></span>;
 
  <span class="keyword">private</span>:
-  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = 0)</span></span>;
+  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = <span class="number">0</span>)</span></span>;
   ~MyObject();
 
   <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">New</span><span class="params">(<span class="keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span></span>;
@@ -1063,7 +1063,7 @@ MyObject::~MyObject() {
   <span class="constructor"><span class="keyword">constructor</span>.Reset(isolate, tpl-&gt;GetFunction());
 }
 
-<span class="built_in">void</span> MyObject::New(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
+void MyObject::New(const FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
@@ -1082,19 +1082,19 @@ MyObject::~MyObject() {
   }
 }
 
-<span class="built_in">void</span> MyObject::NewInstance(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
+void MyObject::NewInstance(const FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
   <span class="keyword">const</span> unsigned argc = <span class="number">1</span>;
   Handle&lt;Value&gt; argv[argc] = { args[<span class="number">0</span>] };
   Local&lt;<span class="built_in">Function</span>&gt; cons = Local&lt;<span class="built_in">Function</span>&gt;::New(isolate, <span class="constructor"><span class="keyword">constructor</span>);
-  Local&lt;<span class="built_in">Object</span>&gt; instance = cons-&gt;NewInstance(argc, argv);
+  Local&lt;Object&gt; instance = cons-&gt;NewInstance(argc, argv);
 
   args.GetReturnValue().Set(instance);
 }
 
-<span class="built_in">void</span> MyObject::PlusOne(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
+void MyObject::PlusOne(const FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
@@ -1118,9 +1118,9 @@ console.<span class="built_in">log</span><span class="params">( obj2.plusOne<spa
 console.<span class="built_in">log</span><span class="params">( obj2.plusOne<span class="params">()</span> )</span>; <span class="comment">// 23</span>
 </code></pre><h3 id="Passing_wrapped_objects_around">Passing wrapped objects around</h3><p>In addition to wrapping and returning C++ objects, you can pass them around<br>by unwrapping them with Node’s <code>node::ObjectWrap::Unwrap</code> helper function.<br>In the following <code>addon.cc</code> we introduce a function <code>add()</code> that can take on two<br><code>MyObject</code> objects:</p>
 <pre><code><span class="comment">// addon.cc</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node_object_wrap.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "myobject.h"</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node_object_wrap.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"myobject.h"</span></span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> v8;
 
@@ -1153,11 +1153,11 @@ console.<span class="built_in">log</span><span class="params">( obj2.plusOne<spa
 NODE_MODULE(addon, InitAll)
 </code></pre><p>To make things interesting we introduce a public method in <code>myobject.h</code> so we<br>can probe private values after unwrapping the object:</p>
 <pre><code><span class="comment">// myobject.h</span>
-<span class="preprocessor">#ifndef MYOBJECT_H</span>
+<span class="preprocessor">#<span class="keyword">ifndef</span> MYOBJECT_H</span>
 <span class="preprocessor">#<span class="keyword">define</span> MYOBJECT_H</span>
 
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;node_object_wrap.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;node_object_wrap.h&gt;</span></span>
 
 <span class="keyword">class</span> MyObject : <span class="keyword">public</span> node::ObjectWrap {
  <span class="keyword">public</span>:
@@ -1166,7 +1166,7 @@ NODE_MODULE(addon, InitAll)
   <span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">const</span> </span>{ <span class="keyword">return</span> value_; }
 
  <span class="keyword">private</span>:
-  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = 0)</span></span>;
+  <span class="function"><span class="keyword">explicit</span> <span class="title">MyObject</span><span class="params">(<span class="keyword">double</span> value = <span class="number">0</span>)</span></span>;
   ~MyObject();
 
   <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">New</span><span class="params">(<span class="keyword">const</span> v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args)</span></span>;
@@ -1201,7 +1201,7 @@ MyObject::~MyObject() {
   <span class="constructor"><span class="keyword">constructor</span>.Reset(isolate, tpl-&gt;GetFunction());
 }
 
-<span class="built_in">void</span> MyObject::New(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
+void MyObject::New(const FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
@@ -1220,14 +1220,14 @@ MyObject::~MyObject() {
   }
 }
 
-<span class="built_in">void</span> MyObject::NewInstance(<span class="keyword">const</span> FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
+void MyObject::NewInstance(const FunctionCallbackInfo&lt;Value&gt;&amp; args) </span>{
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
   <span class="keyword">const</span> unsigned argc = <span class="number">1</span>;
   Handle&lt;Value&gt; argv[argc] = { args[<span class="number">0</span>] };
   Local&lt;<span class="built_in">Function</span>&gt; cons = Local&lt;<span class="built_in">Function</span>&gt;::New(isolate, <span class="constructor"><span class="keyword">constructor</span>);
-  Local&lt;<span class="built_in">Object</span>&gt; instance = cons-&gt;NewInstance(argc, argv);
+  Local&lt;Object&gt; instance = cons-&gt;NewInstance(argc, argv);
 
   args.GetReturnValue().Set(instance);
 }</span>
@@ -1415,13 +1415,13 @@ catch <span class="params">(err)</span> {
   <span class="variable">LOGNAME</span>: '<span class="variable">maciej</span>',
   _: '<span class="end-block">/usr</span><span class="end-block">/local</span><span class="end-block">/bin</span><span class="end-block">/node</span>' }</span><span class="xml"></span>
 </code></pre><p>You can write to this object, but changes won’t be reflected outside of your<br>process. That means that the following won’t work:</p>
-<pre><code>node <span class="operator">-e</span> <span class="string">'process.env.foo = "bar"'</span> &amp;&amp; <span class="built_in">echo</span> <span class="variable">$foo</span>
+<pre><code>node -e <span class="string">'process.env.foo = "bar"'</span> &amp;&amp; echo <span class="variable">$foo</span>
 </code></pre><p>But this will:</p>
 <pre><code>process.<span class="keyword">env</span>.foo = <span class="string">'bar'</span>;
 console.<span class="keyword">log</span>(process.<span class="keyword">env</span>.foo);
 </code></pre><h2 id="process-exit([code])">process.exit([code])</h2><p>Ends the process with the specified <code>code</code>.  If omitted, exit uses the<br>‘success’ code <code>0</code>.</p>
 <p>To exit with a ‘failure’ code:</p>
-<pre><code><span class="keyword">process</span>.<span class="keyword">exit</span>(<span class="number">1</span>);
+<pre><code>process.<span class="built_in">exit</span>(<span class="number">1</span>);
 </code></pre><p>The shell that executed node should see the exit code as 1.</p>
 <h2 id="process-exitCode">process.exitCode</h2><p>A number which will be the process exit code, when the process either<br>exits gracefully, or is exited via <code>process.exit()</code> without specifying<br>a code.</p>
 <p>Specifying a code to <code>process.exit(code)</code> will override any previous<br>setting of <code>process.exitCode</code>.</p>
@@ -1628,7 +1628,7 @@ setTimeout(<span class="function"><span class="keyword">function</span>(<span cl
 <p>For example:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debuglog = util.debuglog(<span class="string">'foo'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">123</span>;</span><br><span class="line">debuglog(<span class="string">'hello from foo [%d]'</span>, bar);</span><br></pre></td></tr></table></figure>
 <p>If this program is run with <code>NODE_DEBUG=foo</code> in the environment, then<br>it will output something like:</p>
-<pre><code><span class="keyword">FOO</span> 3245: hello from foo<span class="sqbracket"> [123]</span>
+<pre><code>FOO <span class="number">3245</span>: hello from foo [<span class="number">123</span>]
 </code></pre><p>where <code>3245</code> is the process id.  If it is not run with that<br>environment variable set, then it will not print anything.</p>
 <p>You may separate multiple <code>NODE_DEBUG</code> environment variables with a<br>comma.  For example, <code>NODE_DEBUG=fs,net,tls</code>.</p>
 <h2 id="util-format(format[,_…])">util.format(format[, …])</h2><p>Returns a formatted string using the first argument as a <code>printf</code>-like format.</p>
@@ -1645,7 +1645,7 @@ setTimeout(<span class="function"><span class="keyword">function</span>(<span cl
 </code></pre><p>If there are more arguments than placeholders, the extra arguments are<br>converted to strings with <code>util.inspect()</code> and these strings are concatenated,<br>delimited by a space.</p>
 <pre><code>util.format(<span class="string">'%s:%s'</span>, <span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>); <span class="regexp">//</span> <span class="string">'foo:bar baz'</span>
 </code></pre><p>If the first argument is not a format string then <code>util.format()</code> returns<br>a string that is the concatenation of all its arguments separated by spaces.<br>Each argument is converted to a string with <code>util.inspect()</code>.</p>
-<pre><code>util.format(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="regexp">//</span> <span class="string">'1 2 3'</span>
+<pre><code>util.format(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// '1 2 3'</span>
 </code></pre><h2 id="util-log(string)">util.log(string)</h2><p>Output with timestamp on <code>stdout</code>.</p>
 <pre><code><span class="keyword">require</span>(<span class="string">'util'</span>)<span class="built_in">.</span><span class="keyword">log</span>(<span class="string">'Timestamped message.'</span>);
 </code></pre><h2 id="util-inspect(object[,_options])">util.inspect(object[, options])</h2><p>Return a string representation of <code>object</code>, which is useful for debugging.</p>
@@ -1661,9 +1661,9 @@ setTimeout(<span class="function"><span class="keyword">function</span>(<span cl
 </li>
 </ul>
 <p>Example of inspecting all properties of the <code>util</code> object:</p>
-<pre><code><span class="reserved">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);
+<pre><code><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);
 
-<span class="built_in">console</span>.log(util.inspect(util, { <span class="attribute">showHidden</span>: <span class="literal">true</span>, <span class="attribute">depth</span>: <span class="literal">null</span> }));
+<span class="built_in">console</span>.log(util.inspect(util, { showHidden: <span class="literal">true</span>, depth: <span class="literal">null</span> }));
 </code></pre><p>Values may supply their own custom <code>inspect(depth, opts)</code> functions, when<br>called they receive the current depth in the recursive inspection, as well as<br>the options object passed to <code>util.inspect()</code>.</p>
 <h3 id="Customizing_util-inspect_colors">Customizing <code>util.inspect</code> colors</h3><!-- type=misc -->
 <p>Color output (if enabled) of <code>util.inspect</code> is customizable globally<br>via <code>util.inspect.styles</code> and <code>util.inspect.colors</code> objects.</p>
@@ -1837,7 +1837,7 @@ server.removeListener(<span class="string">'connection'</span>, <span class="key
 <p>The better approach is send an error response to the request that<br>triggered the error, while letting the others finish in their normal<br>time, and stop listening for new requests in that worker.</p>
 <p>In this way, <code>domain</code> usage goes hand-in-hand with the cluster module,<br>since the master process can fork a new worker when a worker<br>encounters an error.  For node programs that scale to multiple<br>machines, the terminating proxy or service registry can take note of<br>the failure, and react accordingly.</p>
 <p>For example, this is not a good idea:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag"><span class="keyword">XXX</span></span> WARNING!  BAD IDEA!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">require</span>(<span class="string">'domain'</span>).create();</span><br><span class="line">d.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">er</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The error won't crash the process, but what it does is worse!</span></span><br><span class="line">  <span class="comment">// Though we've prevented abrupt process restarting, we are leaking</span></span><br><span class="line">  <span class="comment">// resources like crazy if this ever happens.</span></span><br><span class="line">  <span class="comment">// This is no better than process.on('uncaughtException')!</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error, but oh well'</span>, er.message);</span><br><span class="line">&#125;);</span><br><span class="line">d.run(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    handleRequest(req, res);</span><br><span class="line">  &#125;).listen(PORT);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="label">XXX WARNING!  BAD IDEA!</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">require</span>(<span class="string">'domain'</span>).create();</span><br><span class="line">d.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">er</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The error won't crash the process, but what it does is worse!</span></span><br><span class="line">  <span class="comment">// Though we've prevented abrupt process restarting, we are leaking</span></span><br><span class="line">  <span class="comment">// resources like crazy if this ever happens.</span></span><br><span class="line">  <span class="comment">// This is no better than process.on('uncaughtException')!</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error, but oh well'</span>, er.message);</span><br><span class="line">&#125;);</span><br><span class="line">d.run(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    handleRequest(req, res);</span><br><span class="line">  &#125;).listen(PORT);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>By using the context of a domain, and the resilience of separating our<br>program into multiple worker processes, we can react more<br>appropriately, and handle errors with much greater safety.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Much better!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cluster = <span class="built_in">require</span>(<span class="string">'cluster'</span>);</span><br><span class="line"><span class="keyword">var</span> PORT = +process.env.PORT || <span class="number">1337</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cluster.isMaster) &#123;</span><br><span class="line">  <span class="comment">// In real life, you'd probably use more than just 2 workers,</span></span><br><span class="line">  <span class="comment">// and perhaps not put the master and worker in the same file.</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// You can also of course get a bit fancier about logging, and</span></span><br><span class="line">  <span class="comment">// implement whatever custom logic you need to prevent DoS</span></span><br><span class="line">  <span class="comment">// attacks and other bad behavior.</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// See the options in the cluster documentation.</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// The important thing is that the master does very little,</span></span><br><span class="line">  <span class="comment">// increasing our resilience to unexpected errors.</span></span><br><span class="line"></span><br><span class="line">  cluster.fork();</span><br><span class="line">  cluster.fork();</span><br><span class="line"></span><br><span class="line">  cluster.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">worker</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'disconnect!'</span>);</span><br><span class="line">    cluster.fork();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// the worker</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// This is where we put our bugs!</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> domain = <span class="built_in">require</span>(<span class="string">'domain'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// See the cluster documentation for more details about using</span></span><br><span class="line">  <span class="comment">// worker processes to serve requests.  How it works, caveats, etc.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> d = domain.create();</span><br><span class="line">    d.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">er</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">'error'</span>, er.stack);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Note: we're in dangerous territory!</span></span><br><span class="line">      <span class="comment">// By definition, something unexpected occurred,</span></span><br><span class="line">      <span class="comment">// which we probably didn't want.</span></span><br><span class="line">      <span class="comment">// Anything can happen now!  Be very careful!</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// make sure we close down within 30 seconds</span></span><br><span class="line">        <span class="keyword">var</span> killtimer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          process.exit(<span class="number">1</span>);</span><br><span class="line">        &#125;, <span class="number">30000</span>);</span><br><span class="line">        <span class="comment">// But don't keep the process open just for that!</span></span><br><span class="line">        killtimer.unref();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// stop taking new requests.</span></span><br><span class="line">        server.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Let the master know we're dead.  This will trigger a</span></span><br><span class="line">        <span class="comment">// 'disconnect' in the cluster master, and then it will fork</span></span><br><span class="line">        <span class="comment">// a new worker.</span></span><br><span class="line">        cluster.worker.disconnect();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// try to send an error to the request that triggered the problem</span></span><br><span class="line">        res.statusCode = <span class="number">500</span>;</span><br><span class="line">        res.setHeader(<span class="string">'content-type'</span>, <span class="string">'text/plain'</span>);</span><br><span class="line">        res.end(<span class="string">'Oops, there was a problem!\n'</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (er2) &#123;</span><br><span class="line">        <span class="comment">// oh well, not much we can do at this point.</span></span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">'Error sending 500!'</span>, er2.stack);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Because req and res were created before this domain existed,</span></span><br><span class="line">    <span class="comment">// we need to explicitly add them.</span></span><br><span class="line">    <span class="comment">// See the explanation of implicit vs explicit binding below.</span></span><br><span class="line">    d.add(req);</span><br><span class="line">    d.add(res);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Now run the handler function in the domain.</span></span><br><span class="line">    d.run(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      handleRequest(req, res);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  server.listen(PORT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This part isn't important.  Just an example routing thing.</span></span><br><span class="line"><span class="comment">// You'd put your fancy application logic here.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleRequest</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(req.url) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'/error'</span>:</span><br><span class="line">      <span class="comment">// We do some async stuff, and then...</span></span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Whoops!</span></span><br><span class="line">        flerb.bark();</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      res.end(<span class="string">'ok'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Additions_to_Error_objects">Additions to Error objects</h2><!-- type=misc -->
@@ -1917,7 +1917,7 @@ d.on(<span class="string">'error'</span>, <span class="function"><span class="ke
 
 <span class="function"><span class="keyword">function</span> <span class="title">readSomeFile</span>(<span class="params">filename, cb</span>) </span>{
   fs.readFile(filename, <span class="string">'utf8'</span>, d.intercept(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{
-    <span class="comment">// <span class="doctag"><span class="keyword">note</span></span>, the first argument is never passed to the</span>
+    <span class="comment">// note, the first argument is never passed to the</span>
     <span class="comment">// callback since it is assumed to be the 'Error' argument</span>
     <span class="comment">// and thus intercepted by the domain.</span>
 
@@ -1941,8 +1941,8 @@ d.on(<span class="string">'error'</span>, <span class="function"><span class="ke
 <p>If there are multiple, nested domains bound to the current execution context,<br><code>exit</code> will exit any domains nested within this domain.</p>
 <p>Calling <code>exit</code> changes only the active domain, and does not alter the domain<br>itself. <code>Enter</code> and <code>exit</code> can be called an arbitrary number of times on a<br>single domain.</p>
 <p>If the domain on which <code>exit</code> is called has been disposed, <code>exit</code> will return<br>without exiting the domain.</p>
-<h3 id="domain-dispose()">domain.dispose()</h3><pre><code>Stability: <span class="number">0</span> - Deprecated.  Please recover <span class="keyword">from</span> failed IO actions
-explicitly via <span class="keyword">error</span> event handlers <span class="keyword">set</span> <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> domain.
+<h3 id="domain-dispose()">domain.dispose()</h3><pre><code>Stability: <span class="operator">0 - Deprecated.  Please <span class="keyword">recover</span> <span class="keyword">from</span> <span class="keyword">failed</span> IO actions
+explicitly via <span class="keyword">error</span> <span class="keyword">event</span> handlers <span class="keyword">set</span> <span class="keyword">on</span> the <span class="keyword">domain</span>.</span>
 </code></pre><p>Once <code>dispose</code> has been called, the domain will no longer be used by callbacks<br>bound into the domain via <code>run</code>, <code>bind</code>, or <code>intercept</code>, and a <code>dispose</code> event<br>is emitted.</p>
 <h1 id="Buffer"><a id="buffer">Buffer</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">3 - Stable</span>
 </code></pre><p>Pure JavaScript is Unicode friendly but not nice to binary data.  When<br>dealing with TCP streams or the file system, it’s necessary to handle octet<br>streams. Node has several strategies for manipulating, creating, and<br>consuming octet streams.</p>
@@ -2043,11 +2043,11 @@ console.<span class="built_in">log</span><span class="params">(buf.length)</span
 <span class="comment">// 1234</span>
 <span class="comment">// 1234</span>
 </code></pre><p>While the <code>length</code> property is not immutable, changing the value of <code>length</code><br>can result in undefined and inconsistent behavior. Applications that wish to<br>modify the length of a buffer should therefore treat <code>length</code> as read-only and<br>use <code>buf.slice</code> to create a new buffer.</p>
-<pre><code>buf = new Buffer<span class="params">(<span class="number">10</span>)</span>;
-buf.write<span class="params">(<span class="string">"abcdefghj"</span>, <span class="number">0</span>, <span class="string">"ascii"</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.length)</span>; <span class="comment">// 10</span>
-buf = buf.slice<span class="params">(<span class="number">0</span>,<span class="number">5</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.length)</span>; <span class="comment">// 5</span>
+<pre><code>buf = <span class="keyword">new</span> Buffer(<span class="number">10</span>);
+buf.write(<span class="string">"abcdefghj"</span>, <span class="number">0</span>, <span class="string">"ascii"</span>);
+console.<span class="built_in">log</span>(buf.length); <span class="comment">// 10</span>
+buf = buf.slice(<span class="number">0</span>,<span class="number">5</span>);
+console.<span class="built_in">log</span>(buf.length); <span class="comment">// 5</span>
 </code></pre><h3 id="buf-write(string[,_offset][,_length][,_encoding])">buf.write(string[, offset][, length][, encoding])</h3><ul>
 <li><code>string</code> String - data to be written to buffer</li>
 <li><code>offset</code> Number, Optional, Default: 0</li>
@@ -2066,9 +2066,9 @@ console.<span class="built_in">log</span>(<span class="built_in">len</span> + <s
 <li>Return: {Number}</li>
 </ul>
 <p>Writes <code>value</code> to the buffer at the specified <code>offset</code> and <code>byteLength</code>.<br>Supports up to 48 bits of accuracy. For example:</p>
-<pre><code><span class="label">var</span> <span class="keyword">b </span>= new <span class="keyword">Buffer(6);
-</span><span class="keyword">b.writeUIntBE(0x1234567890ab, </span><span class="number">0</span>, <span class="number">6</span>)<span class="comment">;</span>
-// &lt;<span class="keyword">Buffer </span><span class="number">12</span> <span class="number">34</span> <span class="number">56</span> <span class="number">78</span> <span class="number">90</span> ab&gt;
+<pre><code>var b = <span class="keyword">new</span> Buffer(<span class="number">6</span>);
+b.writeUIntBE(<span class="number">0x1234567890ab</span>, <span class="number">0</span>, <span class="number">6</span>);
+<span class="comment">// &lt;Buffer 12 34 56 78 90 ab&gt;</span>
 </code></pre><p>Set <code>noAssert</code> to <code>true</code> to skip validation of <code>value</code> and <code>offset</code>. Defaults<br>to <code>false</code>.</p>
 <h3 id="buf-readUIntLE(offset,_byteLength[,_noAssert])">buf.readUIntLE(offset, byteLength[, noAssert])</h3><h3 id="buf-readUIntBE(offset,_byteLength[,_noAssert])">buf.readUIntBE(offset, byteLength[, noAssert])</h3><h3 id="buf-readIntLE(offset,_byteLength[,_noAssert])">buf.readIntLE(offset, byteLength[, noAssert])</h3><h3 id="buf-readIntBE(offset,_byteLength[,_noAssert])">buf.readIntBE(offset, byteLength[, noAssert])</h3><ul>
 <li><code>offset</code> {Number} <code>0 &lt;= offset &lt;= buf.length</code></li>
@@ -2077,10 +2077,10 @@ console.<span class="built_in">log</span>(<span class="built_in">len</span> + <s
 <li>Return: {Number}</li>
 </ul>
 <p>A generalized version of all numeric read methods. Supports up to 48 bits of<br>accuracy. For example:</p>
-<pre><code>var b = new Buffer<span class="params">(<span class="number">6</span>)</span>;
-b.writeUint16LE<span class="params">(<span class="number">0</span>x90ab, <span class="number">0</span>)</span>;
-b.writeUInt32LE<span class="params">(<span class="number">0</span>x12345678, <span class="number">2</span>)</span>;
-b.readUIntLE<span class="params">(<span class="number">0</span>, <span class="number">6</span>)</span>.toString<span class="params">(<span class="number">16</span>)</span>;  <span class="comment">// Specify 6 bytes (48 bits)</span>
+<pre><code>var b = <span class="keyword">new</span> Buffer(<span class="number">6</span>);
+b.writeUint16LE(<span class="number">0x90ab</span>, <span class="number">0</span>);
+b.writeUInt32LE(<span class="number">0x12345678</span>, <span class="number">2</span>);
+b.readUIntLE(<span class="number">0</span>, <span class="number">6</span>).toString(<span class="number">16</span>);  <span class="comment">// Specify 6 bytes (48 bits)</span>
 <span class="comment">// output: '1234567890ab'</span>
 </code></pre><p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <h3 id="buf-toString([encoding][,_start][,_end])">buf.toString([encoding][, start][, end])</h3><ul>
@@ -2157,14 +2157,14 @@ console.<span class="built_in">log</span><span class="params">(buf)</span>;
 
 // <span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="function_or_atom">qrst</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span>
 </code></pre><p>Example: Build a single buffer, then copy data from one region to an overlapping<br>region in the same buffer</p>
-<pre><code>buf = new Buffer<span class="params">(<span class="number">26</span>)</span>;
+<pre><code>buf = <span class="keyword">new</span> Buffer(<span class="number">26</span>);
 
-<span class="keyword">for</span> <span class="params">(var i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; i++)</span> {
+<span class="keyword">for</span> (var i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; i++) {
   buf[i] = i + <span class="number">97</span>; <span class="comment">// 97 is ASCII a</span>
 }
 
-buf.copy<span class="params">(buf, <span class="number">0</span>, <span class="number">4</span>, <span class="number">10</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.toString<span class="params">()</span>)</span>;
+buf.copy(buf, <span class="number">0</span>, <span class="number">4</span>, <span class="number">10</span>);
+console.<span class="built_in">log</span>(buf.toString());
 
 <span class="comment">// efghijghijklmnopqrstuvwxyz</span>
 </code></pre><h3 id="buf-slice([start][,_end])">buf.slice([start][, end])</h3><ul>
@@ -2195,16 +2195,16 @@ console.<span class="built_in">log</span><span class="params">(buf2.toString<spa
 <p>Reads an unsigned 8 bit integer from the buffer at the specified offset.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code>var <span class="keyword">buf</span> <span class="keyword">=</span> new Buffer(<span class="number">4</span>);
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
 
-<span class="keyword">buf</span>[<span class="number">0</span>] <span class="keyword">=</span> <span class="number">0x3</span>;
-<span class="keyword">buf</span>[<span class="number">1</span>] <span class="keyword">=</span> <span class="number">0x4</span>;
-<span class="keyword">buf</span>[<span class="number">2</span>] <span class="keyword">=</span> <span class="number">0x23</span>;
-<span class="keyword">buf</span>[<span class="number">3</span>] <span class="keyword">=</span> <span class="number">0x42</span>;
+buf[<span class="number">0</span>] = <span class="number">0x3</span>;
+buf[<span class="number">1</span>] = <span class="number">0x4</span>;
+buf[<span class="number">2</span>] = <span class="number">0x23</span>;
+buf[<span class="number">3</span>] = <span class="number">0x42</span>;
 
-<span class="keyword">for</span> (ii <span class="keyword">=</span> <span class="number">0</span>; ii <span class="keyword">&lt;</span> <span class="keyword">buf</span><span class="typename">.length</span>; ii<span class="keyword">+</span><span class="keyword">+</span>) <span class="keyword">{</span>
-  console<span class="typename">.log</span>(<span class="keyword">buf</span><span class="typename">.readUInt8</span>(ii));
-<span class="keyword">}</span>
+<span class="keyword">for</span> (ii = <span class="number">0</span>; ii &lt; buf.length; ii++) {
+  console.<span class="built_in">log</span>(buf.readUInt8(ii));
+}
 
 <span class="comment">// 0x3</span>
 <span class="comment">// 0x4</span>
@@ -2218,19 +2218,19 @@ console.<span class="built_in">log</span><span class="params">(buf2.toString<spa
 <p>Reads an unsigned 16 bit integer from the buffer at the specified offset with<br>specified endian format.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code>var buf = new Buffer<span class="params">(<span class="number">4</span>)</span>;
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
 
-buf[<span class="number">0</span>] = <span class="number">0</span>x3;
-buf[<span class="number">1</span>] = <span class="number">0</span>x4;
-buf[<span class="number">2</span>] = <span class="number">0</span>x23;
-buf[<span class="number">3</span>] = <span class="number">0</span>x42;
+buf[<span class="number">0</span>] = <span class="number">0x3</span>;
+buf[<span class="number">1</span>] = <span class="number">0x4</span>;
+buf[<span class="number">2</span>] = <span class="number">0x23</span>;
+buf[<span class="number">3</span>] = <span class="number">0x42</span>;
 
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16BE<span class="params">(<span class="number">0</span>)</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16LE<span class="params">(<span class="number">0</span>)</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16BE<span class="params">(<span class="number">1</span>)</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16LE<span class="params">(<span class="number">1</span>)</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16BE<span class="params">(<span class="number">2</span>)</span>)</span>;
-console.<span class="built_in">log</span><span class="params">(buf.readUInt16LE<span class="params">(<span class="number">2</span>)</span>)</span>;
+console.<span class="built_in">log</span>(buf.readUInt16BE(<span class="number">0</span>));
+console.<span class="built_in">log</span>(buf.readUInt16LE(<span class="number">0</span>));
+console.<span class="built_in">log</span>(buf.readUInt16BE(<span class="number">1</span>));
+console.<span class="built_in">log</span>(buf.readUInt16LE(<span class="number">1</span>));
+console.<span class="built_in">log</span>(buf.readUInt16BE(<span class="number">2</span>));
+console.<span class="built_in">log</span>(buf.readUInt16LE(<span class="number">2</span>));
 
 <span class="comment">// 0x0304</span>
 <span class="comment">// 0x0403</span>
@@ -2246,18 +2246,18 @@ console.<span class="built_in">log</span><span class="params">(buf.readUInt16LE<
 <p>Reads an unsigned 32 bit integer from the buffer at the specified offset with<br>specified endian format.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code>var buf = new Buffer(4)<span class="comment">;</span>
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
 
-buf[0] = 0x3<span class="comment">;</span>
-buf[1] = 0x4<span class="comment">;</span>
-buf[2] = 0x23<span class="comment">;</span>
-buf[3] = 0x42<span class="comment">;</span>
+buf[<span class="number">0</span>] = <span class="number">0x3</span>;
+buf[<span class="number">1</span>] = <span class="number">0x4</span>;
+buf[<span class="number">2</span>] = <span class="number">0x23</span>;
+buf[<span class="number">3</span>] = <span class="number">0x42</span>;
 
-console.log(buf.readUInt32BE(0))<span class="comment">;</span>
-console.log(buf.readUInt32LE(0))<span class="comment">;</span>
+console.<span class="built_in">log</span>(buf.readUInt32BE(<span class="number">0</span>));
+console.<span class="built_in">log</span>(buf.readUInt32LE(<span class="number">0</span>));
 
-// <span class="number">0x03042342</span>
-// <span class="number">0x42230403</span>
+<span class="comment">// 0x03042342</span>
+<span class="comment">// 0x42230403</span>
 </code></pre><h3 id="buf-readInt8(offset[,_noAssert])">buf.readInt8(offset[, noAssert])</h3><ul>
 <li><code>offset</code> Number</li>
 <li><code>noAssert</code> Boolean, Optional, Default: false</li>
@@ -2290,16 +2290,16 @@ console.log(buf.readUInt32LE(0))<span class="comment">;</span>
 <p>Reads a 32 bit float from the buffer at the specified offset with specified<br>endian format.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code><span class="label">var</span> <span class="keyword">buf </span>= new <span class="keyword">Buffer(4);
-</span>
-<span class="keyword">buf[0] </span>= <span class="number">0x00</span><span class="comment">;</span>
-<span class="keyword">buf[1] </span>= <span class="number">0x00</span><span class="comment">;</span>
-<span class="keyword">buf[2] </span>= <span class="number">0x80</span><span class="comment">;</span>
-<span class="keyword">buf[3] </span>= <span class="number">0x3f</span><span class="comment">;</span>
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
 
-<span class="label">console.log</span>(<span class="keyword">buf.readFloatLE(0));
-</span>
-// <span class="number">0x01</span>
+buf[<span class="number">0</span>] = <span class="number">0x00</span>;
+buf[<span class="number">1</span>] = <span class="number">0x00</span>;
+buf[<span class="number">2</span>] = <span class="number">0x80</span>;
+buf[<span class="number">3</span>] = <span class="number">0x3f</span>;
+
+console.<span class="built_in">log</span>(buf.readFloatLE(<span class="number">0</span>));
+
+<span class="comment">// 0x01</span>
 </code></pre><h3 id="buf-readDoubleLE(offset[,_noAssert])">buf.readDoubleLE(offset[, noAssert])</h3><h3 id="buf-readDoubleBE(offset[,_noAssert])">buf.readDoubleBE(offset[, noAssert])</h3><ul>
 <li><code>offset</code> Number</li>
 <li><code>noAssert</code> Boolean, Optional, Default: false</li>
@@ -2308,20 +2308,20 @@ console.log(buf.readUInt32LE(0))<span class="comment">;</span>
 <p>Reads a 64 bit double from the buffer at the specified offset with specified<br>endian format.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>offset</code>. This means that <code>offset</code><br>may be beyond the end of the buffer. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code>var buf = new Buffer(8)<span class="comment">;</span>
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">8</span>);
 
-buf[0] = 0x55<span class="comment">;</span>
-buf[1] = 0x55<span class="comment">;</span>
-buf[2] = 0x55<span class="comment">;</span>
-buf[3] = 0x55<span class="comment">;</span>
-buf[4] = 0x55<span class="comment">;</span>
-buf[5] = 0x55<span class="comment">;</span>
-buf[6] = 0xd5<span class="comment">;</span>
-buf[7] = 0x3f<span class="comment">;</span>
+buf[<span class="number">0</span>] = <span class="number">0x55</span>;
+buf[<span class="number">1</span>] = <span class="number">0x55</span>;
+buf[<span class="number">2</span>] = <span class="number">0x55</span>;
+buf[<span class="number">3</span>] = <span class="number">0x55</span>;
+buf[<span class="number">4</span>] = <span class="number">0x55</span>;
+buf[<span class="number">5</span>] = <span class="number">0x55</span>;
+buf[<span class="number">6</span>] = <span class="number">0xd5</span>;
+buf[<span class="number">7</span>] = <span class="number">0x3f</span>;
 
-console.log(buf.readDoubleLE(0))<span class="comment">;</span>
+console.<span class="built_in">log</span>(buf.readDoubleLE(<span class="number">0</span>));
 
-// <span class="number">0.33333333</span><span class="number">33333333</span>
+<span class="comment">// 0.3333333333333333</span>
 </code></pre><h3 id="buf-writeUInt8(value,_offset[,_noAssert])">buf.writeUInt8(value, offset[, noAssert])</h3><ul>
 <li><code>value</code> Number</li>
 <li><code>offset</code> Number</li>
@@ -2330,15 +2330,15 @@ console.log(buf.readDoubleLE(0))<span class="comment">;</span>
 <p>Writes <code>value</code> to the buffer at the specified offset. Note, <code>value</code> must be a<br>valid unsigned 8 bit integer.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>value</code> and <code>offset</code>. This means<br>that <code>value</code> may be too large for the specific function and <code>offset</code> may be<br>beyond the end of the buffer leading to the values being silently dropped. This<br>should not be used unless you are certain of correctness. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code><span class="label">var</span> <span class="keyword">buf </span>= new <span class="keyword">Buffer(4);
-</span><span class="keyword">buf.writeUInt8(0x3, </span><span class="number">0</span>)<span class="comment">;</span>
-<span class="keyword">buf.writeUInt8(0x4, </span><span class="number">1</span>)<span class="comment">;</span>
-<span class="keyword">buf.writeUInt8(0x23, </span><span class="number">2</span>)<span class="comment">;</span>
-<span class="keyword">buf.writeUInt8(0x42, </span><span class="number">3</span>)<span class="comment">;</span>
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
+buf.writeUInt8(<span class="number">0x3</span>, <span class="number">0</span>);
+buf.writeUInt8(<span class="number">0x4</span>, <span class="number">1</span>);
+buf.writeUInt8(<span class="number">0x23</span>, <span class="number">2</span>);
+buf.writeUInt8(<span class="number">0x42</span>, <span class="number">3</span>);
 
-<span class="label">console.log</span>(<span class="keyword">buf);
-</span>
-// &lt;<span class="keyword">Buffer </span><span class="number">03</span> <span class="number">04</span> <span class="number">23</span> <span class="number">42</span>&gt;
+console.<span class="built_in">log</span>(buf);
+
+<span class="comment">// &lt;Buffer 03 04 23 42&gt;</span>
 </code></pre><h3 id="buf-writeUInt16LE(value,_offset[,_noAssert])">buf.writeUInt16LE(value, offset[, noAssert])</h3><h3 id="buf-writeUInt16BE(value,_offset[,_noAssert])">buf.writeUInt16BE(value, offset[, noAssert])</h3><ul>
 <li><code>value</code> Number</li>
 <li><code>offset</code> Number</li>
@@ -2347,19 +2347,19 @@ console.log(buf.readDoubleLE(0))<span class="comment">;</span>
 <p>Writes <code>value</code> to the buffer at the specified offset with specified endian<br>format. Note, <code>value</code> must be a valid unsigned 16 bit integer.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>value</code> and <code>offset</code>. This means<br>that <code>value</code> may be too large for the specific function and <code>offset</code> may be<br>beyond the end of the buffer leading to the values being silently dropped. This<br>should not be used unless you are certain of correctness. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code><span class="label">var</span> <span class="keyword">buf </span>= new <span class="keyword">Buffer(4);
-</span><span class="keyword">buf.writeUInt16BE(0xdead, </span><span class="number">0</span>)<span class="comment">;</span>
-<span class="keyword">buf.writeUInt16BE(0xbeef, </span><span class="number">2</span>)<span class="comment">;</span>
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
+buf.writeUInt16BE(<span class="number">0xdead</span>, <span class="number">0</span>);
+buf.writeUInt16BE(<span class="number">0xbeef</span>, <span class="number">2</span>);
 
-<span class="label">console.log</span>(<span class="keyword">buf);
-</span>
-<span class="keyword">buf.writeUInt16LE(0xdead, </span><span class="number">0</span>)<span class="comment">;</span>
-<span class="keyword">buf.writeUInt16LE(0xbeef, </span><span class="number">2</span>)<span class="comment">;</span>
+console.<span class="built_in">log</span>(buf);
 
-<span class="label">console.log</span>(<span class="keyword">buf);
-</span>
-// &lt;<span class="keyword">Buffer </span>de ad <span class="keyword">be </span>ef&gt;
-// &lt;<span class="keyword">Buffer </span>ad de ef <span class="keyword">be&gt;</span>
+buf.writeUInt16LE(<span class="number">0xdead</span>, <span class="number">0</span>);
+buf.writeUInt16LE(<span class="number">0xbeef</span>, <span class="number">2</span>);
+
+console.<span class="built_in">log</span>(buf);
+
+<span class="comment">// &lt;Buffer de ad be ef&gt;</span>
+<span class="comment">// &lt;Buffer ad de ef be&gt;</span>
 </code></pre><h3 id="buf-writeUInt32LE(value,_offset[,_noAssert])">buf.writeUInt32LE(value, offset[, noAssert])</h3><h3 id="buf-writeUInt32BE(value,_offset[,_noAssert])">buf.writeUInt32BE(value, offset[, noAssert])</h3><ul>
 <li><code>value</code> Number</li>
 <li><code>offset</code> Number</li>
@@ -2368,14 +2368,14 @@ console.log(buf.readDoubleLE(0))<span class="comment">;</span>
 <p>Writes <code>value</code> to the buffer at the specified offset with specified endian<br>format. Note, <code>value</code> must be a valid unsigned 32 bit integer.</p>
 <p>Set <code>noAssert</code> to true to skip validation of <code>value</code> and <code>offset</code>. This means<br>that <code>value</code> may be too large for the specific function and <code>offset</code> may be<br>beyond the end of the buffer leading to the values being silently dropped. This<br>should not be used unless you are certain of correctness. Defaults to <code>false</code>.</p>
 <p>Example:</p>
-<pre><code>var buf = new Buffer<span class="params">(<span class="number">4</span>)</span>;
-buf.writeUInt32BE<span class="params">(<span class="number">0</span>xfeedface, <span class="number">0</span>)</span>;
+<pre><code>var buf = <span class="keyword">new</span> Buffer(<span class="number">4</span>);
+buf.writeUInt32BE(<span class="number">0xfeedface</span>, <span class="number">0</span>);
 
-console.<span class="built_in">log</span><span class="params">(buf)</span>;
+console.<span class="built_in">log</span>(buf);
 
-buf.writeUInt32LE<span class="params">(<span class="number">0</span>xfeedface, <span class="number">0</span>)</span>;
+buf.writeUInt32LE(<span class="number">0xfeedface</span>, <span class="number">0</span>);
 
-console.<span class="built_in">log</span><span class="params">(buf)</span>;
+console.<span class="built_in">log</span>(buf);
 
 <span class="comment">// &lt;Buffer fe ed fa ce&gt;</span>
 <span class="comment">// &lt;Buffer ce fa ed fe&gt;</span>
@@ -2689,7 +2689,7 @@ false }</code> as <code>options</code> to keep the destination stream open.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Readable = <span class="built_in">require</span>(<span class="string">'stream'</span>).Readable;</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line">util.inherits(Counter, Readable);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">opt</span>) </span>&#123;</span><br><span class="line">  Readable.call(<span class="keyword">this</span>, opt);</span><br><span class="line">  <span class="keyword">this</span>._max = <span class="number">1000000</span>;</span><br><span class="line">  <span class="keyword">this</span>._index = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Counter.prototype._read = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="keyword">this</span>._index++;</span><br><span class="line">  <span class="keyword">if</span> (i &gt; <span class="keyword">this</span>._max)</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">''</span> + i;</span><br><span class="line">    <span class="keyword">var</span> buf = <span class="keyword">new</span> Buffer(str, <span class="string">'ascii'</span>);</span><br><span class="line">    <span class="keyword">this</span>.push(buf);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="Example:_SimpleProtocol_v1_(Sub-optimal)">Example: SimpleProtocol v1 (Sub-optimal)</h4><p>This is similar to the <code>parseHeader</code> function described above, but<br>implemented as a custom stream.  Also, note that this implementation<br>does not convert the incoming data to a string.</p>
 <p>However, this would be better implemented as a <a href="#stream_class_stream_transform">Transform</a> stream.  See<br>below for a better implementation.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A parser for a simple data protocol.</span></span><br><span class="line"><span class="comment">// The "header" is a JSON object, followed by 2 \n characters, and</span></span><br><span class="line"><span class="comment">// then a message body.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// <span class="doctag"><span class="keyword">NOTE</span></span>: This can be done more simply as a Transform stream!</span></span><br><span class="line"><span class="comment">// Using Readable directly for this is sub-optimal.  See the</span></span><br><span class="line"><span class="comment">// alternative example below under the Transform section.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Readable = <span class="built_in">require</span>(<span class="string">'stream'</span>).Readable;</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"></span><br><span class="line">util.inherits(SimpleProtocol, Readable);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SimpleProtocol</span>(<span class="params">source, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> SimpleProtocol))</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SimpleProtocol(source, options);</span><br><span class="line"></span><br><span class="line">  Readable.call(<span class="keyword">this</span>, options);</span><br><span class="line">  <span class="keyword">this</span>._inBody = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>._sawFirstCr = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// source is a readable stream, such as a socket or file</span></span><br><span class="line">  <span class="keyword">this</span>._source = source;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  source.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.push(<span class="literal">null</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// give it a kick whenever the source is readable</span></span><br><span class="line">  <span class="comment">// read(0) will not consume any bytes</span></span><br><span class="line">  source.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.read(<span class="number">0</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>._rawHeader = [];</span><br><span class="line">  <span class="keyword">this</span>.header = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SimpleProtocol.prototype._read = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>._inBody) &#123;</span><br><span class="line">    <span class="keyword">var</span> chunk = <span class="keyword">this</span>._source.read();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if the source doesn't have data, we don't have data yet.</span></span><br><span class="line">    <span class="keyword">if</span> (chunk === <span class="literal">null</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.push(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// check if the chunk has a \n\n</span></span><br><span class="line">    <span class="keyword">var</span> split = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; chunk.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (chunk[i] === <span class="number">10</span>) &#123; <span class="comment">// '\n'</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>._sawFirstCr) &#123;</span><br><span class="line">          split = i;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>._sawFirstCr = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>._sawFirstCr = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (split === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// still waiting for the \n\n</span></span><br><span class="line">      <span class="comment">// stash the chunk, and try again.</span></span><br><span class="line">      <span class="keyword">this</span>._rawHeader.push(chunk);</span><br><span class="line">      <span class="keyword">this</span>.push(<span class="string">''</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>._inBody = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">var</span> h = chunk.slice(<span class="number">0</span>, split);</span><br><span class="line">      <span class="keyword">this</span>._rawHeader.push(h);</span><br><span class="line">      <span class="keyword">var</span> header = Buffer.concat(<span class="keyword">this</span>._rawHeader).toString();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.header = <span class="built_in">JSON</span>.parse(header);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (er) &#123;</span><br><span class="line">        <span class="keyword">this</span>.emit(<span class="string">'error'</span>, <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'invalid simple protocol data'</span>));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// now, because we got some extra data, unshift the rest</span></span><br><span class="line">      <span class="comment">// back into the read queue so that our consumer will see it.</span></span><br><span class="line">      <span class="keyword">var</span> b = chunk.slice(split);</span><br><span class="line">      <span class="keyword">this</span>.unshift(b);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// and let them know that we are done parsing the header.</span></span><br><span class="line">      <span class="keyword">this</span>.emit(<span class="string">'header'</span>, <span class="keyword">this</span>.header);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// from there on, just provide the data to our consumer.</span></span><br><span class="line">    <span class="comment">// careful not to push(null), since that would indicate EOF.</span></span><br><span class="line">    <span class="keyword">var</span> chunk = <span class="keyword">this</span>._source.read();</span><br><span class="line">    <span class="keyword">if</span> (chunk) <span class="keyword">this</span>.push(chunk);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage:</span></span><br><span class="line"><span class="comment">// var parser = new SimpleProtocol(source);</span></span><br><span class="line"><span class="comment">// Now parser is a readable stream that will emit 'header'</span></span><br><span class="line"><span class="comment">// with the parsed header data.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A parser for a simple data protocol.</span></span><br><span class="line"><span class="comment">// The "header" is a JSON object, followed by 2 \n characters, and</span></span><br><span class="line"><span class="comment">// then a message body.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// <span class="doctag">NOTE:</span> This can be done more simply as a Transform stream!</span></span><br><span class="line"><span class="comment">// Using Readable directly for this is sub-optimal.  See the</span></span><br><span class="line"><span class="comment">// alternative example below under the Transform section.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Readable = <span class="built_in">require</span>(<span class="string">'stream'</span>).Readable;</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"></span><br><span class="line">util.inherits(SimpleProtocol, Readable);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SimpleProtocol</span>(<span class="params">source, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> SimpleProtocol))</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SimpleProtocol(source, options);</span><br><span class="line"></span><br><span class="line">  Readable.call(<span class="keyword">this</span>, options);</span><br><span class="line">  <span class="keyword">this</span>._inBody = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>._sawFirstCr = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// source is a readable stream, such as a socket or file</span></span><br><span class="line">  <span class="keyword">this</span>._source = source;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  source.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.push(<span class="literal">null</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// give it a kick whenever the source is readable</span></span><br><span class="line">  <span class="comment">// read(0) will not consume any bytes</span></span><br><span class="line">  source.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.read(<span class="number">0</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>._rawHeader = [];</span><br><span class="line">  <span class="keyword">this</span>.header = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SimpleProtocol.prototype._read = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>._inBody) &#123;</span><br><span class="line">    <span class="keyword">var</span> chunk = <span class="keyword">this</span>._source.read();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if the source doesn't have data, we don't have data yet.</span></span><br><span class="line">    <span class="keyword">if</span> (chunk === <span class="literal">null</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.push(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// check if the chunk has a \n\n</span></span><br><span class="line">    <span class="keyword">var</span> split = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; chunk.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (chunk[i] === <span class="number">10</span>) &#123; <span class="comment">// '\n'</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>._sawFirstCr) &#123;</span><br><span class="line">          split = i;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>._sawFirstCr = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>._sawFirstCr = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (split === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// still waiting for the \n\n</span></span><br><span class="line">      <span class="comment">// stash the chunk, and try again.</span></span><br><span class="line">      <span class="keyword">this</span>._rawHeader.push(chunk);</span><br><span class="line">      <span class="keyword">this</span>.push(<span class="string">''</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>._inBody = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">var</span> h = chunk.slice(<span class="number">0</span>, split);</span><br><span class="line">      <span class="keyword">this</span>._rawHeader.push(h);</span><br><span class="line">      <span class="keyword">var</span> header = Buffer.concat(<span class="keyword">this</span>._rawHeader).toString();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.header = <span class="built_in">JSON</span>.parse(header);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (er) &#123;</span><br><span class="line">        <span class="keyword">this</span>.emit(<span class="string">'error'</span>, <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'invalid simple protocol data'</span>));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// now, because we got some extra data, unshift the rest</span></span><br><span class="line">      <span class="comment">// back into the read queue so that our consumer will see it.</span></span><br><span class="line">      <span class="keyword">var</span> b = chunk.slice(split);</span><br><span class="line">      <span class="keyword">this</span>.unshift(b);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// and let them know that we are done parsing the header.</span></span><br><span class="line">      <span class="keyword">this</span>.emit(<span class="string">'header'</span>, <span class="keyword">this</span>.header);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// from there on, just provide the data to our consumer.</span></span><br><span class="line">    <span class="comment">// careful not to push(null), since that would indicate EOF.</span></span><br><span class="line">    <span class="keyword">var</span> chunk = <span class="keyword">this</span>._source.read();</span><br><span class="line">    <span class="keyword">if</span> (chunk) <span class="keyword">this</span>.push(chunk);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage:</span></span><br><span class="line"><span class="comment">// var parser = new SimpleProtocol(source);</span></span><br><span class="line"><span class="comment">// Now parser is a readable stream that will emit 'header'</span></span><br><span class="line"><span class="comment">// with the parsed header data.</span></span><br></pre></td></tr></table></figure>
 <h4 id="new_stream-Readable([options])">new stream.Readable([options])</h4><ul>
 <li><code>options</code> {Object}<ul>
 <li><code>highWaterMark</code> {Number} The maximum number of bytes to store in<br>the internal buffer before ceasing to read from the underlying<br>resource.  Default=16kb, or 16 for <code>objectMode</code> streams</li>
@@ -2858,12 +2858,12 @@ false }</code> as <code>options</code> to keep the destination stream open.</p>
 </ul>
 <h2 id="crypto-getCiphers()">crypto.getCiphers()</h2><p>Returns an array with the names of the supported ciphers.</p>
 <p>Example:</p>
-<pre><code><span class="reserved">var</span> ciphers = crypto.getCiphers();
-<span class="built_in">console</span>.log(ciphers); <span class="regexp">//</span> [<span class="string">'AES-128-CBC'</span>, <span class="string">'AES-128-CBC-HMAC-SHA1'</span>, ...]
+<pre><code>var ciphers = crypto.getCiphers<span class="params">()</span>;
+console.<span class="built_in">log</span><span class="params">(ciphers)</span>; <span class="comment">// ['AES-128-CBC', 'AES-128-CBC-HMAC-SHA1', ...]</span>
 </code></pre><h2 id="crypto-getHashes()">crypto.getHashes()</h2><p>Returns an array with the names of the supported hash algorithms.</p>
 <p>Example:</p>
-<pre><code><span class="reserved">var</span> hashes = crypto.getHashes();
-<span class="built_in">console</span>.log(hashes); <span class="regexp">//</span> [<span class="string">'sha'</span>, <span class="string">'sha1'</span>, <span class="string">'sha1WithRSAEncryption'</span>, ...]
+<pre><code><span class="keyword">var</span> hashes = crypto.getHashes();
+console.log(hashes); // [<span class="string">'sha'</span>, <span class="string">'sha1'</span>, <span class="string">'sha1WithRSAEncryption'</span>, ...]
 </code></pre><h2 id="crypto-createCredentials(details)">crypto.createCredentials(details)</h2><pre><code>Stability: 0 - Deprecated. Use [<span class="link_label">tls.createSecureContext</span>][<span class="link_reference"></span>] instead.
 </code></pre><p>Creates a credentials object, with the optional details being a<br>dictionary with keys:</p>
 <ul>
@@ -3155,15 +3155,15 @@ crypto.randomBytes(<span class="number">256</span>, <span class="function"><span
 <pre><code><span class="constant">NODE_CIPHER_LIST</span>=<span class="constant">ECDHE</span>-<span class="constant">RSA</span>-<span class="constant">AES256</span>-<span class="constant">SHA384</span><span class="symbol">:DHE-RSA-AES256-SHA384</span>
 </code></pre><p>CAUTION: The default cipher suite has been carefully selected to reflect current<br>security best practices and risk mitigation. Changing the default cipher suite<br>can have a significant impact on the security of an application. The<br><code>--cipher-list</code> and <code>NODE_CIPHER_LIST</code> options should only be used if<br>absolutely necessary.</p>
 <h3 id="Using_Legacy_Default_Cipher_Suite">Using Legacy Default Cipher Suite</h3><p>It is possible for the built-in default cipher suite to change from one release<br>of Node.js to another. For instance, v0.10.38 uses a different default than<br>v0.12.2. Such changes can cause issues with applications written to assume<br>certain specific defaults. To help buffer applications against such changes,<br>the <code>--enable-legacy-cipher-list</code> command line switch or <code>NODE_LEGACY_CIPHER_LIST</code><br>environment variable can be set to specify a specific preset default:</p>
-<pre><code><span class="comment"># Use the v0.10.38 defaults</span>
-node <span class="variable">--enable-legacy-cipher-list=</span>v0.<span class="number">10.38</span>
-// <span class="constant">or</span>
-<span class="variable">NODE_LEGACY_CIPHER_LIST=</span>v0.<span class="number">10.38</span>
+<pre><code><span class="preprocessor"># Use the v0<span class="number">.10</span><span class="number">.38</span> defaults</span>
+node --enable-legacy-cipher-<span class="built_in">list</span>=v0<span class="number">.10</span><span class="number">.38</span>
+<span class="comment">// or</span>
+NODE_LEGACY_CIPHER_LIST=v0<span class="number">.10</span><span class="number">.38</span>
 
-<span class="comment"># Use the v0.12.2 defaults</span>
-node <span class="variable">--enable-legacy-cipher-list=</span>v0.<span class="number">12.2</span>
-// <span class="constant">or</span>
-<span class="variable">NODE_LEGACY_CIPHER_LIST=</span>v0.<span class="number">12.2</span>
+<span class="preprocessor"># Use the v0<span class="number">.12</span><span class="number">.2</span> defaults</span>
+node --enable-legacy-cipher-<span class="built_in">list</span>=v0<span class="number">.12</span><span class="number">.2</span>
+<span class="comment">// or</span>
+NODE_LEGACY_CIPHER_LIST=v0<span class="number">.12</span><span class="number">.2</span>
 </code></pre><p>Currently, the values supported for the <code>enable-legacy-cipher-list</code> switch and<br><code>NODE_LEGACY_CIPHER_LIST</code> environment variable include:</p>
 <pre><code>v<span class="number">0</span>.<span class="number">10.38</span> - <span class="constant">To</span> enable the default cipher suite used <span class="keyword">in</span> v<span class="number">0</span>.<span class="number">10.38</span>
 
@@ -3183,13 +3183,13 @@ v.<span class="number">0</span>.<span class="number">12.3</span> - <span class="
   <span class="constant">ECDHE</span>-<span class="constant">RSA</span>-<span class="constant">AES128</span>-<span class="constant">SHA256</span><span class="symbol">:DHE-RSA-AES128-SHA256</span><span class="symbol">:AES128-GCM-SHA256</span><span class="symbol">:HIGH</span><span class="symbol">:</span>
   !<span class="constant">RC4</span><span class="symbol">:</span>!<span class="constant">MD5</span><span class="symbol">:</span>!aNULL
 </code></pre><p>These legacy cipher suites are also made available for use via the<br><code>getLegacyCiphers()</code> method:</p>
-<pre><code><span class="reserved">var</span> tls = <span class="built_in">require</span>(<span class="string">'tls'</span>);
+<pre><code><span class="keyword">var</span> tls = <span class="built_in">require</span>(<span class="string">'tls'</span>);
 <span class="built_in">console</span>.log(tls.getLegacyCiphers(<span class="string">'v0.10.38'</span>));
 </code></pre><p>CAUTION: Changes to the default cipher suite are typically made in order to<br>strengthen the default security for applications running within Node.js.<br>Reverting back to the defaults used by older releases can weaken the security<br>of your applications. The legacy cipher suites should only be used if absolutely<br>necessary.</p>
 <h2 id="tls-getCiphers()">tls.getCiphers()</h2><p>Returns an array with the names of the supported SSL ciphers.</p>
 <p>Example:</p>
-<pre><code><span class="reserved">var</span> ciphers = tls.getCiphers();
-<span class="built_in">console</span>.log(ciphers); <span class="regexp">//</span> [<span class="string">'AES128-SHA'</span>, <span class="string">'AES256-SHA'</span>, ...]
+<pre><code>var ciphers = tls.getCiphers<span class="params">()</span>;
+console.<span class="built_in">log</span><span class="params">(ciphers)</span>; <span class="comment">// ['AES128-SHA', 'AES256-SHA', ...]</span>
 </code></pre><h2 id="tls-getLegacyCiphers(version)">tls.getLegacyCiphers(version)</h2><p>Returns the legacy default cipher suite for the specified Node.js release.</p>
 <p>Example:<br>    var cipher_suite = tls.getLegacyCiphers(‘v0.10.38’);</p>
 <h2 id="tls-createServer(options[,_secureConnectionListener])">tls.createServer(options[, secureConnectionListener])</h2><p>Creates a new <a href="#tls_class_tls_server">tls.Server</a>.  The <code>connectionListener</code> argument is<br>automatically set as a listener for the <a href="#tls_event_secureconnection">secureConnection</a> event.  The<br><code>options</code> object has these possibilities:</p>
@@ -3294,7 +3294,7 @@ server.listen(<span class="number">8000</span>, <span class="function"><span cla
   <span class="built_in">console</span>.log(<span class="string">'server bound'</span>);
 });
 </code></pre><p>You can test this server by connecting to it with <code>openssl s_client</code>:</p>
-<pre><code><span class="tag">openssl</span> <span class="tag">s_client</span> <span class="tag">-connect</span> 127<span class="class">.0</span><span class="class">.0</span><span class="class">.1</span><span class="pseudo">:8000</span>
+<pre><code>openssl s_client -connect <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>
 </code></pre><h2 id="tls-connect(options[,_callback])">tls.connect(options[, callback])</h2><h2 id="tls-connect(port[,_host][,_options][,_callback])">tls.connect(port[, host][, options][, callback])</h2><p>Creates a new client connection to the given <code>port</code> and <code>host</code> (old API) or<br><code>options.port</code> and <code>options.host</code>. (If <code>host</code> is omitted, it defaults to<br><code>localhost</code>.) <code>options</code> should be an object which specifies:</p>
 <ul>
 <li><p><code>host</code>: Host the client should connect to</p>
@@ -3493,7 +3493,7 @@ socket.on(<span class="string">'end'</span>, <span class="function"><span class=
      <span class="literal">CN</span>: <span class="string">'localhost'</span> },
   issuer:
    { <span class="attribute">...</span> another certificate <span class="attribute">...</span> },
-  raw: <span class="subst">&lt;</span> RAW DER buffer <span class="subst">&gt;</span>,
+  raw: &lt; RAW DER buffer &gt;,
   valid_from: <span class="string">'Nov 11 09:52:22 2009 GMT'</span>,
   valid_to: <span class="string">'Nov  6 09:52:22 2029 GMT'</span>,
   fingerprint: <span class="string">'2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF'</span>,
@@ -3518,13 +3518,13 @@ socket.on(<span class="string">'end'</span>, <span class="function"><span class=
 <h3 id="tlsSocket-localPort">tlsSocket.localPort</h3><p>The numeric representation of the local port.</p>
 <h1 id="StringDecoder"><a id="string_decoder">StringDecoder</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">3 - Stable</span>
 </code></pre><p>To use this module, do <code>require(&#39;string_decoder&#39;)</code>. StringDecoder decodes a<br>buffer to a string. It is a simple interface to <code>buffer.toString()</code> but provides<br>additional support for utf8.</p>
-<pre><code><span class="reserved">var</span> StringDecoder = <span class="built_in">require</span>(<span class="string">'string_decoder'</span>).StringDecoder;
-<span class="reserved">var</span> decoder = <span class="keyword">new</span> StringDecoder(<span class="string">'utf8'</span>);
+<pre><code><span class="keyword">var</span> StringDecoder = <span class="built_in">require</span>(<span class="string">'string_decoder'</span>).StringDecoder;
+<span class="keyword">var</span> decoder = <span class="keyword">new</span> StringDecoder(<span class="string">'utf8'</span>);
 
-<span class="reserved">var</span> cent = <span class="keyword">new</span> Buffer([<span class="number">0xC2</span>, <span class="number">0xA2</span>]);
+<span class="keyword">var</span> cent = <span class="keyword">new</span> Buffer([<span class="number">0xC2</span>, <span class="number">0xA2</span>]);
 <span class="built_in">console</span>.log(decoder.write(cent));
 
-<span class="reserved">var</span> euro = <span class="keyword">new</span> Buffer([<span class="number">0xE2</span>, <span class="number">0x82</span>, <span class="number">0xAC</span>]);
+<span class="keyword">var</span> euro = <span class="keyword">new</span> Buffer([<span class="number">0xE2</span>, <span class="number">0x82</span>, <span class="number">0xAC</span>]);
 <span class="built_in">console</span>.log(decoder.write(euro));
 </code></pre><h2 id="Class:_StringDecoder">Class: StringDecoder</h2><p>Accepts a single argument, <code>encoding</code> which defaults to <code>utf8</code>.</p>
 <h3 id="decoder-write(buffer)">decoder.write(buffer)</h3><p>Returns a decoded string.</p>
@@ -3542,7 +3542,7 @@ fs.unlink(<span class="string">'/tmp/hello'</span>, <span class="function"><span
   <span class="built_in">console</span>.log(<span class="string">'successfully deleted /tmp/hello'</span>);
 });
 </code></pre><p>Here is the synchronous version:</p>
-<pre><code><span class="reserved">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
+<pre><code><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
 
 fs.unlinkSync(<span class="string">'/tmp/hello'</span>);
 <span class="built_in">console</span>.log(<span class="string">'successfully deleted /tmp/hello'</span>);
@@ -3824,20 +3824,20 @@ fs.realpath(<span class="string">'/etc/passwd'</span>, cache, <span class="funct
 <li><code>stats.isSocket()</code></li>
 </ul>
 <p>For a regular file <code>util.inspect(stats)</code> would return a string very<br>similar to this:</p>
-<pre><code>{ <span class="attribute">dev</span>: <span class="number">2114</span>,
-  <span class="attribute">ino</span>: <span class="number">48064969</span>,
-  <span class="attribute">mode</span>: <span class="number">33188</span>,
-  <span class="attribute">nlink</span>: <span class="number">1</span>,
-  <span class="attribute">uid</span>: <span class="number">85</span>,
-  <span class="attribute">gid</span>: <span class="number">100</span>,
-  <span class="attribute">rdev</span>: <span class="number">0</span>,
-  <span class="attribute">size</span>: <span class="number">527</span>,
-  <span class="attribute">blksize</span>: <span class="number">4096</span>,
-  <span class="attribute">blocks</span>: <span class="number">8</span>,
-  <span class="attribute">atime</span>: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
-  <span class="attribute">mtime</span>: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
-  <span class="attribute">ctime</span>: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
-  <span class="attribute">birthtime</span>: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT }
+<pre><code>{ dev: <span class="number">2114</span>,
+  ino: <span class="number">48064969</span>,
+  mode: <span class="number">33188</span>,
+  nlink: <span class="number">1</span>,
+  uid: <span class="number">85</span>,
+  gid: <span class="number">100</span>,
+  rdev: <span class="number">0</span>,
+  size: <span class="number">527</span>,
+  blksize: <span class="number">4096</span>,
+  blocks: <span class="number">8</span>,
+  atime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
+  mtime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
+  ctime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT,
+  birthtime: Mon, <span class="number">10</span> Oct <span class="number">2011</span> <span class="number">23</span>:<span class="number">24</span>:<span class="number">11</span> GMT }
 </code></pre><p>Please note that <code>atime</code>, <code>mtime</code>, <code>birthtime</code>, and <code>ctime</code> are<br>instances of <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">Date</a> object and to compare the values of<br>these objects you should use appropriate methods. For most general<br>uses <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime" target="_blank" rel="external">getTime()</a> will return the number of<br>milliseconds elapsed since _1 January 1970 00:00:00 UTC_ and this<br>integer should be sufficient for any comparison, however there are<br>additional methods which can be used for displaying fuzzy information.<br>More details can be found in the <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">MDN JavaScript Reference</a><br>page.</p>
 <h3 id="Stat_Time_Values">Stat Time Values</h3><p>The times in the stat object have the following semantics:</p>
 <ul>
@@ -4065,7 +4065,7 @@ server.listen(<span class="number">8124</span>, <span class="function"><span cla
   <span class="built_in">console</span>.log(<span class="string">'server bound'</span>);
 });
 </code></pre><p>Test this by using <code>telnet</code>:</p>
-<pre><code><span class="title">telnet</span> localhost <span class="number">8124</span>
+<pre><code>telnet localhost <span class="number">8124</span>
 </code></pre><p>To listen on the socket <code>/tmp/echo.sock</code> the third line from the last would<br>just be changed to</p>
 <pre><code>server.listen(<span class="string">'/tmp/echo.sock'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{ <span class="comment">//'listening' listener</span>
 </code></pre><p>Use <code>nc</code> to connect to a UNIX domain socket server:</p>
@@ -4655,7 +4655,7 @@ response.writeHead(<span class="number">200</span>, {
 <p>If no <code>&#39;timeout&#39;</code> listener is added to the request, the response, or<br>the server, then sockets are destroyed when they time out.  If you<br>assign a handler on the request, the response, or the server’s<br><code>&#39;timeout&#39;</code> events, then it is your responsibility to handle timed out<br>sockets.</p>
 <h3 id="response-statusCode">response.statusCode</h3><p>When using implicit headers (not calling <a href="#http_response_writehead_statuscode_reasonphrase_headers">response.writeHead()</a> explicitly),<br>this property controls the status code that will be sent to the client when<br>the headers get flushed.</p>
 <p>Example:</p>
-<pre><code>response.statusCode = 404<span class="comment">;</span>
+<pre><code>response.statusCode = <span class="number">404</span>;
 </code></pre><p>After response header was sent to the client, this property indicates the<br>status code which was sent out.</p>
 <h3 id="response-statusMessage">response.statusMessage</h3><p>When using implicit headers (not calling <code>response.writeHead()</code> explicitly), this property<br>controls the status message that will be sent to the client when the headers get<br>flushed. If this is left as <code>undefined</code> then the standard message for the status<br>code will be used.</p>
 <p>Example:</p>
@@ -4665,7 +4665,7 @@ response.writeHead(<span class="number">200</span>, {
 <p>Example:</p>
 <pre><code>response.setHeader<span class="params">(<span class="string">"Content-Type"</span>, <span class="string">"text/html"</span>)</span>;
 </code></pre><p>or</p>
-<pre><code>response.setHeader<span class="params">(<span class="string">"Set-Cookie"</span>, [<span class="string">"type=ninja"</span>, <span class="string">"language=javascript"</span>])</span>;
+<pre><code>response.setHeader("<span class="operator"><span class="keyword">Set</span>-Cookie<span class="string">", ["</span><span class="keyword">type</span>=ninja<span class="string">", "</span><span class="keyword">language</span>=javascript<span class="string">"]);</span></span>
 </code></pre><h3 id="response-headersSent">response.headersSent</h3><p>Boolean (read-only). True if headers were sent, false otherwise.</p>
 <h3 id="response-sendDate">response.sendDate</h3><p>When true, the Date header will be automatically generated and sent in<br>the response if it is not already present in the headers. Defaults to true.</p>
 <p>This should only be disabled for testing; HTTP requires the Date header<br>in responses.</p>
@@ -5267,8 +5267,8 @@ punycode.toASCII(<span class="string">'☃-⌘.com'</span>); <span class="commen
 <span class="comment">// surrogate pair for U+1D306 tetragram for centre:</span>
 punycode.ucs2.decode(<span class="string">'\uD834\uDF06'</span>); <span class="comment">// [0x1D306]</span>
 </code></pre><h3 id="punycode-ucs2-encode(codePoints)">punycode.ucs2.encode(codePoints)</h3><p>Creates a string based on an array of numeric code point values.</p>
-<pre><code>punycode.ucs2.encode([<span class="number">0x61</span>, <span class="number">0x62</span>, <span class="number">0x63</span>]); <span class="regexp">//</span> <span class="string">'abc'</span>
-punycode.ucs2.encode([<span class="number">0x1D306</span>]); <span class="regexp">//</span> <span class="string">'\uD834\uDF06'</span>
+<pre><code>punycode.ucs2.encode([<span class="number">0x61</span>, <span class="number">0x62</span>, <span class="number">0x63</span>]); <span class="comment">// 'abc'</span>
+punycode.ucs2.encode([<span class="number">0x1D306</span>]); <span class="comment">// '\uD834\uDF06'</span>
 </code></pre><h2 id="punycode-version">punycode.version</h2><p>A string representing the current Punycode.js version number.</p>
 <h1 id="Readline"><a id="readline">Readline</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">2 - Unstable</span>
 </code></pre><p>To use this module, do <code>require(&#39;readline&#39;)</code>. Readline allows reading of a<br>stream (such as <code>process.stdin</code>) on a line-by-line basis.</p>
@@ -5281,7 +5281,7 @@ punycode.ucs2.encode([<span class="number">0x1D306</span>]); <span class="regexp
 });
 
 rl.question(<span class="string">"What do you think of node.js? "</span>, <span class="function"><span class="keyword">function</span>(<span class="params">answer</span>) </span>{
-  <span class="comment">// <span class="doctag">TODO</span>: Log the answer in a database</span>
+  <span class="comment">// <span class="doctag">TODO:</span> Log the answer in a database</span>
   <span class="built_in">console</span>.log(<span class="string">"Thank you for your valuable feedback:"</span>, answer);
 
   rl.close();
@@ -5429,7 +5429,7 @@ rl.on(<span class="string">'line'</span>, <span class="function"><span class="ke
 <h1 id="Executing_JavaScript"><a id="vm">Executing JavaScript</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">3 - Stable</span>
 </code></pre><!--name=vm-->
 <p>You can access this module with:</p>
-<pre><code><span class="reserved">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
+<pre><code><span class="keyword">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
 </code></pre><p>JavaScript code can be compiled and run immediately or compiled, saved, and run<br>later.</p>
 <h2 id="vm-runInThisContext(code[,_options])">vm.runInThisContext(code[, options])</h2><p><code>vm.runInThisContext()</code> compiles <code>code</code>, runs it and returns the result. Running<br>code does not have access to local scope, but does have access to the current<br><code>global</code> object.</p>
 <p>Example of using <code>vm.runInThisContext</code> and <code>eval</code> to run the same code:</p>
@@ -5502,19 +5502,19 @@ Debug.scripts().forEach(<span class="function"><span class="keyword">function</s
 </ul>
 <h3 id="script-runInThisContext([options])">script.runInThisContext([options])</h3><p>Similar to <code>vm.runInThisContext</code> but a method of a precompiled <code>Script</code> object.<br><code>script.runInThisContext</code> runs <code>script</code>‘s compiled code and returns the result.<br>Running code does not have access to local scope, but does have access to the<br>current <code>global</code> object.</p>
 <p>Example of using <code>script.runInThisContext</code> to compile code once and run it<br>multiple times:</p>
-<pre><code><span class="reserved">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
+<pre><code><span class="keyword">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
 
-<span class="built_in">global</span>.globalVar = <span class="number">0</span>;
+global.globalVar = <span class="number">0</span>;
 
-<span class="reserved">var</span> script = <span class="keyword">new</span> vm.Script(<span class="string">'globalVar += 1'</span>, { <span class="attribute">filename</span>: <span class="string">'myfile.vm'</span> });
+<span class="keyword">var</span> script = <span class="keyword">new</span> vm.Script(<span class="string">'globalVar += 1'</span>, { filename: <span class="string">'myfile.vm'</span> });
 
-<span class="keyword">for</span> (<span class="reserved">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) {
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) {
   script.runInThisContext();
 }
 
 <span class="built_in">console</span>.log(globalVar);
 
-<span class="regexp">//</span> <span class="number">1000</span>
+<span class="comment">// 1000</span>
 </code></pre><p>The options for running a script are:</p>
 <ul>
 <li><code>displayErrors</code>: whether or not to print any runtime errors to stderr, with<br>the line of code that caused them highlighted, before throwing an exception.<br>Applies only to runtime errors executing the code; it is impossible to create<br>a <code>Script</code> instance with syntax errors, as the constructor will throw.</li>
@@ -5544,20 +5544,20 @@ console.log(util.inspect(sandbox));
 <h3 id="script-runInNewContext([sandbox][,_options])">script.runInNewContext([sandbox][, options])</h3><p>Similar to <code>vm.runInNewContext</code> but a method of a precompiled <code>Script</code> object.<br><code>script.runInNewContext</code> contextifies <code>sandbox</code> if passed or creates a new<br>contextified sandbox if it’s omitted, and then runs <code>script</code>‘s compiled code<br>with the sandbox as the global object and returns the result. Running code does<br>not have access to local scope.</p>
 <p><code>script.runInNewContext</code> takes the same options as <code>script.runInThisContext</code>.</p>
 <p>Example: compile code that sets a global variable, then execute the code<br>multiple times in different contexts. These globals are set on and contained in<br>the sandboxes.</p>
-<pre><code><span class="reserved">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);
-<span class="reserved">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
+<pre><code><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>);
+<span class="keyword">var</span> vm = <span class="built_in">require</span>(<span class="string">'vm'</span>);
 
-<span class="reserved">var</span> sandboxes = [{}, {}, {}];
+<span class="keyword">var</span> sandboxes = [{}, {}, {}];
 
-<span class="reserved">var</span> script = <span class="keyword">new</span> vm.Script(<span class="string">'globalVar = "set"'</span>);
+<span class="keyword">var</span> script = <span class="keyword">new</span> vm.Script(<span class="string">'globalVar = "set"'</span>);
 
-sandboxes.forEach(<span class="reserved">function</span> (sandbox) {
+sandboxes.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">sandbox</span>) </span>{
   script.runInNewContext(sandbox);
 });
 
 <span class="built_in">console</span>.log(util.inspect(sandboxes));
 
-<span class="regexp">//</span> [{ <span class="attribute">globalVar</span>: <span class="string">'set'</span> }, { <span class="attribute">globalVar</span>: <span class="string">'set'</span> }, { <span class="attribute">globalVar</span>: <span class="string">'set'</span> }]
+<span class="comment">// [{ globalVar: 'set' }, { globalVar: 'set' }, { globalVar: 'set' }]</span>
 </code></pre><p>Note that running untrusted code is a tricky business requiring great care.<br><code>script.runInNewContext</code> is quite useful, but safely running untrusted code<br>requires a separate process.</p>
 <h1 id="Child_Process"><a id="child_process">Child Process</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">3 - Stable</span>
 </code></pre><p>Node provides a tri-directional <code>popen(3)</code> facility through the<br><code>child_process</code> module.</p>
@@ -5841,14 +5841,14 @@ spawn(<span class="string">'prg'</span>, [], { <span class="string">stdio:</span
 </code></pre><h3 id="options-detached">options.detached</h3><p>If the <code>detached</code> option is set, the child process will be made the leader of a<br>new process group.  This makes it possible for the child to continue running<br>after the parent exits.</p>
 <p>By default, the parent will wait for the detached child to exit.  To prevent<br>the parent from waiting for a given <code>child</code>, use the <code>child.unref()</code> method,<br>and the parent’s event loop will not include the child in its reference count.</p>
 <p>Example of detaching a long-running process and redirecting its output to a<br>file:</p>
-<pre><code><span class="reserved">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>),
-    spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn,
-    out = fs.openSync(<span class="string">'./out.log'</span>, <span class="string">'a'</span>),
+<pre><code><span class="keyword">var</span> fs = require(<span class="string">'fs'</span>),
+    spawn = require(<span class="string">'child_process'</span>).spawn,
+    <span class="keyword">out</span> = fs.openSync(<span class="string">'./out.log'</span>, <span class="string">'a'</span>),
     err = fs.openSync(<span class="string">'./out.log'</span>, <span class="string">'a'</span>);
 
-<span class="reserved">var</span> child = spawn(<span class="string">'prg'</span>, [], {
-  <span class="attribute">detached</span>: <span class="literal">true</span>,
-  <span class="attribute">stdio</span>: [ <span class="string">'ignore'</span>, out, err ]
+<span class="keyword">var</span> child = spawn(<span class="string">'prg'</span>, [], {
+  detached: <span class="keyword">true</span>,
+  stdio: [ <span class="string">'ignore'</span>, <span class="keyword">out</span>, err ]
 });
 
 child.unref();
@@ -6065,7 +6065,7 @@ child = exec(<span class="string">'cat *.js bad_file | wc -l'</span>,
 <h2 id="assert-ifError(value)">assert.ifError(value)</h2><p>Tests if value is not a false value, throws if it is a true value. Useful when<br>testing the first argument, <code>error</code> in callbacks.</p>
 <h1 id="Zlib"><a id="zlib">Zlib</a></h1><pre><code><span class="attribute">Stability</span>: <span class="string">3 - Stable</span>
 </code></pre><p>You can access this module with:</p>
-<pre><code><span class="reserved">var</span> zlib = <span class="built_in">require</span>(<span class="string">'zlib'</span>);
+<pre><code><span class="keyword">var</span> zlib = <span class="built_in">require</span>(<span class="string">'zlib'</span>);
 </code></pre><p>This provides bindings to Gzip/Gunzip, Deflate/Inflate, and<br>DeflateRaw/InflateRaw classes.  Each class takes the same options, and<br>is a readable/writable Stream.</p>
 <h2 id="Examples">Examples</h2><p>Compressing or decompressing a file can be done by piping an<br>fs.ReadStream into a zlib stream, then into an fs.WriteStream.</p>
 <pre><code><span class="keyword">var</span> gzip = zlib.createGzip();
@@ -6128,7 +6128,7 @@ http.createServer(<span class="function"><span class="keyword">function</span>(<
     acceptEncoding = <span class="string">''</span>;
   }
 
-  <span class="comment">// <span class="doctag">Note</span>: this is not a conformant accept-encoding parser.</span>
+  <span class="comment">// <span class="doctag">Note:</span> this is not a conformant accept-encoding parser.</span>
   <span class="comment">// See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3</span>
   <span class="keyword">if</span> (acceptEncoding.match(<span class="regexp">/\bdeflate\b/</span>)) {
     response.writeHead(<span class="number">200</span>, { <span class="string">'content-encoding'</span>: <span class="string">'deflate'</span> });
@@ -6192,7 +6192,7 @@ http.createServer(<span class="function"><span class="keyword">function</span>(<
 <pre><code>{ <span class="attribute">windowBits</span>: <span class="number">14</span>, <span class="attribute">memLevel</span>: <span class="number">7</span> }
 </code></pre><p>Of course this will generally degrade compression (there’s no free lunch).</p>
 <p>The memory requirements for inflate are (in bytes)</p>
-<pre><code>1 &lt;&lt; windowBits
+<pre><code><span class="number">1</span> &lt;&lt; windowBits
 </code></pre><p>that is, 32K for windowBits=15 (default value) plus a few kilobytes<br>for small objects.</p>
 <p>This is in addition to a single internal output slab buffer of size<br><code>chunkSize</code>, which defaults to 16K.</p>
 <p>The speed of zlib compression is affected most dramatically by the<br><code>level</code> setting.  A higher level will result in better compression, but<br>will take longer to complete.  A lower level will result in less<br>compression, but will be much faster.</p>
@@ -6361,12 +6361,12 @@ http.createServer(<span class="function"><span class="keyword">function</span>(<
 </code></pre><!-- type=misc -->
 <p>V8 comes with an extensive debugger which is accessible out-of-process via a<br>simple <a href="http://code.google.com/p/v8/wiki/DebuggerProtocol" target="_blank" rel="external">TCP protocol</a>.<br>Node has a built-in client for this debugger. To use this, start Node with the<br><code>debug</code> argument; a prompt will appear:</p>
 <pre><code>% node debug myscript.js
-&lt; <span class="keyword">debugger</span> listening on port <span class="number">5858</span>
+&lt; debugger listening on port <span class="number">5858</span>
 connecting... ok
-<span class="keyword">break</span> <span class="keyword">in</span> /home/indutny/Code/git/indutny/myscript.js:<span class="number">1</span>
+<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.js:<span class="number">1</span>
   <span class="number">1</span> x = <span class="number">5</span>;
-  <span class="number">2</span> setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-  <span class="number">3</span>   <span class="keyword">debugger</span>;
+  <span class="number">2</span> setTimeout(function () {
+  <span class="number">3</span>   debugger;
 debug&gt;
 </code></pre><p>Node’s debugger client doesn’t support the full range of commands, but<br>simple step and inspection is possible. By putting the statement <code>debugger;</code><br>into the source code of your script, you will enable a breakpoint.</p>
 <p>For example, suppose <code>myscript.js</code> looked like this:</p>
@@ -6378,43 +6378,43 @@ setTimeout(<span class="function"><span class="keyword">function</span> (<span c
 }, <span class="number">1000</span>);
 <span class="built_in">console</span>.log(<span class="string">"hello"</span>);
 </code></pre><p>Then once the debugger is run, it will break on line 4.</p>
-<pre><code>% node <span class="keyword">debug</span> myscript.js
-&lt; debugger listening <span class="keyword">on</span> port <span class="number">5858</span>
+<pre><code>% node debug myscript.js
+&lt; debugger listening on port <span class="number">5858</span>
 connecting... ok
-<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.<span class="keyword">j</span><span class="variable">s:1</span>
-  <span class="number">1</span> <span class="keyword">x</span> = <span class="number">5</span>;
-  <span class="number">2</span> setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.js:<span class="number">1</span>
+  <span class="number">1</span> x = <span class="number">5</span>;
+  <span class="number">2</span> setTimeout(function () {
   <span class="number">3</span>   debugger;
-<span class="keyword">debug</span>&gt; cont
+debug&gt; cont
 &lt; hello
-<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.<span class="keyword">j</span><span class="variable">s:3</span>
-  <span class="number">1</span> <span class="keyword">x</span> = <span class="number">5</span>;
-  <span class="number">2</span> setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.js:<span class="number">3</span>
+  <span class="number">1</span> x = <span class="number">5</span>;
+  <span class="number">2</span> setTimeout(function () {
   <span class="number">3</span>   debugger;
   <span class="number">4</span>   console.<span class="built_in">log</span>(<span class="string">"world"</span>);
   <span class="number">5</span> }, <span class="number">1000</span>);
-<span class="keyword">debug</span>&gt; <span class="keyword">next</span>
-<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.<span class="keyword">j</span><span class="variable">s:4</span>
-  <span class="number">2</span> setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+debug&gt; next
+<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.js:<span class="number">4</span>
+  <span class="number">2</span> setTimeout(function () {
   <span class="number">3</span>   debugger;
   <span class="number">4</span>   console.<span class="built_in">log</span>(<span class="string">"world"</span>);
   <span class="number">5</span> }, <span class="number">1000</span>);
   <span class="number">6</span> console.<span class="built_in">log</span>(<span class="string">"hello"</span>);
-<span class="keyword">debug</span>&gt; repl
-Press Ctrl + C <span class="keyword">to</span> leave <span class="keyword">debug</span> repl
-&gt; <span class="keyword">x</span>
+debug&gt; repl
+Press Ctrl + C to leave debug repl
+&gt; x
 <span class="number">5</span>
 &gt; <span class="number">2</span>+<span class="number">2</span>
 <span class="number">4</span>
-<span class="keyword">debug</span>&gt; <span class="keyword">next</span>
+debug&gt; next
 &lt; world
-<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.<span class="keyword">j</span><span class="variable">s:5</span>
+<span class="keyword">break</span> in /home/indutny/Code/git/indutny/myscript.js:<span class="number">5</span>
   <span class="number">3</span>   debugger;
   <span class="number">4</span>   console.<span class="built_in">log</span>(<span class="string">"world"</span>);
   <span class="number">5</span> }, <span class="number">1000</span>);
   <span class="number">6</span> console.<span class="built_in">log</span>(<span class="string">"hello"</span>);
   <span class="number">7</span>
-<span class="keyword">debug</span>&gt; <span class="keyword">quit</span>
+debug&gt; quit
 %
 </code></pre><p>The <code>repl</code> command allows you to evaluate code remotely. The <code>next</code> command<br>steps over to the next line. There are a few other commands available and more<br>to come. Type <code>help</code> to see others.</p>
 <h2 id="Watchers">Watchers</h2><p>You can watch expression and variable values while debugging your code.<br>On every breakpoint each expression from the watchers list will be evaluated<br>in the current context and displayed just before the breakpoint’s source code<br>listing.</p>
@@ -6502,7 +6502,7 @@ debug&gt;
   }).listen(<span class="number">8000</span>);
 }
 </code></pre><p>Running node will now share port 8000 between the workers:</p>
-<pre><code>% NODE_DEBUG=cluster node <span class="keyword">server</span>.js
+<pre><code>% NODE_DEBUG=cluster node server.js
 <span class="number">23521</span>,Master Worker <span class="number">23524</span> online
 <span class="number">23521</span>,Master Worker <span class="number">23526</span> online
 <span class="number">23521</span>,Master Worker <span class="number">23523</span> online
@@ -6877,10 +6877,10 @@ smalloc.alloc(<span class="number">3</span>, allocMe);
 // { [Function allocMe] <span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">0</span>, <span class="string">'2'</span>: <span class="number">0</span> }
 </code></pre><p>v8 does not support allocating external array data to an Array, and if passed<br>will throw.</p>
 <p>It’s possible to specify the type of external array data you would like. All<br>possible options are listed in <code>smalloc.Types</code>. Example usage:</p>
-<pre><code><span class="keyword">var</span> doubleArr = smalloc.alloc(<span class="number">3</span>, smalloc.Types.Double);
+<pre><code>var doubleArr = smalloc.alloc(<span class="number">3</span>, smalloc.Types.Double)<span class="comment">;</span>
 
-<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)
-  doubleArr = i / <span class="number">10</span>;
+<span class="keyword">for</span> (var i = <span class="number">0</span><span class="comment">; i &lt; 3; i++)</span>
+  doubleArr = i / <span class="number">10</span><span class="comment">;</span>
 
 // { <span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">0.1</span>, <span class="string">'2'</span>: <span class="number">0.2</span> }
 </code></pre><p>It is not possible to freeze, seal and prevent extensions of objects with<br>external data using <code>Object.freeze</code>, <code>Object.seal</code> and<br><code>Object.preventExtensions</code> respectively.</p>
@@ -6892,10 +6892,10 @@ smalloc.alloc(<span class="number">3</span>, allocMe);
 <li><code>copyLength</code> {Number} Length of copy</li>
 </ul>
 <p>Copy memory from one external array allocation to another. No arguments are<br>optional, and any violation will throw.</p>
-<pre><code><span class="keyword">var</span> a = smalloc.alloc(<span class="number">4</span>);
-<span class="keyword">var</span> b = smalloc.alloc(<span class="number">4</span>);
+<pre><code>var a = smalloc.alloc(<span class="number">4</span>);
+var b = smalloc.alloc(<span class="number">4</span>);
 
-<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) {
+<span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) {
   a[i] = i;
   b[i] = i * <span class="number">2</span>;
 }
@@ -6920,8 +6920,8 @@ smalloc.dispose<span class="comment">(a)</span>;
 
 <span class="comment">// {}</span>
 </code></pre><p>This is useful to reduce strain on the garbage collector, but developers must be<br>careful. Cryptic errors may arise in applications that are difficult to trace.</p>
-<pre><code><span class="variable"><span class="keyword">var</span> a</span> = smalloc.alloc(<span class="number">4</span>);
-<span class="variable"><span class="keyword">var</span> b</span> = smalloc.alloc(<span class="number">4</span>);
+<pre><code>var a = smalloc.alloc(<span class="number">4</span>);
+var b = smalloc.alloc(<span class="number">4</span>);
 
 <span class="comment">// perform this somewhere along the line</span>
 smalloc.dispose(b);

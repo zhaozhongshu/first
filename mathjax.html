@@ -1,4 +1,5 @@
 <html>
+<meta charset="utf-8">
 	<body>
     <style type="text/css">
     div#input_area    {
@@ -36,16 +37,16 @@
         border:1px solid #c5c5c5;
         }
     </style>
-    <div id="input_area">
+    <div id = "input_area">
         <h2>输入公式：</h2>
-        <textarea id="input_mathjax" wrap="logical"></textarea>
+        <textarea id = "input_mathjax" wrap="logical"></textarea>
     </div>
     <div id="output_area">
         <h2>查看结果:</h2>
-        <div id="output_mathjax">\({}\)</div>
+        <div id="output_mathjax" >\({}\)</div>
     </div>
 
-    <input type="button" value="显示公式" onclick="show_mathjax()">
+    <input type="button" value="显示公式" onClick="show_mathjax()">
 
     <script type="text/javascript">
         function show_mathjax()
