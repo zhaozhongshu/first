@@ -33,17 +33,17 @@ var QuadraticCalculator = React.createClass({
         <h4>Solve for <em>x</em>:</h4>
         <p>
           <label>
-            a: <input type="number" value="{a}" onchange="{this.handleInputChange.bind(null," 'a')}="">
+            a: <input type="number" value={a} onChange={this.handleInputChange.bind(null, 'a')} />
           </label>
-          <br>
+          <br />
           <label>
-            b: <input type="number" value="{b}" onchange="{this.handleInputChange.bind(null," 'b')}="">
+            b: <input type="number" value={b} onChange={this.handleInputChange.bind(null, 'b')} />
           </label>
-          <br>
+          <br />
           <label>
-            c: <input type="number" value="{c}" onchange="{this.handleInputChange.bind(null," 'c')}="">
+            c: <input type="number" value={c} onChange={this.handleInputChange.bind(null, 'c')} />
           </label>
-          <br>
+          <br />
           x: <strong>{x1}, {x2}</strong>
         </p>
       </div>
@@ -52,7 +52,6 @@ var QuadraticCalculator = React.createClass({
 });
 
 React.render(
-  <quadraticcalculator>,
+  <QuadraticCalculator />,
   document.getElementById('container')
 );
-</quadraticcalculator>

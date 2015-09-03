@@ -17,8 +17,7 @@ var start = new Date().getTime();
 
 setInterval(function() {
   React.render(
-    <exampleapplication elapsed="{new" date().gettime()="" -="" start}="">,
+    <ExampleApplication elapsed={new Date().getTime() - start} />,
     document.getElementById('container')
   );
 }, 50);
-</exampleapplication>

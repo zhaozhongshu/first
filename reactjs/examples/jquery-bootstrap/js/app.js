@@ -5,7 +5,10 @@
 var BootstrapButton = React.createClass({
   render: function() {
     return (
-      <a {...this.props}="" href="javascript:;" role="button" classname="{(this.props.className" ||="" '')="" +="" '="" btn'}="" target="_blank" rel="external">
+      <a {...this.props}
+        href="javascript:;"
+        role="button"
+        className={(this.props.className || '') + ' btn'} />
     );
   }
 });
@@ -33,33 +36,38 @@ var BootstrapModal = React.createClass({
 
     if (this.props.confirm) {
       confirmButton = (
-        <bootstrapbutton onclick="{this.handleConfirm}" classname="btn-primary">
+        <BootstrapButton
+          onClick={this.handleConfirm}
+          className="btn-primary">
           {this.props.confirm}
-        </bootstrapbutton>
+        </BootstrapButton>
       );
     }
     if (this.props.cancel) {
       cancelButton = (
-        <bootstrapbutton onclick="{this.handleCancel}" classname="btn-default">
+        <BootstrapButton onClick={this.handleCancel} className="btn-default">
           {this.props.cancel}
-        </bootstrapbutton>
+        </BootstrapButton>
       );
     }
 
     return (
-      <div classname="modal fade">
-        <div classname="modal-dialog">
-          <div classname="modal-content">
-            <div classname="modal-header">
-              <button type="button" classname="close" onclick="{this.handleCancel}">
+      <div className="modal fade">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="close"
+                onClick={this.handleCancel}>
                 &times;
               </button>
               <h3>{this.props.title}</h3>
             </div>
-            <div classname="modal-body">
+            <div className="modal-body">
               {this.props.children}
             </div>
-            <div classname="modal-footer">
+            <div className="modal-footer">
               {cancelButton}
               {confirmButton}
             </div>
@@ -89,16 +97,22 @@ var Example = React.createClass({
   render: function() {
     var modal = null;
     modal = (
-      <bootstrapmodal ref="modal" confirm="OK" cancel="Cancel" oncancel="{this.handleCancel}" onconfirm="{this.closeModal}" title="Hello, Bootstrap!">
+      <BootstrapModal
+        ref="modal"
+        confirm="OK"
+        cancel="Cancel"
+        onCancel={this.handleCancel}
+        onConfirm={this.closeModal}
+        title="Hello, Bootstrap!">
           This is a React component powered by jQuery and Bootstrap!
-      </bootstrapmodal>
+      </BootstrapModal>
     );
     return (
-      <div classname="example">
+      <div className="example">
         {modal}
-        <bootstrapbutton onclick="{this.openModal}" classname="btn-default">
+        <BootstrapButton onClick={this.openModal} className="btn-default">
           Open modal
-        </bootstrapbutton>
+        </BootstrapButton>
       </div>
     );
   },
@@ -110,5 +124,4 @@ var Example = React.createClass({
   }
 });
 
-React.render(<example>, document.getElementById('jqueryexample'));
-</example></a>
+React.render(<Example />, document.getElementById('jqueryexample'));
