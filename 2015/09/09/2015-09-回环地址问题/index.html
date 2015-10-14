@@ -1,0 +1,262 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>回环地址问题 | 技术人生</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="description" content="以前的观念中，回环地址就是127.0.0.1，其实不仅如此，整个127.0.0.0地址段都是回环地址，例如：
+
+ping 127.1.145.43正在 Ping 127.1.145.43 具有 32 字节的数据:来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回环地址问题">
+<meta property="og:url" content="http://blog.uxfork.cn/2015/09/09/2015-09-回环地址问题/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="以前的观念中，回环地址就是127.0.0.1，其实不仅如此，整个127.0.0.0地址段都是回环地址，例如：
+
+ping 127.1.145.43正在 Ping 127.1.145.43 具有 32 字节的数据:来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1">
+<meta property="og:updated_time" content="2015-09-09T02:13:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="回环地址问题">
+<meta name="twitter:description" content="以前的观念中，回环地址就是127.0.0.1，其实不仅如此，整个127.0.0.0地址段都是回环地址，例如：
+
+ping 127.1.145.43正在 Ping 127.1.145.43 具有 32 字节的数据:来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1.145.43 的回复: 字节=32 时间&amp;lt;1ms TTL=64来自 127.1">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/zhihu.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/zhihu.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">true</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/zhihu.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-09-回环地址问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/09/2015-09-回环地址问题/" class="article-date">
+  	<time datetime="2015-09-09T02:13:08.000Z" itemprop="datePublished">2015-09-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        <h1 class="article-title" itemprop="name">
+      回环地址问题
+    </h1>
+      </header>
+      
+      <div class="article-info article-info-post">
+        <div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+	</div>
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前的观念中，回环地址就是127.0.0.1，其实不仅如此，整个127.0.0.0地址段都是回环地址，例如：</p>
+<blockquote>
+<p>ping 127.1.145.43<br>正在 Ping 127.1.145.43 具有 32 字节的数据:<br>来自 127.1.145.43 的回复: 字节=32 时间&lt;1ms TTL=64<br>来自 127.1.145.43 的回复: 字节=32 时间&lt;1ms TTL=64<br>来自 127.1.145.43 的回复: 字节=32 时间&lt;1ms TTL=64<br>来自 127.1.145.43 的回复: 字节=32 时间&lt;1ms TTL=64</p>
+</blockquote>
+<p>127.1.145.43这个IP地址其实也是回环地址，看来以前的认识有偏差呀，这么大的地址范围都当作回环地址有啥好处呢？</p>
+<p>1) Simulating a large number of different computers in a fast network (simply bring up more interfaces and bind services to them) without using virtual machines. This might be helpful if you wanted to have a number of different web servers running locally on port 80 for some reason.</p>
+<p>2) Permitting more locally running services than the 64k TCP would permit (though it seems unlikely that you would hit that limit rationally)</p>
+<p>3) Playing games with people who aren’t familiar with this factoid; “Hey, you’re a loser hacker, I bet you can’t even hack me. Go ahead and try; I’m at 127.45.209.66”</p>
+      
+    </div>
+    
+  </div>
+  
+    <nav id="article-nav">
+  
+  
+    <a href="/2015/09/06/2015-09-mosquitto移植/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mosquitto移植</div>
+      <strong class="article-nav-caption"></strong>
+    </a>
+  
+</nav>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 uxfork
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script type="text/javascript">
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	};
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+  </div>
+</body>
