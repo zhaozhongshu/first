@@ -2,18 +2,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>BKDRHash字符串hash算法 | 技术人生</title>
+  <title>JXCore开源项目 | 技术人生</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="BKDRHash字符串hash算法在进行大量数据存取时，往往需要借助hash表来提高存取速度。在文本字符串hash函数中，BKDR算法冲突最少，也最简单。123456789101112unsigned int BKDRHash(const unsigned char* str, size_t len) &amp;#123;    unsigned int seed = 131; // 31 131 131">
+  <meta name="description" content="JXCore框架
+windows下编译
+
+JXCore框架jxcore是一个跨平台的node.js集成框架
+windows下编译windows下的编译脚本是vcbuild.bat，他有这些编译选项:debugrelease
+vcbuild.bat release x86 noetw noperfctr —shared-library —compress-internals
+vcbuild.bat里">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BKDRHash字符串hash算法">
-<meta property="og:url" content="http://blog.uxfork.cn/2015/07/21/2015-07-BKDRHash字符串hash算法/index.html">
+<meta property="og:title" content="JXCore开源项目">
+<meta property="og:url" content="http://blog.uxfork.cn/2015/11/20/2015-11-JXCore开源项目/index.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="BKDRHash字符串hash算法在进行大量数据存取时，往往需要借助hash表来提高存取速度。在文本字符串hash函数中，BKDR算法冲突最少，也最简单。123456789101112unsigned int BKDRHash(const unsigned char* str, size_t len) &amp;#123;    unsigned int seed = 131; // 31 131 131">
-<meta property="og:updated_time" content="2015-07-21T03:22:01.447Z">
+<meta property="og:description" content="JXCore框架
+windows下编译
+
+JXCore框架jxcore是一个跨平台的node.js集成框架
+windows下编译windows下的编译脚本是vcbuild.bat，他有这些编译选项:debugrelease
+vcbuild.bat release x86 noetw noperfctr —shared-library —compress-internals
+vcbuild.bat里">
+<meta property="og:updated_time" content="2015-11-20T07:51:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BKDRHash字符串hash算法">
-<meta name="twitter:description" content="BKDRHash字符串hash算法在进行大量数据存取时，往往需要借助hash表来提高存取速度。在文本字符串hash函数中，BKDR算法冲突最少，也最简单。123456789101112unsigned int BKDRHash(const unsigned char* str, size_t len) &amp;#123;    unsigned int seed = 131; // 31 131 131">
+<meta name="twitter:title" content="JXCore开源项目">
+<meta name="twitter:description" content="JXCore框架
+windows下编译
+
+JXCore框架jxcore是一个跨平台的node.js集成框架
+windows下编译windows下的编译脚本是vcbuild.bat，他有这些编译选项:debugrelease
+vcbuild.bat release x86 noetw noperfctr —shared-library —compress-internals
+vcbuild.bat里">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -130,11 +148,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2015-07-BKDRHash字符串hash算法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015-11-JXCore开源项目" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/21/2015-07-BKDRHash字符串hash算法/" class="article-date">
-  	<time datetime="2015-07-21T03:16:25.000Z" itemprop="datePublished">2015-07-21</time>
+      <a href="/2015/11/20/2015-11-JXCore开源项目/" class="article-date">
+  	<time datetime="2015-11-20T07:51:56.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
   
@@ -145,13 +163,13 @@
     
       <header class="article-header">
         <h1 class="article-title" itemprop="name">
-      BKDRHash字符串hash算法
+      JXCore开源项目
     </h1>
       </header>
       
       <div class="article-info article-info-post">
         <div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JXCore/">JXCore</a></li></ul>
 	</div>
         
         <div class="clearfix"></div>
@@ -160,7 +178,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BKDRHash字符串hash算法">BKDRHash字符串hash算法</h1><p>在进行大量数据存取时，往往需要借助hash表来提高存取速度。在文本字符串hash函数中，BKDR算法冲突最少，也最简单。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">BKDRHash</span><span class="params">(<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>* str, size_t len)</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> seed = <span class="number">131</span>; <span class="comment">// 31 131 1313 13131 131313 etc..</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        hash = (hash * seed) + str[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <ul>
+<li><strong><a href="#JXCore框架">JXCore框架</a></strong></li>
+<li><strong><a href="#windows下编译">windows下编译</a></strong></li>
+</ul>
+<h1 id="JXCore框架">JXCore框架</h1><p>jxcore是一个跨平台的node.js集成框架</p>
+<h1 id="windows下编译">windows下编译</h1><p>windows下的编译脚本是vcbuild.bat，他有这些编译选项:<br>debug<br>release</p>
+<p>vcbuild.bat release x86 noetw noperfctr —shared-library —compress-internals</p>
+<p>vcbuild.bat里调用了python configure生成vs工程<br>SET VCVARS_VER=120<br>set GYP_MSVS_VERSION=2013<br>python configure —without-etw —without-perfctr —openssl-no-asm —dest-cpu=ia32 —tag= —win-onecore —shared-library —compress-internals</p>
       
     </div>
     
@@ -168,18 +193,9 @@
   
     <nav id="article-nav">
   
-    <a href="/2015/07/21/2015-07-node-js中部分库源码解析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"></strong>
-      <div class="article-nav-title">
-        
-          node.js中部分库解析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/07/18/2015-07-minifilter-communication-port通信模型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">minifilter communication port通信模型</div>
+    <a href="/2015/09/09/2015-09-回环地址问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">回环地址问题</div>
       <strong class="article-nav-caption"></strong>
     </a>
   
