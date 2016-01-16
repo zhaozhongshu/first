@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>windows下内核对象过滤新方法 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="ObRegisterCallbacks是vista以后新增的内核函数内核对象创建、复制对象时，OB_OPERATION_HANDLE_CREATEOB_OPERATION_HANDLE_DUPLICATE指定两个回调函数pre_callback、post_callback在pre_callback回调函数中，可以对创建、复制参数做一些必要的修改：1OB_PREOP_CALLBACK_STATUS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows下内核对象过滤新方法">
@@ -21,7 +21,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -140,20 +140,27 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       windows下内核对象过滤新方法
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -165,13 +172,16 @@
 <p><strong>对于CREATE内核对象，我们可以修改它的权限</strong><br><strong>对于DUPLICATE内核对象，我们可以获取源进程、目标进程以及权限，同时也可以修改其权限</strong><br><strong>我们还可以根据对象指针，拿到对象的具体信息</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VOID <span class="title">post_callback</span><span class="params">(</span><br><span class="line">  IN PVOID  RegistrationContext,</span><br><span class="line">  IN POB_POST_OPERATION_INFORMATION  OperationInformation</span><br><span class="line">  )</span></span>;</span><br></pre></td></tr></table></figure>
 <p><strong>post_callback中只能用于接收数据，不能修改，可用于一些内核句柄的侦听</strong></p>
-<h1 id="使用ObRegisterCallbacks有几大限制">使用ObRegisterCallbacks有几大限制</h1><p>1.<strong>只支持Vista以后</strong>，如果产品要考虑XP的化，就比较蛋疼，得单独为XP维护一套逻辑<br>2.文档中描述，只支持PsProcessType、PsThreadType两种类型<br>    不过这个限制可以突破，把其对象类型的OBJECT_TYPE:SupportsObjectCallbacks改为1就可以<br>    我测试过IoFileObjectType是可以过滤的,一般用来实现自保护</p>
+<p>#使用ObRegisterCallbacks有几大限制</p>
+<p>1.<strong>只支持Vista以后</strong>，如果产品要考虑XP的化，就比较蛋疼，得单独为XP维护一套逻辑<br>2.文档中描述，只支持PsProcessType、PsThreadType两种类型<br>    不过这个限制可以突破，把其对象类型的OBJECT_TYPE:SupportsObjectCallbacks改为1就可以<br>    我测试过IoFileObjectType是可以过滤的,一般用来实现自保护</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/07/14/2015-07-windbg调试技巧/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -189,6 +199,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -206,18 +217,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -235,6 +253,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -259,5 +278,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

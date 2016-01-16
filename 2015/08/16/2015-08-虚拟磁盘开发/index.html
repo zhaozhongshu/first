@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>虚拟磁盘开发 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="虚拟磁盘实现起来是比较简单的，只要创建一个磁盘设备文件，然后DefineDosDevice创建一个设备到分区号的一个符号映射即可。
 驱动中IoCreateDeviceSecure创建设备文件，DeviceType可以是FILE_DEVICE_DISK或FILE_DEVICE_CD_ROM，然后指定DO_DIRECT_IO，如果是CDROM还需要指定FILE_READ_ONLY_DEVICE在这个设">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -143,20 +143,27 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       虚拟磁盘开发
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟磁盘驱动/">虚拟磁盘驱动</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -175,12 +182,14 @@
 <p>然后，最重要的就是实现IRP_MJ_READ、IRP_MJ_WRITE这两个IRP routine即可，一般都是直接读写真正的磁盘文件</p>
 <p>如果虚拟磁盘映射到一个磁盘文件，案例：filedisk：<br>先使用ZwCreateFile打开一个磁盘文件<br>然后使用ZwFsControlFile(…,FSCTL_SET_SPARSE,…)使文件成为稀疏文件，大文件只占用很少磁盘空间<br>调用ZwSetInformationFile(FileEndOfFileInformation)设置稀疏文件的大小<br>最后通过打开的文件句柄来完成IRP_MJ_READ、IRP_MJ_WRITE</p>
 <p>也可以通过网络请求来完成IRP_MJ_READ、IRP_MJ_WRITE请求请求，案例httpdisk<br>也可以直接分配一块虚拟内存，并用虚拟内存完成IRP_MJ_READ、IRP_MJ_WRITE请求，例如ramdisk</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/08/17/2015-08-ntshell源码分析/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -198,6 +207,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -215,18 +225,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -244,6 +261,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -268,5 +286,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

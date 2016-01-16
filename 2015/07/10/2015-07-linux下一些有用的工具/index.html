@@ -3,17 +3,17 @@
   <meta charset="utf-8">
   
   <title>linux下一些有用的工具 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下一些有用的工具">
 <meta property="og:url" content="http://blog.uxfork.cn/2015/07/10/2015-07-linux下一些有用的工具/index.html">
 <meta property="og:site_name" content="技术人生">
-<meta property="og:description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
+<meta property="og:description" content="#1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
 <meta property="og:updated_time" content="2015-07-10T09:37:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下一些有用的工具">
-<meta name="twitter:description" content="1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
+<meta name="twitter:description" content="#1.arpspoof(ARP欺骗：中间人攻击)redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic">
   
     <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
   
@@ -21,7 +21,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -140,41 +140,50 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       linux下一些有用的工具
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-arpspoof(ARP欺骗：中间人攻击)">1.arpspoof(ARP欺骗：中间人攻击)</h1><p>redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic on a switch. kernel IP forwarding (or a userland program which accomplishes the same, e.g. fragrouter :-) must be turned on ahead of time.</p>
+        <p>#1.arpspoof(ARP欺骗：中间人攻击)<br>redirect packets from a target host (or all hosts) on the LAN intended for another local host by forging(伪造) ARP replies. this is an extremely effective way of sniffing traffic on a switch. kernel IP forwarding (or a userland program which accomplishes the same, e.g. fragrouter :-) must be turned on ahead of time.</p>
 <p>场景如下：<br>在一个LAN中，A、B为主机，R为路由器。常规情况下：<br>A所有外发TCP数据都先经过R转发。<br>A所有接收TCP数据都由R转发给自己。</p>
 <p><strong>B want to sniff A outbound traffic</strong><br>B周期性向A发送arp欺骗response包(告诉A，我是R)<br>A发送给R的数据发送给了B，由B转发给R</p>
 <p><strong>B want to sniff A inbound traffic</strong><br>B周期性向R发送arp欺骗response包(告诉R，我是A)<br>R发送给A的数据发送给了B，由B转发给A</p>
-<h1 id="2-dnsspoof(DNS劫持：中间人攻击)">2.dnsspoof(DNS劫持：中间人攻击)</h1><p>forge replies to arbitrary DNS address / pointer queries on the LAN. this is useful in bypassing hostname-based access controls, or in implementing a variety of man-in-the-middle attacks (HTTP, HTTPS, SSH, Kerberos, etc).<br>可以发送欺骗响应包(DNS请求:给伪造的IP; DNS反查请求:给伪造的host)<br>跟其他一些DNS劫持原理不一样<br>使用libpcap监控所有DNS请求，请求需要被劫持时，构造response包</p>
-<h1 id="3-tcpkill(TCP连接断开)">3.tcpkill(TCP连接断开)</h1><p>kills specified in-progress TCP connections (useful for libnids-based pplications which require a full TCP 3-whs for TCB creation).<br>原理很简单:发送一个伪造的FIN/RST包即可</p>
-<h1 id="4-tcpnice(TCP连接限速)">4.tcpnice(TCP连接限速)</h1><p>slow down specified TCP connections via “active” traffic shaping. forges tiny TCP window advertisements, and optionally ICMP source quench replies.<br>使用libpcap监控所有TCP数据包，并伪造一个精心构造的tiny TCP window包，改变其TCP滑动窗口。<br>或者使用libpcap发送伪造的ICMP source quench(源冷却)响应消息，来降低速度<br>维基百科对<a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Source_quench" target="_blank" rel="external">source quench</a>定义<br><strong>Source quench</strong><br>Source Quench requests that the sender decrease the rate of messages sent to a router or host. This message may be generated if a router or host does not have sufficient buffer space to process the request, or may occur if the router or host buffer is approaching its limit.</p>
-<h1 id="5-webmitm(http、https透明代理)">5.webmitm(http、https透明代理)</h1><p>HTTP / HTTPS monkey-in-the-middle. transparently proxies and sniffs web traffic redirected by dnsspoof(8), capturing most “secure” SSL-encrypted webmail logins and form submissions.<br>支持http、https的透明代理服务器</p>
-<h1 id="6-iptables">6.iptables</h1><p>Linux下网络过滤大神器，内置到Linux内核中，支持各种复杂配置，例如ipforward nat等</p>
+<p>#2.dnsspoof(DNS劫持：中间人攻击)<br>forge replies to arbitrary DNS address / pointer queries on the LAN. this is useful in bypassing hostname-based access controls, or in implementing a variety of man-in-the-middle attacks (HTTP, HTTPS, SSH, Kerberos, etc).<br>可以发送欺骗响应包(DNS请求:给伪造的IP; DNS反查请求:给伪造的host)<br>跟其他一些DNS劫持原理不一样<br>使用libpcap监控所有DNS请求，请求需要被劫持时，构造response包</p>
+<p>#3.tcpkill(TCP连接断开)<br>kills specified in-progress TCP connections (useful for libnids-based pplications which require a full TCP 3-whs for TCB creation).<br>原理很简单:发送一个伪造的FIN/RST包即可</p>
+<p>#4.tcpnice(TCP连接限速)<br>slow down specified TCP connections via “active” traffic shaping. forges tiny TCP window advertisements, and optionally ICMP source quench replies.<br>使用libpcap监控所有TCP数据包，并伪造一个精心构造的tiny TCP window包，改变其TCP滑动窗口。<br>或者使用libpcap发送伪造的ICMP source quench(源冷却)响应消息，来降低速度<br>维基百科对<a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Source_quench" target="_blank" rel="external">source quench</a>定义<br><strong>Source quench</strong><br>Source Quench requests that the sender decrease the rate of messages sent to a router or host. This message may be generated if a router or host does not have sufficient buffer space to process the request, or may occur if the router or host buffer is approaching its limit.</p>
+<p>#5.webmitm(http、https透明代理)<br>HTTP / HTTPS monkey-in-the-middle. transparently proxies and sniffs web traffic redirected by dnsspoof(8), capturing most “secure” SSL-encrypted webmail logins and form submissions.<br>支持http、https的透明代理服务器</p>
+<p>#6.iptables<br>Linux下网络过滤大神器，内置到Linux内核中，支持各种复杂配置，例如ipforward nat等</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/07/12/2015-07-windows驱动开发注意事项/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -192,6 +201,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -209,18 +219,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -238,6 +255,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -262,5 +280,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

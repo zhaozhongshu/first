@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>pub-sub网络开发模型 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="pubsub模型pubsub模型是一种消息传递方式，所有需要发送消息的实体并不直接将消息发给目标，而是通过一个broker转发，接收消息的实体也不是直接从目标实体上获取消息，而是从中间broker获取，发布者push消息，订阅者poll消息。使用pubsub模型主要为了解决通信过程中这几个问题：
 空间解耦消息发布者与接收者不需要直接连接、直接交互（有些时候是无法直接连接的，如都在NAT后），通过中">
 <meta property="og:type" content="article">
@@ -28,7 +28,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -147,34 +147,41 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       pub-sub网络开发模型
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息推送/">消息推送</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="pubsub模型">pubsub模型</h1><p>pubsub模型是一种消息传递方式，所有需要发送消息的实体并不直接将消息发给目标，而是通过一个broker转发，接收消息的实体也不是直接从目标实体上获取消息，而是从中间broker获取，发布者push消息，订阅者poll消息。<br><img src="/images/subpub1.png" alt=""><br>使用pubsub模型主要为了解决通信过程中这几个问题：</p>
-<h2 id="空间解耦">空间解耦</h2><p><img src="/images/subpub2.png" alt=""><br>消息发布者与接收者不需要直接连接、直接交互（有些时候是无法直接连接的，如都在NAT后），通过中间人broker，将消息转发给需要订阅消息的实体</p>
-<h2 id="时间解耦">时间解耦</h2><p><img src="/images/subpub3.png" alt=""><br>消息发布者与订阅者不需要同时在线，支持离线消息</p>
-<h2 id="同步解耦">同步解耦</h2><p><img src="/images/subpub4.png" alt=""><br>发布消息不会导致发布者被阻塞，订阅者可以异步收到消息通知，而不需要轮询，消息发送与接收都是异步进行</p>
-<h1 id="应用场景">应用场景</h1><p>只要是在分布式网络中，涉及到<strong>多节点通信</strong>的都可以使用subpub模型<br>MySQL的主从数据库实现原理：binlog差不多就是基于订阅发布</p>
-<h1 id="几个方案">几个方案</h1><h2 id="redis">redis</h2><p>不支持离线消息，即发即逝，不会保存</p>
-<h2 id="xmpp">xmpp</h2><p>Google在2005年推出的Google talk就是基于XMPP协议，实现即时通讯协议</p>
-<h2 id="MQTT">MQTT</h2><p>MQ 遥测传输 (MQTT) 是轻量级基于代理的发布/订阅的消息传输协议，设计思想是开放、简单、轻量、易于实现。这些特点使它适用于受限环境。例如，但不仅限于此：</p>
+        <h1 id="pubsub_u6A21_u578B"><a href="#pubsub_u6A21_u578B" class="headerlink" title="pubsub模型"></a>pubsub模型</h1><p>pubsub模型是一种消息传递方式，所有需要发送消息的实体并不直接将消息发给目标，而是通过一个broker转发，接收消息的实体也不是直接从目标实体上获取消息，而是从中间broker获取，发布者push消息，订阅者poll消息。<br><img src="/images/subpub1.png" alt=""><br>使用pubsub模型主要为了解决通信过程中这几个问题：</p>
+<h2 id="u7A7A_u95F4_u89E3_u8026"><a href="#u7A7A_u95F4_u89E3_u8026" class="headerlink" title="空间解耦"></a>空间解耦</h2><p><img src="/images/subpub2.png" alt=""><br>消息发布者与接收者不需要直接连接、直接交互（有些时候是无法直接连接的，如都在NAT后），通过中间人broker，将消息转发给需要订阅消息的实体</p>
+<h2 id="u65F6_u95F4_u89E3_u8026"><a href="#u65F6_u95F4_u89E3_u8026" class="headerlink" title="时间解耦"></a>时间解耦</h2><p><img src="/images/subpub3.png" alt=""><br>消息发布者与订阅者不需要同时在线，支持离线消息</p>
+<h2 id="u540C_u6B65_u89E3_u8026"><a href="#u540C_u6B65_u89E3_u8026" class="headerlink" title="同步解耦"></a>同步解耦</h2><p><img src="/images/subpub4.png" alt=""><br>发布消息不会导致发布者被阻塞，订阅者可以异步收到消息通知，而不需要轮询，消息发送与接收都是异步进行</p>
+<h1 id="u5E94_u7528_u573A_u666F"><a href="#u5E94_u7528_u573A_u666F" class="headerlink" title="应用场景"></a>应用场景</h1><p>只要是在分布式网络中，涉及到<strong>多节点通信</strong>的都可以使用subpub模型<br>MySQL的主从数据库实现原理：binlog差不多就是基于订阅发布</p>
+<h1 id="u51E0_u4E2A_u65B9_u6848"><a href="#u51E0_u4E2A_u65B9_u6848" class="headerlink" title="几个方案"></a>几个方案</h1><h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>不支持离线消息，即发即逝，不会保存</p>
+<h2 id="xmpp"><a href="#xmpp" class="headerlink" title="xmpp"></a>xmpp</h2><p>Google在2005年推出的Google talk就是基于XMPP协议，实现即时通讯协议</p>
+<h2 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a>MQTT</h2><p>MQ 遥测传输 (MQTT) 是轻量级基于代理的发布/订阅的消息传输协议，设计思想是开放、简单、轻量、易于实现。这些特点使它适用于受限环境。例如，但不仅限于此：</p>
 <p>网络代价昂贵，带宽低、不可靠。<br>在嵌入设备中运行，处理器和内存资源有限。<br>该协议的特点有：</p>
 <ul>
 <li>使用发布/订阅消息模式，提供一对多的消息发布，解除应用程序耦合。</li>
@@ -185,12 +192,14 @@
 <li>使用 Last Will 和 Testament 特性通知有关各方客户端异常中断的机制(<strong>在线状态查询</strong>)</li>
 </ul>
 <p><a href="http://blog.mcxiaoke.com/mqtt/protocol/MQTT-3.1.1-CN.html" target="_blank" rel="external">这是MQTT协议的中文文档</a></p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/08/26/2015-08-reactjs学习/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -208,6 +217,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -225,18 +235,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -254,6 +271,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -278,5 +296,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

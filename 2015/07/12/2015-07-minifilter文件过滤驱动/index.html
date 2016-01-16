@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>minifilter文件过滤驱动 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="123456NTSTATUS  FltRegisterFilter(    IN PDRIVER_OBJECT  Driver,    IN CONST FLT_REGISTRATION  *Registration,    OUT PFLT_FILTER  *RetFilter    );
 每个minifilter驱动都要调用它向系统注册minifilter drivers，并向系统提供一组回调">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -143,20 +143,27 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       minifilter文件过滤驱动
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/驱动/">驱动</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -174,13 +181,15 @@
 <p>FLT_OPERATION_REGISTRATION结构体定义:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> _FLT_OPERATION_REGISTRATION &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//同IRP中的major function </span></span><br><span class="line">  UCHAR  MajorFunction;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//page io是否skip 、 cache i是否skip</span></span><br><span class="line">  FLT_OPERATION_REGISTRATION_FLAGS  Flags;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//pre/post回调函数 可为空</span></span><br><span class="line">  PFLT_PRE_OPERATION_CALLBACK  PreOperation;</span><br><span class="line">  PFLT_POST_OPERATION_CALLBACK  PostOperation;</span><br><span class="line">  PVOID  Reserved1;</span><br><span class="line">&#125; <span class="function">FLT_OPERATION_REGISTRATION</span><br><span class="line"></span><br><span class="line">FLT_PREOP_CALLBACK_STATUS <span class="title">pre_callback</span><span class="params">(</span><br><span class="line">    IN OUT PFLT_CALLBACK_DATA Data,</span><br><span class="line">    IN PCFLT_RELATED_OBJECTS FltObjects,</span><br><span class="line">    OUT PVOID *CompletionContext</span><br><span class="line">    )</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p><strong>pre_callback可以返回如下几种值：</strong><br>FLT_PREOP_SUCCESS_WITH_CALLBACK：成功并告诉系统，需要回调post_callback函数<br>FLT_PREOP_SUCCESS_NO_CALLBACK：成功并告诉系统，不要回调post_callback函数<br>FLT_PREOP_PENDING:告诉系统需要pending这个操作，直到FltCompletePendedPreOperation调用后，系统才继续处理这个操作<br>FLT_PREOP_DISALLOW_FASTIO:告诉系统禁用fastio<br>FLT_PREOP_COMPLETE,<br>FLT_PREOP_SYNCHRONIZE：告诉系统，需要在pre_callback相同线程中调用post_callback,IRQL &lt;= APC_LEVEL<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FLT_POSTOP_CALLBACK_STATUS <span class="title">post_callback</span><span class="params">(</span><br><span class="line">    __inout PFLT_CALLBACK_DATA Data,</span><br><span class="line">    __in PCFLT_RELATED_OBJECTS FltObjects,</span><br><span class="line">    __in_opt PVOID CompletionContext,</span><br><span class="line">    __in FLT_POST_OPERATION_FLAGS Flags</span><br><span class="line">    )</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p><strong>post_callback可以返回如下几个值:</strong><br>FLT_POSTOP_FINISHED_PROCESSING:port驱动已完成，系统可以继续完成IO请求<br>FLT_POSTOP_MORE_PROCESSING_REQUIRED：告诉系统暂停处理IO请求，FltCompletePendedPostOperation告诉系统可以继续了。当miniport驱动需要做一些耗时处理时，可以返回这个值（只有基于IRP的io请求才支持）。</p>
-<h1 id="一个miniport驱动案例">一个miniport驱动案例</h1>
+<p>#一个miniport驱动案例</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/07/13/2015-07-windows下内核对象过滤新方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -198,6 +207,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -215,18 +225,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -244,6 +261,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -268,5 +286,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

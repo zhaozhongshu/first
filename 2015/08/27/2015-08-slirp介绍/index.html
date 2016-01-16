@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>slirp介绍 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="What is a SLIP Emulator?slirp是一款代理软件，你可以使用SLIP(PPP)协议与它通信、通过它连接Internet。简单说：就是一个上网代理服务器.slirp其实与lwip类似，是一个带TCP/IP协议、同时还带PPP、SLIP协议的软件，上面可以做网络虚拟，网络转发等功能Linux下，任何设备都是文件句柄，任何设备读写都是
 TCP/IP emulator which">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@ TCP/IP emulator which">
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -143,38 +143,46 @@ TCP/IP emulator which">
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       slirp介绍
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NAT/">NAT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟化/">虚拟化</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="What_is_a_SLIP_Emulator?">What is a SLIP Emulator?</h1><p>slirp是一款代理软件，你可以使用SLIP(PPP)协议与它通信、通过它连接Internet。简单说：就是一个上网代理服务器.<br>slirp其实与lwip类似，是一个带TCP/IP协议、同时还带PPP、SLIP协议的软件，上面可以做网络虚拟，网络转发等功能<br>Linux下，任何设备都是文件句柄，任何设备读写都是</p>
+        <h1 id="What_is_a_SLIP_Emulator_3F"><a href="#What_is_a_SLIP_Emulator_3F" class="headerlink" title="What is a SLIP Emulator?"></a>What is a SLIP Emulator?</h1><p>slirp是一款代理软件，你可以使用SLIP(PPP)协议与它通信、通过它连接Internet。简单说：就是一个上网代理服务器.<br>slirp其实与lwip类似，是一个带TCP/IP协议、同时还带PPP、SLIP协议的软件，上面可以做网络虚拟，网络转发等功能<br>Linux下，任何设备都是文件句柄，任何设备读写都是</p>
 <p>TCP/IP emulator which turns an ordinary shell account into a<br>(C)SLIP/PPP account.  This allows shell users to use all the funky Internet<br>applications</p>
-<h1 id="Is_SLiRP_better_as_SLIP_or_PPP?_or,_what_is_the_difference_between_them_anyway?">Is SLiRP better as SLIP or PPP? or, what is the difference between them anyway?</h1><p>slirp支持slip、cslip、PPP三种协议，三种协议有如下特性：<br>slip协议：在两个控制字符之间(开始字符、结束字符)放一个原始IP帧，若帧中有控制字符，需要转义<br>cslip协议：在slip基础上增加了压缩机制，在IP帧头添加了压缩级别，从而使IP帧体积减小，modem中一般使用V.42bis压缩算法<br>ppp协议：点对点协议，他将IP帧包装成新的packet，新的packet增加了CRC校验，底层通过CRC校验可以删除无效帧，同时增加了一些安全特性，比slip、cslip更加稳定<br>当使用slirp程序时，cslip模式性能最好，我一般用PPP over cslip</p>
-<h1 id="Slirp_Features">Slirp Features</h1><ul>
+<h1 id="Is_SLiRP_better_as_SLIP_or_PPP_3F_or_2C_what_is_the_difference_between_them_anyway_3F"><a href="#Is_SLiRP_better_as_SLIP_or_PPP_3F_or_2C_what_is_the_difference_between_them_anyway_3F" class="headerlink" title="Is SLiRP better as SLIP or PPP? or, what is the difference between them anyway?"></a>Is SLiRP better as SLIP or PPP? or, what is the difference between them anyway?</h1><p>slirp支持slip、cslip、PPP三种协议，三种协议有如下特性：<br>slip协议：在两个控制字符之间(开始字符、结束字符)放一个原始IP帧，若帧中有控制字符，需要转义<br>cslip协议：在slip基础上增加了压缩机制，在IP帧头添加了压缩级别，从而使IP帧体积减小，modem中一般使用V.42bis压缩算法<br>ppp协议：点对点协议，他将IP帧包装成新的packet，新的packet增加了CRC校验，底层通过CRC校验可以删除无效帧，同时增加了一些安全特性，比slip、cslip更加稳定<br>当使用slirp程序时，cslip模式性能最好，我一般用PPP over cslip</p>
+<h1 id="Slirp_Features"><a href="#Slirp_Features" class="headerlink" title="Slirp Features"></a>Slirp Features</h1><ul>
 <li><p>使用BSD4.4 TCP/IP代码，slow start(慢启动),<br>congestion avoidance(拥塞控制), exponential back-off(指数退避算法), round-trip-time calculation,<br>delayed ACKs, Nagle algorithm(小TCP包缓存，减少流量), incoming and outgoing IP fragments等特性都支持</p>
 </li>
 <li><p>PPP-2.2代码.</p>
 </li>
 </ul>
-<h1 id="Unpacking_and_Compiling_Slirp">Unpacking and Compiling Slirp</h1><p>解压代码，执行./configure<br>make</p>
-<h1 id="Running_and_Quitting_Slirp">Running and Quitting Slirp</h1><p>~/bin/slirp<br>~/bin/slirp -P (for PPP)<br>一旦运行slirp，你的shell account就成为SLIP/PPP账号，所有用语连接SLIP、PPP的方法都可以用于连接slirp</p>
-<h1 id="Slirp_Special_Addresses">Slirp Special Addresses</h1><p>10.0.2.xxx为slirp中特殊地址</p>
+<p>#Unpacking and Compiling Slirp</p>
+<p>解压代码，执行./configure<br>make</p>
+<h1 id="Running_and_Quitting_Slirp"><a href="#Running_and_Quitting_Slirp" class="headerlink" title="Running and Quitting Slirp"></a>Running and Quitting Slirp</h1><p>~/bin/slirp<br>~/bin/slirp -P (for PPP)<br>一旦运行slirp，你的shell account就成为SLIP/PPP账号，所有用语连接SLIP、PPP的方法都可以用于连接slirp</p>
+<h1 id="Slirp_Special_Addresses"><a href="#Slirp_Special_Addresses" class="headerlink" title="Slirp Special Addresses"></a>Slirp Special Addresses</h1><p>10.0.2.xxx为slirp中特殊地址</p>
 <ul>
 <li><p>10.0.2.0<br>slirp中on-line配置地址，当你telnet到10.0.2.0，你可以关闭连接，配置slirp，重定向端口等</p>
 </li>
@@ -187,7 +195,7 @@ TCP/IP emulator which">
 <li><p>10.0.2.15</p>
 </li>
 </ul>
-<h1 id="Configuring_Slirp">Configuring Slirp</h1><p>slirp可以通过三种方式配置：</p>
+<h1 id="Configuring_Slirp"><a href="#Configuring_Slirp" class="headerlink" title="Configuring Slirp"></a>Configuring Slirp</h1><p>slirp可以通过三种方式配置：</p>
 <ul>
 <li>命令行参数</li>
 <li>配置文件，配置文件在~/.slirprc</li>
@@ -217,8 +225,8 @@ TCP/IP emulator which">
 <blockquote>
 <p>slirp -P -b 14400 “redir 5022 21”</p>
 </blockquote>
-<h1 id="Slirp_Commands">Slirp Commands</h1><p>支持slirp命令行参数、telnet 10.0.2.0后输入命令</p>
-<h1 id="Port_redirection">Port redirection</h1><p>redir 配置端口映射，例如：</p>
+<h1 id="Slirp_Commands"><a href="#Slirp_Commands" class="headerlink" title="Slirp Commands"></a>Slirp Commands</h1><p>支持slirp命令行参数、telnet 10.0.2.0后输入命令</p>
+<h1 id="Port_redirection"><a href="#Port_redirection" class="headerlink" title="Port redirection"></a>Port redirection</h1><p>redir 配置端口映射，例如：</p>
 <blockquote>
 <p>redir 5555 21</p>
 </blockquote>
@@ -227,33 +235,35 @@ TCP/IP emulator which">
 <p>redir udp 2213 2213</p>
 </blockquote>
 <p>slirp服务端的udp 2213端口映射到你电脑的2213端口</p>
-<h1 id="Common_Port_Redirections">Common Port Redirections</h1><p>YOUR_PC_ADDRESS是你本机IP地址，默认10.0.2.15</p>
+<h1 id="Common_Port_Redirections"><a href="#Common_Port_Redirections" class="headerlink" title="Common Port Redirections"></a>Common Port Redirections</h1><p>YOUR_PC_ADDRESS是你本机IP地址，默认10.0.2.15</p>
 <blockquote>
 <p>redir udp 2213 YOUR_PC_ADDRESS:2213</p>
 </blockquote>
-<h1 id="Connecting_a_LAN_over_Slirp">Connecting a LAN over Slirp</h1><p>slirp支持多个host连接网络<br>建立LAN，为每个主机设置IP地址（可以设置到10.0.2.xxx网段），告诉LAN上机器默认网关为通过slirp连接到internet的主机</p>
+<h1 id="Connecting_a_LAN_over_Slirp"><a href="#Connecting_a_LAN_over_Slirp" class="headerlink" title="Connecting a LAN over Slirp"></a>Connecting a LAN over Slirp</h1><p>slirp支持多个host连接网络<br>建立LAN，为每个主机设置IP地址（可以设置到10.0.2.xxx网段），告诉LAN上机器默认网关为通过slirp连接到internet的主机</p>
 <pre><code>                     [Ethernet]
   -------------------------------------------------
-     |<span class="string">         </span>|<span class="string">         </span>|<span class="string">         </span>|<span class="string">         </span>|
+     |         |         |         |         |
   [Host A]  [Host B]  [Host C]  [Host D]  [Host E]
-     |<span class="string">                                       </span>|
-     |<span class="string">                                       </span>|
-     |<span class="string"> &lt;- Slirp link                         </span>|<span class="string"> &lt;- SLIP link
-     </span>|<span class="string">                                       </span>|
-     |<span class="string">                                       </span>|
+     |                                       |
+     |                                       |
+     | &lt;- Slirp link                         | &lt;- SLIP link
+     |                                       |
+     |                                       |
 [Remote Host]                           [Another LAN]
-     |<span class="string">
-    ... to the Internet</span>
+     |
+    ... to the Internet
 </code></pre><p>Now, in this diagram, Host A is the Slirp-connected host.  Host’s B through<br>to E can also access the ‘Net by simply using Host A as the gateway.  Host A<br>also must be told to “forward” IP packets (using Remote Host as the gateway)<br>so that it will send any IP packets not destined for itself to Slirp, and<br>vice versa (route all packets sent by Slirp, not destined for itself, back<br>to their respective host’s IP).</p>
 <p>In other words, the Slirp link is just like a real SLIP/PPP link, which is<br>what I’ve been telling you all this time! :)</p>
 <p>Note that it is possible to hook up many LAN’s to the ‘Net by simply<br>following the normal Internet conventions, and route the packets properly.<br>In this case “Another LAN” would use Host E as a gateway to the ‘Net, Host E,<br>provided it can forward IP packets, will send them to it’s gateway, Host A,<br>which will send it over Slirp, etc.  In theory, you could connect another<br>whole Global Internet to the current Internet with no IP address clashes.<br>Not recommended though :)</p>
-<h1 id="Load_Balancing">Load Balancing</h1><p>Load-balancing is the ability to use more than one network interface (modem)<br>at the same time, and sending traffic over both in such a way as to<br>effectively double the throughput (actually, it will “concatenate” the<br>number of modems to one).  So, for example, if you have a 28.8k modem, and a<br>14.4k modem, your throughput will effectively be 28.8+14.4 = 43.2k.</p>
+<h1 id="Load_Balancing"><a href="#Load_Balancing" class="headerlink" title="Load Balancing"></a>Load Balancing</h1><p>Load-balancing is the ability to use more than one network interface (modem)<br>at the same time, and sending traffic over both in such a way as to<br>effectively double the throughput (actually, it will “concatenate” the<br>number of modems to one).  So, for example, if you have a 28.8k modem, and a<br>14.4k modem, your throughput will effectively be 28.8+14.4 = 43.2k.</p>
 <p>Obviously, you need more than one modem, and the same amount of phone<br>lines.  You also need a TCP/IP stack that can handle more than one<br>interface (modems).  Linux and FreeBSD have no troubles here, but stacks<br>like Trumpet Winsock I don’t believe would work, since they can only use one<br>modem at a time.</p>
 <p>Slirp is flexible enough to be able to load-balance over multiple hosts.<br>For example, you could have two accounts with two different ISP’s (Internet<br>Service Providers) and still load-balance over them.</p>
-<h1 id="Compiling_Slirp_for_Load-balancing">Compiling Slirp for Load-balancing</h1><hr>
+<h1 id="Compiling_Slirp_for_Load-balancing"><a href="#Compiling_Slirp_for_Load-balancing" class="headerlink" title="Compiling Slirp for Load-balancing"></a>Compiling Slirp for Load-balancing</h1><hr>
 <p>First you must compile into Slirp the ability to have use Load-balancing.<br>To do this, edit config.h (after running ./configure) and go to the lines:</p>
-<h1 id="define_MAX_INTERFACES_1">define MAX_INTERFACES 1</h1><h1 id="define_MAX_PPP_INTERFACES_1">define MAX_PPP_INTERFACES 1</h1><p>Change the “1” for MAX_INTERFACES to the MAXIMUM number of interfaces<br>(modems) you expect to have at connected once.  If you plan to use PPP while<br>load-balancing, you should set MAX_PPP_INTERFACES to the same number as<br>MAX_INTERFACES.  Once you’ve changed these values, (re)compile Slirp.</p>
-<h2 id="10-3_Setting_up_your_Configuration_Files">10.3 Setting up your Configuration Files</h2><p>Each modem (or “unit”) needs to have it’s own unit number, and it’s own<br>configuration file called ~/.slirprc-N, where N is it’s unit number.  When<br>Slirp is run for just one modem, it is assigned unit number 0, so the first<br>time you run Slirp (or if you plan to use link-resumption as per Section 11,<br>“Link-resumption”) it will read the file ~/slirprc-0.  This file must hold<br>modem/SLIP/PPP-specific configuration (except MTU and MRU!).  You shouldn’t<br>have any general commands in there like “redir” or “add exec”, they go in<br>~/.slirprc.</p>
+<p>#define MAX_INTERFACES 1</p>
+<p>#define MAX_PPP_INTERFACES 1</p>
+<p>Change the “1” for MAX_INTERFACES to the MAXIMUM number of interfaces<br>(modems) you expect to have at connected once.  If you plan to use PPP while<br>load-balancing, you should set MAX_PPP_INTERFACES to the same number as<br>MAX_INTERFACES.  Once you’ve changed these values, (re)compile Slirp.</p>
+<h2 id="10-3_Setting_up_your_Configuration_Files"><a href="#10-3_Setting_up_your_Configuration_Files" class="headerlink" title="10.3 Setting up your Configuration Files"></a>10.3 Setting up your Configuration Files</h2><p>Each modem (or “unit”) needs to have it’s own unit number, and it’s own<br>configuration file called ~/.slirprc-N, where N is it’s unit number.  When<br>Slirp is run for just one modem, it is assigned unit number 0, so the first<br>time you run Slirp (or if you plan to use link-resumption as per Section 11,<br>“Link-resumption”) it will read the file ~/slirprc-0.  This file must hold<br>modem/SLIP/PPP-specific configuration (except MTU and MRU!).  You shouldn’t<br>have any general commands in there like “redir” or “add exec”, they go in<br>~/.slirprc.</p>
 <p>You must also put the “socket” command in your ~/.slirprc file.  If all<br>connections are on the same host with the same account, you should simply<br>put “socket” in your ~/.slirprc file.  If on the other hand you have<br>different account, possibly on different hosts, you should put the following<br>in your ~/slirprc file:</p>
 <p>socket PORT,PASSWORD</p>
 <p>where PORT is an arbitrary port number for Slirp to listen to (must be<br>greater than 1024), and PASSWORD is the password to use when connecting.<br>This is explained in Section 10.4, “Connecting More Modems”.</p>
@@ -263,15 +273,15 @@ TCP/IP emulator which">
 <p>~/.slirprc:<br>redir 5000 21<br>socket<br>mtu 552<br>mru 552</p>
 <p>~/.slirprc-0<br>baudrate 57600<br>ppp<br>ipcp-accept-remote</p>
 <p>(Note: mtu and mru go into ~/.slirprc even though it is a modem-specific<br>command, they are the only exceptions to the rule)</p>
-<h2 id="10-4_Connecting_More_Modems">10.4 Connecting More Modems</h2><p>Once you have the config files and interfaces ready, you connect all your<br>modems to the same shell account as the same user.  The first Slirp that you<br>run should be run normally, as “slirp” (this is unit 0, the “main” Slirp).<br>If all connections are from the same host and the same account (you have<br>“socket” in your ~/.slirprc file),  then for each other connection, you run<br>subsequent Slirp’s as “slirp -l UNIT”, where UNIT corresponds to that<br>connection’s ~/.slirprc-UNIT file.  If in the other hand you are connecting<br>from multiple accounts and/or multiple hosts (I.e. you used a command of the<br>form “socket PORT,PASSWORD” in your ~/.slirprc file) then you run subsequent<br>Slirp’s as “slirp -l UNIT,HOST:PORT,PASSWORD”, where UNIT corresponds to<br>that connection’s ~/.slirprc-UNIT file, HOST is the address where the main<br>Slirp (unit 0, as described above) is running, and PORT and PASSWORD<br>correspond to those used in the “socket” command.  The reason for a password<br>is so that others who connect to this port are not allowed to send anything<br>to Slirp, which would be a major security hole.</p>
+<h2 id="10-4_Connecting_More_Modems"><a href="#10-4_Connecting_More_Modems" class="headerlink" title="10.4 Connecting More Modems"></a>10.4 Connecting More Modems</h2><p>Once you have the config files and interfaces ready, you connect all your<br>modems to the same shell account as the same user.  The first Slirp that you<br>run should be run normally, as “slirp” (this is unit 0, the “main” Slirp).<br>If all connections are from the same host and the same account (you have<br>“socket” in your ~/.slirprc file),  then for each other connection, you run<br>subsequent Slirp’s as “slirp -l UNIT”, where UNIT corresponds to that<br>connection’s ~/.slirprc-UNIT file.  If in the other hand you are connecting<br>from multiple accounts and/or multiple hosts (I.e. you used a command of the<br>form “socket PORT,PASSWORD” in your ~/.slirprc file) then you run subsequent<br>Slirp’s as “slirp -l UNIT,HOST:PORT,PASSWORD”, where UNIT corresponds to<br>that connection’s ~/.slirprc-UNIT file, HOST is the address where the main<br>Slirp (unit 0, as described above) is running, and PORT and PASSWORD<br>correspond to those used in the “socket” command.  The reason for a password<br>is so that others who connect to this port are not allowed to send anything<br>to Slirp, which would be a major security hole.</p>
 <p>Note that you can also pass Slirp the password using the environmental<br>variable SLIRP_PASSWORD (this is for hosts which do not properly delete the<br>password from the argument list).  In this case, simply use “slirp -l<br>UNIT,HOST:PORT,-“ instead.  The “-“ tells Slirp the password is in the<br>environmental variable.</p>
 <p>The -l option MUST be the only command given to all subsequent Slirp’s.  If<br>there are other commands after it, they will be ignored.  If there are other<br>commands before it, it will not work. If it succeeds, you should get a<br>message like “Connected: Attached as unit N on device D”.  Once you get this<br>message, you can tell your local SLIP/PPP software to make the connection<br>(you should make all interfaces have the same IP address).</p>
 <p>You can attach and detach modems as you wish.  For example, you could be<br>running Slirp as unit 0 as usual, then when you feel like it, you dial-in<br>with your second modem and attach it while all the connections are still<br>active.  They will all continue as normal.</p>
 <p>You can also detach each unit as you wish, by typing 5 ones (‘1’) into the<br>unit you wish to be disconnected (remember, sending 5 zeroes (‘0’) will kill<br>ALL the unit’s and all running Slirp’s).  When all unit’s are disconnected,<br>Slirp will sit in the background and wait.  If you do not re-attach a new<br>unit in 10 minutes, Slirp will exit.</p>
-<h2 id="10-5_Load-balancing_Notes">10.5 Load-balancing Notes</h2><ul>
+<h2 id="10-5_Load-balancing_Notes"><a href="#10-5_Load-balancing_Notes" class="headerlink" title="10.5 Load-balancing Notes"></a>10.5 Load-balancing Notes</h2><ul>
 <li><p>There are no limits to how many modems you can attach to one running Slirp.<br>If you have 12 modems, Slirp will slurp them all up! (lucky you! :)</p>
 </li>
-<li><p>You MUST use the same MTU/MRU on all interfaces (and hence MTU/MRU should<br>only be in ~/.slirprc).  This is the only _real_ limitation when using<br>load-balancing.  It is needed because of the way Slirp allocates data<br>(mbufs) and the fact that at the TCP/UDP layer, Slirp does not yet know over<br>which interface it is going to send the data, and so it can’t tell how big<br>the packet is allowed to be. I suppose I _could_ lift this restriction, but<br>I don’t wanna :) (I don’t think the extra code justifies the _small_ gain).<br>You should also try and keep both MTU and MRU the same.</p>
+<li><p>You MUST use the same MTU/MRU on all interfaces (and hence MTU/MRU should<br>only be in ~/.slirprc).  This is the only <em>real</em> limitation when using<br>load-balancing.  It is needed because of the way Slirp allocates data<br>(mbufs) and the fact that at the TCP/UDP layer, Slirp does not yet know over<br>which interface it is going to send the data, and so it can’t tell how big<br>the packet is allowed to be. I suppose I <em>could</em> lift this restriction, but<br>I don’t wanna :) (I don’t think the extra code justifies the <em>small</em> gain).<br>You should also try and keep both MTU and MRU the same.</p>
 </li>
 <li><p>Because SLIP is dumb, you should be careful when attaching a new SLIP<br>unit.  As soon as you attach the new unit, Slirp will start sending data<br>over it.  Try and attach it quickly, and keep traffic to a minimum when<br>attaching.  PPP on the other hand does not suffer from this, since it will<br>not be active until the two ends negotiate all options etc. and mark the<br>interface as “up”.</p>
 </li>
@@ -280,40 +290,40 @@ TCP/IP emulator which">
 <li><p>You can mix SLIP/PPP interfaces in whatever way you wish. E.g.: have 2<br>modems using PPP and 1 modem using SLIP.</p>
 </li>
 <li><p>The load balancing is implemented before the network, ip, layer:</p>
-<p>tty1 — slip unwrap -\                       + icmp —— udp emulation</p>
-<pre><code><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">ip</span> <span class="comment">processing</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span> <span class="comment">udp</span>  <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">udp</span> <span class="comment">socket</span>
-</code></pre><p>tty2 — ppp unwrap  -/                       + tcp  —— tcp socket</p>
+<p>tty1 – slip unwrap -\                       + icmp —- udp emulation</p>
+<pre><code>+---- ip processing ----+ udp  ---- udp socket
+</code></pre><p>tty2 – ppp unwrap  -/                       + tcp  —- tcp socket</p>
 </li>
 </ul>
 <p>As a result, the maximum datalink layer frame length, MTU/MRU, for all<br>connections must be the same and no compression of any kind is possible.</p>
-<h2 id="10-6_Tuning_the_Connection">10.6 Tuning the Connection</h2><p>The two variables Slirp uses to determine the ratio of data which should go<br>to each unit is the “baudrate” and “towrite_max”, as given to it via the<br>~/.slirprc* files (baudrate is per-unit, towrite_max is the same for all<br>units).</p>
+<h2 id="10-6_Tuning_the_Connection"><a href="#10-6_Tuning_the_Connection" class="headerlink" title="10.6 Tuning the Connection"></a>10.6 Tuning the Connection</h2><p>The two variables Slirp uses to determine the ratio of data which should go<br>to each unit is the “baudrate” and “towrite_max”, as given to it via the<br>~/.slirprc* files (baudrate is per-unit, towrite_max is the same for all<br>units).</p>
 <p>The “baudrate” should be the maximum theoretical throughput on that modem,<br>and, more importantly, each unit should be given a baudrate which is<br>reflective of it’s performance relative to the other units.  I.e., the ratio<br>of any 2 “baudrate”‘s on any 2 units should be the same as the ratio of the<br>2 modems actual baudrate. E.g.: if you have 2 modems that are the same<br>speed, the “baudrate” should also be the same.  Or, if one modem is twice as<br>fast as the other, then the baudrate should also be twice as fast as the<br>other, etc.</p>
 <p>Note: play around with the baudrates to get the best results.  Sometimes,<br>depending on the type of data, setting the baudrates to the actual CONNECT<br>speed can improve performance.</p>
 <p>The “towrite_max” option tells Slirp the minimum number of bytes it will<br>write to each modem before it “backs off” and starts baudrate calculations.<br>Why is this important?  Resolution.  If towrite_max is only 1, then each<br>modem will be either “ready” or “not ready” with nothing in between; nothing<br>to determine which modem has been written to the most recently.  Conversly,<br>if you have towrite_max at 20k and you have a 2400 baud and a 28.8k baud<br>modem, then Slirp will write 20k to each modem before “backing off” and<br>doing any calculation.  This means the 2400 baud modem will have 20k of data<br>sent over it, no matter what the situation, which is obviously wrong<br>(consider sending a 40k file; the load will be equally shared between the<br>two modems, which is obviously wrong).</p>
 <p>In general, “towrite_max” should be higher for faster modems.  E.g., I’d<br>recommend 2048 when load-balancing over 28.8k modems.</p>
 <p>So basically, it comes down to this: the “baudrate” determines how to share<br>the data between the modems, the “towrite_max” determines when to start<br>calculating the load share.  There is no set formula to determine what these<br>should be, since a lot of it is determined by the nature and type of data<br>being sent over the modems.  Use these suggestions as a guide, but there’s<br>no substitute for good’ol trial-and-error.</p>
 <p>During the initial tests, one tester regularly acheived 6.6k/sec with 2<br>modems connected at 31.2K.</p>
-<h1 id="11-_Link-resumption">11. Link-resumption</h1><h2 id="11-1_What_is_Link-resumption?">11.1 What is Link-resumption?</h2><p>Link-resumption is the ability to resume all connections even if the modem<br>gets accidently (or deliberately) disconnected.</p>
-<h2 id="11-2_How_do_I_use_Link-resumption?">11.2 How do I use Link-resumption?</h2><p>To be able to resume a connection you first need to setup your configuration<br>files similar to when using Load-balancing.  See Section 10.3, “Setting up<br>your Configuration Files [for Load-balancing]” to see how to setup your<br>~/.slirprc-0 file.</p>
+<h1 id="11-_Link-resumption"><a href="#11-_Link-resumption" class="headerlink" title="11. Link-resumption"></a>11. Link-resumption</h1><h2 id="11-1_What_is_Link-resumption_3F"><a href="#11-1_What_is_Link-resumption_3F" class="headerlink" title="11.1 What is Link-resumption?"></a>11.1 What is Link-resumption?</h2><p>Link-resumption is the ability to resume all connections even if the modem<br>gets accidently (or deliberately) disconnected.</p>
+<h2 id="11-2_How_do_I_use_Link-resumption_3F"><a href="#11-2_How_do_I_use_Link-resumption_3F" class="headerlink" title="11.2 How do I use Link-resumption?"></a>11.2 How do I use Link-resumption?</h2><p>To be able to resume a connection you first need to setup your configuration<br>files similar to when using Load-balancing.  See Section 10.3, “Setting up<br>your Configuration Files [for Load-balancing]” to see how to setup your<br>~/.slirprc-0 file.</p>
 <p>Once the configuration files are setup, all you need to do is always run<br>Slirp as “slirp -l 0”.  Do NOT include the “-l 0” in your ~/.slirprc file,<br>it MUST be on the command line.  You can run Slirp like this even if there<br>is no link to be resumed, Slirp will run as normal in that case.</p>
 <p>Also, remember that sending 5 1’s down the line will detach only the current<br>link.  This allows you to do funky things like detach the current PPP link,<br>then re-attach it as a SLIP link, without disturbing any of the current<br>connections.</p>
 <p>Note that if you do not resume your disconnected link within 10 minutes,<br>Slirp will exit.</p>
-<h1 id="12-_Technical_Information_about_Slirp">12. Technical Information about Slirp</h1><h2 id="12-1_Which_programs_do_not_work_over_Slirp?">12.1 Which programs do not work over Slirp?</h2><p>Any programs that bind()’s a port, then tell the other end of the connection<br>where they should connect() to this bound port.</p>
+<h1 id="12-_Technical_Information_about_Slirp"><a href="#12-_Technical_Information_about_Slirp" class="headerlink" title="12. Technical Information about Slirp"></a>12. Technical Information about Slirp</h1><h2 id="12-1_Which_programs_do_not_work_over_Slirp_3F"><a href="#12-1_Which_programs_do_not_work_over_Slirp_3F" class="headerlink" title="12.1 Which programs do not work over Slirp?"></a>12.1 Which programs do not work over Slirp?</h2><p>Any programs that bind()’s a port, then tell the other end of the connection<br>where they should connect() to this bound port.</p>
 <p>For example, when you “get” a file during an FTP session, the FTP client<br>bind()’s a socket, has a look at which port the socket is bound to, then<br>tells the FTP server the address and port of this socket (with the PORT<br>command). The FTP server then connect()’s to this address/socket pair.</p>
 <p>Now, since your machine isn’t really on the Internet, this connect() request<br>will not arrive to your host, so it will not work.</p>
-<p>Slirp emulates this by bind()ing it’s own port on the server that _is_ on<br>the Internet, and tells the FTP server about _that_ address/socket pair.<br>When the server connect()’s to it, Slirp will then connect back to your<br>machine.</p>
+<p>Slirp emulates this by bind()ing it’s own port on the server that <em>is</em> on<br>the Internet, and tells the FTP server about <em>that</em> address/socket pair.<br>When the server connect()’s to it, Slirp will then connect back to your<br>machine.</p>
 <p>At present, the following programs are emulated:<br>    rlogin<br>    ftp<br>    ksh<br>    irc (for /dcc)<br>    RealAudio<br>    talk/ytalk/ntalk<br>    CUSeeMe</p>
-<h1 id="13-_Troubleshooting">13. Troubleshooting</h1><h2 id="Symptom">Symptom</h2><p> The connection will “freeze”.  E.g., while downloading a picture on WWW it<br> will stop halfway and no connections will continue.</p>
-<h2 id="Diagnosis">Diagnosis</h2><p> You probably don’t have an 8bit clean link.</p>
-<h2 id="Cure">Cure</h2><p> You should try and find out from your sysadmin which characters need to be<br> “escaped”, then tell Slirp about them using the “asyncmap” and “escape”<br> commands.  Note that you need to use PPP for this to work.  (One way to<br> test for 8bit cleanliness is to download a BINARY file with Z-Modem.  If the<br> file doesn’t make it, you have a “dirty” link)</p>
+<h1 id="13-_Troubleshooting"><a href="#13-_Troubleshooting" class="headerlink" title="13. Troubleshooting"></a>13. Troubleshooting</h1><h2 id="Symptom"><a href="#Symptom" class="headerlink" title="Symptom"></a>Symptom</h2><p> The connection will “freeze”.  E.g., while downloading a picture on WWW it<br> will stop halfway and no connections will continue.</p>
+<h2 id="Diagnosis"><a href="#Diagnosis" class="headerlink" title="Diagnosis"></a>Diagnosis</h2><p> You probably don’t have an 8bit clean link.</p>
+<h2 id="Cure"><a href="#Cure" class="headerlink" title="Cure"></a>Cure</h2><p> You should try and find out from your sysadmin which characters need to be<br> “escaped”, then tell Slirp about them using the “asyncmap” and “escape”<br> commands.  Note that you need to use PPP for this to work.  (One way to<br> test for 8bit cleanliness is to download a BINARY file with Z-Modem.  If the<br> file doesn’t make it, you have a “dirty” link)</p>
 <p> One thing you might try is run Slirp as:</p>
 <p> slirp “asyncmap ffffffff” “escape ff”</p>
 <p> (quotes included!)  This will tell Slirp to escape the most common “nasty<br> characters.</p>
-<h2 id="Symptom-1">Symptom</h2><p> You can connect to hosts using numerical addresses (of the form<br> aa.bb.cc.dd) but you cannot connect to hosts when you use their hostname<br> (E.g.: ftp.cdrom.com).  It usually times out with a DNS error.</p>
-<h2 id="Diagnosis-1">Diagnosis</h2><p> You probably did not set your DNS address properly.</p>
-<h2 id="Cure-1">Cure</h2><p> Try setting your DNS address to 10.0.2.3.  This should work for most<br> situations.  If that fails, go to your shell prompt and type “nslookup”.<br> This should print the address and hostname of your DNS server.  Use the<br> numerical IP address as your DNS.  Do NOT use the hostname.</p>
+<h2 id="Symptom-1"><a href="#Symptom-1" class="headerlink" title="Symptom"></a>Symptom</h2><p> You can connect to hosts using numerical addresses (of the form<br> aa.bb.cc.dd) but you cannot connect to hosts when you use their hostname<br> (E.g.: ftp.cdrom.com).  It usually times out with a DNS error.</p>
+<h2 id="Diagnosis-1"><a href="#Diagnosis-1" class="headerlink" title="Diagnosis"></a>Diagnosis</h2><p> You probably did not set your DNS address properly.</p>
+<h2 id="Cure-1"><a href="#Cure-1" class="headerlink" title="Cure"></a>Cure</h2><p> Try setting your DNS address to 10.0.2.3.  This should work for most<br> situations.  If that fails, go to your shell prompt and type “nslookup”.<br> This should print the address and hostname of your DNS server.  Use the<br> numerical IP address as your DNS.  Do NOT use the hostname.</p>
 <p> If you still can’t find your DNS address, ask your sysadmin for it.</p>
-<h2 id="13-1_Other_Troubleshooting_Hints">13.1 Other Troubleshooting Hints</h2><ol>
+<h2 id="13-1_Other_Troubleshooting_Hints"><a href="#13-1_Other_Troubleshooting_Hints" class="headerlink" title="13.1 Other Troubleshooting Hints"></a>13.1 Other Troubleshooting Hints</h2><ol>
 <li><p>Try turning down, or off the optimizer on the compiler.</p>
 </li>
 <li><p>Try compiling with the -DDEBUG option enabled, and running with<br>debugging, and ppp debugging enabled.</p>
@@ -324,29 +334,29 @@ TCP/IP emulator which">
 <li><p>CYGWIN<br>There is a stacktrace.sh shell script that will give you the location<br>slirp crashed, if it crashes.</p>
 </li>
 </ol>
-<h1 id="14-_Answers_to_Frequently_Asked_Questions_(FAQs)">14. Answers to Frequently Asked Questions (FAQs)</h1><p>Q1.  Can I use Slirp through Telnet or Rlogin?</p>
+<h1 id="14-_Answers_to_Frequently_Asked_Questions__28FAQs_29"><a href="#14-_Answers_to_Frequently_Asked_Questions__28FAQs_29" class="headerlink" title="14. Answers to Frequently Asked Questions (FAQs)"></a>14. Answers to Frequently Asked Questions (FAQs)</h1><p>Q1.  Can I use Slirp through Telnet or Rlogin?</p>
 <p>A1.  Yes, usually.  But this is highly dependent on your situation.</p>
-<pre><code>The reason Slirp usually doesn't work <span class="keyword">through</span> telnet <span class="keyword">is</span> because <span class="keyword">of</span> <span class="keyword">the</span>
-^] <span class="property">character</span> <span class="keyword">is</span> interpreted <span class="keyword">by</span> <span class="keyword">the</span> telnet client, <span class="keyword">and</span> <span class="number">0xff</span> interpreted
-<span class="keyword">by</span> <span class="keyword">the</span> server.  While you can <span class="keyword">tell</span> Slirp <span class="keyword">to</span> escape these <span class="property">characters</span>
-<span class="keyword">while</span> using PPP, <span class="keyword">it</span> may <span class="keyword">not</span> be possible <span class="keyword">to</span> <span class="keyword">get</span> your <span class="keyword">local</span> PPP software
-<span class="keyword">to</span> escape <span class="property">characters</span> <span class="keyword">greater than</span> ASCII <span class="number">31.</span>  Rlogin also interprets <span class="keyword">the</span>
-~ <span class="property">character</span>, which may interfere <span class="keyword">with</span> PPP (especially <span class="keyword">considering</span> ~ <span class="keyword">is</span>
-ASCII <span class="number">0x7e</span> which <span class="keyword">is</span> used <span class="keyword">by</span> PPP <span class="keyword">as</span> <span class="keyword">the</span> <span class="string">"end of packet"</span> <span class="property">character</span><span class="string">").
+<pre><code>The reason Slirp usually doesn&apos;t work through telnet is because of the
+^] character is interpreted by the telnet client, and 0xff interpreted
+by the server.  While you can tell Slirp to escape these characters
+while using PPP, it may not be possible to get your local PPP software
+to escape characters greater than ASCII 31.  Rlogin also interprets the
+~ character, which may interfere with PPP (especially considering ~ is
+ASCII 0x7e which is used by PPP as the &quot;end of packet&quot; character&quot;).
 
-If your PPP software is unable to escape these characters, or you're
+If your PPP software is unable to escape these characters, or you&apos;re
 using (C)SLIP (which must have an 8bit clean link), your best bet is to
 try and make the link 8bit clean.  For example, on some systems you can
 give telnet the -8 flag to make the link 8bit, and -E to stop it from
 interpreting the ^] character.  Similarly for rlogin; -8 to make the
 link 8bit, -E to stop rlogin from interpreting the ~ character.  You
-should look at the telnet and rlogin manual pages ("</span>man telnet<span class="string">" and
-"</span>man rlogin<span class="string">" respectively) to see if your telnet/rlogin has similar
+should look at the telnet and rlogin manual pages (&quot;man telnet&quot; and
+&quot;man rlogin&quot; respectively) to see if your telnet/rlogin has similar
 options.
 
-Another possible solution is to use Slirp's ability to work over
-multiple hosts.  See Section 10, "</span>Load-balancing<span class="string">" for details on how
-to disconnect/reconnect Slirp sessions using Internet-domain sockets.</span>
+Another possible solution is to use Slirp&apos;s ability to work over
+multiple hosts.  See Section 10, &quot;Load-balancing&quot; for details on how
+to disconnect/reconnect Slirp sessions using Internet-domain sockets.
 </code></pre><p>Q2.  How do I run an X program on another host and have it display on my PC?</p>
 <p>A2.  Use the “redir X” command in ~/.slirprc.  This will redirect a port for<br>     use with X programs.</p>
 <pre><code>On startup, Slirp should print something like:
@@ -354,58 +364,58 @@ to disconnect/reconnect Slirp sessions using Internet-domain sockets.</span>
 X Redir: In sh/bash/zsh/etc. type: DISPLAY=IP.ADDRESS:X.Y; export DISPLAY
 X Redir: In csh/tcsh/etc. type:    setenv DISPLAY IP.ADDRESS:X.Y
 
-Now, when you telnet <span class="built_in">to</span> <span class="operator">the</span> host you wish <span class="built_in">to</span> run <span class="operator">the</span> X programs <span class="built_in">from</span>,
-you should <span class="built_in">do</span> <span class="keyword">as</span> Slirp suggest above; type either <span class="operator">of</span> <span class="operator">the</span> <span class="constant">two</span> commands,
-depending <span class="command"><span class="keyword">on</span> <span class="title">which</span> <span class="title">shell</span> <span class="title">you</span> <span class="title">are</span> <span class="title">using</span>.  <span class="title">You</span> <span class="title">could</span> <span class="title">also</span> <span class="title">run</span> <span class="title">the</span> <span class="title">X</span></span>
-program <span class="keyword">as</span> <span class="string">"xprog -display IP.ADDRESS:X.Y"</span> <span class="keyword">as</span> printed above.
+Now, when you telnet to the host you wish to run the X programs from,
+you should do as Slirp suggest above; type either of the two commands,
+depending on which shell you are using.  You could also run the X
+program as &quot;xprog -display IP.ADDRESS:X.Y&quot; as printed above.
 
-If you missed what Slirp displayed <span class="command"><span class="keyword">on</span> <span class="title">startup</span>, <span class="title">you</span> <span class="title">can</span> <span class="title">telnet</span> <span class="title">to</span></span>
-<span class="number">10.0</span><span class="number">.2</span><span class="number">.0</span> <span class="operator">and</span> give Slirp <span class="operator">the</span> <span class="command"><span class="keyword">command</span> <span class="string">"show X"</span>, <span class="title">and</span> <span class="title">the</span> <span class="title">above</span> <span class="title">will</span> <span class="title">be</span></span>
+If you missed what Slirp displayed on startup, you can telnet to
+10.0.2.0 and give Slirp the command &quot;show X&quot;, and the above will be
 printed.
 
-Note that you also have <span class="built_in">to</span> make sure your X server will accept <span class="operator">the</span>
-connection.  See <span class="operator">the</span> man page <span class="keyword">for</span> xhost <span class="operator">and</span> Xsecurity.  Be careful <span class="operator">with</span>
-issuing commands like <span class="string">"xhost +"</span>, this will allow anyone <span class="built_in">to</span> connect <span class="built_in">to</span>
-your X server <span class="operator">and</span> <span class="built_in">do</span> basically anything they want.
+Note that you also have to make sure your X server will accept the
+connection.  See the man page for xhost and Xsecurity.  Be careful with
+issuing commands like &quot;xhost +&quot;, this will allow anyone to connect to
+your X server and do basically anything they want.
 </code></pre><p>Q3.  When I run “talk” or “wintalk”, etc. I am able to send requests to<br>     other people but they cannot send requests to me.  Why?</p>
 <p>A3.  You won’t be able to receive talk requests, period.  This is because<br>     Slirp never see’s the incoming talk request; it is sent directly over<br>     the modem, most likely corrupting any incoming packet with it (which<br>     will have to be retransmitted).  Slirp turns off your messages so the<br>     person who tries to talk to you should receive a “User is refusing<br>     messages” error.</p>
 <p>Q4.  I can’t telnet to 10.0.2.0, the Slirp control address.  What’s wrong?</p>
 <p>A4.  Your TCP/IP stack probably has a problem with addresses ending in 0.<br>     Edit the file ctl.h in the “src” directory and change the 0 in the<br>     line:</p>
-<pre><code><span class="hexcolor">#def</span>ine CTL_CMD         <span class="number">0</span>
+<pre><code>#define CTL_CMD         0
 
-to something <span class="keyword">else</span>, say <span class="number">10</span>.  Then you <span class="string">"telnet 10.0.2.10"</span> to get the
+to something else, say 10.  Then you &quot;telnet 10.0.2.10&quot; to get the
 Slirp command-line.
 </code></pre><p>Q5.  I’m having a few problems with Slirp and want to try and find the<br>     problem myself.  Does Slirp have any debugging facilities?</p>
 <p>A5.  Yes.  After you type ./configure, edit Makefile and uncomment the<br>     -DDEBUG argument in the COMMON_DEFS section.  I.e. the line:</p>
-<pre><code>COMMON_DEFS =  -I. -I${srcdir} -DUSE_PPP <span class="comment">#-DDEBUG</span>
+<pre><code>COMMON_DEFS =  -I. -I${srcdir} -DUSE_PPP #-DDEBUG
 
 should look like:
 
 COMMON_DEFS =  -I. -I${srcdir} -DUSE_PPP -DDEBUG
 
-<span class="operator">and</span> recompile.  Then, simply give Slirp <span class="operator">the</span> arguments <span class="string">"-d -1"</span> <span class="operator">and</span> Slirp
-will <span class="built_in">log</span> lots <span class="operator">of</span> stuff <span class="built_in">to</span> <span class="operator">a</span> <span class="built_in">file</span> called slirp_debug.  Level -<span class="number">1</span> logs <span class="operator">the</span>
+and recompile.  Then, simply give Slirp the arguments &quot;-d -1&quot; and Slirp
+will log lots of stuff to a file called slirp_debug.  Level -1 logs the
 most.
 </code></pre><p>Q6.  My ISP logs me out if I idle too long.  How can I get Slirp to prevent<br>     this?</p>
 <p>A6.  First of all, the idle-logout mechanism is used for a reason: to<br>     prevent people from hogging a modem which is not in use.  So if you’re<br>     idle, logout and give others chance to use the modem.</p>
-<pre><code>Having said that, you can make Slirp <span class="operator"><span class="keyword">use</span> TCP <span class="keyword">keep</span>-alive timers <span class="keyword">to</span>
-regularly probe <span class="keyword">each</span> TCP <span class="keyword">connection</span>.  <span class="keyword">To</span> <span class="keyword">activate</span> this, <span class="keyword">add</span>:
+<pre><code>Having said that, you can make Slirp use TCP keep-alive timers to
+regularly probe each TCP connection.  To activate this, add:
 
 keepalive
 
-<span class="keyword">to</span> your ~/.slirprc <span class="keyword">file</span>.  This will make Slirp probe <span class="keyword">each</span> TCP
-<span class="keyword">connection</span> every <span class="keyword">minute</span> <span class="keyword">or</span> so.  You can <span class="keyword">change</span> this <span class="built_in">interval</span> <span class="keyword">by</span> giving
-keepalive the <span class="built_in">number</span> <span class="keyword">of</span> seconds:
+to your ~/.slirprc file.  This will make Slirp probe each TCP
+connection every minute or so.  You can change this interval by giving
+keepalive the number of seconds:
 
 keepalive SECONDS
 
-Note that <span class="keyword">no</span> probes will be sent <span class="keyword">if</span> there <span class="keyword">are</span> <span class="keyword">no</span> TCP connections.  So
-you need <span class="keyword">at</span> <span class="keyword">least</span> one active TCP <span class="keyword">connection</span> <span class="keyword">for</span> this <span class="keyword">to</span> <span class="keyword">work</span>.</span>
+Note that no probes will be sent if there are no TCP connections.  So
+you need at least one active TCP connection for this to work.
 </code></pre><p>Q7.  When I ftp to a non-standard port (like when another Slirp user is<br>     redirecting a port for their ftp server on their PC) it doesn’t work.<br>     Why?</p>
 <p>A7.  You need to tell Slirp about the non-standard port by issuing the<br>     command: </p>
-<pre><code>add emu ftp <span class="keyword">PORT</span>
+<pre><code>add emu ftp PORT
 
-where <span class="keyword">PORT</span> <span class="keyword">is</span> the <span class="keyword">port</span> you are ftping <span class="keyword">to</span>.  The same goes <span class="keyword">for</span> other
+where PORT is the port you are ftping to.  The same goes for other
 emulated services.
 </code></pre>
       
@@ -413,7 +423,8 @@ emulated services.
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/08/28/2015-08-网络虚拟化/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -431,6 +442,7 @@ emulated services.
     </a>
   
 </nav>
+
   
 </article>
 
@@ -448,18 +460,25 @@ emulated services.
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -477,6 +496,7 @@ emulated services.
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -501,5 +521,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

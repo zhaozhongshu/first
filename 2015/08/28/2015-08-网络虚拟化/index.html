@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>网络虚拟化 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="VDE: Virtual Distributed EthernetLicense: GPL    Status: Beta/Production
 It is the glue of a Virtual Square solution. Based on the idea of virtual switches and virtual crossed cables, VDE is able to c">
 <meta property="og:type" content="article">
@@ -24,7 +24,7 @@ It is the glue of a Virtual Square solution. Based on the idea of virtual switch
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -143,41 +143,50 @@ It is the glue of a Virtual Square solution. Based on the idea of virtual switch
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       网络虚拟化
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟化/">虚拟化</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VDE:_Virtual_Distributed_Ethernet">VDE: Virtual Distributed Ethernet</h1><p>License: GPL    Status: Beta/Production</p>
+        <h1 id="VDE_3A_Virtual_Distributed_Ethernet"><a href="#VDE_3A_Virtual_Distributed_Ethernet" class="headerlink" title="VDE: Virtual Distributed Ethernet"></a>VDE: Virtual Distributed Ethernet</h1><p>License: GPL    Status: Beta/Production</p>
 <p>It is the glue of a Virtual Square solution. Based on the idea of virtual switches and virtual crossed cables, VDE is able to create virtual Ethernet compliant distributed networks. VDE supports several kinds of Virtual square machines (User-Mode Linux, Qemu, Bochs, MPS, Ale4NET) and can be interfaced to the single virtual world through a tuntap interface (see over) or a slirp support (see over). VDE runs at User-level , (it needs root access only when a tuntap interface is required). VDE can be used as a general tunnel or VPN, a tool for mobility, a way to create a closed encrypted distributed network etc. etc. It is network protocol transparent: any protocol able to run on an ethernet is supported by VDE.</p>
-<h1 id="Tun-Tap_kernel_support">Tun-Tap kernel support</h1><p>License: GPL    Status: Production</p>
+<h1 id="Tun-Tap_kernel_support"><a href="#Tun-Tap_kernel_support" class="headerlink" title="Tun-Tap kernel support"></a>Tun-Tap kernel support</h1><p>License: GPL    Status: Production</p>
 <p>Tun 虚拟设备<br>虚拟网卡，重定向到ring3<br>虚拟网卡，从进程获取packets，并发送到ring3进程做处理<br>Tuntap is a general virtual interface for the linux kernel. Quoting the linux kernel documentation file: TUN/TAP provides packet reception and transmission for user space programs. It can be viewed as a simple Point-to-Point or Ethernet device, which instead of receiving packets from a physical media, receives them from user space program and instead of sending packets via physical media writes them to the user space program. With tuntap it is possible to create interfaces that are seen by the kernel like real network interfaces but all the data sent or received through tuntap is processed by applications at user level (out of the kernel). A tun interface has the behavior of a point-to-point network device while tap is a virtual ethernet device. It is part of the kernel. Port of tuntap support has been created for win32 and (partially) for MacOSX environments.</p>
 <blockquote>
 <p>Slirp</p>
 </blockquote>
 <p>License: OSI compliant    Status: Production</p>
 <p>典型应用NAT、端口映射<br>Slirp is a tool by Danny Gasparovski dated back to 1995. At that time internet providers proposed two different kinds of contracts: a cheap remote terminal connection and an expensive ppp/slip service. Danny created a tool that was able to convert a terminal line into a ppp/slip access for client applications. Slirp runs completely at User-level: whenever a client application tries to open a new network connection, slirp catch the connect request. Slirp does the connect for the internal application and then forwards all the packets. From the Internet (and from the host computer operating system) point of view it is like all the connections were inited by slirp itself. It supports TCP on IPv4, currently does not work with IPv6.</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/08/28/2015-08-eclipse使用bluestack虚拟机调试Android应用/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -195,6 +204,7 @@ It is the glue of a Virtual Square solution. Based on the idea of virtual switch
     </a>
   
 </nav>
+
   
 </article>
 
@@ -212,18 +222,25 @@ It is the glue of a Virtual Square solution. Based on the idea of virtual switch
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -241,6 +258,7 @@ It is the glue of a Virtual Square solution. Based on the idea of virtual switch
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -265,5 +283,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

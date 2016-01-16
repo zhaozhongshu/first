@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>使用命名扩展来扩充explorer的功能 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文链接在windows explorer中，可以通过使用”name space”向explorer添加分层数据结构，”name space”包含在explorer面板上显示的对象，一个name space就是一组符号，例如：一组database keys、文件、目录等。在shell中，使用一个层次结构的name space管理所有对象，如：文件、存储设备、打印机、网络资源以及其他一些可以在exp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用命名扩展来扩充explorer的功能">
@@ -26,7 +26,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -145,20 +145,27 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       使用命名扩展来扩充explorer的功能
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -168,10 +175,10 @@
         <p><a href="http://www.microsoft.com/msj/archive/S332.aspx" target="_blank" rel="external">原文链接</a><br>在windows explorer中，可以通过使用”name space”向explorer添加分层数据结构，”name space”包含在explorer面板上显示的对象，一个name space就是一组符号，例如：一组database keys、文件、目录等。<br>在shell中，使用一个层次结构的name space管理所有对象，如：文件、存储设备、打印机、网络资源以及其他一些可以在explorer中被显示的资源，根节点就是windows desktop，同文件系统目录结构类似，name space可以包含除文件、目录外的其他资源。</p>
 <p>我们可以实现一个name space扩展，来添加自定义数据，如何在explorer中查看自定义数据，例如，可以实现一个扩展查看zip文件里的子文件</p>
 <p>举个例子，Cab File Viewer使用name space扩展让explorer可以浏览cab压缩包里面的文件</p>
-<h1 id="What_is_the_Shell_Name_Space?">What is the Shell Name Space?</h1><p>Windows 95 and Windows NT 4.0 use a data structure-the name space-that represents the hierarchy of objects all the way from the desktop to every item that can be seen in Explorer. From the desktop you can view Network Neighborhood, My Briefcase, Recycle Bin, and My Computer. From My Computer you can get to drives, Control Panel, Printers, and Dial-Up Networking. Look at the left pane of Explorer to see the hierarchy of objects clearly. These items are called virtual folders-virtual because they refer to items in the name space that can contain other name space items, as opposed to groups of files.</p>
+<h1 id="What_is_the_Shell_Name_Space_3F"><a href="#What_is_the_Shell_Name_Space_3F" class="headerlink" title="What is the Shell Name Space?"></a>What is the Shell Name Space?</h1><p>Windows 95 and Windows NT 4.0 use a data structure-the name space-that represents the hierarchy of objects all the way from the desktop to every item that can be seen in Explorer. From the desktop you can view Network Neighborhood, My Briefcase, Recycle Bin, and My Computer. From My Computer you can get to drives, Control Panel, Printers, and Dial-Up Networking. Look at the left pane of Explorer to see the hierarchy of objects clearly. These items are called virtual folders-virtual because they refer to items in the name space that can contain other name space items, as opposed to groups of files.</p>
 <p>Explorer uses COM interfaces to let the user access and manipulate internal name space data and to display it in a graphical form. In the COM paradigm, you are supposed to manipulate and extend the internal name space structures using COM interfaces instead of directly accessing the name space data.</p>
 <p>You may have already noticed that the <a href="http://www.codeproject.com/Articles/4105/Enumdesk-Clones" target="_blank" rel="external">EnumDesk</a> sample from the MSDN CD and the Windows Explorer look almost exactly the same. This is because both Explorer and EnumDesk walk though the name space and display the information in the name space. Both Explorer and EnumDesk call into the name space to enumerate the contents of a folder. They can then step through the items in the folder and call another interface to find out what to display. I will go through these steps in more detail later in this article.</p>
-<h1 id="Types_of_Name_Space_Extensions">Types of Name Space Extensions</h1><p>There are two high-level topics to discuss on name space extensions before I jump into the details: rooted versus nonrooted name space extensions and the point of entry.</p>
+<h1 id="Types_of_Name_Space_Extensions"><a href="#Types_of_Name_Space_Extensions" class="headerlink" title="Types of Name Space Extensions"></a>Types of Name Space Extensions</h1><p>There are two high-level topics to discuss on name space extensions before I jump into the details: rooted versus nonrooted name space extensions and the point of entry.</p>
 <p>The difference between rooted extensions and nonrooted extensions is how they’re used. There is no code difference between the two. A rooted extension is meant to stand alone. Essentially, the extension is the root of the tree and can only see its own branches. To see an example of a rooted extension, right-click on the Windows 95 taskbar, choose Properties, click the Start Menu Programs tab, and click the Advanced button. You will see an Explorer-like window with the Start Menu folder as the root, as in Figure 1. In the case of the Cab File Viewer (see Figure 2), it is also a rooted extension, since the window shown does not let you step backwards to the CAB file.<br><img src="/images/shellext1.gif" alt=""><br>Figure 1 Rooted name space<br><img src="/images/shellext2.gif" alt=""><br>Figure 2 CAB File Viewer</p>
 <p>A nonrooted use of a name space extension keeps the entire name space in mind. Right click on the Windows 95 Start button on the taskbar and select Explore from the pop-up menu. In this case, the exact same name space extension is shown in an Explorer window (see Figure 3), except you can step back from the Start Menu folder and traipse around the rest of the name space.<br><img src="/images/shellext3.gif" alt=""><br>Figure 3 Nonrooted name space</p>
 <p>The implementation of the name space extension is basically the same for both kinds. Which method you use depends on your extension and is a matter of style and common sense as much as anything else.</p>
@@ -182,35 +189,35 @@
 </blockquote>
 <p>You can place an entry point on the desktop or in the My Computer folder in several ways. First, you can put information in the registry that results in an icon being placed on the desktop, the icon coming from the CLSID in this registry entry:<br><strong>放一个图标到桌面上</strong></p>
 <blockquote>
-<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\<br>Explorer\Desktop\Namespace\{CLSID}(default) =<br>     “Description of my extension”</p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\<br>Explorer\Desktop\Namespace{CLSID}(default) =<br>     “Description of my extension”</p>
 </blockquote>
 <p>This is what you’d use to place the icon in the My Computer folder:<br><strong>放一个图标到我的电脑上</strong></p>
 <blockquote>
-<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\<br>Explorer\MyComputer\Namespace\{CLSID}(default) =<br>     “Description of my extension”</p>
+<p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\<br>Explorer\MyComputer\Namespace{CLSID}(default) =<br>     “Description of my extension”</p>
 </blockquote>
 <p>So should you implement a rooted or nonrooted extension? And should the entry point be on the desktop or somewhere else? It depends on your extension. Does your extension fit into the logical hierarchy of the name space? Does it make sense to move up a level in the hierarchy from your name space? If not, a rooted extension may make more sense.</p>
 <p>Suppose you are implementing an extension to browse Usenet newsgroups. Does it make sense to have more than one entry point? Not really, so an entry point on the desktop seems reasonable. What about rooting? You could argue either way, but I would think that it should be rooted. What if you wanted to browse into a database file of some sort? Well, since it’s reasonable for more than one to exist on your machine, it makes sense to use the location of the file itself as the entry point. As for rooting, if you use the file as the junction point, a rooted extension is your only option.</p>
-<h1 id="Registering_the_Extension">Registering the Extension</h1><p>Like all shell extensions, a name space extension is registered in the Windows registry so that Explorer can determine its location and what services are available.</p>
+<h1 id="Registering_the_Extension"><a href="#Registering_the_Extension" class="headerlink" title="Registering the Extension"></a>Registering the Extension</h1><p>Like all shell extensions, a name space extension is registered in the Windows registry so that Explorer can determine its location and what services are available.</p>
 <p>Here’s the basic layout and options for the registry. First, if you are registering a file type to be treated like a name space extension, you need:</p>
 <blockquote>
-<p>HKEY_CLASSES_ROOT.EXT(default)=CLSID\{CLSID}  ; </p>
+<p>HKEY_CLASSES_ROOT.EXT(default)=CLSID{CLSID}  ; </p>
 </blockquote>
 <p>This is only necessary if you are registering an extension for a specific file.</p>
 <p>The rest is similar to other shell extensions,</p>
 <blockquote>
-<p>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32(default) = “C:\\WINDOWS\\SYSTEM\\ShellExt\\CabView.dll”</p>
+<p>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32(default) = “C:\WINDOWS\SYSTEM\ShellExt\CabView.dll”</p>
 </blockquote>
 <p>and</p>
 <blockquote>
-<p>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32\”ThreadingModel” = “Apartment”</p>
+<p>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32\”ThreadingModel” = “Apartment”</p>
 </blockquote>
 <p>The Cab File Viewer registers the extension under the file extension for CAB files, similar to the way you register context menu handlers, property sheet extensions, and other shell extensions.</p>
 <blockquote>
-<p>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}</p>
+<p>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}</p>
 </blockquote>
 <p>Next, the following entries are added. Note the reference to the CLSID for the CabView.dll and the rooted Explorer.</p>
 <blockquote>
-<p>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32(default)= “C:\\WINDOWS\\SYSTEM\\ShellExt\\CabView.dll”<br>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32\”ThreadingModel” =”Apartment”<br>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\DefaultIcon(default)= “C:\\WINDOWS\\SYSTEM\\ShellExt\\CabView.dll”<br>HKEY_CLASSES_ROOT\CLSID\{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\shell\open\command(default)= “Explorer /root,{0CD7A5C0-9F37-11CE-AE65-08002B2E1262},%1”</p>
+<p>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32(default)= “C:\WINDOWS\SYSTEM\ShellExt\CabView.dll”<br>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\InProcServer32\”ThreadingModel” =”Apartment”<br>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\DefaultIcon(default)= “C:\WINDOWS\SYSTEM\ShellExt\CabView.dll”<br>HKEY_CLASSES_ROOT\CLSID{0CD7A5C0-9F37-11CE-AE65-08002B2E1262}\shell\open\command(default)= “Explorer /root,{0CD7A5C0-9F37-11CE-AE65-08002B2E1262},%1”</p>
 </blockquote>
 <p>Explorer invokes your extension using the exact command line you registered, so you can test your command line by executing it directly with the Run command on the Start menu. For example, executing</p>
 <p> Explorer.exe /root, {your CLSID}, [path]<br>should start up the Explorer and your extension.</p>
@@ -220,12 +227,14 @@
 <p>Figure 5 Explorer</p>
 <p>A name space extension is to Explorer as an interpreter is to a tourist. Since your custom name space data is in a language Explorer does not natively know, your name space extension will translate your custom data to a format that Explorer can understand.</p>
 <p>OK, so what’s a browser? A browser is an application that interacts with the name space to provide the user with a visual representation and a mechanism to manipulate the data. The EnumDesk sample (see Figure 6) from the MSDN CD is a browser. The Explorer window in Figure 5 is also a browser. The goal of name space extensions is to eliminate the need to write a complete browser.<br><img src="/images/shellext5.gif" alt=""></p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/09/04/2015-09-QueueUserAPCEx扩展win32用户态APC/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -243,6 +252,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -260,18 +270,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -289,6 +306,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -313,5 +331,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>

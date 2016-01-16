@@ -1,0 +1,572 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jxcore文档翻译 | 技术人生</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JXcore config
+Memory Store
+Multitasking
+Module Installer
+Packaging
+
+JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
+{
+&amp;quot;maxCPU&amp;quot;:50
+}
+maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jxcore文档翻译">
+<meta property="og:url" content="http://blog.uxfork.cn/2016/01/16/2016-01-jxcore文档翻译/index.html">
+<meta property="og:site_name" content="技术人生">
+<meta property="og:description" content="JXcore config
+Memory Store
+Multitasking
+Module Installer
+Packaging
+
+JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
+{
+&amp;quot;maxCPU&amp;quot;:50
+}
+maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+<meta property="og:updated_time" content="2016-01-16T08:21:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jxcore文档翻译">
+<meta name="twitter:description" content="JXcore config
+Memory Store
+Multitasking
+Module Installer
+Packaging
+
+JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
+{
+&amp;quot;maxCPU&amp;quot;:50
+}
+maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+  
+    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/zhihu.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/zhihu.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">uxfork</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录点点滴滴</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">true</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">uxfork</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/zhihu.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">uxfork</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录点点滴滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2016-01-jxcore文档翻译" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/16/2016-01-jxcore文档翻译/" class="article-date">
+  	<time datetime="2016-01-16T08:21:13.000Z" itemprop="datePublished">2016-01-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jxcore文档翻译
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jxcore/">jxcore</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong><a href="/#JXcoreConfig">JXcore config</a></strong></li>
+<li><strong><a href="/#MemoryStore">Memory Store</a></strong></li>
+<li><strong><a href="/#Multitasking">Multitasking</a></strong></li>
+<li><strong><a href="/#ModuleInstaller">Module Installer</a></strong></li>
+<li><strong><a href="/#Packaging">Packaging</a></strong></li>
+</ul>
+<h1 id="JXcoreConfig"><a href="#JXcoreConfig" class="headerlink" title="JXcoreConfig"></a>JXcoreConfig</h1><p>可以通过修改配置文件jx.config（windows下是node.config）</p>
+<pre><code>{
+&quot;maxCPU&quot;:50
+}
+</code></pre><p>maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，比如/test/myapp/index.js，可以在/test/myapp下创建文件index.js.jxcore.config:</p>
+<pre><code>{
+    &quot;maxCPU&quot;:100
+}
+</code></pre><p>这个例子如果与jx monitor组合起来用，会非常有用，当打到CPU限制时，jxcore monitor可以自动重启目标程序</p>
+<p>可以用portTCP, portTCPS限制程序的TCP侦听端口范围，例如：</p>
+<pre><code>index.js.jxcore.config:
+{
+&quot;portTCP&quot;: 8080
+}
+</code></pre><p>index.js:</p>
+<pre><code>var http = require(&apos;http&apos;);
+http.createServer(function (req, res) {
+    res.writeHead(200, {&apos;Content-Type&apos;: &apos;text/plain&apos;});
+res.end(&apos;Hello World\n&apos;);
+}).listen(1337);
+</code></pre><p>例子中，侦听1337端口，但config中配置的端口为8080，程序会自动替换端口为8080，portTCP对UDP、TCP都有效，portTCPS只影响https</p>
+<p><strong>allowMonitoringAPI</strong>变量用于控制是否开启monitor，即jxcore.monitor下的函数是否可用，默认为true，jxcore.monitor下的函数可见</p>
+<pre><code>jx.config:
+{
+    &quot;allowMonitoringAPI&quot;: false
+}
+</code></pre><p><strong>ALLOWCUSTOMSOCKETPORT</strong>变量：是否可以侦听自定义端口</p>
+<p><strong>maxMemory</strong>: 限制程序的最大内存占用KB，超过最大内存后，jxcore自动退出</p>
+<pre><code>/tmp/test/index.js.jxcore.config
+{
+    &quot;maxMemory&quot;:131072
+}
+</code></pre><p>限制内存最大64MB.</p>
+<p><strong>allowSysExec</strong>: (boolean) 限制是否有权限创建子进程<br><strong>globalModulePath</strong>: (string) 定义系统node.js模块保存路径<br><strong>allowLocalNativeModules</strong>: (boolean)<br><strong>globalApplicationConfigPath</strong>: (string)<br><strong>npmjxPath</strong>: (string)</p>
+<h1 id="MemoryStore"><a href="#MemoryStore" class="headerlink" title="MemoryStore"></a>MemoryStore</h1><p>jxcore提供高效的内存存储功能，它是基于Google的<strong>cpp-btree库</strong><br>Memory Store的最大好处是非常高的访问速度、非常低的内存占用，<strong>Memory Store没有放在V8的堆空间中</strong>，不受V8堆的大小限制<br>Memory Store与标准的k/v数据库类似。key值必须全局唯一，且为string类型（如果是number类型，它会自动转换成string类型）<br>Memory store是一个全局对象:</p>
+<pre><code>var store = jxcore.store;
+或用于多实例访问:
+var shared = jxcore.store.shared;
+</code></pre><p><strong>jxcore.store#</strong><br>如果使用multi-tasking，每个sub-instance都有自己的jxcore.store对象，sub-instance之间不能共享jxcore.store对象</p>
+<p><strong>store.exists(key, element)</strong></p>
+<p>若存在返回true</p>
+<pre><code>var store = jxcore.store;
+if (!store.exists(&quot;111&quot;)) {
+    store.set(&quot;111&quot;, &quot;test&quot;);
+}
+</code></pre><p><strong>store.get(key)</strong></p>
+<p>返回key对应value字符串，同时删除<key，value>对，若不存在key，返回undefined</key，value></p>
+<pre><code>jxcore.store.set(&quot;key1&quot;, &quot;value1&quot;);
+// below line outputs: &quot;value for key1: value1&quot;
+console.log(&quot;value for key1:&quot;, jxcore.store.get(&quot;key1&quot;));
+// another call of get() outputs: &quot;value for key1: undefined&quot;
+// because the key/value pair was removed at first call
+console.log(&quot;value for key1:&quot;, jxcore.store.get(&quot;key1&quot;));
+</code></pre><p><strong>store.read(key)</strong></p>
+<p>类似store.get，只是不删除<key,value></key,value></p>
+<pre><code>var store = jxcore.store;
+store.set(&quot;111&quot;, &quot;test&quot;);
+
+// the calls below are equivalent:
+var x = store.read(&quot;111&quot;);
+var y = store.read(111);
+// now x is equal to y
+</code></pre><p><strong>store.remove(key)</strong></p>
+<p>删除key值和对应的value值</p>
+<pre><code>var store = jxcore.store;
+store.set(&quot;111&quot;, &quot;test&quot;);
+store.remove(111);
+</code></pre><p><strong>store.set(key, element)</strong></p>
+<p>设置或覆盖<key,element></key,element></p>
+<pre><code>var store = jxcore.store;
+store.set(&quot;string&quot;, &quot;test&quot;);
+// below usages will make automatic conversion of provided keys and values
+// into strings:
+store.set(1, &quot;one&quot;);       // equivalent to store.set(&quot;1&quot;, &quot;one&quot;);
+store.set(2, &quot;two&quot;);       // equivalent to store.set(&quot;2&quot;, &quot;two&quot;);
+store.set(true, true);     // equivalent to store.set(&quot;true&quot;, &quot;true&quot;);
+store.set(1.45, 2.77);     // equivalent to store.set(&quot;1.45&quot;, &quot;2.77&quot;);
+</code></pre><p><strong>jxcore.store.shared</strong></p>
+<p>有时候，可能需要在所有sub-instance中共享，就需要一个共享的store，jxcore.store.shared就是这个共享的store，多个sub-instance访问它是线程安全的，store中所有的函数他都有实现，通常用于多线程多个jxcore实例共享数据</p>
+<p><strong>store.shared.expires(key, timeout)</strong></p>
+<p>设置key的超时值，毫秒为单位，当timeout毫秒内没有read、get、set操作该key时，key自动从store中删除</p>
+<pre><code>var mem = jxcore.store.shared;
+mem.set(&quot;key&quot;, &quot;Hello&quot;);
+mem.expires(&quot;key&quot;, 350);
+
+setTimeout(function(){
+    // the key still exists in the shared store
+    // mem.read(&quot;key&quot;) will will rewind the timeout counter to the start
+    // so it will expire after another 350 ms
+    console.log(&quot;data&quot;, mem.read(&quot;key&quot;));
+},300);
+
+setTimeout(function(){
+    // right now the timeout is expired
+    // and the key is already removed from the store.
+    // the return value of mem.read(&quot;key&quot;) will be undefined
+    console.log(&quot;data&quot;, mem.read(&quot;key&quot;));
+},900);
+</code></pre><p><strong>store.shared.getBlockTimeout()</strong></p>
+<p>当一个key值被safeBlock()锁定后，最大超时值，默认10秒，可以通过setBlockTimeout修改</p>
+<p><strong>store.shared.safeBlock(key, safeBlockFunction, errorCallback)</strong></p>
+<p>key String</p>
+<p>safeBlockFunction Function</p>
+<p>errorCallback Function</p>
+<p>锁定一个key值，当执行safeBlockFunction函数时，锁定key值，主要用于多线程同步某些数据</p>
+<pre><code>jxcore.store.shared.safeBlock(&quot;myNumber&quot;, function () {
+    if (!shared.exists(&quot;myNumber&quot;)) {
+        shared.set(&quot;myNumber&quot;, 0);
+    }
+
+    var n = shared.read(&quot;myNumber&quot;);
+    n = parseInt(n) + 1;
+    shared.set(&quot;myNumber&quot;, n);
+
+    // working with a different key should not be performed in this block:
+    shared.set(&quot;myNumber_2&quot;, 333);
+});
+</code></pre><p>上面的例子中展示了在多线程环境中，安全地增加myNumber变量，</p>
+<pre><code>jxcore.store.shared.safeBlock(&quot;myNumber&quot;,
+    function () {
+        throw &quot;some error&quot;;
+    },
+    function(err) {
+        console.log(err);
+    }
+);
+</code></pre><p><strong>store.shared.setBlockTimeout()</strong></p>
+<p>设置safeBlock函数锁定一个值，最大超时时间</p>
+<p><strong>store.shared.setIfEqualsTo(key, newValue, checkValue)</strong></p>
+<p>key String</p>
+<p>newValue String</p>
+<p>checkValue String</p>
+<p>当key对应的value值为checkValue时，才替换value值为newValue，类似CompareExchange</p>
+<p><strong>store.shared.setIfEqualsToOrNull(key, newValue, checkValue)</strong></p>
+<p>key String</p>
+<p>newValue String</p>
+<p>checkValue String</p>
+<p>value为null或value为checkValue时，才将value替换为newValue</p>
+<p><strong>store.shared.setIfNotExists(key, element)</strong></p>
+<p>key String</p>
+<p>newValue String</p>
+<p>checkValue String</p>
+<h1 id="Multitasking"><a href="#Multitasking" class="headerlink" title="Multitasking"></a>Multitasking</h1><p>jxcore中的Multitasking就是多个线程，每个线程开启一个jxcore instance</p>
+<p><strong>Sub-instances are separated</strong></p>
+<p>每一个jxcore的instance称为sub-instance，每个sub-instance与其他instance完全隔离，他们有各自的V8 context和isolate，instance之间不能共享对象、变量等，但可以通过jxcore.store.shared进行数据交互和共享</p>
+<p>process.sendToMain()可以实现sub-instance向main instance(第一个instance)传递消息</p>
+<p>V8中，32位系统最大内存为1GB，64位最大内存为1.7GB,在multi-instance环境中，每个task使用独立的V8引擎</p>
+<p><strong>Native C++ Node.JS modules</strong></p>
+<p><strong><br>How to run multitasked code?</strong></p>
+<p>有两种方式让JXCore多线程方式执行js代码</p>
+<ol>
+<li>在命令行中指定</li>
+</ol>
+<blockquote>
+<p>jx mt-keep:4 easy1.js</p>
+</blockquote>
+<ol>
+<li>使用jxcore.tasks</li>
+</ol>
+<h1 id="ModuleInstaller"><a href="#ModuleInstaller" class="headerlink" title="ModuleInstaller"></a>ModuleInstaller</h1><p>包管理</p>
+<p>jxcore中已经包含了npm管理器<br><strong>安装</strong></p>
+<pre><code>jx install [-g] name_of_the_package[@version] [--autoremove &quot;*.txt,dir1,dir2/file2.txt&quot;]
+</code></pre><p>下载npm包</p>
+<p>-g - 全局安装</p>
+<p>–autoremove - 执行post task，删除一些特定的文件.比如删除一些代码无关的文件</p>
+<p>下面的例子是安装express</p>
+<blockquote>
+<p>jx install express</p>
+</blockquote>
+<p>使用express</p>
+<pre><code>var express = require(&quot;express&quot;);
+</code></pre><p>安装特定版本的express</p>
+<pre><code>jx install express@3.3.3
+</code></pre><p>使用jxcore内置的npm命令</p>
+<pre><code>jx npm ls
+jx npm version
+jx npm uninstall express
+jx install -ls
+jx install -version
+jx install -uninstall express
+</code></pre><h1 id="Packaging"><a href="#Packaging" class="headerlink" title="Packaging"></a>Packaging</h1><p>JxCore中有一个激动人心的特性，就是可以将源文件和资源文件打包成jx包<br>将一个工程中大量的文件打包成单个jx包，方便部署，同时也保护我们的js代码不被逆向<br>执行一个jx包：</p>
+<pre><code>jx helloWorld.jx
+</code></pre><p>打包一个工程</p>
+<pre><code>jx package main_js_file [package_name] [options]
+</code></pre><p>jx递归扫描当前目录下的所有文件，并生成jxp工程文件,main_js_file文件是jx包的启动文件,package_name为包名<br>假设一个工程中有：helloWorld.js 和 index.html，调用如下命令</p>
+<pre><code>jx package helloWorld.js &quot;HelloWorld&quot;
+</code></pre><p>或</p>
+<pre><code>jx package helloWorld.js --name &quot;HelloWorld&quot;
+</code></pre><p>生成jxp工程文件：HelloWorld.jxp，它用于compile一个工程<br><strong><br>其他选项</strong></p>
+<p>jx package命令还有如下可选参数：</p>
+<pre><code>--add [ file||folder [, file2||folder2, ... ]]
+--slim file||folder [, file2||folder2, ... ]
+--native
+--show-progress
+--sign
+</code></pre><p><strong>boolean values</strong></p>
+<p>还有一些开关是bool变量，如果未指定，使用默认值，如果指定了，但没跟具体值，默认为true</p>
+<pre><code>jx package helloWorld.js --extract
+jx package helloWorld.js --extract 0
+jx package helloWorld.js --extract no
+jx package helloWorld.js --extract false
+jx package helloWorld.js --extract 1
+jx package helloWorld.js --extract yes
+jx package helloWorld.js --extract something
+</code></pre><p><strong>–add选项</strong></p>
+<p>添加额外的文件、目录到jxp包，例如，若只想打包一个文件(例如helloworld.js)，可以用如下两种命令</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –add</p>
+<p>jx package helloWorld.js “HelloWorld” –add helloWorld.js</p>
+</blockquote>
+<p>–add和slim组合起来用，可以添加一个目录，但排除子目录，例如：</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –add node_modules –slim node_modules/express<br>只打包node_modules目录和helloWorld.js，但排除node_modules/express</p>
+</blockquote>
+<p><strong>–slim选项</strong></p>
+<p>排除一些目录</p>
+<p><strong>wildcards选项</strong></p>
+<p>可以用通配模式串打包，例如:</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –add “file<em>.txt”<br>或:<br>jx package helloWorld.js “HelloWorld” –add “file</em>.txt,<em>.jpg” –slim “node?modules,dir</em>“</p>
+</blockquote>
+<p><strong>绝对路径和相对路径</strong></p>
+<p>例子:</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –slim out,./out,/users/me/folder/out</p>
+</blockquote>
+<p><strong>–native选项</strong></p>
+<p>默认false</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –native<br>打包为一个独立的自包含的程序，而不是一个包，可以直接运行，而不需要jx，如果在windows系统，直接生成单独的EXE</p>
+</blockquote>
+<p><strong>–show-progress选项</strong><br>进度显示</p>
+<p><strong>–sign选项</strong></p>
+<p>配合<strong>–native</strong>选项使用，用于EXE签名</p>
+<blockquote>
+<p>jx package helloWorld.js “HelloWorld” –native –sign<br>内都会调用如下命令</p>
+<p>signtool sign /a HelloWorld.exe</p>
+<p>jx package helloWorld.js “HelloWorld” –native –sign “c:\mycert.pfx”</p>
+<p>jx package helloWorld.js “HelloWorld” –native –sign “/f ‘c:\mycert.pfx’ /p password”</p>
+</blockquote>
+<p><strong>compile选项</strong><br>当生成了jxp工程文件后，可以用<strong>compile</strong>命令编译生成jx包文件</p>
+<blockquote>
+<p>jx compile project_file.jxp -native</p>
+</blockquote>
+<p><strong>JX package</strong></p>
+<p>jx包文件，是将你的工程文件compile生成的二进制文件，它包含了所有的js、资源文件，可以被jx.exe直接调用运行，也可以被其他js通过<strong>require</strong>方式包含执行<br>如下命令执行一个jx包</p>
+<blockquote>
+<p>jx my_project.jx<br>多线程方式执行jx包</p>
+<p>jx mt my_project.jx</p>
+<p>jx mt-keep my_project.jx</p>
+</blockquote>
+<p>require方式执行</p>
+<blockquote>
+<p>var module = require(“./package.jx”);</p>
+</blockquote>
+<p><strong>jxp工程文件</strong><br>它包含了整个js工程的描述信息，所包含的文件和资源，要生成jx工程文件，需要先乘胜jxp文件</p>
+<p>jxp文件一般结构如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"HelloWorld"</span>,</span><br><span class="line">    <span class="string">"version"</span>: <span class="string">"1.0"</span>,</span><br><span class="line">    <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"company"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"copyright"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"website"</span> : <span class="string">""</span>,</span><br><span class="line">    <span class="string">"package"</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">"startup"</span>: <span class="string">"helloWorld.js"</span>,</span><br><span class="line">    <span class="string">"execute"</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">"extract"</span>: &#123;</span><br><span class="line">        <span class="string">"what"</span> :  <span class="string">"*.node,*.txt"</span>,</span><br><span class="line">        <span class="string">"where"</span> : <span class="string">"my_folder"</span>,</span><br><span class="line">        <span class="string">"message"</span> : <span class="string">"Extracting now..."</span>,</span><br><span class="line">        <span class="string">"verbose"</span> : <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"overwrite"</span> : <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"output"</span>: <span class="string">"helloWorld.jx"</span>,</span><br><span class="line">    <span class="string">"files"</span>: [</span><br><span class="line">        <span class="string">"helloWorld.js"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"assets"</span>: [</span><br><span class="line">        <span class="string">"index.html"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"library"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"license_file"</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">"readme_file"</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">"preInstall"</span> : [</span><br><span class="line">        <span class="string">"mkdir new_folder"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"fs_reach_sources"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"native"</span> : <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"sign"</span> : <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>jx包中js可以动态访问jx包对应的jxp文件信息</p>
+<pre><code>var obj = exports.$JXP;
+var name = obj.name;
+</code></pre><p>jx文件中的静态资源文件访问</p>
+<pre><code>readFile()
+readFileSync()
+readdir()
+readdirSync()
+</code></pre><p>这些函数先访问真实的文件系统，用于获取文件，若真实文件不存在，才查询jx包中的文件</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/16/2016-01-jxcore集成/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jxcore集成</div>
+      <strong class="article-nav-caption"></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 uxfork
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script type="text/javascript">
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	};
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
+  </div>
+</body>
+</html>

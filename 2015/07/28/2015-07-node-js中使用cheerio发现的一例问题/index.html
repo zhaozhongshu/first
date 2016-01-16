@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>node.js中使用cheerio发现的一例问题 | 技术人生</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="我在node.js中使用cheerio库解析html时，发现一例问题，先贴代码:12345$(&apos;a&apos;).each(function (i, elem) &amp;#123;    var href = this.attribs[&apos;href&apos;];    cacheTask.push(href);   //保存一个url链接&amp;#125;);$ = null;
 代码提取了html中所有的url链接，并保存到hr">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
     <link rel="icon" href="/img/zhihu.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head></html>
+</head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -145,20 +145,27 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
-        <h1 class="article-title" itemprop="name">
+        
+  
+    <h1 class="article-title" itemprop="name">
       node.js中使用cheerio发现的一例问题
     </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
-        <div class="article-tag tagcloud">
+        
+	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
 	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -170,12 +177,14 @@
 <p>找到原因了，因为cacheTask.push(href)保存了html页面中的字符子串的引用，导致了整个html页面也被引用，真是一个奇葩的bug。Google了一下，发现老版本的V8引擎确实存在这个问题。</p>
 <p>网上找到的解决方案：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> href = <span class="string">'$'</span> + <span class="keyword">this</span>.attribs[<span class="string">'href'</span>];</span><br><span class="line">href = href.substr(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
 <p>还有就是升级node.js</p>
+
       
     </div>
     
   </div>
   
-    <nav id="article-nav">
+    
+<nav id="article-nav">
   
     <a href="/2015/07/28/2015-07-key-value数据库之leveldb/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"></strong>
@@ -193,6 +202,7 @@
     </a>
   
 </nav>
+
   
 </article>
 
@@ -210,18 +220,25 @@
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
-</div></div>
+</div>
+
+
+
+
+
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 uxfork
+    		&copy; 2016 uxfork
     	</div>
     </div>
   </div>
 </footer>
     </div>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
 
 
 <script type="text/javascript">
@@ -239,6 +256,7 @@
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="/js/main.js" type="text/javascript"></script>
+
 
 
 
@@ -263,5 +281,8 @@ MathJax.Hub.Queue(function() {
 
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+
+
   </div>
 </body>
+</html>
