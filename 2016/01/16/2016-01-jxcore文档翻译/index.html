@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jxcore文档翻译 | 技术人生</title>
+  <title>jxcore文档翻译 | 苍山溪水</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JXcore config
 Memory Store
@@ -10,26 +10,26 @@ Multitasking
 Module Installer
 Packaging
 
-JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
-{
-&amp;quot;maxCPU&amp;quot;:50
-}
-maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+总结一下jxcore有几大优点：
+1.多线程
+支持同时多个V8引擎和libuv事件循环，个人感觉用处不大，对于IO密集型任务，一个实例就够用了，再多实例也没有，对于CPU密集型任务，一般也不适合Node.js来做
+2.支持打包
+jxcore支持将node.js工程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jxcore文档翻译">
 <meta property="og:url" content="http://blog.uxfork.cn/2016/01/16/2016-01-jxcore文档翻译/index.html">
-<meta property="og:site_name" content="技术人生">
+<meta property="og:site_name" content="苍山溪水">
 <meta property="og:description" content="JXcore config
 Memory Store
 Multitasking
 Module Installer
 Packaging
 
-JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
-{
-&amp;quot;maxCPU&amp;quot;:50
-}
-maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+总结一下jxcore有几大优点：
+1.多线程
+支持同时多个V8引擎和libuv事件循环，个人感觉用处不大，对于IO密集型任务，一个实例就够用了，再多实例也没有，对于CPU密集型任务，一般也不适合Node.js来做
+2.支持打包
+jxcore支持将node.js工程">
 <meta property="og:updated_time" content="2016-01-16T08:21:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jxcore文档翻译">
@@ -39,13 +39,13 @@ Multitasking
 Module Installer
 Packaging
 
-JXcoreConfig可以通过修改配置文件jx.config（windows下是node.config）
-{
-&amp;quot;maxCPU&amp;quot;:50
-}
-maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个node程序的CPU使用率，">
+总结一下jxcore有几大优点：
+1.多线程
+支持同时多个V8引擎和libuv事件循环，个人感觉用处不大，对于IO密集型任务，一个实例就够用了，再多实例也没有，对于CPU密集型任务，一般也不适合Node.js来做
+2.支持打包
+jxcore支持将node.js工程">
   
-    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="苍山溪水" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/zhihu.png">
@@ -69,7 +69,7 @@ maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个no
 		</hgroup>
 
 		
-		<p class="header-subtitle">记录点点滴滴</p>
+		<p class="header-subtitle">记录点滴---滴水石穿</p>
 		
 
 		
@@ -132,7 +132,7 @@ maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个no
 			  <h1 class="header-author">uxfork</h1>
 			</hgroup>
 			
-			<p class="header-subtitle">记录点点滴滴</p>
+			<p class="header-subtitle">记录点滴---滴水石穿</p>
 			
 			<nav class="header-menu">
 				<ul>
@@ -204,6 +204,15 @@ maxCPU为50表示，限制node的CPU占用率最高50%，如果想限制某个no
 <li><strong><a href="/#ModuleInstaller">Module Installer</a></strong></li>
 <li><strong><a href="/#Packaging">Packaging</a></strong></li>
 </ul>
+<p>总结一下jxcore有几大优点：</p>
+<p><strong>1.多线程</strong></p>
+<p>支持同时多个V8引擎和libuv事件循环，个人感觉用处不大，对于IO密集型任务，一个实例就够用了，再多实例也没有，对于CPU密集型任务，一般也不适合Node.js来做</p>
+<p><strong>2.支持打包</strong></p>
+<p>jxcore支持将node.js工程目录打包为一个单独的jx包文件，以后部署node.js任务就很简单了，一个jx.exe和一个jx包即可</p>
+<p><strong>3.代码加密</strong></p>
+<p>支持jx包加密，我觉得这是jxcore开源项目里最有用的功能了，保护我们的node.js代码，这样就可以部署到客户端上，而不用担心代码泄露(没有绝对的保密哈)</p>
+<p><strong>4.容易集成</strong></p>
+<p>官网文档号称支持android、linux、windows，从此客户端就可以用node.js实现，可以告别笨重的C++/java</p>
 <h1 id="JXcoreConfig"><a href="#JXcoreConfig" class="headerlink" title="JXcoreConfig"></a>JXcoreConfig</h1><p>可以通过修改配置文件jx.config（windows下是node.config）</p>
 <pre><code>{
 &quot;maxCPU&quot;:50

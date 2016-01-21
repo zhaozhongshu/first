@@ -2,14 +2,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>windows驱动开发注意事项 | 技术人生</title>
+  <title>windows驱动开发注意事项 | 苍山溪水</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="#1.Nt函数与Zw函数区别
 在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows驱动开发注意事项">
 <meta property="og:url" content="http://blog.uxfork.cn/2015/07/12/2015-07-windows驱动开发注意事项/index.html">
-<meta property="og:site_name" content="技术人生">
+<meta property="og:site_name" content="苍山溪水">
 <meta property="og:description" content="#1.Nt函数与Zw函数区别
 在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3">
 <meta property="og:updated_time" content="2015-08-06T01:41:22.000Z">
@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="#1.Nt函数与Zw函数区别
 在ring3上，Nt、Zw函数没什么区别，都是通过系统调用中断(INT 2E/SYSENTER)进入ring0在ring0上，Nt系列函数不经过ssdt表直接调用内核服务，Zw函数经过ssdt调用系统服务，系统认为Zw函数调用都来自a trusted, kernel-mode source，所以Zw函数都不会校验参数是否合法。在我们的驱动中，如果参数可能来自ring3">
   
-    <link rel="alternative" href="/atom.xml" title="技术人生" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="苍山溪水" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/zhihu.png">
@@ -42,7 +42,7 @@
 		</hgroup>
 
 		
-		<p class="header-subtitle">记录点点滴滴</p>
+		<p class="header-subtitle">记录点滴---滴水石穿</p>
 		
 
 		
@@ -105,7 +105,7 @@
 			  <h1 class="header-author">uxfork</h1>
 			</hgroup>
 			
-			<p class="header-subtitle">记录点点滴滴</p>
+			<p class="header-subtitle">记录点滴---滴水石穿</p>
 			
 			<nav class="header-menu">
 				<ul>
